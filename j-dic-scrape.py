@@ -180,6 +180,112 @@ def daijisen_definition(tree):
         result = result.strip()
         print("（1）%s" % result)
 
+def new_century_heading(tree):
+    # THIS IS VERY SIMILAR TO DAIJIRIN HEADING
+    div = tree.xpath("//div[@class='title-keyword']")[0]
+    #result = etree.tostring(div, pretty_print=True, method="html", encoding='UTF-8')
+    #print(result)
+    heading = div.getchildren()[0]
+    children = heading.getchildren()
+    #from IPython import embed ; embed()
+
+    result = heading.xpath("text()")
+    result = "".join(result)
+    #print(result)
+
+    # THIS IS DIFFERENT!!! this takes out the non-greedy match
+    m = re.search("^(.*)[ | |【|［|〔]".decode("utf-8"), result)
+    if m:
+        result_kana = m.group(1)
+    else:
+        # we didn't get a match, so the word we are trying to find
+        # should just be the entire string
+        result_kana = result
+
+    # THIS STRIPS< THIS IS DIFFERENT
+    result_kana = result_kana.strip()
+
+    # this is just in case we don't get any kanji later
+    result_word = result_kana
+
+    m = re.search("【(.*)】$".decode('utf-8'), result)
+    if m:
+        result_word = m.group(1)
+
+    print("%s: \"%s\"" %
+            (result_word.encode('utf-8'), result_kana.encode('utf-8')))
+
+def new_century_definition(tree):
+    #definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+    #result = etree.tostring(definition_tables, pretty_print=True, method="html", encoding='UTF-8')
+    #print(result)
+    definitions = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+    result = etree.tostring(definitions, pretty_print=False, method="html", encoding='UTF-8')
+
+    # some replacements to make our lives easier
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', '〈')
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', '〉')
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', '⁝')
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', '＊')
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', '（同）')
+    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', 'Æ')
+
+    # do we have multiple definitions?
+    matches = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
+    if matches:
+        # split the page into pieces for each definition
+        splits = re.split('(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
+        # make sure we have an odd number of splits
+        assert(len(splits) % 2 == 1)
+        # throw away the first split because it's useless information
+        splits = splits[1:]
+        # combine the following splits
+        # This is stupidly complicated.  Basically we have a list like
+        # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
+        # to make a list like ["abcd", "efgh", "hijk"]
+        splits = ["%s%s" % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
+        #for s in splits:
+        #    print "M: %s" % s
+        #    print
+        #    print
+        #    print
+        #print("multiple definitions")
+    else:
+        splits = [result]
+
+    definition_counter = 1
+    for splt in splits:
+        print("DEFINTION %d********************************" % definition_counter)
+        definition_counter += 1
+
+        # find english definition
+        #print splt
+        # make sure not to match on the initial character telling whether
+        # it is a noun,verb, etc
+        match = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
+        if match:
+            print("(ENGLISH) %s" % match.group(1))
+
+        # find example sentences
+        matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+        counter = 1
+        print("EXAMPLE SENTENCES:")
+        if matches:
+            for m in matches:
+                print("（%d）%s (%s)" % (counter, m[0], m[1]))
+                counter += 1
+
+        # find kaiwa
+        print("KAIWA:")
+        matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
+        if matches:
+            for m in matches:
+                print("（%d）%s」 (“%s)" % (counter, m[0], m[1]))
+                counter += 1
+
+        print
+        print
+
 def check_daijirin(word_kanji, word_kana):
     tree = create_page_tree(word_kanji, word_kana, daijirin['dtype'], daijirin['dname'])
     daijirin_heading(tree)
@@ -187,35 +293,44 @@ def check_daijirin(word_kanji, word_kana):
 
 def check_daijisen(word_kanji, word_kana):
     tree = create_page_tree(word_kanji, word_kana, daijisen['dtype'], daijisen['dname'])
-
     daijisen_heading(tree)
     daijisen_definition(tree)
 
+def check_new_century(word_kanji, word_kana):
+    tree = create_page_tree(word_kanji, word_kana, new_century['dtype'], new_century['dname'])
+    new_century_heading(tree)
+    new_century_definition(tree)
+
 def main(word_kanji, word_kana):
-    check_daijirin(word_kanji, word_kana)
-    check_daijisen(word_kanji, word_kana)
+    #check_daijirin(word_kanji, word_kana)
+    #print
+    #check_daijisen(word_kanji, word_kana)
+    #print
+    #check_progressive(word_kanji, word_kana)
+    print
+    check_new_century(word_kanji, word_kana)
 
 if __name__ == '__main__':
     words = [
             ('強迫', 'きょうはく'),
             ('面白い', 'おもしろい'),
-            ('赤し', 'あかし'),
+            #('赤し', 'あかし'),
             ('うっとり', ''),
             ('バリカン', ''),
-            ('コンピエーニュ', ''),
+            #('コンピエーニュ', ''),
             ('蜥蜴', 'とかげ'),
             ('らくだ', '駱駝'),
             ('成り済ます', 'なりすます'),
             ('行く', 'いく'),
             ('が', ''),
+            ('遊ぶ', ''),
             ]
 
     for one, two in words:
         main(one, two)
         print
-
     """
-    one = words[1]
+    one = words[0]
     main(one[0], one[1])
     """
 
