@@ -126,7 +126,8 @@ def daijirin_definition(tree):
         for defi in definition_tables:
             result = etree.tostring(defi, pretty_print=False, method="html", encoding='UTF-8')
             result = re.sub("^<td>", "", result)
-            result = re.sub("(?<! )<br>.*$", "", result)
+            #result = re.sub("(?<! )<br>.*$", "", result)
+            result = re.sub("<br></td>$", "", result)
             result = result.strip()
             print("（%d）%s" % (counter, result))
             counter += 1
@@ -216,9 +217,6 @@ def new_century_heading(tree):
             (result_word.encode('utf-8'), result_kana.encode('utf-8')))
 
 def new_century_definition(tree):
-    #definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-    #result = etree.tostring(definition_tables, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
     definitions = tree.xpath("//table[@class='d-detail']/tr/td")[0]
     result = etree.tostring(definitions, pretty_print=False, method="html", encoding='UTF-8')
 
@@ -283,9 +281,6 @@ def new_century_definition(tree):
                 print("（%d）%s」 (“%s)" % (counter, m[0], m[1]))
                 counter += 1
 
-        print
-        print
-
 def check_daijirin(word_kanji, word_kana):
     tree = create_page_tree(word_kanji, word_kana, daijirin['dtype'], daijirin['dname'])
     daijirin_heading(tree)
@@ -298,13 +293,27 @@ def check_daijisen(word_kanji, word_kana):
 
 def check_new_century(word_kanji, word_kana):
     tree = create_page_tree(word_kanji, word_kana, new_century['dtype'], new_century['dname'])
+    # make sure there is an entry
+    result = etree.tostring(tree, pretty_print=False, method="html", encoding='UTF-8')
+    word_not_found_string = '<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
+            (word_kanji, word_kana)
+    word_not_found_string_no_space = \
+            '<p><em>%s%s</em>に一致する情報はみつかりませんでした。</p>' % \
+            (word_kanji, word_kana)
+    if word_not_found_string in result or word_not_found_string_no_space in result:
+        print("NO DEFINITION FOUND")
+        return
+    # make sure this is the new century and not the progressive definition
+    if '<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
+        print("NO DEFINITION FROM NEW CENTURY")
+        return
     new_century_heading(tree)
     new_century_definition(tree)
 
 def main(word_kanji, word_kana):
-    #check_daijirin(word_kanji, word_kana)
-    #print
-    #check_daijisen(word_kanji, word_kana)
+    check_daijirin(word_kanji, word_kana)
+    print
+    check_daijisen(word_kanji, word_kana)
     #print
     #check_progressive(word_kanji, word_kana)
     print
@@ -314,23 +323,24 @@ if __name__ == '__main__':
     words = [
             ('強迫', 'きょうはく'),
             ('面白い', 'おもしろい'),
-            #('赤し', 'あかし'),
+            ('赤し', 'あかし'),
             ('うっとり', ''),
             ('バリカン', ''),
-            #('コンピエーニュ', ''),
+            ('コンピエーニュ', ''),
             ('蜥蜴', 'とかげ'),
             ('らくだ', '駱駝'),
             ('成り済ます', 'なりすます'),
             ('行く', 'いく'),
             ('が', ''),
-            ('遊ぶ', ''),
+            ('遊ぶ', 'あそぶ'),
+            #('遊ぶ', 'あすぶ'),
             ]
 
+    """
     for one, two in words:
         main(one, two)
         print
-    """
-    one = words[0]
+        """
+    one = words[11]
     main(one[0], one[1])
-    """
 
