@@ -8,10 +8,9 @@ import urllib
 from lxml import etree
 from StringIO import StringIO
 
-daijirin = {'dtype': '0', 'dname': '0ss'}
-daijisen = {'dtype': '0', 'dname': '0na'}
+#from IPython import embed ; embed()
+
 progressive = {'dtype': '3', 'dname': '2na'}
-new_century = {'dtype': '3', 'dname': '2ss'}
 
 hiragana = """
 あいうえお
@@ -59,227 +58,273 @@ for i in (hiragana, katakana):
     i.replace(" ", "")
     i.replace("　", "")
 
-def create_page_tree(word_kanji, word_kana, dtype, dname):
-    search = "%s　%s" % (word_kanji, word_kana)
-    params = {'p': search, 'enc': "UTF-8", 'stype': 1, 'dtype': dtype, 'dname': dname}
-    encoded_params = urllib.urlencode(params)
-    page = urllib.urlopen("http://dic.yahoo.co.jp/dsearch?%s" % encoded_params)
-    page_string = page.read()
+class ExampleSentence(object):
+    """
+    A Japanese example sentence with an optional English translation.
+    """
+    def __init__(self, jap_sentence, eng_trans):
+        self.result_jap_sentence = jap_sentence
+        self.result_eng_trans = eng_trans
 
-    parser = etree.HTMLParser()
-    tree = etree.parse(StringIO(page_string), parser)
-    return tree
+    @property
+    def jap_sentence(self):
+        return self.result_jap_sentence
 
-def daijirin_heading(tree):
-    div = tree.xpath("//div[@class='title-keyword']")[0]
-    #result = etree.tostring(div, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
-    heading = div.getchildren()[0]
-    children = heading.getchildren()
-    #from IPython import embed ; embed()
+    @property
+    def eng_trans(self):
+        return self.result_eng_trans
 
-    result_accent = ""
-    if children:
-        for c in children:
-            if c.tag == 'sub':
-                result_accent = heading.getchildren()[0].text
+class Definition(object):
+    """
+    Contains the defintion from a dictionary along with example sentences.
+    """
+    def __init__(self, definition, example_sentences, kaiwa):
+        self.result_definition = definition
+        if example_sentences:
+            self.result_example_sentences = example_sentences
+        else:
+            self.result_example_sentences = []
 
-    result = heading.xpath("text()")
-    result = "".join(result)
+        if kaiwa:
+            self.result_kaiwa = kaiwa
+        else:
+            self.result_kaiwa = []
 
-    m = re.search("^(.*?)[ | |【|［]".decode("utf-8"), result)
-    if m:
-        result_kana = m.group(1)
-    else:
-        # we didn't get a match, so the word we are trying to find
-        # should just be the entire string
-        result_kana = result
 
-    # this is just in case we don't get any kanji later
-    result_word = result_kana
+    @property
+    def definition(self):
+        return self.result_definition
 
-    m = re.search("【(.*)】$".decode('utf-8'), result)
-    if m:
-        result_word = m.group(1)
+    @property
+    def example_sentences(self):
+        return self.result_example_sentences
 
-    print("%s: \"%s\" [%s]" %
-            (result_word.encode('utf-8'), result_kana.encode('utf-8'), result_accent))
+    @property
+    def kaiwai(self):
+        return self.result_kaiwai
 
-def daijirin_definition(tree):
-    #definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-    #result = etree.tostring(definition_tables, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
-    counter = 1
-    definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
-    for defi in definition_tables:
-        result = etree.tostring(defi, pretty_print=True, method="html", encoding='UTF-8')
-        text_def = defi.xpath("tr/td")[1]
-        result = etree.tostring(text_def, pretty_print=False, method="html", encoding='UTF-8')
-        result = re.sub("^<td>", "", result)
-        result = re.sub("<br>.*$", "", result)
-        result = result.strip()
-        print("（%d）%s" % (counter, result))
-        counter += 1
+class Result(object):
+    def __init__(self, kanji, kana, accent, jap_defs, eng_defs):
+        self.result_kanji = kanji
+        self.result_kana = kana
+        self.result_accent = accent
+        if jap_defs:
+            self.result_jap_defs = jap_defs
+        else:
+            self.result_jap_defs = []
+        if eng_defs:
+            self.result_eng_defs = eng_defs
+        else:
+            self.result_eng_defs = []
 
-    if not definition_tables:
-        definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
+    @property
+    def kanji(self):
+        return self.result_kanji
+
+    @property
+    def kana(self):
+        return self.result_kana
+
+    @property
+    def accent(self):
+        return self.result_accent
+
+    @property
+    def jap_defs(self):
+        return self.result_jap_defs
+
+    @property
+    def eng_defs(self):
+        return self.result_eng_defs
+
+class Dictionary(object):
+    def __init__(self):
+        pass
+
+    def lookup(self, word_kanji, word_kana):
+        tree = self.create_page_tree(word_kanji, word_kana)
+        kanji, kana, accent = self.parse_heading(tree)
+        jap_defs_sentences, eng_defs_sentences = self.parse_definition(tree)
+        return Result(kanji, kana, accent, jap_defs_sentences, eng_defs_sentences)
+
+    def create_page_tree(self, word_kanji, word_kana):
+        search = "%s　%s" % (word_kanji, word_kana)
+        params = {'p': search, 'enc': "UTF-8", 'stype': 1,
+                'dtype': self.dtype, 'dname': self.dname}
+        encoded_params = urllib.urlencode(params)
+        page = urllib.urlopen("http://dic.yahoo.co.jp/dsearch?%s" % encoded_params)
+        page_string = page.read()
+
+        parser = etree.HTMLParser()
+        tree = etree.parse(StringIO(page_string), parser)
+        return tree
+
+    def parse_heading(self, tree):
+        raise NotImplementedError, "This needs to be overrode in a child class."
+
+    def parse_definition(self, tree):
+        raise NotImplementedError, "This needs to be overrode in a child class."
+
+    @property
+    def dic_name(self):
+        return self.dictionary_name
+
+class DaijirinDictionary(Dictionary):
+    def __init__(self):
+        self.dictionary_name = "Yahoo's Daijirin (大辞林)"
+        self.dtype = '0'
+        self.dname = '0ss'
+        #super(DaijirinDictionary, self).__init__()
+
+    def parse_heading(self, tree):
+        div = tree.xpath("//div[@class='title-keyword']")[0]
+        heading = div.getchildren()[0]
+        children = heading.getchildren()
+
+        result_accent = ""
+        if children:
+            for c in children:
+                if c.tag == 'sub':
+                    result_accent = heading.getchildren()[0].text
+
+        result = heading.xpath("text()")
+        result = "".join(result)
+
+        m = re.search("^(.*)[ | |【|［|〔]".decode("utf-8"), result)
+        if m:
+            result_kana = m.group(1)
+        else:
+            # we didn't get a match, so the word we are trying to find
+            # should just be the entire string
+            result_kana = result
+
+        # TODO: we will need to do a lot more to clean up the kana
+        result_kana = result_kana.strip()
+
+        # this is just in case we don't get any kanji later
+        result_word = result_kana
+
+        m = re.search("【(.*)】$".decode('utf-8'), result)
+        if m:
+            result_word = m.group(1)
+
+        return result_word, result_kana, result_accent
+
+    def parse_definition(self, tree):
+        jap_defs = []
+        definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
         for defi in definition_tables:
-            result = etree.tostring(defi, pretty_print=False, method="html", encoding='UTF-8')
+            result = etree.tostring(defi, pretty_print=True, method="html", encoding='UTF-8')
+            text_def = defi.xpath("tr/td")[1]
+            result = etree.tostring(text_def, pretty_print=False, method="html", encoding='UTF-8')
             result = re.sub("^<td>", "", result)
-            #result = re.sub("(?<! )<br>.*$", "", result)
-            result = re.sub("<br></td>$", "", result)
+            result = re.sub("<br>.*$", "", result)
             result = result.strip()
-            print("（%d）%s" % (counter, result))
-            counter += 1
+            jap_defs.append(Definition(result, None, None))
 
-def daijisen_heading(tree):
-    # THIS IS BASICALLY THE SAME AS daijirin heading
-    div = tree.xpath("//div[@class='title-keyword']")[0]
-    #result = etree.tostring(div, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
-    heading = div.getchildren()[0]
-    children = heading.getchildren()
-    #from IPython import embed ; embed()
+        if not definition_tables:
+            definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
+            for defi in definition_tables:
+                result = etree.tostring(defi, pretty_print=False, method="html", encoding='UTF-8')
+                result = re.sub("^<td>", "", result)
+                #result = re.sub("(?<! )<br>.*$", "", result)
+                result = re.sub("<br></td>$", "", result)
+                result = result.strip()
+                jap_defs.append(Definition(result, None, None))
 
-    result = heading.xpath("text()")
-    result = "".join(result)
+        return jap_defs, None
 
-    m = re.search("^(.*?)[ | |【|［|〔]".decode("utf-8"), result)
-    if m:
-        result_kana = m.group(1)
-    else:
-        # we didn't get a match, so the word we are trying to find
-        # should just be the entire string
-        result_kana = result
+class NewCenturyDictionary(DaijirinDictionary):
+    def __init__(self):
+        self.dictionary_name = "Yahoo's New Century (ニューセンチュリー和英辞典)"
+        self.dtype = '3'
+        self.dname = '2ss'
 
-    # this is just in case we don't get any kanji later
-    result_word = result_kana
+    def parse_definition(self, tree):
+        def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        result = etree.tostring(def_elems, pretty_print=False, method="html", encoding='UTF-8')
 
-    m = re.search("【(.*)】$".decode('utf-8'), result)
-    if m:
-        result_word = m.group(1)
+        # some replacements to make our lives easier
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', '〈')
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', '〉')
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', '⁝')
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', '＊')
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', '（同）')
+        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', 'Æ')
 
-    print("%s: \"%s\"" %
-            (result_word.encode('utf-8'), result_kana.encode('utf-8')))
+        definitions = []
 
-def daijisen_definition(tree):
-    #definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-    #result = etree.tostring(definition_tables, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
-    counter = 1
-    definitions = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-    result = etree.tostring(definitions, pretty_print=False, method="html", encoding='UTF-8')
-    #print(result)
-    matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
-    if matches:
-        for m in matches:
-            print("（%d）%s" % (counter, m))
-            counter += 1
-    else:
-        result = re.sub("^<td>", "", result)
-        result = re.sub("<br></td>.*$", "", result)
-        result = result.strip()
-        print("（1）%s" % result)
+        # do we have multiple definitions?
+        matches = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
+        if matches:
+            # split the page into pieces for each definition
+            splits = re.split('(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
+            # make sure we have an odd number of splits
+            assert(len(splits) % 2 == 1)
+            # throw away the first split because it's useless information
+            splits = splits[1:]
+            # combine the following splits
+            # This is stupidly complicated.  Basically we have a list like
+            # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
+            # to make a list like ["abcd", "efgh", "hijk"]
+            splits = ["%s%s" % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
+        else:
+            splits = [result]
 
-def new_century_heading(tree):
-    # THIS IS VERY SIMILAR TO DAIJIRIN HEADING
-    div = tree.xpath("//div[@class='title-keyword']")[0]
-    #result = etree.tostring(div, pretty_print=True, method="html", encoding='UTF-8')
-    #print(result)
-    heading = div.getchildren()[0]
-    children = heading.getchildren()
-    #from IPython import embed ; embed()
+        for splt in splits:
+            # find english definition
+            english_def = None
+            # make sure not to match on the initial character telling whether
+            # it is a noun,verb, etc
+            match = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
+            if match:
+                english_def = match.group(1)
 
-    result = heading.xpath("text()")
-    result = "".join(result)
-    #print(result)
+            # find example sentences
+            example_sentences = []
+            matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+            if matches:
+                for m in matches:
+                    jap_example_sentence = m[0]
+                    eng_trans = m[1]
+                    example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-    # THIS IS DIFFERENT!!! this takes out the non-greedy match
-    m = re.search("^(.*)[ | |【|［|〔]".decode("utf-8"), result)
-    if m:
-        result_kana = m.group(1)
-    else:
-        # we didn't get a match, so the word we are trying to find
-        # should just be the entire string
-        result_kana = result
+            # find kaiwa
+            kaiwa = []
+            matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
+            if matches:
+                for m in matches:
+                    jap_example_sentence = "%s」" % m[0]
+                    eng_trans = "“%s" % m[1]
+                    kaiwa.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-    # THIS STRIPS< THIS IS DIFFERENT
-    result_kana = result_kana.strip()
+            definitions.append(Definition(english_def, example_sentences, kaiwa))
 
-    # this is just in case we don't get any kanji later
-    result_word = result_kana
+        return None, definitions
 
-    m = re.search("【(.*)】$".decode('utf-8'), result)
-    if m:
-        result_word = m.group(1)
+class DaijisenDictionary(DaijirinDictionary):
+    def __init__(self):
+        self.dictionary_name = "Yahoo's Daijisen (大辞泉)"
+        self.dtype = '0'
+        self.dname = '0na'
+        #super(DaijirinDictionary, self).__init__()
 
-    print("%s: \"%s\"" %
-            (result_word.encode('utf-8'), result_kana.encode('utf-8')))
-
-def new_century_definition(tree):
-    definitions = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-    result = etree.tostring(definitions, pretty_print=False, method="html", encoding='UTF-8')
-
-    # some replacements to make our lives easier
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', '〈')
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', '〉')
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', '⁝')
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', '＊')
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', '（同）')
-    result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', 'Æ')
-
-    # do we have multiple definitions?
-    matches = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
-    if matches:
-        # split the page into pieces for each definition
-        splits = re.split('(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
-        # make sure we have an odd number of splits
-        assert(len(splits) % 2 == 1)
-        # throw away the first split because it's useless information
-        splits = splits[1:]
-        # combine the following splits
-        # This is stupidly complicated.  Basically we have a list like
-        # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
-        # to make a list like ["abcd", "efgh", "hijk"]
-        splits = ["%s%s" % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
-        #for s in splits:
-        #    print "M: %s" % s
-        #    print
-        #    print
-        #    print
-        #print("multiple definitions")
-    else:
-        splits = [result]
-
-    definition_counter = 1
-    for splt in splits:
-        print("DEFINTION %d********************************" % definition_counter)
-        definition_counter += 1
-
-        # find english definition
-        #print splt
-        # make sure not to match on the initial character telling whether
-        # it is a noun,verb, etc
-        match = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
-        if match:
-            print("(ENGLISH) %s" % match.group(1))
-
-        # find example sentences
-        matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
-        counter = 1
-        print("EXAMPLE SENTENCES:")
+    def parse_definition(self, tree):
+        defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        result = etree.tostring(defs, pretty_print=False, method="html", encoding='UTF-8')
+        jap_defs = []
+        matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
         if matches:
             for m in matches:
-                print("（%d）%s (%s)" % (counter, m[0], m[1]))
-                counter += 1
+                jap_defs.append(Definition(m, None, None))
+        else:
+            result = re.sub("^<td>", "", result)
+            result = re.sub("<br></td>.*$", "", result)
+            result = result.strip()
+            jap_defs.append(Definition(result, None, None))
 
-        # find kaiwa
-        print("KAIWA:")
-        matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
-        if matches:
-            for m in matches:
-                print("（%d）%s」 (“%s)" % (counter, m[0], m[1]))
-                counter += 1
+        return jap_defs, None
+
 
 def progressive_heading(tree):
     # THIS IS THE SAME AS NEW_CENTURY HEADING
@@ -319,15 +364,6 @@ def progressive_heading(tree):
 def progressive_definition(tree):
     definitions = tree.xpath("//table[@class='d-detail']/tr/td")[0]
     result = etree.tostring(definitions, pretty_print=False, method="html", encoding='UTF-8')
-    #print(result)
-
-    # some replacements to make our lives easier
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', '〈')
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', '〉')
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', '⁝')
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', '＊')
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', '（同）')
-    #result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', 'Æ')
 
     multiple_defs = True
 
@@ -386,26 +422,6 @@ def progressive_definition(tree):
                 print("（%d）%s (%s)" % (counter, m[0], m[1]))
                 counter += 1
 
-        """
-        # find kaiwa
-        print("KAIWA:")
-        matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
-        if matches:
-            for m in matches:
-                print("（%d）%s」 (“%s)" % (counter, m[0], m[1]))
-                counter += 1
-        """
-
-def check_daijirin(word_kanji, word_kana):
-    tree = create_page_tree(word_kanji, word_kana, daijirin['dtype'], daijirin['dname'])
-    daijirin_heading(tree)
-    daijirin_definition(tree)
-
-def check_daijisen(word_kanji, word_kana):
-    tree = create_page_tree(word_kanji, word_kana, daijisen['dtype'], daijisen['dname'])
-    daijisen_heading(tree)
-    daijisen_definition(tree)
-
 def check_new_century(word_kanji, word_kana):
     tree = create_page_tree(word_kanji, word_kana, new_century['dtype'], new_century['dname'])
     # make sure there is an entry
@@ -440,6 +456,7 @@ def main(word_kanji, word_kana):
     check_progressive(word_kanji, word_kana)
 
 if __name__ == '__main__':
+
     words = [
             ('強迫', 'きょうはく'),
             ('面白い', 'おもしろい'),
@@ -456,11 +473,38 @@ if __name__ == '__main__':
             #('遊ぶ', 'あすぶ'),
             ]
 
+    """
     for one, two in words:
         main(one, two)
         print
         """
     one = words[0]
-    main(one[0], one[1])
-    """
+    #main(one[0], one[1])
+
+    daijirin_dic = DaijirinDictionary()
+    daijisen_dic = DaijisenDictionary()
+    new_century_dic = NewCenturyDictionary()
+
+    def print_all_defs(defs):
+        for i in range(len(defs)):
+            d = ""
+            print("(%2d) %s" % (i, defs[i].definition))
+            for e in defs[i].example_sentences:
+                print("    - %s" % e.jap_sentence)
+                if e.eng_trans:
+                    print("      %s" % e.eng_trans)
+
+
+    for word in words:
+        for d in [daijirin_dic, daijisen_dic, new_century_dic]:
+            result = d.lookup(word[0], word[1])
+            print ("FROM %s" % d.dic_name)
+            print ("%s (%s) %s:" % (result.kanji, result.kana, result.accent))
+            if result.jap_defs:
+                print("jap defs:")
+            print_all_defs(result.jap_defs)
+            if result.eng_defs:
+                print("eng defs:")
+            print_all_defs(result.eng_defs)
+            print
 
