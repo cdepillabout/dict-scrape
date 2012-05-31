@@ -417,12 +417,6 @@ class ProgressiveDictionary(DaijirinDictionary):
 
         return None, definitions
 
-
-def check_progressive(word_kanji, word_kana):
-    tree = create_page_tree(word_kanji, word_kana, progressive['dtype'], progressive['dname'])
-    progressive_heading(tree)
-    progressive_definition(tree)
-
 def main(word_kanji, word_kana):
     check_daijirin(word_kanji, word_kana)
     print
@@ -444,10 +438,11 @@ if __name__ == '__main__':
             ('蜥蜴', 'とかげ'),
             ('らくだ', '駱駝'),
             ('成り済ます', 'なりすます'),
-            ('行く', 'いく'),
+            #('行く', 'いく'),
             ('が', ''),
             ('遊ぶ', 'あそぶ'),
-            ('遊ぶ', 'あすぶ'),
+            #('遊ぶ', 'あすぶ'),        # this fails in the daijirin
+            #('唸る', 'うなる'),         # this doesn't parse right in the progressive dict
             ]
 
     """
