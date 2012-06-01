@@ -62,15 +62,21 @@ class ExampleSentence(object):
     A Japanese example sentence with an optional English translation.
     """
     def __init__(self, jap_sentence, eng_trans):
+        """
+        jap_sentence is a sentence in Japanese and eng_trans is
+        the English translation of that sentence.  Both are strings.
+        """
         self.result_jap_sentence = jap_sentence
         self.result_eng_trans = eng_trans
 
     @property
     def jap_sentence(self):
+        """Return the Japanese sentence."""
         return self.result_jap_sentence
 
     @property
     def eng_trans(self):
+        """Return the English sentence."""
         return self.result_eng_trans
 
 class Definition(object):
@@ -78,6 +84,11 @@ class Definition(object):
     Contains the defintion from a dictionary along with example sentences.
     """
     def __init__(self, definition, example_sentences, kaiwa):
+        """
+        definition is the definition from a dictionary in either
+        Japanese or English.  example_sentences and kaiwa are lists
+        of ExampleSentence objects.
+        """
         self.result_definition = definition
         if example_sentences:
             self.result_example_sentences = example_sentences
@@ -92,18 +103,34 @@ class Definition(object):
 
     @property
     def definition(self):
+        """Return Japanese or English definition."""
         return self.result_definition
 
     @property
     def example_sentences(self):
+        """Return a list of example sentences in the form of ExampleSentence objects."""
         return self.result_example_sentences
 
     @property
     def kaiwai(self):
+        """Return a list of kaiwa in the form of ExampleSentence objects."""
         return self.result_kaiwai
 
 class Result(object):
+    """
+    This is an object representing the result of a dictionary lookup.
+    """
     def __init__(self, kanji, kana, accent, jap_defs, eng_defs):
+        """
+        kanji is a string with the kanji from the result. This may be the same
+        as kana.
+        kana is a string with the kana from the result.
+        accent is the accent marking.  This may be None.
+        jap_defs is a list of Definition objects for the Japanese definitions
+        contained in the dictionary.
+        eng_defs is a list of Definition objects for the English definitions
+        contained in the dictionary.
+        """
         self.result_kanji = kanji
         self.result_kana = kana
         self.result_accent = accent
@@ -118,25 +145,42 @@ class Result(object):
 
     @property
     def kanji(self):
+        """Return the kanji from the dictionary."""
         return self.result_kanji
 
     @property
     def kana(self):
+        """Return the kana from the dictionary."""
         return self.result_kana
 
     @property
     def accent(self):
+        """Return the accent from the dictionary."""
         return self.result_accent
 
     @property
     def jap_defs(self):
+        """
+        Return the Japanese definitions from the dictionary in
+        a list of Definition objects.
+        """
         return self.result_jap_defs
 
     @property
     def eng_defs(self):
+        """
+        Return the English definitions from the dictionary in
+        a list of Definition objects.
+        """
         return self.result_eng_defs
 
 class Dictionary(object):
+    """
+    An object representing an online dictionary in which to lookup
+    definitions.
+    """
+
+    # These are constants for the type of a dictionary.
     DAIJIRIN_TYPE = 0
     DAIJISEN_TYPE = 1
     NEW_CENTURY_TYPE = 2
@@ -146,7 +190,13 @@ class Dictionary(object):
         pass
 
     def lookup(self, word_kanji, word_kana):
-        tree = self.create_page_tree(word_kanji, word_kana)
+        """
+        Lookup a word in a dictionary.  word_kanji is a string
+        for the kanji you want to lookup, and word_kana is the same
+        but for the kana. Returns a Definition object or None if no
+        result could be found.
+        """
+        tree = self._create_page_tree(word_kanji, word_kana)
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='UTF-8')
@@ -172,7 +222,12 @@ class Dictionary(object):
         jap_defs_sentences, eng_defs_sentences = self.parse_definition(tree)
         return Result(kanji, kana, accent, jap_defs_sentences, eng_defs_sentences)
 
-    def create_page_tree(self, word_kanji, word_kana):
+    def _create_page_tree(self, word_kanji, word_kana):
+        """
+        Fetches a page from the internet and parses the page with 
+        etree.parse(StringIO(page_string), etree.HTMLParser()).  
+        Returns the parsed tree.
+        """
         search = "%s　%s" % (word_kanji, word_kana)
         params = {'p': search, 'enc': "UTF-8", 'stype': 1,
                 'dtype': self.dtype_search_param, 'dname': self.dname_search_param}
@@ -185,17 +240,29 @@ class Dictionary(object):
         return tree
 
     def parse_heading(self, tree):
+        """
+        Parses the heading of the dictionary page and returns a 3-tuple of
+        the kanji for the word being looked up, the kana, and the accent.
+        Return None for the accent if it doesn't exist.
+        """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
     def parse_definition(self, tree):
+        """
+        Parses the main definition of the dictionary page and returns a 2-tuple of
+        a list of Definition objects for the Japanese definitions, and a list of
+        Definition objects for the English definitions.
+        """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
     @property
     def dic_name(self):
+        """Return the dictionary name."""
         return self.dictionary_name
 
     @property
     def dic_type(self):
+        """Return the dictionary type."""
         return self.dictionary_type
 
 class DaijirinDictionary(Dictionary):
@@ -270,7 +337,6 @@ class DaijisenDictionary(DaijirinDictionary):
         self.dictionary_type = Dictionary.DAIJISEN_TYPE
         self.dtype_search_param = '0'
         self.dname_search_param = '0na'
-        #super(DaijirinDictionary, self).__init__()
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
