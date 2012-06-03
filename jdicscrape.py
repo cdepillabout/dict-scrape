@@ -134,28 +134,22 @@ class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
     """
-    def __init__(self, kanji, kana, accent, jap_defs, eng_defs):
+    def __init__(self, kanji, kana, accent, defs):
         """
         kanji is a string with the kanji from the result. This may be the same
         as kana.
         kana is a string with the kana from the result.
         accent is the accent marking.  This may be None.
-        jap_defs is a list of Definition objects for the Japanese definitions
-        contained in the dictionary.
-        eng_defs is a list of Definition objects for the English definitions
+        defs is a list of Definition objects for the definitions
         contained in the dictionary.
         """
         self.result_kanji = kanji
         self.result_kana = kana
         self.result_accent = accent
-        if jap_defs:
-            self.result_jap_defs = jap_defs
+        if defs:
+            self.result_defs = defs
         else:
-            self.result_jap_defs = []
-        if eng_defs:
-            self.result_eng_defs = eng_defs
-        else:
-            self.result_eng_defs = []
+            self.result_defs = []
 
     @property
     def kanji(self):
@@ -173,20 +167,12 @@ class Result(object):
         return self.result_accent
 
     @property
-    def jap_defs(self):
+    def defs(self):
         """
         Return the Japanese definitions from the dictionary in
         a list of Definition objects.
         """
-        return self.result_jap_defs
-
-    @property
-    def eng_defs(self):
-        """
-        Return the English definitions from the dictionary in
-        a list of Definition objects.
-        """
-        return self.result_eng_defs
+        return self.result_defs
 
 class Dictionary(object):
     """
@@ -233,8 +219,8 @@ class Dictionary(object):
                 return None
 
         kanji, kana, accent = self.parse_heading(tree)
-        jap_defs_sentences, eng_defs_sentences = self.parse_definition(tree)
-        return Result(kanji, kana, accent, jap_defs_sentences, eng_defs_sentences)
+        defs_sentences = self.parse_definition(tree)
+        return Result(kanji, kana, accent, defs_sentences)
 
     def _create_page_tree(self, word_kanji, word_kana):
         """
@@ -343,7 +329,7 @@ class DaijirinDictionary(Dictionary):
                 result = result.strip()
                 jap_defs.append(Definition(result, None, None))
 
-        return jap_defs, None
+        return jap_defs
 
 class DaijisenDictionary(DaijirinDictionary):
     def __init__(self):
@@ -366,7 +352,7 @@ class DaijisenDictionary(DaijirinDictionary):
             result = result.strip()
             jap_defs.append(Definition(result, None, None))
 
-        return jap_defs, None
+        return jap_defs
 
 class NewCenturyDictionary(DaijirinDictionary):
     def __init__(self):
@@ -562,11 +548,6 @@ if __name__ == '__main__':
                 continue
 
             print ("%s (%s) %s:" % (result.kanji, result.kana, result.accent))
-            if result.jap_defs:
-                print("jap defs:")
-            print_all_defs(result.jap_defs)
-            if result.eng_defs:
-                print("eng defs:")
-            print_all_defs(result.eng_defs)
+            print_all_defs(result.defs)
             print
 
