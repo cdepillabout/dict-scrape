@@ -19,6 +19,7 @@
 import os
 import sys
 from PyQt4 import QtGui, QtCore, uic
+from ui.defscreenui import Ui_MainWindowReader
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary
 
@@ -49,17 +50,19 @@ class MainWindowReader(QtGui.QMainWindow):
 
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
-        uic.loadUi(buildResPath('ui/defscreen.ui'), self)
+        self.ui = Ui_MainWindowReader()
+        self.ui.setupUi(self)
+
 
         daijirin = DaijirinDictionary()
         daijisen = DaijisenDictionary()
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.daijirinlist),
-                (daijisen, self.daijisenlist),
-                (progressive, self.progressivelist),
-                (newcentury, self.newcenturylist),
+                (daijirin, self.ui.daijirinlist),
+                (daijisen, self.ui.daijisenlist),
+                (progressive, self.ui.progressivelist),
+                (newcentury, self.ui.newcenturylist),
                 ]
 
         for d, l in dicts:
