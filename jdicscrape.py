@@ -80,6 +80,10 @@ class ExampleSentence(object):
         jap_sentence is a sentence in Japanese and eng_trans is
         the English translation of that sentence.  Both are strings.
         """
+        if type(jap_sentence) is not type(unicode()):
+            raise UnicodeError, "jap_sentence should be a unicode string"
+        if type(eng_trans) is not type(unicode()):
+            raise UnicodeError, "eng_trans should be a unicode string"
         self.result_jap_sentence = jap_sentence
         self.result_eng_trans = eng_trans
 
@@ -93,6 +97,15 @@ class ExampleSentence(object):
         """Return the English sentence."""
         return self.result_eng_trans
 
+    def __unicode__(self):
+        result_string = u"\n      - %s" % self.result_jap_sentence
+        if self.result_eng_trans:
+            result_string += u"\n        %s" % self.result_eng_trans
+        return result_string
+
+    def __str__(self):
+        return unicode(self).encode("utf8")
+
 class Definition(object):
     """
     Contains the defintion from a dictionary along with example sentences.
@@ -100,10 +113,13 @@ class Definition(object):
     def __init__(self, definition, example_sentences, kaiwa):
         """
         definition is the definition from a dictionary in either
-        Japanese or English.  example_sentences and kaiwa are lists
-        of ExampleSentence objects.
+        Japanese or English.  It should be a unicode object.
+        example_sentences and kaiwa are lists of ExampleSentence objects.
         """
+        if type(definition) is not type(unicode()):
+            raise UnicodeError, "definition should be a unicode string"
         self.result_definition = definition
+
         if example_sentences:
             self.result_example_sentences = example_sentences
         else:
@@ -130,6 +146,18 @@ class Definition(object):
         """Return a list of kaiwa in the form of ExampleSentence objects."""
         return self.result_kaiwai
 
+    def __unicode__(self):
+        if self.result_definition:
+            result_string = u"\n＊ %s" % self.result_definition
+        else:
+            result_string = u"\nNO DEFINITION AVAILABLE"
+        for e in self.result_example_sentences:
+            result_string += unicode(e)
+        return result_string
+
+    def __str__(self):
+        return unicode(self).encode("utf8")
+
 class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
@@ -143,6 +171,10 @@ class Result(object):
         defs is a list of Definition objects for the definitions
         contained in the dictionary.
         """
+        if type(kanji) is not type(unicode()):
+            raise UnicodeError, "kanji should be a unicode string"
+        if type(kana) is not type(unicode()):
+            raise UnicodeError, "kana should be a unicode string"
         self.result_kanji = kanji
         self.result_kana = kana
         self.result_accent = accent
@@ -173,6 +205,18 @@ class Result(object):
         a list of Definition objects.
         """
         return self.result_defs
+
+    def __str__(self):
+        return unicode(self).encode("utf8")
+
+    def __unicode__(self):
+        result_string = u'RESULT: %s (%s) %s:' % \
+                (self.result_kanji, self.result_kana, self.result_accent)
+        for d in self.result_defs:
+            result_string += unicode(d)
+        return result_string
+
+
 
 class Dictionary(object):
     """
@@ -317,7 +361,7 @@ class DaijirinDictionary(Dictionary):
             result = re.sub("^<td>", "", result)
             result = re.sub("<br>.*$", "", result)
             result = result.strip()
-            jap_defs.append(Definition(result, None, None))
+            jap_defs.append(Definition(result.decode("utf8"), None, None))
 
         if not definition_tables:
             definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
@@ -327,6 +371,7 @@ class DaijirinDictionary(Dictionary):
                 #result = re.sub("(?<! )<br>.*$", "", result)
                 result = re.sub("<br></td>$", "", result)
                 result = result.strip()
+                result = result.decode("utf8")
                 jap_defs.append(Definition(result, None, None))
 
         return jap_defs
@@ -345,11 +390,12 @@ class DaijisenDictionary(DaijirinDictionary):
         matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
         if matches:
             for m in matches:
-                jap_defs.append(Definition(m, None, None))
+                jap_defs.append(Definition(m.decode("utf8"), None, None))
         else:
             result = re.sub("^<td>", "", result)
             result = re.sub("<br></td>.*$", "", result)
             result = result.strip()
+            result = result.decode("utf8")
             jap_defs.append(Definition(result, None, None))
 
         return jap_defs
@@ -406,8 +452,8 @@ class NewCenturyDictionary(DaijirinDictionary):
             matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
             if matches:
                 for m in matches:
-                    jap_example_sentence = m[0]
-                    eng_trans = m[1]
+                    jap_example_sentence = m[0].decode("utf8")
+                    eng_trans = m[1].decode("utf8")
                     example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
             # find kaiwa
@@ -417,11 +463,15 @@ class NewCenturyDictionary(DaijirinDictionary):
                 for m in matches:
                     jap_example_sentence = "%s」" % m[0]
                     eng_trans = "“%s" % m[1]
+
+                    jap_example_sentence = jap_example_sentence.decode("utf8")
+                    eng_trans = eng_trans.decode("utf8")
+
                     kaiwa.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            definitions.append(Definition(english_def, example_sentences, kaiwa))
+            definitions.append(Definition(english_def.decode("utf8"), example_sentences, kaiwa))
 
-        return None, definitions
+        return definitions
 
 class ProgressiveDictionary(DaijirinDictionary):
     def __init__(self):
@@ -458,7 +508,7 @@ class ProgressiveDictionary(DaijirinDictionary):
 
         for splt in splits:
             # find english definition
-            english_def = None
+            english_def = ""
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
             if multiple_defs == True:
@@ -477,11 +527,13 @@ class ProgressiveDictionary(DaijirinDictionary):
             matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
             if matches:
                 for m in matches:
-                    example_sentences.append(ExampleSentence(m[0], m[1]))
+                    jap_sent = m[0].decode("utf8")
+                    eng_sent = m[1].decode("utf8")
+                    example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
-            definitions.append(Definition(english_def, example_sentences, None))
+            definitions.append(Definition(english_def.decode("utf8"), example_sentences, None))
 
-        return None, definitions
+        return definitions
 
 def main(word_kanji, word_kana):
     check_daijirin(word_kanji, word_kana)
@@ -516,14 +568,39 @@ if __name__ == '__main__':
         main(one, two)
         print
         """
+
+    """
     one = words[0]
-    #main(one[0], one[1])
+    result = NewCenturyDictionary().lookup(one[0], one[1])
+    print(result)
+    """
 
     daijirin_dic = DaijirinDictionary()
     daijisen_dic = DaijisenDictionary()
     new_century_dic = NewCenturyDictionary()
     progressive_dic = ProgressiveDictionary()
 
+    """
+    one = words[1]
+    for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
+        print(d.lookup(one[0], one[1]))
+        print
+        """
+
+    for word in words:
+        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
+            print(d.lookup(word[0], word[1]))
+            print
+        print
+
+    """
+    daijirin_dic = DaijirinDictionary()
+    daijisen_dic = DaijisenDictionary()
+    new_century_dic = NewCenturyDictionary()
+    progressive_dic = ProgressiveDictionary()
+    """
+
+    """
     def print_all_defs(defs):
         for i in range(len(defs)):
             d = ""
@@ -550,4 +627,5 @@ if __name__ == '__main__':
             print ("%s (%s) %s:" % (result.kanji, result.kana, result.accent))
             print_all_defs(result.defs)
             print
+            """
 
