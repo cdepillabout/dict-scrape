@@ -19,7 +19,8 @@
 import os
 import sys
 from PyQt4 import QtGui, QtCore, uic
-from jdicscrape import DaijirinDictionary, DaijisenDictionary
+from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
+        ProgressiveDictionary, NewCenturyDictionary
 
 
 def buildResPath(relative):
@@ -52,6 +53,8 @@ class MainWindowReader(QtGui.QMainWindow):
 
         daijirin = DaijirinDictionary()
         daijisen = DaijisenDictionary()
+        progressive = ProgressiveDictionary()
+        newcentury = NewCenturyDictionary()
         dicts = [
                 (daijirin, self.daijirinlist),
                 (daijisen, self.daijisenlist),
@@ -61,13 +64,14 @@ class MainWindowReader(QtGui.QMainWindow):
 
         for d, l in dicts:
             result = d.lookup(word_kanji, word_kana)
+            #print result
 
             if not result:
                 l.addItem("NO RESULT")
             else:
-                for jdef in result.defs:
-                    if jdef.definition:
-                        item_text = jdef.definition.decode("utf8")
+                for result_def in result.defs:
+                    if result_def.definition:
+                        item_text = result_def.definition
                     else:
                         item_text = "NO DEFINITION AVAILABLE"
 
