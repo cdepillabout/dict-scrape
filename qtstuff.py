@@ -37,16 +37,6 @@ class JDicScrapeStandalone(object):
 
 class MainWindowReader(QtGui.QMainWindow):
 
-    def addDefinition(self, qtlist, item_text):
-        item = QtGui.QListWidgetItem()
-        text = "（%s）%s".decode("utf8") % (qtlist.count() + 1, item_text)
-        item.setText(text)
-
-        if qtlist.count() % 2 == 1:
-            #item.setBackground(QtGui.QColor('#e5e5e5'))
-            pass
-
-        qtlist.addItem(item)
 
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
@@ -80,6 +70,16 @@ class MainWindowReader(QtGui.QMainWindow):
 
                     self.addDefinition(l, item_text)
 
+    def addDefinition(self, qtlist, item_text):
+        item = QtGui.QListWidgetItem()
+        text = "（%s）%s".decode("utf8") % (qtlist.count() + 1, item_text)
+        item.setText(text)
+
+        if qtlist.count() % 2 == 1:
+            #item.setBackground(QtGui.QColor('#e5e5e5'))
+            pass
+
+        qtlist.addItem(item)
 
 
 if __name__ == '__main__':
