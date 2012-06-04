@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 # Copyright (C) 2012  Dennis Gosnell
 #
@@ -37,13 +37,7 @@ class JDicScrapeStandalone(object):
 
 class MainWindowReader(QtGui.QMainWindow):
 
-
-    def __init__(self, parent, word_kanji, word_kana):
-        QtGui.QMainWindow.__init__(self, parent)
-        self.ui = Ui_MainWindowReader()
-        self.ui.setupUi(self)
-
-
+    def fillin(self, word_kanji, word_kana):
         daijirin = DaijirinDictionary()
         daijisen = DaijisenDictionary()
         progressive = ProgressiveDictionary()
@@ -58,6 +52,15 @@ class MainWindowReader(QtGui.QMainWindow):
         for d, l in dicts:
             result = d.lookup(word_kanji, word_kana)
             #print result
+            if d == daijirin:
+                if result.accent:
+                    self.ui.accentlineedit.setText(result.accent)
+                    self.ui.accentlineedit.setEnabled(True)
+                    self.ui.useaccentcheckbox.setEnabled(True)
+                else:
+                    self.ui.accentlineedit.setText("NO ACCENT")
+                    self.ui.accentlineedit.setEnabled(False)
+                    self.ui.useaccentcheckbox.setEnabled(False)
 
             if not result:
                 l.addItem("NO RESULT")
@@ -69,6 +72,12 @@ class MainWindowReader(QtGui.QMainWindow):
                         item_text = "NO DEFINITION AVAILABLE"
 
                     self.addDefinition(l, item_text)
+
+    def __init__(self, parent, word_kanji, word_kana):
+        QtGui.QMainWindow.__init__(self, parent)
+        self.ui = Ui_MainWindowReader()
+        self.ui.setupUi(self)
+        self.fillin(word_kanji, word_kana)
 
     def addDefinition(self, qtlist, item_text):
         item = QtGui.QListWidgetItem()
