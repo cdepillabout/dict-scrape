@@ -25,6 +25,8 @@ class Ui_MainWindowReader(object):
         dictlabel.setText('<b>%s</b>' % labeltext)
         horizontallayout.addWidget(dictlabel)
 
+        horizontallayout.addStretch()
+
         resultwordlabel = QtGui.QLabel(self.centralwidget)
         resultwordlabel.setObjectName(resultwordlabelobjectname)
         resultwordlabel.setText("")
@@ -200,7 +202,10 @@ class Ui_MainWindowReader(object):
         QtCore.QMetaObject.connectSlotsByName(mainwindowreader)
 
     def resetclicked(self, button):
+        # this shows the sender (but in this case it will only be the reset button)
+        #sender = self.mainwindowreader.sender()
         pass
+
 
 
 if __name__ == "__main__":

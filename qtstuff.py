@@ -81,11 +81,25 @@ class MainWindowReader(QtGui.QMainWindow):
 
                     self.addDefinition(listwidget, item_text)
 
+        self.ui.statusbar.showMessage('Added defs for %s (%s)' % (word_kanji, word_kana))
+
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindowReader()
         self.ui.setupUi(self)
         self.fillin(word_kanji, word_kana)
+
+    # pop up a dialog box asking if we are sure we want to quit
+    """
+    def closeEvent(self, event):
+        reply = QtGui.QMessageBox.question(self, 'Message',
+                "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
+                QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+    """
 
     def addDefinition(self, qtlist, item_text):
         item = QtGui.QListWidgetItem()
