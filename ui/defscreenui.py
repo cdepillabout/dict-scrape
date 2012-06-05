@@ -56,6 +56,7 @@ class Ui_MainWindowReader(object):
         return tab, tabvertlayout, webview
 
     def setupUi(self, mainwindowreader):
+        self.mainwindowreader = mainwindowreader
         mainwindowreader.setObjectName("mainwindowreader")
         #mainwindowreader.resize(900, 650)
         #mainwindowreader.setAcceptDrops(False)
@@ -184,14 +185,19 @@ class Ui_MainWindowReader(object):
         mainwindowreader.setCentralWidget(self.centralwidget)
         mainwindowreader.setWindowTitle("JDicScrape")
 
-        # old style signals
-        #QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"),
-        #        mainwindowreader.close)
         # new style signals
         self.buttonBox.accepted.connect(mainwindowreader.close)
+        # old style signals
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"),
-                mainwindowreader.showFullScreen)
+                mainwindowreader.close)
+
+        # reset form
+        self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(self.resetclicked)
+
         QtCore.QMetaObject.connectSlotsByName(mainwindowreader)
+
+    def resetclicked(self, button):
+        pass
 
 
 if __name__ == "__main__":
