@@ -43,13 +43,13 @@ class MainWindowReader(QtGui.QMainWindow):
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.ui.daijirinlist, self.ui.daijirinwebview),
-                (daijisen, self.ui.daijisenlist, self.ui.daijisenwebview),
-                (progressive, self.ui.progresslist, self.ui.progresswebview),
-                (newcentury, self.ui.newcenturylist, self.ui.newcentywebview),
+                (daijirin, self.ui.daijirinlist, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
+                (daijisen, self.ui.daijisenlist, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
+                (progressive, self.ui.progresslist, self.ui.progresswebview, self.ui.progressresultwordlabel),
+                (newcentury, self.ui.newcenturylist, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
                 ]
 
-        for d, listwidget, webviewwidget in dicts:
+        for d, listwidget, webviewwidget, resultwordlabel in dicts:
             result = d.lookup(word_kanji, word_kana)
             #print result
             if d == daijirin:
@@ -64,6 +64,8 @@ class MainWindowReader(QtGui.QMainWindow):
 
             # add webview
             webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
+
+            resultwordlabel.setText(u'%s (%s)' % (result.kanji, result.kana))
 
 
             # add result definitions

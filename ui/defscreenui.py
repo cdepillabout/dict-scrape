@@ -11,13 +11,25 @@ from PyQt4 import QtCore, QtGui, QtWebKit
 
 class Ui_MainWindowReader(object):
 
-    def createlist(self, layoutobjectname, labelobjectname, listobjectname, labeltext):
-        layout = QtGui.QVBoxLayout()
-        layout.setObjectName(layoutobjectname)
-        label = QtGui.QLabel(self.centralwidget)
-        label.setObjectName(labelobjectname)
-        label.setText(labeltext)
-        layout.addWidget(label)
+    def createlist(self, verticallayoutobjectname, horizontallayoutobjectname,
+            dictlabelobjectname, resultwordlabelobjectname, listobjectname, labeltext):
+        verticallayout = QtGui.QVBoxLayout()
+        verticallayout.setObjectName(verticallayoutobjectname)
+
+        horizontallayout = QtGui.QHBoxLayout()
+        horizontallayout.setObjectName(horizontallayoutobjectname)
+        verticallayout.addLayout(horizontallayout)
+
+        dictlabel = QtGui.QLabel(self.centralwidget)
+        dictlabel.setObjectName(dictlabelobjectname)
+        dictlabel.setText('<b>%s</b>' % labeltext)
+        horizontallayout.addWidget(dictlabel)
+
+        resultwordlabel = QtGui.QLabel(self.centralwidget)
+        resultwordlabel.setObjectName(resultwordlabelobjectname)
+        resultwordlabel.setText("")
+        horizontallayout.addWidget(resultwordlabel)
+
         listwidget = QtGui.QListWidget(self.centralwidget)
         listwidget.setAlternatingRowColors(True)
         listwidget.setProperty("isWrapping", True)
@@ -26,9 +38,10 @@ class Ui_MainWindowReader(object):
         listwidget.setWordWrap(True)
         listwidget.setObjectName(listobjectname)
         listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
-        layout.addWidget(listwidget)
+        verticallayout.addWidget(listwidget)
 
-        return layout, label, listwidget
+        # don't return the horizontal layout
+        return verticallayout, dictlabel, resultwordlabel, listwidget
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
@@ -77,11 +90,15 @@ class Ui_MainWindowReader(object):
         self.japdichorizlayout = QtGui.QHBoxLayout()
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
-        self.daijisenverticallayout, self.daijisenlabel, self.daijisenlist = self.createlist(
-                "daijisenverticallayout", "daijisenlabel", "daijisenlist", u'大辞泉')
+        self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
+                self.daijisenlist = self.createlist("daijisenverticallayout",
+                        "daijisenhorizontallayout", "daijisenresultwordlabel",
+                        "daijisenlabel", "daijisenlist", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
-        self.daijirinverticallayout, self.daijirinlabel, self.daijirinlist = self.createlist(
-                "daijirinverticallayout", "daijirinlabel", "daijirinlist", u'大辞林')
+        self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
+                self.daijirinlist = self.createlist("daijirinverticallayout",
+                        "daijirinhorizontallayout", "daijirinresultwordlabel",
+                        "daijirinlabel", "daijirinlist", u'大辞林')
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
         self.tabonevertlayout.addLayout(self.japdichorizlayout, 2)
 
@@ -89,11 +106,15 @@ class Ui_MainWindowReader(object):
         self.engdichorizlayout = QtGui.QHBoxLayout()
         self.engdichorizlayout.setObjectName("engdichorizlayout")
 
-        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturylist = self.createlist(
-                "newcenturyvertlayout", "newcenturylabel", "newcenturylist", "New Century")
+        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
+                self.newcenturylist = self.createlist("newcenturyvertlayout",
+                        "newcenturyhorizontallayout", "newcenturyresultwordlabel",
+                        "newcenturylabel", "newcenturylist", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
-        self.progressvertlayout, self.progresslabel, self.progresslist = self.createlist(
-                "progressvertlayout", "progresslabel", "progresslist", "Progressive")
+        self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
+                self.progresslist = self.createlist("progressvertlayout",
+                        "progresshorizontallayout", "progressresultwordlabel",
+                        "progresslabel", "progresslist", "Progressive")
         self.engdichorizlayout.addLayout(self.progressvertlayout)
         self.tabonevertlayout.addLayout(self.engdichorizlayout, 3)
 
