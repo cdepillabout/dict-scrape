@@ -194,6 +194,9 @@ class Ui_MainWindowReader(object):
         # reset form
         self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(self.resetclicked)
 
+        # close window from menubar
+        self.actionExit.triggered.connect(mainwindowreader.close)
+
         QtCore.QMetaObject.connectSlotsByName(mainwindowreader)
 
     def resetclicked(self, button):
