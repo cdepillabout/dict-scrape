@@ -74,12 +74,7 @@ class MainWindowReader(QtGui.QMainWindow):
                 listwidget.addItem("NO RESULT")
             else:
                 for result_def in result.defs:
-                    if result_def.definition:
-                        item_text = result_def.definition
-                    else:
-                        item_text = "NO DEFINITION AVAILABLE"
-
-                    self.addDefinition(listwidget, item_text)
+                    self.addDefinition(listwidget, result_def)
 
         self.ui.statusbar.showMessage('Added defs for %s (%s)' % (word_kanji, word_kana))
 
@@ -101,16 +96,28 @@ class MainWindowReader(QtGui.QMainWindow):
             event.ignore()
     """
 
-    def addDefinition(self, qtlist, item_text):
+    def addDefinition(self, listwidget, result_def):
+        if result_def.definition:
+            item_text = result_def.definition
+        else:
+            item_text = "NO DEFINITION AVAILABLE"
         item = QtGui.QListWidgetItem()
-        text = u'（%s）%s' % (qtlist.count() + 1, item_text)
+        text = u'（%s）%s' % (listwidget.count() + 1, item_text)
         item.setText(text)
 
-        if qtlist.count() % 2 == 1:
+        if listwidget.count() % 2 == 1:
             #item.setBackground(QtGui.QColor('#e5e5e5'))
             pass
 
-        qtlist.addItem(item)
+        listwidget.addItem(item)
+
+        for example_sentence in result_def.example_sentences:
+            item = QtGui.QListWidgetItem()
+            text = u'<font color="#00FF00">%s</color>\n<font color="#555555">%s</font>' % \
+                    (example_sentence.jap_sentence, example_sentence.eng_trans)
+            item.setText(text)
+            listwidget.addItem(item)
+
 
 
 if __name__ == '__main__':
