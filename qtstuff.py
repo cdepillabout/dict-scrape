@@ -43,13 +43,13 @@ class MainWindowReader(QtGui.QMainWindow):
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.ui.daijirinlist),
-                (daijisen, self.ui.daijisenlist),
-                (progressive, self.ui.progresslist),
-                (newcentury, self.ui.newcenturylist),
+                (daijirin, self.ui.daijirinlist, self.ui.daijirinwebview),
+                (daijisen, self.ui.daijisenlist, self.ui.daijisenwebview),
+                (progressive, self.ui.progresslist, self.ui.progresswebview),
+                (newcentury, self.ui.newcenturylist, self.ui.newcentywebview),
                 ]
 
-        for d, l in dicts:
+        for d, listwidget, webviewwidget in dicts:
             result = d.lookup(word_kanji, word_kana)
             #print result
             if d == daijirin:
@@ -62,8 +62,13 @@ class MainWindowReader(QtGui.QMainWindow):
                     self.ui.accentlineedit.setEnabled(False)
                     self.ui.useaccentcheckbox.setEnabled(False)
 
+            # add webview
+            webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
+
+
+            # add result definitions
             if not result:
-                l.addItem("NO RESULT")
+                listwidget.addItem("NO RESULT")
             else:
                 for result_def in result.defs:
                     if result_def.definition:
@@ -71,7 +76,7 @@ class MainWindowReader(QtGui.QMainWindow):
                     else:
                         item_text = "NO DEFINITION AVAILABLE"
 
-                    self.addDefinition(l, item_text)
+                    self.addDefinition(listwidget, item_text)
 
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
