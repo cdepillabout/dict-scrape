@@ -25,6 +25,7 @@ class Ui_MainWindowReader(object):
         listwidget.setUniformItemSizes(False)
         listwidget.setWordWrap(True)
         listwidget.setObjectName(listobjectname)
+        listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
         layout.addWidget(listwidget)
 
         return layout, label, listwidget
