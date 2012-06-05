@@ -184,8 +184,11 @@ class Ui_MainWindowReader(object):
         mainwindowreader.setCentralWidget(self.centralwidget)
         mainwindowreader.setWindowTitle("JDicScrape")
 
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"),
-                mainwindowreader.close)
+        # old style signals
+        #QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"),
+        #        mainwindowreader.close)
+        # new style signals
+        self.buttonBox.accepted.connect(mainwindowreader.close)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"),
                 mainwindowreader.showFullScreen)
         QtCore.QMetaObject.connectSlotsByName(mainwindowreader)

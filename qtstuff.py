@@ -65,8 +65,9 @@ class MainWindowReader(QtGui.QMainWindow):
             # add webview
             webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
 
-            resultwordlabel.setText(u'%s (%s)' % (result.kanji, result.kana))
-
+            # add the resulting word
+            resultwordlabel.setText(u'<font color="#555555">%s (%s)</font>' %
+                    (result.kanji, result.kana))
 
             # add result definitions
             if not result:
