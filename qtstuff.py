@@ -45,7 +45,7 @@ class MainWindowReader(QtGui.QMainWindow):
         dicts = [
                 (daijirin, self.ui.daijirinlist),
                 (daijisen, self.ui.daijisenlist),
-                (progressive, self.ui.progressivelist),
+                (progressive, self.ui.progresslist),
                 (newcentury, self.ui.newcenturylist),
                 ]
 

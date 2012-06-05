@@ -10,6 +10,25 @@
 from PyQt4 import QtCore, QtGui
 
 class Ui_MainWindowReader(object):
+
+    def createlist(self, layoutobjectname, labelobjectname, listobjectname, labeltext):
+        layout = QtGui.QVBoxLayout()
+        layout.setObjectName(layoutobjectname)
+        label = QtGui.QLabel(self.centralwidget)
+        label.setObjectName(labelobjectname)
+        label.setText(labeltext)
+        layout.addWidget(label)
+        listwidget = QtGui.QListWidget(self.centralwidget)
+        listwidget.setAlternatingRowColors(True)
+        listwidget.setProperty("isWrapping", True)
+        listwidget.setSpacing(2)
+        listwidget.setUniformItemSizes(False)
+        listwidget.setWordWrap(True)
+        listwidget.setObjectName(listobjectname)
+        layout.addWidget(listwidget)
+
+        return layout, label, listwidget
+
     def setupUi(self, mainwindowreader):
         mainwindowreader.setObjectName("mainwindowreader")
         #mainwindowreader.resize(900, 650)
@@ -27,62 +46,27 @@ class Ui_MainWindowReader(object):
         # this is the horizontal layout that holds the two japanese dictionaries
         self.japdichorizlayout = QtGui.QHBoxLayout()
         self.japdichorizlayout.setObjectName("japdichorizlayout")
-        self.daijisenverticallayout = QtGui.QVBoxLayout()
-        self.daijisenverticallayout.setObjectName("daijisenverticallayout")
-        self.daijisenlabel = QtGui.QLabel(self.centralwidget)
-        self.daijisenlabel.setObjectName("daijisenlabel")
-        self.daijisenlabel.setText("大辞泉".decode("utf8"))
-        self.daijisenverticallayout.addWidget(self.daijisenlabel)
-        self.daijisenlist = QtGui.QListWidget(self.centralwidget)
-        self.daijisenlist.setAlternatingRowColors(True)
-        self.daijisenlist.setProperty("isWrapping", True)
-        self.daijisenlist.setSpacing(2)
-        self.daijisenlist.setUniformItemSizes(False)
-        self.daijisenlist.setWordWrap(True)
-        self.daijisenlist.setObjectName("daijisenlist")
-        self.daijisenverticallayout.addWidget(self.daijisenlist)
+
+        self.daijisenverticallayout, self.daijisenlabel, self.daijisenlist = self.createlist(
+                "daijisenverticallayout", "daijisenlabel", "daijisenlist",
+                "大辞泉".decode("utf8"))
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
-        self.daijirinverticallayout = QtGui.QVBoxLayout()
-        self.daijirinverticallayout.setObjectName("daijirinverticallayout")
-        self.daijirinlabel = QtGui.QLabel(self.centralwidget)
-        self.daijirinlabel.setObjectName("daijirinlabel")
-        self.daijirinlabel.setText("大辞林".decode("utf8"))
-        self.daijirinverticallayout.addWidget(self.daijirinlabel)
-        self.daijirinlist = QtGui.QListWidget(self.centralwidget)
-        self.daijirinlist.setAlternatingRowColors(True)
-        self.daijirinlist.setProperty("isWrapping", True)
-        self.daijirinlist.setSpacing(2)
-        self.daijirinlist.setUniformItemSizes(False)
-        self.daijirinlist.setWordWrap(True)
-        self.daijirinlist.setObjectName("daijirinlist")
-        self.daijirinverticallayout.addWidget(self.daijirinlist)
+        self.daijirinverticallayout, self.daijirinlabel, self.daijirinlist = self.createlist(
+                "daijirinverticallayout", "daijirinlabel", "daijirinlist",
+                "大辞林".decode("utf8"))
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
         self.mainverticallayout.addLayout(self.japdichorizlayout, 2)
-
 
         # this is the horizontal layout that holds the two english dictionaries
         self.engdichorizlayout = QtGui.QHBoxLayout()
         self.engdichorizlayout.setObjectName("engdichorizlayout")
-        self.newcenturyvertlayout = QtGui.QVBoxLayout()
-        self.newcenturyvertlayout.setObjectName("newcenturyvertlayout")
-        self.newcenturylabel = QtGui.QLabel(self.centralwidget)
-        self.newcenturylabel.setObjectName("newcenturylabel")
-        self.newcenturylabel.setText("New Century")
-        self.newcenturyvertlayout.addWidget(self.newcenturylabel)
-        self.newcenturylist = QtGui.QListWidget(self.centralwidget)
-        self.newcenturylist.setObjectName("newcenturylist")
-        self.newcenturyvertlayout.addWidget(self.newcenturylist)
+
+        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturylist = self.createlist(
+                "newcenturyvertlayout", "newcenturylabel", "newcenturylist", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
-        self.progressivevertlayout = QtGui.QVBoxLayout()
-        self.progressivevertlayout.setObjectName("progressivevertlayout")
-        self.progressivelabel = QtGui.QLabel(self.centralwidget)
-        self.progressivelabel.setObjectName("progressivelabel")
-        self.progressivelabel.setText("Progressive")
-        self.progressivevertlayout.addWidget(self.progressivelabel)
-        self.progressivelist = QtGui.QListWidget(self.centralwidget)
-        self.progressivelist.setObjectName("progressivelist")
-        self.progressivevertlayout.addWidget(self.progressivelist)
-        self.engdichorizlayout.addLayout(self.progressivevertlayout)
+        self.progressvertlayout, self.progresslabel, self.progresslist = self.createlist(
+                "progressvertlayout", "progresslabel", "progresslist", "Progressive")
+        self.engdichorizlayout.addLayout(self.progressvertlayout)
         self.mainverticallayout.addLayout(self.engdichorizlayout, 3)
 
         # horizontal layout that holds the accent and OKAY/CANCEL buttons
