@@ -162,7 +162,7 @@ class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
     """
-    def __init__(self, kanji, kana, accent, defs):
+    def __init__(self, original_kanji, original_kana, url, kanji, kana, accent, defs):
         """
         kanji is a string with the kanji from the result. This may be the same
         as kana.
@@ -171,32 +171,54 @@ class Result(object):
         defs is a list of Definition objects for the definitions
         contained in the dictionary.
         """
+        if type(original_kanji) is not type(unicode()):
+            raise UnicodeError, "original_kanji should be a unicode string"
+        if type(original_kana) is not type(unicode()):
+            raise UnicodeError, "original_kana should be a unicode string"
         if type(kanji) is not type(unicode()):
             raise UnicodeError, "kanji should be a unicode string"
         if type(kana) is not type(unicode()):
             raise UnicodeError, "kana should be a unicode string"
-        self.result_kanji = kanji
-        self.result_kana = kana
-        self.result_accent = accent
+        self._original_kanji = original_kanji
+        self._original_kana = original_kana
+        self._url = url
+        self._kanji = kanji
+        self._kana = kana
+        self._accent = accent
         if defs:
-            self.result_defs = defs
+            self._defs = defs
         else:
-            self.result_defs = []
+            self._defs = []
+
+    @property
+    def original_kanji(self):
+        """Return the original kanji from the search."""
+        return self._original_kanji
+
+    @property
+    def original_kana(self):
+        """Return the original kana from the search."""
+        return self._original_kana
+
+    @property
+    def url(self):
+        """Return the url of the search."""
+        return self._url
 
     @property
     def kanji(self):
         """Return the kanji from the dictionary."""
-        return self.result_kanji
+        return self._kanji
 
     @property
     def kana(self):
         """Return the kana from the dictionary."""
-        return self.result_kana
+        return self._kana
 
     @property
     def accent(self):
         """Return the accent from the dictionary."""
-        return self.result_accent
+        return self._accent
 
     @property
     def defs(self):
@@ -204,15 +226,16 @@ class Result(object):
         Return the Japanese definitions from the dictionary in
         a list of Definition objects.
         """
-        return self.result_defs
+        return self._defs
 
     def __str__(self):
         return unicode(self).encode("utf8")
 
     def __unicode__(self):
-        result_string = u'RESULT: %s (%s) %s:' % \
-                (self.result_kanji, self.result_kana, self.result_accent)
-        for d in self.result_defs:
+        result_string = u'RESULT: %s (%s) %s: (originally: %s %s [%s])' % \
+                (self._kanji, self._kana, self._accent,
+                        self._original_kanji, self._original_kana, self._url)
+        for d in self._defs:
             result_string += unicode(d)
         return result_string
 
@@ -243,12 +266,12 @@ class Dictionary(object):
         tree = self._create_page_tree(word_kanji, word_kana)
 
         # make sure there is an entry
-        result = etree.tostring(tree, pretty_print=False, method="html", encoding='UTF-8')
+        result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')
         word_not_found_string = \
-                '<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
+                u'<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
         word_not_found_string_no_space = \
-                '<p><em>%s%s</em>に一致する情報はみつかりませんでした。</p>' % \
+                u'<p><em>%s%s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
 
         # return None if we can't find a definition
@@ -258,25 +281,32 @@ class Dictionary(object):
 
         # make sure this is the new century and not the progressive definition
         if self.dic_type == Dictionary.NEW_CENTURY_TYPE:
-            if '<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
+            if u'<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
                 #print("NO DEFINITION FROM NEW CENTURY")
                 return None
 
         kanji, kana, accent = self.parse_heading(tree)
         defs_sentences = self.parse_definition(tree)
-        return Result(kanji, kana, accent, defs_sentences)
+        url = self._create_url(word_kanji, word_kana)
+        return Result(word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
 
-    def _create_page_tree(self, word_kanji, word_kana):
-        """
-        Fetches a page from the internet and parses the page with 
-        etree.parse(StringIO(page_string), etree.HTMLParser()).  
-        Returns the parsed tree.
-        """
-        search = "%s　%s" % (word_kanji, word_kana)
+    def _create_url(self, word_kanji, word_kana):
+        """Returns a URL for the word/page we are trying to lookup."""
+        # this is annoying because urlencode only takes utf8 input for some reason
+        search = "%s　%s" % (word_kanji.encode("utf8"), word_kana.encode("utf8"))
         params = {'p': search, 'enc': "UTF-8", 'stype': 1,
                 'dtype': self.dtype_search_param, 'dname': self.dname_search_param}
         encoded_params = urllib.urlencode(params)
-        page = urllib.urlopen("http://dic.yahoo.co.jp/dsearch?%s" % encoded_params)
+        return "http://dic.yahoo.co.jp/dsearch?%s" % encoded_params
+
+    def _create_page_tree(self, word_kanji, word_kana):
+        """
+        Fetches a page from the internet and parses the page with
+        etree.parse(StringIO(page_string), etree.HTMLParser()).
+        Returns the parsed tree.
+        """
+        url = self._create_url(word_kanji, word_kana)
+        page = urllib.urlopen(url)
         page_string = page.read()
 
         parser = etree.HTMLParser()
@@ -547,20 +577,20 @@ def main(word_kanji, word_kana):
 if __name__ == '__main__':
 
     words = [
-            ('強迫', 'きょうはく'),
-            ('面白い', 'おもしろい'),
-            ('赤し', 'あかし'),
-            ('うっとり', ''),
-            ('バリカン', ''),
-            ('コンピエーニュ', ''),
-            ('蜥蜴', 'とかげ'),
-            ('らくだ', '駱駝'),
-            ('成り済ます', 'なりすます'),
-            #('行く', 'いく'),
-            ('が', ''),
-            ('遊ぶ', 'あそぶ'),
-            #('遊ぶ', 'あすぶ'),        # this fails in the daijirin
-            #('唸る', 'うなる'),         # this doesn't parse right in the progressive dict
+            (u'強迫', u'きょうはく'),
+            (u'面白い', u'おもしろい'),
+            (u'赤し', u'あかし'),
+            (u'うっとり', u''),
+            (u'バリカン', u''),
+            (u'コンピエーニュ', u''),
+            (u'蜥蜴', u'とかげ'),
+            (u'らくだ', u'駱駝'),
+            (u'成り済ます', u'なりすます'),
+            #(u'行く', u'いく'),
+            (u'が', u''),
+            (u'遊ぶ', u'あそぶ'),
+            #(u'遊ぶ', u'あすぶ'),        # this fails in the daijirin
+            #(u'唸る', u'うなる'),         # this doesn't parse right in the progressive dict
             ]
 
     """

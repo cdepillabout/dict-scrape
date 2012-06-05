@@ -81,7 +81,7 @@ class MainWindowReader(QtGui.QMainWindow):
 
     def addDefinition(self, qtlist, item_text):
         item = QtGui.QListWidgetItem()
-        text = "（%s）%s".decode("utf8") % (qtlist.count() + 1, item_text)
+        text = u'（%s）%s' % (qtlist.count() + 1, item_text)
         item.setText(text)
 
         if qtlist.count() % 2 == 1:
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("ERROR! Need 2 args")
         sys.exit(1)
-    instance = JDicScrapeStandalone(sys.argv[1], sys.argv[2])
+    instance = JDicScrapeStandalone(sys.argv[1].decode("utf8"), sys.argv[2].decode("utf8"))
 #else:
 #    from yomi_base import anki_host
 #    instance = YomichanPlugin()

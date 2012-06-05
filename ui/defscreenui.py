@@ -7,7 +7,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore, QtGui, QtWebKit
 
 class Ui_MainWindowReader(object):
 
@@ -30,6 +30,18 @@ class Ui_MainWindowReader(object):
 
         return layout, label, listwidget
 
+    def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
+        tab = QtGui.QWidget()
+        tab.setObjectName(tabobjectname)
+        tabvertlayout = QtGui.QVBoxLayout(tab)
+        tabvertlayout.setObjectName(layoutobjectname)
+        webview = QtWebKit.QWebView(tab)
+        webview.setUrl(QtCore.QUrl("about:blank"))
+        webview.setObjectName(webviewobjectname)
+        tabvertlayout.addWidget(webview)
+
+        return tab, tabvertlayout, webview
+
     def setupUi(self, mainwindowreader):
         mainwindowreader.setObjectName("mainwindowreader")
         #mainwindowreader.resize(900, 650)
@@ -41,22 +53,37 @@ class Ui_MainWindowReader(object):
         self.centralwidget = QtGui.QWidget(mainwindowreader)
         self.centralwidget.setObjectName("centralwidget")
 
-        self.mainverticallayout = QtGui.QVBoxLayout(self.centralwidget)
+        # main vertical layout that holds the tabwidget
+        self.mainverticallayout = QtGui.QHBoxLayout(self.centralwidget)
         self.mainverticallayout.setObjectName("mainverticallayout")
+
+        # tab widget
+        self.tabwidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabwidget.setTabShape(QtGui.QTabWidget.Rounded)
+        self.tabwidget.setObjectName("tabwidget")
+        self.mainverticallayout.addWidget(self.tabwidget)
+
+        # tab one.  this is our main definition page
+        self.tabone = QtGui.QWidget()
+        self.tabone.setObjectName("tabone")
+        self.tabwidget.addTab(self.tabone, "Dictionary Results")
+
+        # main vertical layout for tab one
+        self.tabonevertlayout = QtGui.QVBoxLayout(self.tabone)
+        self.tabonevertlayout.setObjectName("tabonevertlayout")
+
 
         # this is the horizontal layout that holds the two japanese dictionaries
         self.japdichorizlayout = QtGui.QHBoxLayout()
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
         self.daijisenverticallayout, self.daijisenlabel, self.daijisenlist = self.createlist(
-                "daijisenverticallayout", "daijisenlabel", "daijisenlist",
-                "大辞泉".decode("utf8"))
+                "daijisenverticallayout", "daijisenlabel", "daijisenlist", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
         self.daijirinverticallayout, self.daijirinlabel, self.daijirinlist = self.createlist(
-                "daijirinverticallayout", "daijirinlabel", "daijirinlist",
-                "大辞林".decode("utf8"))
+                "daijirinverticallayout", "daijirinlabel", "daijirinlist", u'大辞林')
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
-        self.mainverticallayout.addLayout(self.japdichorizlayout, 2)
+        self.tabonevertlayout.addLayout(self.japdichorizlayout, 2)
 
         # this is the horizontal layout that holds the two english dictionaries
         self.engdichorizlayout = QtGui.QHBoxLayout()
@@ -68,12 +95,12 @@ class Ui_MainWindowReader(object):
         self.progressvertlayout, self.progresslabel, self.progresslist = self.createlist(
                 "progressvertlayout", "progresslabel", "progresslist", "Progressive")
         self.engdichorizlayout.addLayout(self.progressvertlayout)
-        self.mainverticallayout.addLayout(self.engdichorizlayout, 3)
+        self.tabonevertlayout.addLayout(self.engdichorizlayout, 3)
 
         # horizontal layout that holds the accent and OKAY/CANCEL buttons
         self.bottomhorizlayout = QtGui.QHBoxLayout()
         self.bottomhorizlayout.setObjectName("bottomhorizlayout")
-        self.mainverticallayout.addLayout(self.bottomhorizlayout)
+        self.tabonevertlayout.addLayout(self.bottomhorizlayout)
 
         # accent stuff
         self.accentlabel = QtGui.QLabel(self.centralwidget)
@@ -119,6 +146,19 @@ class Ui_MainWindowReader(object):
         self.menuFile.addAction(self.actionExit)
         self.menuBar.addAction(self.menuFile.menuAction())
 
+        # four additional tabs for additional pages
+        self.daijirintab, self.daijirintabvertlayout, self.daijirinwebview = self.createtab(
+                "daijirintab", "daijirintabvertlayout", "daijirinwebview")
+        self.tabwidget.addTab(self.daijirintab, u'大辞林')
+        self.daijisentab, self.daijisentabvertlayout, self.daijisenwebview = self.createtab(
+                "daijisentab", "daijisentabvertlayout", "daijisenwebview")
+        self.tabwidget.addTab(self.daijisentab, u'大辞泉')
+        self.newcentytab, self.newcentytabvertlayout, self.newcentywebview = self.createtab(
+                "newcentytab", "newcentytabvertlayout", "newcentywebview")
+        self.tabwidget.addTab(self.newcentytab, "New Century")
+        self.progresstab, self.progresstabvertlayout, self.progresswebview = self.createtab(
+                "progresstab", "progresstabvertlayout", "progresswebview")
+        self.tabwidget.addTab(self.progresstab, "Progressive")
 
         mainwindowreader.setCentralWidget(self.centralwidget)
         mainwindowreader.setWindowTitle("JDicScrape")
