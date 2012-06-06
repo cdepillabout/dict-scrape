@@ -35,6 +35,68 @@ class JDicScrapeStandalone(object):
         self.window.show()
         self.application.exec_()
 
+"""
+class Delegate(QItemDelegate):
+    needsRedraw = pyqtSignal()
+
+    def __init__(self, movie, parent = None):
+
+        QItemDelegate.__init__(self, parent)
+        self.movie = movie
+        self.movie.frameChanged.connect(self.needsRedraw)
+        self.playing = False
+
+    def startMovie(self):
+        self.movie.start()
+        self.playing = True
+
+    def stopMovie(self):
+        self.movie.stop()
+        self.playing = False
+
+    def paint(self, painter, option, index):
+
+        waiting = index.data(Qt.UserRole).toBool()
+        if waiting:
+            option = option.__class__(option)
+            pixmap = self.movie.currentPixmap()
+            painter.drawPixmap(option.rect.topLeft(), pixmap)
+            option.rect = option.rect.translated(pixmap.width(), 0)
+
+        QItemDelegate.paint(self, painter, option, index)
+
+class Model(QStandardItemModel):
+    finished = pyqtSignal()
+
+    def __init__(self, parent = None):
+
+        QStandardItemModel.__init__(self, parent)
+        self.pendingItems = {}
+
+    def appendRow(self, item):
+
+        if item.data(Qt.UserRole).toBool():
+            print("YES")
+
+            timer = QTimer()
+            timer.timeout.connect(self.checkPending)
+            timer.setSingleShot(True)
+            self.pendingItems[timer] = item
+            timer.start(2000 + random.randrange(0, 10000))
+
+        QStandardItemModel.appendRow(self, item)
+
+    def checkPending(self):
+
+        # Check when items are updated so that we can emit the finished()
+        # signal when the list is cleared.
+        item = self.pendingItems[self.sender()]
+        del self.pendingItems[self.sender()]
+        item.setData(QVariant(False), Qt.UserRole)
+        if not self.pendingItems:
+            self.finished.emit()
+"""
+
 class MainWindowReader(QtGui.QMainWindow):
 
     def fillin(self, word_kanji, word_kana):
@@ -69,12 +131,8 @@ class MainWindowReader(QtGui.QMainWindow):
             resultwordlabel.setText(u'<font color="#555555">%s (%s)</font>' %
                     (result.kanji, result.kana))
 
-            # add result definitions
-            if not result:
-                listwidget.addItem("NO RESULT")
-            else:
-                for result_def in result.defs:
-                    self.addDefinition(listwidget, result_def)
+            self.addDefinition(listwidget, result)
+
 
         self.ui.statusbar.showMessage('Added defs for %s (%s)' % (word_kanji, word_kana))
 
@@ -96,27 +154,57 @@ class MainWindowReader(QtGui.QMainWindow):
             event.ignore()
     """
 
-    def addDefinition(self, listwidget, result_def):
-        if result_def.definition:
-            item_text = result_def.definition
-        else:
-            item_text = "NO DEFINITION AVAILABLE"
-        item = QtGui.QListWidgetItem()
-        text = u'（%s）%s' % (listwidget.count() + 1, item_text)
-        item.setText(text)
+    def addDefinition(self, listwidget, result):
+        """
+    view = QListView()
+    model = Model()
+    waiting = True
 
-        if listwidget.count() % 2 == 1:
-            #item.setBackground(QtGui.QColor('#e5e5e5'))
-            pass
+    for i in range(5):
 
-        listwidget.addItem(item)
+        item = QStandardItem("Test %i" % i)
+        item.setData(QVariant(waiting), Qt.UserRole)
+        waiting = not waiting
+        model.appendRow(item)
 
-        for example_sentence in result_def.example_sentences:
+    view.setModel(model)
+
+    delegate = Delegate(QMovie("animation.mng"))
+    view.setItemDelegate(delegate)
+    delegate.needsRedraw.connect(view.viewport().update)
+    delegate.startMovie()
+
+    model.finished.connect(delegate.stopMovie)
+    model.finished.connect(view.viewport().update)
+
+    view.show()
+    """
+        # add result definitions
+        if not result:
+            listwidget.addItem("NO RESULT")
+            return
+
+        for result_def in result.defs:
+            if result_def.definition:
+                item_text = result_def.definition
+            else:
+                item_text = "NO DEFINITION AVAILABLE"
             item = QtGui.QListWidgetItem()
-            text = u'<font color="#00FF00">%s</color>\n<font color="#555555">%s</font>' % \
-                    (example_sentence.jap_sentence, example_sentence.eng_trans)
+            text = u'（%s）%s' % (listwidget.count() + 1, item_text)
             item.setText(text)
+
+            if listwidget.count() % 2 == 1:
+                #item.setBackground(QtGui.QColor('#e5e5e5'))
+                pass
+
             listwidget.addItem(item)
+
+            for example_sentence in result_def.example_sentences:
+                item = QtGui.QListWidgetItem()
+                text = u'<font color="#00FF00">%s</color>\n<font color="#555555">%s</font>' % \
+                        (example_sentence.jap_sentence, example_sentence.eng_trans)
+                item.setText(text)
+                listwidget.addItem(item)
 
 
 
