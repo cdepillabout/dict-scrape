@@ -162,7 +162,8 @@ class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
     """
-    def __init__(self, original_kanji, original_kana, url, kanji, kana, accent, defs):
+    def __init__(self, original_kanji, original_kana, url,
+            kanji=None, kana=None, accent=None, defs=[]):
         """
         kanji is a string with the kanji from the result. This may be the same
         as kana.
@@ -175,9 +176,9 @@ class Result(object):
             raise UnicodeError, "original_kanji should be a unicode string"
         if type(original_kana) is not type(unicode()):
             raise UnicodeError, "original_kana should be a unicode string"
-        if type(kanji) is not type(unicode()):
+        if type(kanji) is not type(unicode()) and kanji is not None:
             raise UnicodeError, "kanji should be a unicode string"
-        if type(kana) is not type(unicode()):
+        if type(kana) is not type(unicode()) and kana is not None:
             raise UnicodeError, "kana should be a unicode string"
         self._original_kanji = original_kanji
         self._original_kana = original_kana
@@ -228,6 +229,13 @@ class Result(object):
         """
         return self._defs
 
+    def definition_found(self):
+        """
+        Return true if this definition was found.
+        i.e. kanji and kana are not null.
+        """
+        return (kanji and kana)
+
     def __str__(self):
         return unicode(self).encode("utf8")
 
@@ -267,6 +275,7 @@ class Dictionary(object):
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')
+        url = self._create_url(word_kanji, word_kana)
         word_not_found_string = \
                 u'<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
@@ -277,17 +286,16 @@ class Dictionary(object):
         # return None if we can't find a definition
         if word_not_found_string in result or word_not_found_string_no_space in result:
             #print("NO DEFINITION FOUND")
-            return None
+            return Result(word_kanji, word_kana, url)
 
         # make sure this is the new century and not the progressive definition
         if self.dic_type == Dictionary.NEW_CENTURY_TYPE:
             if u'<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
                 #print("NO DEFINITION FROM NEW CENTURY")
-                return None
+                return Result(word_kanji, word_kana, url)
 
         kanji, kana, accent = self.parse_heading(tree)
         defs_sentences = self.parse_definition(tree)
-        url = self._create_url(word_kanji, word_kana)
         return Result(word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
 
     def _create_url(self, word_kanji, word_kana):

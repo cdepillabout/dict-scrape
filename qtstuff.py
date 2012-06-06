@@ -81,8 +81,8 @@ class MainWindowReader(QtGui.QMainWindow):
         self.fillin(word_kanji, word_kana)
 
     # pop up a dialog box asking if we are sure we want to quit
-    """
     def closeEvent(self, event):
+        """
         reply = QtGui.QMessageBox.question(self, 'Message',
                 "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
                 QtGui.QMessageBox.No, QtGui.QMessageBox.No)
@@ -90,7 +90,8 @@ class MainWindowReader(QtGui.QMainWindow):
             event.accept()
         else:
             event.ignore()
-    """
+        """
+        pass
 
     def addDefinition(self, listwidget, model, result):
         """
