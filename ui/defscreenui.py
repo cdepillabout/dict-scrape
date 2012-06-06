@@ -33,7 +33,8 @@ class Ui_MainWindowReader(object):
         resultwordlabel.setText("")
         horizontallayout.addWidget(resultwordlabel)
 
-        model = QtGui.QStandardItemModel()
+        #model = QtGui.QStandardItemModel()
+        model = None
 
         listwidget = QtGui.QListWidget(self.centralwidget)
         listwidget.setAlternatingRowColors(True)
@@ -43,6 +44,7 @@ class Ui_MainWindowReader(object):
         listwidget.setWordWrap(True)
         listwidget.setObjectName(listobjectname)
         listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
+        #listwidget.setModel(model)
         listwidget.setItemDelegate(diclist.DefListDelegate())
         dictlabel.setBuddy(listwidget)
         verticallayout.addWidget(listwidget)
