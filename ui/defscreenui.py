@@ -40,6 +40,7 @@ class Ui_MainWindowReader(object):
         listwidget.setWordWrap(True)
         listwidget.setObjectName(listobjectname)
         listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
+        dictlabel.setBuddy(listwidget)
         verticallayout.addWidget(listwidget)
 
         # don't return the horizontal layout
