@@ -234,7 +234,7 @@ class Result(object):
         Return true if this definition was found.
         i.e. kanji and kana are not null.
         """
-        return (kanji and kana)
+        return (self._kanji and self._kana)
 
     def __str__(self):
         return unicode(self).encode("utf8")

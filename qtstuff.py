@@ -49,7 +49,7 @@ class MainWindowReader(QtGui.QMainWindow):
                 (newcentury, self.ui.newcenturylist, self.ui.newcenturylistmodel, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
                 ]
 
-        self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
+        #self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
 
         for d, listwidget, model, webviewwidget, resultwordlabel in dicts:
             result = d.lookup(word_kanji, word_kana)
@@ -67,8 +67,15 @@ class MainWindowReader(QtGui.QMainWindow):
             webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
 
             # add the resulting word
-            resultwordlabel.setText(u'<font color="#555555">%s (%s)</font>' %
-                    (result.kanji, result.kana))
+            resultwordlabeltext = ""
+            if result.definition_found():
+                if result.kanji == result.kana:
+                    resultwordlabeltext = "%s" % result.kanji
+                else:
+                    resultwordlabeltext = "%s (%s)" % (result.kanji, result.kana)
+            else:
+                resultwordlabeltext = "NO DEFINITION FOUND"
+            resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
 
             self.addDefinition(listwidget, model, result)
 
@@ -94,63 +101,8 @@ class MainWindowReader(QtGui.QMainWindow):
         pass
 
     def addDefinition(self, listwidget, model, result):
-        """
-    view = QListView()
-    model = Model()
-    waiting = True
-
-    for i in range(5):
-
-        item = QStandardItem("Test %i" % i)
-        item.setData(QVariant(waiting), Qt.UserRole)
-        waiting = not waiting
-        model.appendRow(item)
-
-    view.setModel(model)
-
-    delegate = Delegate(QMovie("animation.mng"))
-    view.setItemDelegate(delegate)
-    delegate.needsRedraw.connect(view.viewport().update)
-    delegate.startMovie()
-
-    model.finished.connect(delegate.stopMovie)
-    model.finished.connect(view.viewport().update)
-
-    view.show()
-    """
         # add result definitions
         model.loaddefs(result.defs)
-
-
-        """
-        if not result:
-            listwidget.addItem("NO RESULT")
-            return
-
-        for result_def in result.defs:
-            if result_def.definition:
-                item_text = result_def.definition
-            else:
-                item_text = "NO DEFINITION AVAILABLE"
-            item = QtGui.QListWidgetItem()
-            text = u'（%s）%s' % (listwidget.count() + 1, item_text)
-            item.setText(text)
-
-            if listwidget.count() % 2 == 1:
-                #item.setBackground(QtGui.QColor('#e5e5e5'))
-                pass
-
-            listwidget.addItem(item)
-
-            for example_sentence in result_def.example_sentences:
-                item = QtGui.QListWidgetItem()
-                text = u'<font color="#00FF00">%s</color>\n<font color="#555555">%s</font>' % \
-                        (example_sentence.jap_sentence, example_sentence.eng_trans)
-                item.setText(text)
-                listwidget.addItem(item)
-        """
-
-
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
