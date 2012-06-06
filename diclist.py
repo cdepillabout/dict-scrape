@@ -63,6 +63,16 @@ class DefListDelegate(QStyledItemDelegate):
         text = u'%s %s' % (unichr(ordinal + index.row()), text)
         return text
 
+    ######
+    ## TODO
+    ######
+    # create a label and add it to a listwidget like this:
+    #MyItem *myItem = new MyItem("Text for label1","Text for label2");
+    #QListWidgetItem *item = new QListWidgetItem();
+    #item->setSizeHint(QSize(0,65));
+    #ui.listWidget->addItem(item);
+    #ui.listWidget->setItemWidget(item,myItem);
+
 
     def paint(self, painter, option, index):
         text = index.model().data(index).toString()
@@ -71,6 +81,7 @@ class DefListDelegate(QStyledItemDelegate):
         textoption = QTextOption()
         textoption.setWrapMode(QTextOption.WrapAnywhere)
         document = QTextDocument()
+        #document = QTextEdit()
         document.setDefaultTextOption(textoption)
         document.setDefaultFont(option.font)
         # change this in order to change how something is displayed
@@ -89,7 +100,8 @@ class DefListDelegate(QStyledItemDelegate):
         painter.save()
         painter.fillRect(option.rect, color)
         painter.translate(option.rect.x(), option.rect.y())
-        document.drawContents(painter)
+        #document.drawContents(painter)
+        painter.drawText(0, 0, 200, 200, Qt.AlignBottom|Qt.AlignLeft|Qt.TextWordWrap, text)
         painter.restore()
 
     def sizeHint(self, option, index):
