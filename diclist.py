@@ -17,39 +17,6 @@ from PyQt4.QtGui import (QApplication, QColor, QComboBox, QLineEdit,
         QSpinBox, QStyle, QStyledItemDelegate, QTextDocument, QTextEdit,
         QTextOption, QLabel)
 
-
-
-class DefListModel(QAbstractListModel):
-
-    def __init__(self):
-        super(DefListModel, self).__init__()
-        self.defs = []
-
-    def data(self, index, role=Qt.DisplayRole):
-        if (not index.isValid() or not (0 <= index.row() < len(self.defs))):
-            return QVariant()
-
-        df = self.defs[index.row()]
-
-        if role == Qt.DisplayRole:
-            return QVariant(QString(df.definition))
-        elif role == Qt.TextAlignmentRole:
-            return QVariant(int(Qt.AlignLeft|Qt.AlignVCenter))
-        elif role == Qt.TextColorRole:
-            return QVariant(QColor(Qt.darkBlue))
-        elif role == Qt.BackgroundColorRole:
-            return QVariant(QColor(250, 230, 250))
-        else:
-            print("Called DefListModel.data() for undefined role: %s" % role)
-
-        return QVariant()
-
-    def rowCount(self, index=QModelIndex()):
-        return len(self.defs)
-
-    def loaddefs(self, defs):
-        self.defs = defs
-
 class DefListDelegate(QStyledItemDelegate):
 
     def __init__(self, parent=None):
@@ -63,18 +30,8 @@ class DefListDelegate(QStyledItemDelegate):
         text = u'%s %s' % (unichr(ordinal + index.row()), text)
         return text
 
-    ######
-    ## TODO
-    ######
-    # create a label and add it to a listwidget like this:
-    #MyItem *myItem = new MyItem("Text for label1","Text for label2");
-    #QListWidgetItem *item = new QListWidgetItem();
-    #item->setSizeHint(QSize(0,65));
-    #ui.listWidget->addItem(item);
-    #ui.listWidget->setItemWidget(item,myItem);
-
-
     def paint(self, painter, option, index):
+        """
         text = index.model().data(index).toString()
         text = self.createNumberedDefinition(index, text)
         palette = QApplication.palette()
@@ -103,8 +60,11 @@ class DefListDelegate(QStyledItemDelegate):
         #document.drawContents(painter)
         painter.drawText(0, 0, 200, 200, Qt.AlignBottom|Qt.AlignLeft|Qt.TextWordWrap, text)
         painter.restore()
+        """
+        super(DefListDelegate, self).paint(painter, option, index)
 
     def sizeHint(self, option, index):
+        """
         fm = option.fontMetrics
         text = index.model().data(index).toString()
         text = self.createNumberedDefinition(index, text)
@@ -116,6 +76,9 @@ class DefListDelegate(QStyledItemDelegate):
         document.setHtml(text)
         return QSize(document.idealWidth() + 5, fm.height() + 10)
         #return QStyledItemDelegate.sizeHint(self, option, index)
+        """
+        return super(DefListDelegate, self).sizeHint(option, index)
+        #return QSize(200, 400)
 
     """
     def sizeHint(self, option, index):

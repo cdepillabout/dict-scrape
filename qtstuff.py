@@ -102,7 +102,16 @@ class MainWindowReader(QtGui.QMainWindow):
 
     def addDefinition(self, listwidget, model, result):
         # add result definitions
-        model.loaddefs(result.defs)
+        for d in result.defs:
+            model.addData(d.definition)
+            """
+            textedit = QtGui.QLabel(d.definition)
+            item = QtGui.QListWidgetItem()
+            #item.setSizeHint(QtCore.QSize(200,200))
+            listwidget.addItem(item)
+            listwidget.setItemWidget(item, textedit)
+            """
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:

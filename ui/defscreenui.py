@@ -33,23 +33,22 @@ class Ui_MainWindowReader(object):
         resultwordlabel.setText("")
         horizontallayout.addWidget(resultwordlabel)
 
-        model = diclist.DefListModel()
+        model = QtGui.QStandardItemModel()
 
-        listview = QtGui.QListView(self.centralwidget)
-        listview.setAlternatingRowColors(True)
-        listview.setProperty("isWrapping", True)
-        listview.setSpacing(2)
-        listview.setUniformItemSizes(False)
-        listview.setWordWrap(True)
-        listview.setObjectName(listobjectname)
-        listview.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
-        listview.setModel(model)
-        listview.setItemDelegate(diclist.DefListDelegate())
-        dictlabel.setBuddy(listview)
-        verticallayout.addWidget(listview)
+        listwidget = QtGui.QListWidget(self.centralwidget)
+        listwidget.setAlternatingRowColors(True)
+        listwidget.setProperty("isWrapping", True)
+        listwidget.setSpacing(2)
+        listwidget.setUniformItemSizes(False)
+        listwidget.setWordWrap(True)
+        listwidget.setObjectName(listobjectname)
+        listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
+        listwidget.setItemDelegate(diclist.DefListDelegate())
+        dictlabel.setBuddy(listwidget)
+        verticallayout.addWidget(listwidget)
 
         # don't return the horizontal layout
-        return verticallayout, dictlabel, resultwordlabel, model, listview
+        return verticallayout, dictlabel, resultwordlabel, model, listwidget
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
