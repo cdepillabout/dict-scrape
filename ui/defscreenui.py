@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui, QtWebKit
+import diclist
 
 class Ui_MainWindowReader(object):
 
@@ -32,19 +33,23 @@ class Ui_MainWindowReader(object):
         resultwordlabel.setText("")
         horizontallayout.addWidget(resultwordlabel)
 
-        listwidget = QtGui.QListWidget(self.centralwidget)
-        listwidget.setAlternatingRowColors(True)
-        listwidget.setProperty("isWrapping", True)
-        listwidget.setSpacing(2)
-        listwidget.setUniformItemSizes(False)
-        listwidget.setWordWrap(True)
-        listwidget.setObjectName(listobjectname)
-        listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
-        dictlabel.setBuddy(listwidget)
-        verticallayout.addWidget(listwidget)
+        model = diclist.DefListModel()
+
+        listview = QtGui.QListView(self.centralwidget)
+        listview.setAlternatingRowColors(True)
+        listview.setProperty("isWrapping", True)
+        listview.setSpacing(2)
+        listview.setUniformItemSizes(False)
+        listview.setWordWrap(True)
+        listview.setObjectName(listobjectname)
+        listview.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
+        listview.setModel(model)
+        listview.setItemDelegate(diclist.DefListDelegate())
+        dictlabel.setBuddy(listview)
+        verticallayout.addWidget(listview)
 
         # don't return the horizontal layout
-        return verticallayout, dictlabel, resultwordlabel, listwidget
+        return verticallayout, dictlabel, resultwordlabel, model, listview
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
@@ -95,12 +100,14 @@ class Ui_MainWindowReader(object):
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
         self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
-                self.daijisenlist = self.createlist("daijisenverticallayout",
+                self.daijisenlistmodel, self.daijisenlist = self.createlist(
+                        "daijisenverticallayout",
                         "daijisenhorizontallayout", "daijisenresultwordlabel",
                         "daijisenlabel", "daijisenlist", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
         self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
-                self.daijirinlist = self.createlist("daijirinverticallayout",
+                self.daijirinlistmodel, self.daijirinlist = self.createlist(
+                        "daijirinverticallayout",
                         "daijirinhorizontallayout", "daijirinresultwordlabel",
                         "daijirinlabel", "daijirinlist", u'大辞林')
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
@@ -111,12 +118,14 @@ class Ui_MainWindowReader(object):
         self.engdichorizlayout.setObjectName("engdichorizlayout")
 
         self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
-                self.newcenturylist = self.createlist("newcenturyvertlayout",
+                self.newcenturylistmodel, self.newcenturylist = self.createlist(
+                        "newcenturyvertlayout",
                         "newcenturyhorizontallayout", "newcenturyresultwordlabel",
                         "newcenturylabel", "newcenturylist", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
         self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
-                self.progresslist = self.createlist("progressvertlayout",
+                self.progresslistmodel, self.progresslist = self.createlist(
+                        "progressvertlayout",
                         "progresshorizontallayout", "progressresultwordlabel",
                         "progresslabel", "progresslist", "Progressive")
         self.engdichorizlayout.addLayout(self.progressvertlayout)

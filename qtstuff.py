@@ -35,68 +35,6 @@ class JDicScrapeStandalone(object):
         self.window.show()
         self.application.exec_()
 
-"""
-class Delegate(QItemDelegate):
-    needsRedraw = pyqtSignal()
-
-    def __init__(self, movie, parent = None):
-
-        QItemDelegate.__init__(self, parent)
-        self.movie = movie
-        self.movie.frameChanged.connect(self.needsRedraw)
-        self.playing = False
-
-    def startMovie(self):
-        self.movie.start()
-        self.playing = True
-
-    def stopMovie(self):
-        self.movie.stop()
-        self.playing = False
-
-    def paint(self, painter, option, index):
-
-        waiting = index.data(Qt.UserRole).toBool()
-        if waiting:
-            option = option.__class__(option)
-            pixmap = self.movie.currentPixmap()
-            painter.drawPixmap(option.rect.topLeft(), pixmap)
-            option.rect = option.rect.translated(pixmap.width(), 0)
-
-        QItemDelegate.paint(self, painter, option, index)
-
-class Model(QStandardItemModel):
-    finished = pyqtSignal()
-
-    def __init__(self, parent = None):
-
-        QStandardItemModel.__init__(self, parent)
-        self.pendingItems = {}
-
-    def appendRow(self, item):
-
-        if item.data(Qt.UserRole).toBool():
-            print("YES")
-
-            timer = QTimer()
-            timer.timeout.connect(self.checkPending)
-            timer.setSingleShot(True)
-            self.pendingItems[timer] = item
-            timer.start(2000 + random.randrange(0, 10000))
-
-        QStandardItemModel.appendRow(self, item)
-
-    def checkPending(self):
-
-        # Check when items are updated so that we can emit the finished()
-        # signal when the list is cleared.
-        item = self.pendingItems[self.sender()]
-        del self.pendingItems[self.sender()]
-        item.setData(QVariant(False), Qt.UserRole)
-        if not self.pendingItems:
-            self.finished.emit()
-"""
-
 class MainWindowReader(QtGui.QMainWindow):
 
     def fillin(self, word_kanji, word_kana):
@@ -105,15 +43,16 @@ class MainWindowReader(QtGui.QMainWindow):
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.ui.daijirinlist, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
-                (daijisen, self.ui.daijisenlist, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
-                (progressive, self.ui.progresslist, self.ui.progresswebview, self.ui.progressresultwordlabel),
-                (newcentury, self.ui.newcenturylist, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
+                (daijirin, self.ui.daijirinlist, self.ui.daijirinlistmodel, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
+                (daijisen, self.ui.daijisenlist, self.ui.daijisenlistmodel, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
+                (progressive, self.ui.progresslist, self.ui.progresslistmodel, self.ui.progresswebview, self.ui.progressresultwordlabel),
+                (newcentury, self.ui.newcenturylist, self.ui.newcenturylistmodel, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
                 ]
 
-        for d, listwidget, webviewwidget, resultwordlabel in dicts:
+        self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
+
+        for d, listwidget, model, webviewwidget, resultwordlabel in dicts:
             result = d.lookup(word_kanji, word_kana)
-            #print result
             if d == daijirin:
                 if result.accent:
                     self.ui.accentlineedit.setText(result.accent)
@@ -131,10 +70,9 @@ class MainWindowReader(QtGui.QMainWindow):
             resultwordlabel.setText(u'<font color="#555555">%s (%s)</font>' %
                     (result.kanji, result.kana))
 
-            self.addDefinition(listwidget, result)
+            self.addDefinition(listwidget, model, result)
 
 
-        self.ui.statusbar.showMessage('Added defs for %s (%s)' % (word_kanji, word_kana))
 
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
@@ -154,7 +92,7 @@ class MainWindowReader(QtGui.QMainWindow):
             event.ignore()
     """
 
-    def addDefinition(self, listwidget, result):
+    def addDefinition(self, listwidget, model, result):
         """
     view = QListView()
     model = Model()
@@ -180,6 +118,10 @@ class MainWindowReader(QtGui.QMainWindow):
     view.show()
     """
         # add result definitions
+        model.loaddefs(result.defs)
+
+
+        """
         if not result:
             listwidget.addItem("NO RESULT")
             return
@@ -205,6 +147,7 @@ class MainWindowReader(QtGui.QMainWindow):
                         (example_sentence.jap_sentence, example_sentence.eng_trans)
                 item.setText(text)
                 listwidget.addItem(item)
+        """
 
 
 
