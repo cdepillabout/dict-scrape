@@ -107,10 +107,37 @@ class MainWindowReader(QtGui.QMainWindow):
             textedit.setWordWrap(True)
             #model.addData(d.definition)
             item = QtGui.QListWidgetItem()
-            item.setSizeHint(QtCore.QSize(500, 50))
-            #item.setData(0, textedit)
+            #item.setSizeHint(QtCore.QSize(100, 100))
+            sizepolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding,
+                    QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Label)
+            textedit.setSizePolicy(sizepolicy)
+            #textedit.setSizeHint(QtCore.QSize(100, 50))
+            item.setSizeHint(textedit.sizeHint())
+            item.setData(QtCore.Qt.UserRole, textedit)
             listwidget.addItem(item)
             listwidget.setItemWidget(item, textedit)
+            """
+            class MyWidget(QtGui.QWidget):
+                def __init__(self, parent=None):
+                    QtGui.QWidget.__init__(self, parent)
+
+                    horiz = QtGui.QHBoxLayout(self)
+                    textedit = QtGui.QLabel("HELLOOLOLLOL")
+                    buttonBox = QtGui.QDialogButtonBox()
+                    buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Reset)
+
+                    #textedit.setWordWrap(True)
+                    horiz.addWidget(textedit)
+                    horiz.addWidget(buttonBox)
+
+            mywidg = MyWidget()
+
+            item = QtGui.QListWidgetItem()
+            #item.setData(QtCore.Qt.UserRole, textedit)
+            listwidget.addItem(item)
+            listwidget.setItemWidget(item, mywidg)
+            """
+
 
 
 if __name__ == '__main__':

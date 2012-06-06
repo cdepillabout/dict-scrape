@@ -38,14 +38,14 @@ class Ui_MainWindowReader(object):
 
         listwidget = QtGui.QListWidget(self.centralwidget)
         listwidget.setAlternatingRowColors(True)
-        listwidget.setProperty("isWrapping", True)
-        listwidget.setSpacing(2)
+        #listwidget.setProperty("isWrapping", True)
+        #listwidget.setSpacing(2)
         listwidget.setUniformItemSizes(False)
         listwidget.setWordWrap(True)
         listwidget.setObjectName(listobjectname)
         listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
         #listwidget.setModel(model)
-        listwidget.setItemDelegate(diclist.DefListDelegate())
+        #listwidget.setItemDelegate(diclist.DefListDelegate())
         dictlabel.setBuddy(listwidget)
         verticallayout.addWidget(listwidget)
 

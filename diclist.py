@@ -34,13 +34,14 @@ class DefListDelegate(QStyledItemDelegate):
     """
 
     def paint(self, painter, option, index):
-        print(index)
-        textedit = index.data()
-        if isinstance(textedit, QTextEdit):
+        print(index.data(Qt.UserRole).toPyObject())
+        textedit = index.data(Qt.UserRole).toPyObject()
+        print(dir(textedit))
+        if isinstance(textedit, QLabel):
             if option.state & QStyle.State_Selected:
                 painter.fillRect(option.rect, option.palette.highlight())
 
-            #textedit.paint(painter, option.rect, option.palette, TextEdit.ReadOnly)
+            textedit.paint(painter, option.rect, option.palette)
         else:
             super(DefListDelegate, self).paint(painter, option, index)
 
