@@ -12,9 +12,10 @@
 
 from PyQt4.QtCore import (QAbstractListModel, QDataStream, QFile,
         QIODevice, QModelIndex, QRegExp, QSize, QString, QVariant, Qt,
-        SIGNAL)
+        SIGNAL, QRectF)
 from PyQt4.QtGui import (QApplication, QColor, QComboBox, QLineEdit,
-        QSpinBox, QStyle, QStyledItemDelegate, QTextDocument, QTextEdit)
+        QSpinBox, QStyle, QStyledItemDelegate, QTextDocument, QTextEdit,
+        QTextOption, QLabel)
 
 
 
@@ -67,7 +68,10 @@ class DefListDelegate(QStyledItemDelegate):
         text = index.model().data(index).toString()
         text = self.createNumberedDefinition(index, text)
         palette = QApplication.palette()
+        textoption = QTextOption()
+        textoption.setWrapMode(QTextOption.WrapAnywhere)
         document = QTextDocument()
+        document.setDefaultTextOption(textoption)
         document.setDefaultFont(option.font)
         # change this in order to change how something is displayed
         # when selected
@@ -76,6 +80,7 @@ class DefListDelegate(QStyledItemDelegate):
                     .arg(palette.highlightedText().color().name())
                     .arg(text))
         else:
+            #document = QLabel(text)
             document.setHtml(text)
         color = (palette.highlight().color()
                     if option.state & QStyle.State_Selected
@@ -92,6 +97,9 @@ class DefListDelegate(QStyledItemDelegate):
         text = index.model().data(index).toString()
         text = self.createNumberedDefinition(index, text)
         document = QTextDocument()
+        textoption = QTextOption()
+        textoption.setWrapMode(QTextOption.WrapAnywhere)
+        document.setDefaultTextOption(textoption)
         document.setDefaultFont(option.font)
         document.setHtml(text)
         return QSize(document.idealWidth() + 5, fm.height() + 10)
