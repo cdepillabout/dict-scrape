@@ -1,19 +1,36 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'defscreen.ui'
-#
-# Created: Sun Jun  3 06:55:00 2012
-#      by: PyQt4 UI code generator 4.9.1
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt4 import QtCore, QtGui, QtWebKit
 import diclist
+
+class DefTextEdit(QtGui.QTextEdit):
+    def __init__(self, parent=None, defs=[]):
+        super(DefTextEdit, self).__init__(parent)
+        self.defs = defs
+
+    def setDefs(self, defs):
+        first = u'➀'
+        ordinal = ord(first)
+
+        self.defs = defs
+        for i in range(len(defs)):
+            self.append("%s %s" % (unichr(ordinal + i), defs[i].definition))
+
+    def mousePressEvent(self, mouseevent):
+        super(DefTextEdit, self).mousePressEvent(mouseevent)
+        #print("LALALALALA mouseevent(%s, %s)" % (mouseevent.x(), mouseevent.y()))
+        cursor = self.cursorForPosition(QtCore.QPoint(mouseevent.x(), mouseevent.y()))
+        position = cursor.position()
+        doc = self.document()
+        print("cursor = %s, position = %s, character = %s" %
+                (cursor, position, unichr(doc.characterAt(position).unicode())))
+        print("lala = %s" % (doc.findBlock(position).text()))
+
 
 class Ui_MainWindowReader(object):
 
     def createlist(self, verticallayoutobjectname, horizontallayoutobjectname,
-            dictlabelobjectname, resultwordlabelobjectname, listobjectname, labeltext):
+            dictlabelobjectname, resultwordlabelobjectname, texteditobjectname, labeltext):
         verticallayout = QtGui.QVBoxLayout()
         verticallayout.setObjectName(verticallayoutobjectname)
 
@@ -36,6 +53,7 @@ class Ui_MainWindowReader(object):
         #model = QtGui.QStandardItemModel()
         model = None
 
+        """
         listwidget = QtGui.QListWidget(self.centralwidget)
         listwidget.setAlternatingRowColors(True)
         #listwidget.setProperty("isWrapping", True)
@@ -48,9 +66,18 @@ class Ui_MainWindowReader(object):
         #listwidget.setItemDelegate(diclist.DefListDelegate())
         dictlabel.setBuddy(listwidget)
         verticallayout.addWidget(listwidget)
+        """
+        textedit = DefTextEdit(self.centralwidget)
+        textedit.setObjectName(texteditobjectname)
+        textedit.setReadOnly(True)
+        dictlabel.setBuddy(textedit)
+        verticallayout.addWidget(textedit)
+
+        #textedit.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        #textedit.customContextMenuRequested.connect(textedit.lalalala)
 
         # don't return the horizontal layout
-        return verticallayout, dictlabel, resultwordlabel, model, listwidget
+        return verticallayout, dictlabel, resultwordlabel, model, textedit
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
@@ -101,16 +128,16 @@ class Ui_MainWindowReader(object):
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
         self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
-                self.daijisenlistmodel, self.daijisenlist = self.createlist(
+                self.daijisenlistmodel, self.daijisentextedit = self.createlist(
                         "daijisenverticallayout",
                         "daijisenhorizontallayout", "daijisenresultwordlabel",
-                        "daijisenlabel", "daijisenlist", u'大辞泉')
+                        "daijisenlabel", "daijisentextedit", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
         self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
-                self.daijirinlistmodel, self.daijirinlist = self.createlist(
+                self.daijirinlistmodel, self.daijirintextedit = self.createlist(
                         "daijirinverticallayout",
                         "daijirinhorizontallayout", "daijirinresultwordlabel",
-                        "daijirinlabel", "daijirinlist", u'大辞林')
+                        "daijirinlabel", "daijirintextedit", u'大辞林')
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
         self.tabonevertlayout.addLayout(self.japdichorizlayout, 2)
 
@@ -119,16 +146,16 @@ class Ui_MainWindowReader(object):
         self.engdichorizlayout.setObjectName("engdichorizlayout")
 
         self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
-                self.newcenturylistmodel, self.newcenturylist = self.createlist(
+                self.newcenturylistmodel, self.newcenturytextedit = self.createlist(
                         "newcenturyvertlayout",
                         "newcenturyhorizontallayout", "newcenturyresultwordlabel",
-                        "newcenturylabel", "newcenturylist", "New Century")
+                        "newcenturylabel", "newcenturytextedit", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
         self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
-                self.progresslistmodel, self.progresslist = self.createlist(
+                self.progresslistmodel, self.progresstextedit = self.createlist(
                         "progressvertlayout",
                         "progresshorizontallayout", "progressresultwordlabel",
-                        "progresslabel", "progresslist", "Progressive")
+                        "progresslabel", "progresstextedit", "Progressive")
         self.engdichorizlayout.addLayout(self.progressvertlayout)
         self.tabonevertlayout.addLayout(self.engdichorizlayout, 3)
 

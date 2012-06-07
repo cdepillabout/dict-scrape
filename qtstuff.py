@@ -43,15 +43,15 @@ class MainWindowReader(QtGui.QMainWindow):
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.ui.daijirinlist, self.ui.daijirinlistmodel, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
-                (daijisen, self.ui.daijisenlist, self.ui.daijisenlistmodel, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
-                (progressive, self.ui.progresslist, self.ui.progresslistmodel, self.ui.progresswebview, self.ui.progressresultwordlabel),
-                (newcentury, self.ui.newcenturylist, self.ui.newcenturylistmodel, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
+                (daijirin, self.ui.daijirintextedit, self.ui.daijirinlistmodel, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
+                (daijisen, self.ui.daijisentextedit, self.ui.daijisenlistmodel, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
+                (progressive, self.ui.progresstextedit, self.ui.progresslistmodel, self.ui.progresswebview, self.ui.progressresultwordlabel),
+                (newcentury, self.ui.newcenturytextedit, self.ui.newcenturylistmodel, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
                 ]
 
         #self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
 
-        for d, listwidget, model, webviewwidget, resultwordlabel in dicts:
+        for d, texteditwidget, model, webviewwidget, resultwordlabel in dicts:
             result = d.lookup(word_kanji, word_kana)
             if d == daijirin:
                 if result.accent:
@@ -77,7 +77,7 @@ class MainWindowReader(QtGui.QMainWindow):
                 resultwordlabeltext = "NO DEFINITION FOUND"
             resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
 
-            self.addDefinition(listwidget, model, result)
+            self.addDefinition(texteditwidget, model, result)
 
 
 
@@ -100,43 +100,9 @@ class MainWindowReader(QtGui.QMainWindow):
         """
         pass
 
-    def addDefinition(self, listwidget, model, result):
+    def addDefinition(self, texteditwidget, model, result):
         # add result definitions
-        for d in result.defs:
-            textedit = QtGui.QLabel(d.definition)
-            textedit.setWordWrap(True)
-            #model.addData(d.definition)
-            item = QtGui.QListWidgetItem()
-            #item.setSizeHint(QtCore.QSize(100, 100))
-            sizepolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding,
-                    QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Label)
-            textedit.setSizePolicy(sizepolicy)
-            #textedit.setSizeHint(QtCore.QSize(100, 50))
-            item.setSizeHint(textedit.sizeHint())
-            item.setData(QtCore.Qt.UserRole, textedit)
-            listwidget.addItem(item)
-            listwidget.setItemWidget(item, textedit)
-            """
-            class MyWidget(QtGui.QWidget):
-                def __init__(self, parent=None):
-                    QtGui.QWidget.__init__(self, parent)
-
-                    horiz = QtGui.QHBoxLayout(self)
-                    textedit = QtGui.QLabel("HELLOOLOLLOL")
-                    buttonBox = QtGui.QDialogButtonBox()
-                    buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Reset)
-
-                    #textedit.setWordWrap(True)
-                    horiz.addWidget(textedit)
-                    horiz.addWidget(buttonBox)
-
-            mywidg = MyWidget()
-
-            item = QtGui.QListWidgetItem()
-            #item.setData(QtCore.Qt.UserRole, textedit)
-            listwidget.addItem(item)
-            listwidget.setItemWidget(item, mywidg)
-            """
+        texteditwidget.setDefs(result.defs + result.defs + result.defs + result.defs)
 
 
 
