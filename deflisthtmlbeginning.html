@@ -1,22 +1,21 @@
 <html>
     <head>
+        <style type="text/css">
+            P.selected {
+                background-color: #dddddd;
+            }
+            P.notselected {
+                background-color: #ffffff;
+            }
+        </style>
         <script language="javascript" type="text/javascript">
             function changeBackgroundColor(objDivID)
             {
-                var backColor = new String();
-
-                backColor = document.getElementById(objDivID).style.backgroundColor;
-
-                // IE works with hex code of color e.g.: #eeeeee
-                // Firefox works with rgb color code e.g.: rgb(238, 238, 238)
-                // Thats why both types are used in If-condition below
-                if(backColor.toLowerCase()=='rgb(255, 255, 255)')
-                {
-                    document.getElementById(objDivID).style.backgroundColor = '#eeeeee';
-                }
-                else
-                {
-                    document.getElementById(objDivID).style.backgroundColor = '#ffffff';
+                elem = document.getElementById(objDivID);
+                if(elem.getAttribute("class") == "selected") {
+                    elem.setAttribute("class", "notselected");
+                } else {
+                    elem.setAttribute("class", "selected");
                 }
             }
         </script>

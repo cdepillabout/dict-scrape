@@ -18,15 +18,15 @@ class DefWebView(QtWebKit.QWebView):
         self.defs = defs
         for i in range(len(defs)):
             idattr = "id='def%s'" % i
-            styleattr = "style='background-color: #FFFFFF'"
+            classattr = "class='notselected'"
             onclickattr = "onclick='changeBackgroundColor(\"def%s\");'" % i
             html += "\n<p %s %s %s>%s %s</p>" % \
-                    (idattr, styleattr, onclickattr, unichr(ordinal + i), defs[i].definition)
+                    (idattr, classattr, onclickattr, unichr(ordinal + i), defs[i].definition)
         html += "\n</body></html>"
 
-        print(html)
-
         self.setHtml(html)
+        #html = self.page().mainFrame().toHtml()
+        #print(html.toUtf8())
 
     """
     def mousePressEvent(self, mouseevent):
@@ -262,7 +262,10 @@ class Ui_MainWindowReader(object):
     def resetclicked(self, button):
         # this shows the sender (but in this case it will only be the reset button)
         #sender = self.mainwindowreader.sender()
-        pass
+        mainframe = self.daijisendefwebview.page().mainFrame()
+        collection = mainframe.findAllElements('P[class="selected"]')
+        for e in collection:
+            print(e.toPlainText().toUtf8())
 
 
 
