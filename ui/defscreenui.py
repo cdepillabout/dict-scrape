@@ -3,19 +3,32 @@
 from PyQt4 import QtCore, QtGui, QtWebKit
 import diclist
 
-class DefTextEdit(QtGui.QTextEdit):
+class DefWebView(QtWebKit.QWebView):
     def __init__(self, parent=None, defs=[]):
-        super(DefTextEdit, self).__init__(parent)
+        super(DefWebView, self).__init__(parent)
         self.defs = defs
 
     def setDefs(self, defs):
         first = u'➀'
         ordinal = ord(first)
 
+        html = ''
+        with open('deflisthtmlbeginning.html') as f:
+            html = f.read()
         self.defs = defs
         for i in range(len(defs)):
-            self.append("%s %s" % (unichr(ordinal + i), defs[i].definition))
+            idattr = "id='def%s'" % i
+            styleattr = "style='background-color: #FFFFFF'"
+            onclickattr = "onclick='changeBackgroundColor(\"def%s\");'" % i
+            html += "\n<p %s %s %s>%s %s</p>" % \
+                    (idattr, styleattr, onclickattr, unichr(ordinal + i), defs[i].definition)
+        html += "\n</body></html>"
 
+        print(html)
+
+        self.setHtml(html)
+
+    """
     def mousePressEvent(self, mouseevent):
         super(DefTextEdit, self).mousePressEvent(mouseevent)
         #print("LALALALALA mouseevent(%s, %s)" % (mouseevent.x(), mouseevent.y()))
@@ -25,12 +38,13 @@ class DefTextEdit(QtGui.QTextEdit):
         print("cursor = %s, position = %s, character = %s" %
                 (cursor, position, unichr(doc.characterAt(position).unicode())))
         print("lala = %s" % (doc.findBlock(position).text()))
+    """
 
 
 class Ui_MainWindowReader(object):
 
     def createlist(self, verticallayoutobjectname, horizontallayoutobjectname,
-            dictlabelobjectname, resultwordlabelobjectname, texteditobjectname, labeltext):
+            dictlabelobjectname, resultwordlabelobjectname, webviewobjectname, labeltext):
         verticallayout = QtGui.QVBoxLayout()
         verticallayout.setObjectName(verticallayoutobjectname)
 
@@ -67,17 +81,23 @@ class Ui_MainWindowReader(object):
         dictlabel.setBuddy(listwidget)
         verticallayout.addWidget(listwidget)
         """
+        """
         textedit = DefTextEdit(self.centralwidget)
         textedit.setObjectName(texteditobjectname)
         textedit.setReadOnly(True)
         dictlabel.setBuddy(textedit)
         verticallayout.addWidget(textedit)
+        """
+        webview = DefWebView(self.centralwidget)
+        webview.setObjectName(webviewobjectname)
+        dictlabel.setBuddy(webview)
+        verticallayout.addWidget(webview)
 
         #textedit.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         #textedit.customContextMenuRequested.connect(textedit.lalalala)
 
         # don't return the horizontal layout
-        return verticallayout, dictlabel, resultwordlabel, model, textedit
+        return verticallayout, dictlabel, resultwordlabel, model, webview
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
@@ -94,7 +114,7 @@ class Ui_MainWindowReader(object):
     def setupUi(self, mainwindowreader):
         self.mainwindowreader = mainwindowreader
         mainwindowreader.setObjectName("mainwindowreader")
-        #mainwindowreader.resize(900, 650)
+        mainwindowreader.resize(900, 650)
         #mainwindowreader.setAcceptDrops(False)
         #icon = QtGui.QIcon()
         #pixmap = QtGui.QPixmap("../img/logo32x32.png")
@@ -128,13 +148,13 @@ class Ui_MainWindowReader(object):
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
         self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
-                self.daijisenlistmodel, self.daijisentextedit = self.createlist(
+                self.daijisenlistmodel, self.daijisendefwebview = self.createlist(
                         "daijisenverticallayout",
                         "daijisenhorizontallayout", "daijisenresultwordlabel",
                         "daijisenlabel", "daijisentextedit", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
         self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
-                self.daijirinlistmodel, self.daijirintextedit = self.createlist(
+                self.daijirinlistmodel, self.daijirindefwebview = self.createlist(
                         "daijirinverticallayout",
                         "daijirinhorizontallayout", "daijirinresultwordlabel",
                         "daijirinlabel", "daijirintextedit", u'大辞林')
@@ -146,13 +166,13 @@ class Ui_MainWindowReader(object):
         self.engdichorizlayout.setObjectName("engdichorizlayout")
 
         self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
-                self.newcenturylistmodel, self.newcenturytextedit = self.createlist(
+                self.newcenturylistmodel, self.newcenturydefwebview = self.createlist(
                         "newcenturyvertlayout",
                         "newcenturyhorizontallayout", "newcenturyresultwordlabel",
                         "newcenturylabel", "newcenturytextedit", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
         self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
-                self.progresslistmodel, self.progresstextedit = self.createlist(
+                self.progresslistmodel, self.progressdefwebview = self.createlist(
                         "progressvertlayout",
                         "progresshorizontallayout", "progressresultwordlabel",
                         "progresslabel", "progresstextedit", "Progressive")

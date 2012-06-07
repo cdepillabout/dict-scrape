@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script language="javascript" type="text/javascript">
+            function changeBackgroundColor(objDivID)
+            {
+                var backColor = new String();
+
+                backColor = document.getElementById(objDivID).style.backgroundColor;
+
+                // IE works with hex code of color e.g.: #eeeeee
+                // Firefox works with rgb color code e.g.: rgb(238, 238, 238)
+                // Thats why both types are used in If-condition below
+                if(backColor.toLowerCase()=='rgb(255, 255, 255)')
+                {
+                    document.getElementById(objDivID).style.backgroundColor = '#eeeeee';
+                }
+                else
+                {
+                    document.getElementById(objDivID).style.backgroundColor = '#ffffff';
+                }
+            }
+        </script>
+    </head>
+
+    <body onmousedown="return false;">
