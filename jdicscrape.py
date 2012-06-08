@@ -366,7 +366,7 @@ class Dictionary(object):
         return self.long_dictionary_name
 
     @property
-    def short_dic_name(self):
+    def short_name(self):
         """Return the dictionary name."""
         return self.short_dictionary_name
 

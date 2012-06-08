@@ -23,13 +23,20 @@ dics = [DaijirinDictionary(),
         NewCenturyDictionary()]
 
 def die(string):
-    print(u'ERROR! %s' % string)
-    sys.exit(1)
+    error_string = u'ERROR! %s' % string
+    if __name__ == '__main__':
+        print(error_string)
+        sys.exit(1)
+    else:
+        raise Exception(error_string)
 
 words_db_rel_path = os.path.join(os.path.dirname(__file__), "words.db")
 words_db_abs_path = os.path.abspath(words_db_rel_path)
 if not (os.path.exists(words_db_abs_path)):
     die("words.db does not exist! Something is wrong!")
+
+def get_dics():
+    return dics
 
 def get_words_from_wordsdb():
     """Get all the words from the words.db."""
@@ -45,6 +52,30 @@ def get_words_from_wordsdb():
 
     return words
 
+def get_paths_for_word(dic, kana, kanji):
+    dirname, rel_path, abs_path = get_paths_for_dic(dic)
+
+    html_filename = u'%s_%s.html' % (kana, kanji)
+    result_filename = u'%s_%s.result.json' % (kana, kanji)
+
+    # absolute paths to the two files we will use
+    html_file_abs_path = os.path.join(abs_path, html_filename)
+    result_file_abs_path = os.path.join(abs_path, result_filename)
+
+    # relative paths to the two files we will use to print out
+    html_file_rel_path = os.path.join(rel_path, html_filename)
+    result_file_rel_path = os.path.join(rel_path, result_filename)
+
+    return html_filename, result_filename, html_file_abs_path, \
+            result_file_abs_path, html_file_rel_path, result_file_rel_path
+
+def get_paths_for_dic(dic):
+    dirname = dic.short_name
+    rel_path = os.path.join(os.path.dirname(__file__), dic.short_name)
+    abs_path = os.path.abspath(rel_path)
+
+    return dirname, rel_path, abs_path
+
 def sanity_check():
     """Make sure our words.db and actual words that have been downloaded match up."""
     words = get_words_from_wordsdb()
@@ -59,24 +90,18 @@ def sanity_check():
 
     # make sure there is a file for each of our words in each dictionary directory
     for dic in dics:
-        dirname = dic.short_dic_name
-        rel_path = os.path.join(os.path.dirname(__file__), dic.short_dic_name)
-        abs_path = os.path.abspath(rel_path)
-
+        dirname, rel_path, abs_path = get_paths_for_dic(dic)
         for w in words:
             kana = w[0]
             kanji = w[1]
 
-            html_filename = u'%s_%s.html' % (kana, kanji)
-            result_filename = u'%s_%s.result.json' % (kana, kanji)
-
-            # absolute paths to the two files we will use
-            html_file_abs_path = os.path.join(abs_path, html_filename)
-            result_file_abs_path = os.path.join(abs_path, result_filename)
-
-            # relative paths to the two files we will use to print out
-            html_file_rel_path = os.path.join(rel_path, html_filename)
-            result_file_rel_path = os.path.join(rel_path, result_filename)
+            tup = get_paths_for_word(dic, kana, kanji)
+            html_filename = tup[0]
+            result_filename = tup[1]
+            html_file_abs_path = tup[2]
+            result_file_abs_path = tup[3]
+            html_file_rel_path = tup[4]
+            result_file_rel_path = tup[5]
 
             if not os.path.exists(html_file_abs_path):
                 die(u'%s (%s) is in words.db, but "%s" does not exist.' %
@@ -136,9 +161,7 @@ def addword(word_kanji, word_kana):
     add_word_to_wordsdb(word_kanji, word_kana)
 
     for dic in dics:
-        dirname = dic.short_dic_name
-        rel_path = os.path.join(os.path.dirname(__file__), dic.short_dic_name)
-        abs_path = os.path.abspath(rel_path)
+        dirname, rel_path, abs_path = get_paths_for_dic(dic)
         if not os.path.isdir(abs_path):
             die(u'Directory "%s" does not exist.' % abs_path)
 
@@ -146,16 +169,13 @@ def addword(word_kanji, word_kana):
         page_string = dic._fetch_page(word_kanji, word_kana)
         page_string = page_string.decode('utf8')
 
-        html_filename = u'%s_%s.html' % (word_kana, word_kanji)
-        result_filename = u'%s_%s.result.json' % (word_kana, word_kanji)
-
-        # absolute paths to the two files we will use
-        html_file_abs_path = os.path.join(abs_path, html_filename)
-        result_file_abs_path = os.path.join(abs_path, result_filename)
-
-        # relative paths to the two files we will use to print out
-        html_file_rel_path = os.path.join(rel_path, html_filename)
-        result_file_rel_path = os.path.join(rel_path, result_filename)
+        tup = get_paths_for_word(dic, kana, kanji)
+        html_filename = tup[0]
+        result_filename = tup[1]
+        html_file_abs_path = tup[2]
+        result_file_abs_path = tup[3]
+        html_file_rel_path = tup[4]
+        result_file_rel_path = tup[5]
 
         if os.path.exists(html_file_abs_path):
             die(u'File "%s" already exists.' % html_file_rel_path)
@@ -180,7 +200,7 @@ def addword(word_kanji, word_kana):
             except:
                 traceback.print_exc()
                 print(u'Error occured when parsing %s (%s) in %s.' %
-                        (word_kanji, word_kana, dic.short_dic_name))
+                        (word_kanji, word_kana, dic.short_name))
                 print(u'Writing template file "%s".' % result_file_rel_path)
                 print(u'You need to go in and edit the information manually.')
 
