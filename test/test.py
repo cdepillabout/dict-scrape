@@ -1,4 +1,5 @@
 
+import json
 import os
 import subprocess
 import sys
@@ -17,6 +18,9 @@ def test_test():
     assert 1 == 1
 
 def checkword(dictionary, kanji, kana, html, json_result):
+    with open(json_result, "r") as f:
+        json_object = json.load(f, encoding="utf8")
+    print(json_object)
     assert 1 == 1
 
 def test_words():
