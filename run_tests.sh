@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 
 if [ -d 'test' ]; then
