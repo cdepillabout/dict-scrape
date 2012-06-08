@@ -1,0 +1,25 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "definition": "compulsion", 
+            "example_sentences": [
+                {
+                    "eng_trans": "My donation <i>was</i> more <i>forced</i> than voluntary.", 
+                    "jap_sentences": "半ば強迫されて募金に応じた"
+                }, 
+                {
+                    "eng_trans": "He <i>was forced</i> [<i>compelled</i>] to submit.", 
+                    "jap_sentences": "彼は強迫されて屈服した"
+                }, 
+                {
+                    "eng_trans": "He <i>is obsessed with the idea</i> that he is being followed.", 
+                    "jap_sentences": "彼は後を付けられているという強迫観念につきまとわれている"
+                }
+            ]
+        }
+    ], 
+    "kana": "きょうはく", 
+    "kanji": "強迫", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%BC%B7%E8%BF%AB%E3%80%80%E3%81%8D%E3%82%87%E3%81%86%E3%81%AF%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}

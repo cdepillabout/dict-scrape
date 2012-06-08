@@ -2,14 +2,18 @@
 
 # A script for adding testable words.
 import argparse
+import codecs
+import json
 import os.path
 import sys
+import traceback
 
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.append(os.path.join(PROJECT_ROOT, "..", "..", ".."))
 
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
-        ProgressiveDictionary, NewCenturyDictionary
+        ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
+        Definition, Result
 
 def die(string):
     print(u'ERROR! %s' % string)
@@ -28,32 +32,61 @@ def addword(word_kanji, word_kana):
 
     for dic in dics:
         dirname = dic.short_dic_name
-        path = os.path.join(os.path.dirname(__file__), dic.short_dic_name)
-        path = os.path.abspath(path)
-        if not os.path.isdir(path):
-            die(u'Directory "%s" does not exist.' % path)
+        rel_path = os.path.join(os.path.dirname(__file__), dic.short_dic_name)
+        abs_path = os.path.abspath(rel_path)
+        if not os.path.isdir(abs_path):
+            die(u'Directory "%s" does not exist.' % abs_path)
 
+        url = dic._create_url(word_kanji, word_kana)
         page_string = dic._fetch_page(word_kanji, word_kana)
         page_string = page_string.decode('utf8')
 
         html_filename = u'%s_%s.html' % (word_kana, word_kanji)
         result_filename = u'%s_%s.result.json' % (word_kana, word_kanji)
 
-        html_filename_full_path = os.path.join(path, html_filename)
-        result_filename_full_path = os.path.join(path, result_filename)
+        # absolute paths to the two files we will use
+        html_file_abs_path = os.path.join(abs_path, html_filename)
+        result_file_abs_path = os.path.join(abs_path, result_filename)
 
-        if os.path.exists(html_filename_full_path):
-            die(u'File "%s" already exists.' % html_filename_full_path)
+        # relative paths to the two files we will use to print out
+        html_file_rel_path = os.path.join(rel_path, html_filename)
+        result_file_rel_path = os.path.join(rel_path, result_filename)
 
-        if os.path.exists(result_filename_full_path):
-            die(u'File "%s" already exists.' % result_filename_full_path)
+        if os.path.exists(html_file_abs_path):
+            die(u'File "%s" already exists.' % html_file_rel_path)
 
-        with open(html_filename_full_path, 'w') as f:
+        if os.path.exists(result_file_abs_path):
+            die(u'File "%s" already exists.' % result_file_rel_path)
+
+        with open(html_file_abs_path, 'w') as f:
             f.write(page_string.encode('utf8'))
-            print(u'Wrote "%s".' % html_filename_full_path)
+            print(u'Wrote html file: %s' % html_file_rel_path)
 
-        #result = dic.lookup(word_kanji, word_kana)
+        # try to get the result of the encoding and write it so we have
+        # something to work with.  If we can't get it, then just error
+        # out and write a blank result.
+        with codecs.open(result_file_abs_path, 'w', 'utf8') as f:
+            try:
+                result = dic.lookup(word_kanji, word_kana)
+                jsonable = result.to_jsonable()
+                json.dump(jsonable, f, encoding='utf8', sort_keys=True,
+                        indent=4, ensure_ascii=False)
+                print(u'Wrote result file: %s' % result_file_rel_path)
+            except:
+                traceback.print_exc()
+                print(u'Error occured when parsing %s (%s) in %s.' %
+                        (word_kanji, word_kana, dic.short_dic_name))
+                print(u'Writing template file "%s".' % result_file_rel_path)
+                print(u'You need to go in and edit the information manually.')
 
+                example_sentence = ExampleSentence(
+                        u'***JAPANESE SENTENCE***', u'***ENGLISH SENTENCE***')
+                definition = Definition(u'***DEFINITION***', [example_sentence])
+                result = Result(word_kanji, word_kana, url,
+                        u'***KANJI***', u'***KANA***', u'', [definition])
+                jsonable = result.to_jsonable()
+                json.dump(jsonable, f, encoding='utf8', sort_keys=True,
+                        indent=4, ensure_ascii=False)
 
 def main():
     """

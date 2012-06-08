@@ -113,7 +113,7 @@ class Definition(object):
     """
     Contains the defintion from a dictionary along with example sentences.
     """
-    def __init__(self, definition, example_sentences, kaiwa):
+    def __init__(self, definition, example_sentences, kaiwa = []):
         """
         definition is the definition from a dictionary in either
         Japanese or English.  It should be a unicode object.
@@ -165,7 +165,7 @@ class Definition(object):
         #TODO: NOT GETTING KAIWA"""
         ex_sentences = []
         for e in self.example_sentences:
-            ex_sentences.append(e.jsonable())
+            ex_sentences.append(e.to_jsonable())
         return {"definition": self.definition, "example_sentences": ex_sentences}
 
 class Result(object):
@@ -260,7 +260,7 @@ class Result(object):
     def to_jsonable(self):
         dfs = []
         for d in self.defs:
-            dfs.append(d.jsonable())
+            dfs.append(d.to_jsonable())
         return {"url": self.url, "kanji": self.kanji, "kana": self.kana,
                 "accent": self.accent, "defs": dfs}
 
@@ -293,7 +293,7 @@ class Dictionary(object):
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')
-        url = self.__create_url(word_kanji, word_kana)
+        url = self._create_url(word_kanji, word_kana)
         word_not_found_string = \
                 u'<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
@@ -316,7 +316,7 @@ class Dictionary(object):
         defs_sentences = self.parse_definition(tree)
         return Result(word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
 
-    def __create_url(self, word_kanji, word_kana):
+    def _create_url(self, word_kanji, word_kana):
         """Returns a URL for the word/page we are trying to lookup."""
         # this is annoying because urlencode only takes utf8 input for some reason
         search = "%s　%s" % (word_kanji.encode("utf8"), word_kana.encode("utf8"))
@@ -327,7 +327,7 @@ class Dictionary(object):
 
     def _fetch_page(self, word_kanji, word_kana):
         """Fetches the word's page from the internet and returns its contents."""
-        url = self.__create_url(word_kanji, word_kana)
+        url = self._create_url(word_kanji, word_kana)
         page = urllib.urlopen(url)
         page_string = page.read()
         return page_string
@@ -667,7 +667,7 @@ if __name__ == '__main__':
 
     for word in words:
         for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-            print(d.lookup(word[0], word[1]).jsonable())
+            print(d.lookup(word[0], word[1]).to_jsonable())
             print
         print
 
