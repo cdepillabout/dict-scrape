@@ -106,6 +106,9 @@ class ExampleSentence(object):
     def __str__(self):
         return unicode(self).encode("utf8")
 
+    def to_jsonable(self):
+        return {'jap_sentences': self.jap_sentence, 'eng_trans': self.eng_trans}
+
 class Definition(object):
     """
     Contains the defintion from a dictionary along with example sentences.
@@ -118,45 +121,52 @@ class Definition(object):
         """
         if type(definition) is not type(unicode()):
             raise UnicodeError, "definition should be a unicode string"
-        self.result_definition = definition
+        self._definition = definition
 
         if example_sentences:
-            self.result_example_sentences = example_sentences
+            self._example_sentences = example_sentences
         else:
-            self.result_example_sentences = []
+            self._example_sentences = []
 
         if kaiwa:
-            self.result_kaiwa = kaiwa
+            self._kaiwa = kaiwa
         else:
-            self.result_kaiwa = []
+            self._kaiwa = []
 
 
     @property
     def definition(self):
         """Return Japanese or English definition."""
-        return self.result_definition
+        return self._definition
 
     @property
     def example_sentences(self):
         """Return a list of example sentences in the form of ExampleSentence objects."""
-        return self.result_example_sentences
+        return self._example_sentences
 
     @property
     def kaiwai(self):
         """Return a list of kaiwa in the form of ExampleSentence objects."""
-        return self.result_kaiwai
+        return self._kaiwai
 
     def __unicode__(self):
-        if self.result_definition:
-            result_string = u"\n＊ %s" % self.result_definition
+        if self._definition:
+            result_string = u"\n＊ %s" % self._definition
         else:
             result_string = u"\nNO DEFINITION AVAILABLE"
-        for e in self.result_example_sentences:
+        for e in self._example_sentences:
             result_string += unicode(e)
         return result_string
 
     def __str__(self):
         return unicode(self).encode("utf8")
+
+    def to_jsonable(self):
+        #TODO: NOT GETTING KAIWA"""
+        ex_sentences = []
+        for e in self.example_sentences:
+            ex_sentences.append(e.jsonable())
+        return {"definition": self.definition, "example_sentences": ex_sentences}
 
 class Result(object):
     """
@@ -247,6 +257,14 @@ class Result(object):
             result_string += unicode(d)
         return result_string
 
+    def to_jsonable(self):
+        dfs = []
+        for d in self.defs:
+            dfs.append(d.jsonable())
+        return {"url": self.url, "kanji": self.kanji, "kana": self.kana,
+                "accent": self.accent, "defs": dfs}
+
+
 
 
 class Dictionary(object):
@@ -271,11 +289,11 @@ class Dictionary(object):
         but for the kana. Returns a Definition object or None if no
         result could be found.
         """
-        tree = self._create_page_tree(word_kanji, word_kana)
+        tree = self.__create_page_tree(word_kanji, word_kana)
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')
-        url = self._create_url(word_kanji, word_kana)
+        url = self.__create_url(word_kanji, word_kana)
         word_not_found_string = \
                 u'<p><em>%s %s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
@@ -298,7 +316,7 @@ class Dictionary(object):
         defs_sentences = self.parse_definition(tree)
         return Result(word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
 
-    def _create_url(self, word_kanji, word_kana):
+    def __create_url(self, word_kanji, word_kana):
         """Returns a URL for the word/page we are trying to lookup."""
         # this is annoying because urlencode only takes utf8 input for some reason
         search = "%s　%s" % (word_kanji.encode("utf8"), word_kana.encode("utf8"))
@@ -307,15 +325,20 @@ class Dictionary(object):
         encoded_params = urllib.urlencode(params)
         return "http://dic.yahoo.co.jp/dsearch?%s" % encoded_params
 
-    def _create_page_tree(self, word_kanji, word_kana):
+    def _fetch_page(self, word_kanji, word_kana):
+        """Fetches the word's page from the internet and returns its contents."""
+        url = self.__create_url(word_kanji, word_kana)
+        page = urllib.urlopen(url)
+        page_string = page.read()
+        return page_string
+
+    def __create_page_tree(self, word_kanji, word_kana):
         """
         Fetches a page from the internet and parses the page with
         etree.parse(StringIO(page_string), etree.HTMLParser()).
         Returns the parsed tree.
         """
-        url = self._create_url(word_kanji, word_kana)
-        page = urllib.urlopen(url)
-        page_string = page.read()
+        page_string = self._fetch_page(word_kanji, word_kana)
 
         parser = etree.HTMLParser()
         tree = etree.parse(StringIO(page_string), parser)
@@ -338,9 +361,14 @@ class Dictionary(object):
         raise NotImplementedError, "This needs to be overrode in a child class."
 
     @property
-    def dic_name(self):
+    def long_dic_name(self):
         """Return the dictionary name."""
-        return self.dictionary_name
+        return self.long_dictionary_name
+
+    @property
+    def short_dic_name(self):
+        """Return the dictionary name."""
+        return self.short_dictionary_name
 
     @property
     def dic_type(self):
@@ -348,12 +376,15 @@ class Dictionary(object):
         return self.dictionary_type
 
 class DaijirinDictionary(Dictionary):
+    long_dictionary_name = u"Yahoo's Daijirin (大辞林)"
+    short_dictionary_name = "Daijirin"
+    dictionary_type = Dictionary.DAIJIRIN_TYPE
+    dtype_search_param = '0'
+    dname_search_param = '0ss'
+
     def __init__(self):
-        self.dictionary_name = "Yahoo's Daijirin (大辞林)"
-        self.dictionary_type = Dictionary.DAIJIRIN_TYPE
-        self.dtype_search_param = '0'
-        self.dname_search_param = '0ss'
         #super(DaijirinDictionary, self).__init__()
+        pass
 
     def parse_heading(self, tree):
         div = tree.xpath("//div[@class='title-keyword']")[0]
@@ -415,11 +446,14 @@ class DaijirinDictionary(Dictionary):
         return jap_defs
 
 class DaijisenDictionary(DaijirinDictionary):
+    long_dictionary_name = u"Yahoo's Daijisen (大辞泉)"
+    short_dictionary_name = "Daijisen"
+    dictionary_type = Dictionary.DAIJISEN_TYPE
+    dtype_search_param = '0'
+    dname_search_param = '0na'
+
     def __init__(self):
-        self.dictionary_name = "Yahoo's Daijisen (大辞泉)"
-        self.dictionary_type = Dictionary.DAIJISEN_TYPE
-        self.dtype_search_param = '0'
-        self.dname_search_param = '0na'
+        pass
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
@@ -439,11 +473,14 @@ class DaijisenDictionary(DaijirinDictionary):
         return jap_defs
 
 class NewCenturyDictionary(DaijirinDictionary):
+    long_dictionary_name = u"Yahoo's New Century Dictionary (ニューセンチュリー和英辞典)"
+    short_dictionary_name = "New_Century"
+    dictionary_type = Dictionary.NEW_CENTURY_TYPE
+    dtype_search_param = '3'
+    dname_search_param = '2ss'
+
     def __init__(self):
-        self.dictionary_name = "Yahoo's New Century Dictionary (ニューセンチュリー和英辞典)"
-        self.dictionary_type = Dictionary.NEW_CENTURY_TYPE
-        self.dtype_search_param = '3'
-        self.dname_search_param = '2ss'
+        pass
 
     def parse_definition(self, tree):
         def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
@@ -512,11 +549,14 @@ class NewCenturyDictionary(DaijirinDictionary):
         return definitions
 
 class ProgressiveDictionary(DaijirinDictionary):
+    long_dictionary_name = u"Yahoo's Progressive Dictionary (プログレッシブ和英中辞典)"
+    short_dictionary_name = "Progressive"
+    dictionary_type = Dictionary.PROGRESSIVE_TYPE
+    dtype_search_param = '3'
+    dname_search_param = '2na'
+
     def __init__(self):
-        self.dictionary_name = "Yahoo's Progressive Dictionary (プログレッシブ和英中辞典)"
-        self.dictionary_type = Dictionary.PROGRESSIVE_TYPE
-        self.dtype_search_param = '3'
-        self.dname_search_param = '2na'
+        pass
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
@@ -627,7 +667,7 @@ if __name__ == '__main__':
 
     for word in words:
         for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-            print(d.lookup(word[0], word[1]))
+            print(d.lookup(word[0], word[1]).jsonable())
             print
         print
 
