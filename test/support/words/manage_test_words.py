@@ -4,6 +4,7 @@
 import argparse
 import codecs
 import json
+import operator
 import os.path
 import sys
 import traceback
@@ -29,6 +30,8 @@ def addword(word_kanji, word_kana):
             DaijisenDictionary(),
             ProgressiveDictionary(),
             NewCenturyDictionary()]
+
+    add_word_to_wordsdb(word_kanji, word_kana)
 
     for dic in dics:
         dirname = dic.short_dic_name
@@ -87,6 +90,41 @@ def addword(word_kanji, word_kana):
                 jsonable = result.to_jsonable()
                 json.dump(jsonable, f, encoding='utf8', sort_keys=True,
                         indent=4, ensure_ascii=False)
+
+def add_word_to_wordsdb(word_kanji, word_kana):
+    # Update the words.db with the current word we just added.
+    words_db_rel_path = os.path.join(os.path.dirname(__file__), "words.db")
+    words_db_abs_path = os.path.abspath(words_db_rel_path)
+    if not (os.path.exists(words_db_abs_path)):
+        die("words.db does not exist! Something is wrong!")
+
+    words = []
+
+    # read in current words
+    with codecs.open(words_db_abs_path, 'r', 'utf8') as f:
+        lines = f.read().split('\n')
+    for l in lines:
+        if l != '':
+            kana, kanji = l.split()
+            words.append(tuple([kana, kanji]))
+
+    # make sure our new word is not in words.db
+    for word in words:
+        if word_kana == word[0] and word_kanji == word[1]:
+            die("%s (%s) already exists in words.db." % (word_kanji, word_kana))
+
+    # add our new word
+    words.append(tuple([word_kana, word_kanji]))
+
+    # sort words
+    words = sorted(words, key=operator.itemgetter(1,0))
+    for word in words:
+        print("%s (%s)" % (word[1], word[0]))
+
+    # write sorted word list words
+    with codecs.open(words_db_abs_path, 'w', 'utf8') as f:
+        for word in words:
+            f.write(u'%s %s\n' % (word[0], word[1]))
 
 def main():
     """
