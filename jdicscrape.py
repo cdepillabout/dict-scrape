@@ -107,7 +107,13 @@ class ExampleSentence(object):
         return unicode(self).encode("utf8")
 
     def to_jsonable(self):
-        return {'jap_sentences': self.jap_sentence, 'eng_trans': self.eng_trans}
+        return {'jap_sentence': self.jap_sentence, 'eng_trans': self.eng_trans}
+
+    @classmethod
+    def from_jsonable(cls, jsonable):
+        return cls(jsonable['jap_sentence'], jsonable['eng_trans'])
+
+
 
 class Definition(object):
     """
@@ -168,6 +174,13 @@ class Definition(object):
             ex_sentences.append(e.to_jsonable())
         return {"definition": self.definition, "example_sentences": ex_sentences}
 
+    @classmethod
+    def from_jsonable(cls, jsonable):
+        ex_sentences = []
+        for e in jsonable["example_sentences"]:
+            ex_sentences.append(ExampleSentence.from_jsonable(e))
+        return cls(jsonable["definition"], ex_sentences)
+
 class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
@@ -175,6 +188,9 @@ class Result(object):
     def __init__(self, original_kanji, original_kana, url,
             kanji=None, kana=None, accent=None, defs=[]):
         """
+        original_kanji/kana is the kanji/kana that we searched for in the
+        dictionary.
+        url is the url that we searched on.
         kanji is a string with the kanji from the result. This may be the same
         as kana.
         kana is a string with the kana from the result.
@@ -261,8 +277,19 @@ class Result(object):
         dfs = []
         for d in self.defs:
             dfs.append(d.to_jsonable())
-        return {"url": self.url, "kanji": self.kanji, "kana": self.kana,
+        return {"original_kanji": self.original_kanji, "original_kana": self.original_kana,
+                "url": self.url, "result_kanji": self.kanji, "result_kana": self.kana,
                 "accent": self.accent, "defs": dfs}
+
+    @classmethod
+    def from_jsonable(cls, jsonable):
+        dfs = []
+        for d in jsonable["defs"]:
+            dfs.append(Definition.from_jsonable(d))
+        return cls(jsonable["original_kanji"], jsonable["original_kana"],
+                jsonable["url"], jsonable["result_kanji"], jsonable["result_kana"],
+                jsonable["accent"], dfs)
+
 
 
 
@@ -282,14 +309,15 @@ class Dictionary(object):
     def __init__(self):
         pass
 
-    def lookup(self, word_kanji, word_kana):
+    def lookup(self, word_kanji, word_kana, html=None):
         """
-        Lookup a word in a dictionary.  word_kanji is a string
-        for the kanji you want to lookup, and word_kana is the same
-        but for the kana. Returns a Definition object or None if no
-        result could be found.
+        Lookup a word in a dictionary.  word_kanji is a string for the kanji
+        you want to lookup, and word_kana is the same but for the kana. html is
+        the source of the page we will parse to lookup the defintion. If html
+        is None, then we will fetch the page from the internet.  Returns a
+        Definition object or None if no result could be found.
         """
-        tree = self.__create_page_tree(word_kanji, word_kana)
+        tree = self.__create_page_tree(word_kanji, word_kana, html)
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')
@@ -332,13 +360,17 @@ class Dictionary(object):
         page_string = page.read()
         return page_string
 
-    def __create_page_tree(self, word_kanji, word_kana):
+    def __create_page_tree(self, word_kanji, word_kana, html=None):
         """
         Fetches a page from the internet and parses the page with
-        etree.parse(StringIO(page_string), etree.HTMLParser()).
-        Returns the parsed tree.
+        etree.parse(StringIO(page_string), etree.HTMLParser()). If html is not
+        None, then it is used as the html source.  It is not fetched from the
+        internet.  Returns the parsed tree.
         """
-        page_string = self._fetch_page(word_kanji, word_kana)
+        if html:
+            page_string = html
+        else:
+            page_string = self._fetch_page(word_kanji, word_kana)
 
         parser = etree.HTMLParser()
         tree = etree.parse(StringIO(page_string), parser)

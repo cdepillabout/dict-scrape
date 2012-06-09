@@ -5,6 +5,8 @@ import subprocess
 import sys
 import manage_test_words as manage_words
 
+from jdicscrape import Result
+
 def test_words_sanity():
     # TODO: This should be moved to the run_test.sh script.
     """Check sanity of words database (keep this test first)"""
@@ -17,18 +19,22 @@ def test_words_sanity():
 def test_test():
     assert 1 == 1
 
-def checkword(dictionary, kanji, kana, html, json_result):
-    with open(json_result, "r") as f:
-        json_object = json.load(f, encoding="utf8")
-    print(json_object)
+def checkword(dictionary, kanji, kana):
+    html = manage_words.get_html_for_word(dictionary, kana, kanji)
+    json_object = manage_words.get_json_for_word(dictionary, kana, kanji)
+
+    html_result = dictionary.lookup(kanji, kana, html)
+    json_result = Result.from_jsonable(json_object)
+
+    print("JSON object: %s" % json_object)
+    print("JSON result: %s" % json_result)
+    print("HTML result: %s" % html_result)
     assert 1 == 1
 
 def test_words():
     words = manage_words.get_words_from_wordsdb()
-
     for dic in manage_words.get_dics():
-        for word in words:
-            _,_,html,json_result,_,_ = manage_words.get_paths_for_word(dic, word[0], word[1])
-            checkword.description = u'check %s (%s) in %s' % (word[1], word[0], dic.short_name)
-            yield checkword, dic, word[1], word[0], html, json_result
+        for kana, kanji in words:
+            checkword.description = u'check %s (%s) in %s' % (kana, kanji, dic.short_name)
+            yield checkword, dic, kanji, kana
 
