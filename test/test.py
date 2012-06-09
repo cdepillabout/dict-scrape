@@ -49,16 +49,37 @@ def pretty_format(obj, tab_amount=0):
 
 def print_differences_example_sentence(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string):
     """
-    Prints the differences to between two definitions.
+    Prints the differences to between two example sentences.
     """
     print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "jap_sentence")
     print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "eng_trans")
+
+def print_differences_definition_part(part_a, part_b, part_a_string, part_b_string):
+    """
+    Prints the differences to between two definition parts.
+    """
+    print_helper(part_a, part_b, part_a_string, part_b_string, "part")
 
 def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
     """
     Prints the differences to between two definitions.
     """
-    print_helper(def_a, def_b, def_a_string, def_b_string, "definition")
+    parts_a = def_a.parts
+    parts_b = def_b.parts
+
+    if len(parts_a) != len(parts_b):
+        print(u'\n\tnumber of parts for definition is different')
+        print(u'\n\tparts from %s:' % def_a_string)
+        for p in parts_a:
+            print(p)
+        print(u'\n\tparts from %s:' % def_a_string)
+        for p in parts_b:
+            print(p)
+    else:
+        for part_a, part_b in zip(parts_a, parts_b):
+            part_a_string = def_a_string + ".part"
+            part_b_string = def_b_string + ".part"
+            print_differences_example_sentence(part_a, part_b, part_a_string, part_b_string)
 
     exs_a = def_a.example_sentences
     exs_b = def_b.example_sentences

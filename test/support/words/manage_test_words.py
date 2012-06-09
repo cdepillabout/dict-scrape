@@ -15,7 +15,7 @@ sys.path.append(os.path.join(PROJECT_ROOT, "..", "..", ".."))
 
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
-        Definition, Result
+        DefinitionPart, Definition, Result
 
 dics = [DaijirinDictionary(),
         DaijisenDictionary(),
@@ -196,7 +196,9 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
             url = dic._create_url(word_kanji, word_kana)
             example_sentence = ExampleSentence(
                     u'***JAPANESE SENTENCE***', u'***ENGLISH SENTENCE***')
-            definition = Definition(u'***DEFINITION***', [example_sentence])
+            part1 = DefinitionPart(u'***PART 1***')
+            part2 = DefinitionPart(u'***PART 2***')
+            definition = Definition([part1, part2], [example_sentence])
             result = Result(dic, word_kanji, word_kana, url,
                     u'***KANJI***', u'***KANA***', u'', [definition])
             jsonable = result.to_jsonable()

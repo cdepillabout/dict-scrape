@@ -134,19 +134,80 @@ class ExampleSentence(object):
     def from_jsonable(cls, jsonable):
         return cls(jsonable['jap_sentence'], jsonable['eng_trans'])
 
+class DefinitionPart(object):
+    """
+    A part of a definition.  This is a part of a definition that makes up a whole definition.
+
+    For instance, in the definition "あることをするよう無理に要求すること。むりじい。", there
+    would be two definition parts.
+    1) あることをするよう無理に要求すること
+    2) むりじい
+    """
+    def __init__(self, part):
+        """
+        item is a string corresponding to a part of a definition.
+        """
+        if type(part) is not type(unicode()):
+            raise UnicodeError, "item should be a unicode string"
+        self._part = part
+        self._definition = None
+
+    @property
+    def part(self):
+        """Return the part."""
+        return self._part
+
+    def set_definition(self, definition):
+        """Set the Definition that this DefinitionPart belongs to."""
+        self._definition = definition
+
+    @property
+    def definition(self):
+        """Return the Definition that this DefinitionPart belongs to."""
+        return self._definition
+
+    @property
+    def result(self):
+        """Return the Result that this DefinitionPart belongs to."""
+        return self.definition.result
+
+    def __unicode__(self):
+        result_string = u"%s" % self.part
+        return result_string
+
+    def __str__(self):
+        return unicode(self).encode("utf8")
+
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__) and
+                self.part == other.part)
+
+    def to_jsonable(self):
+        return self.part
+
+    @classmethod
+    def from_jsonable(cls, jsonable):
+        return cls(jsonable)
+
 class Definition(object):
     """
     Contains the defintion from a dictionary along with example sentences.
     """
-    def __init__(self, definition, example_sentences):
+    def __init__(self, parts, example_sentences):
         """
-        definition is the definition from a dictionary in either
-        Japanese or English.  It should be a unicode object.
+        parts is a list of DefinitionPart objects from a dictionary in either
+        Japanese or English.
         example_sentences is a lists of ExampleSentence objects.
         """
-        if type(definition) is not type(unicode()):
-            raise UnicodeError, "definition should be a unicode string"
-        self._definition = definition
+        if parts:
+            self._parts = parts
+            for p in self._parts:
+                if p.definition is not None:
+                    raise Exception(u'part "%s" already has def object defined' %
+                            unicode(p))
+                p.set_definition(self)
+        else:
+            self._parts = []
 
         if example_sentences:
             self._example_sentences = example_sentences
@@ -161,19 +222,14 @@ class Definition(object):
         self._result = None
 
     @property
-    def definition(self):
-        """Return Japanese or English definition."""
-        return self._definition
+    def parts(self):
+        """Return definition parts."""
+        return self._parts
 
     @property
     def example_sentences(self):
         """Return a list of example sentences in the form of ExampleSentence objects."""
         return self._example_sentences
-
-    @property
-    def kaiwai(self):
-        """Return a list of kaiwa in the form of ExampleSentence objects."""
-        return self._kaiwai
 
     def set_result(self, result):
         """Set the Result that this Definition belongs to."""
@@ -185,8 +241,10 @@ class Definition(object):
         return self._result
 
     def __unicode__(self):
-        if self._definition:
-            result_string = u"\n＊ %s" % self._definition
+        if self._parts:
+            result_string = u"\n＊ "
+            for p in self.parts:
+                result_string += p + "。"
         else:
             result_string = u"\nNO DEFINITION AVAILABLE"
         for e in self._example_sentences:
@@ -198,22 +256,27 @@ class Definition(object):
 
     def __eq__(self, other):
         return (isinstance(other, self.__class__) and
-                self.definition == other.definition and
+                self.parts == other.parts and
                 self.example_sentences == other.example_sentences)
 
     def to_jsonable(self):
-        #TODO: NOT GETTING KAIWA"""
+        parts = []
+        for p in self.parts:
+            parts.append(p.to_jsonable())
         ex_sentences = []
         for e in self.example_sentences:
             ex_sentences.append(e.to_jsonable())
-        return {"definition": self.definition, "example_sentences": ex_sentences}
+        return {"definition": parts, "example_sentences": ex_sentences}
 
     @classmethod
     def from_jsonable(cls, jsonable):
+        parts = []
+        for p in jsonable["definition"]:
+            parts.append(DefinitionPart.from_jsonable(p))
         ex_sentences = []
         for e in jsonable["example_sentences"]:
             ex_sentences.append(ExampleSentence.from_jsonable(e))
-        return cls(jsonable["definition"], ex_sentences)
+        return cls(parts, ex_sentences)
 
 class Result(object):
     """
@@ -514,7 +577,7 @@ class DaijirinDictionary(Dictionary):
             result = re.sub("^<td>", "", result)
             result = re.sub("<br>.*$", "", result)
             result = result.strip()
-            jap_defs.append(Definition(result.decode("utf8"), None))
+            jap_defs.append(Definition([DefinitionPart(result.decode("utf8"))], None))
 
         if not definition_tables:
             definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
@@ -525,7 +588,7 @@ class DaijirinDictionary(Dictionary):
                 result = re.sub("<br></td>$", "", result)
                 result = result.strip()
                 result = result.decode("utf8")
-                jap_defs.append(Definition(result, None))
+                jap_defs.append(Definition([DefinitionPart(result)], None))
 
         return jap_defs
 
@@ -546,13 +609,13 @@ class DaijisenDictionary(DaijirinDictionary):
         matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
         if matches:
             for m in matches:
-                jap_defs.append(Definition(m.decode("utf8"), None))
+                jap_defs.append(Definition([DefinitionPart(m.decode("utf8"))], None))
         else:
             result = re.sub("^<td>", "", result)
             result = re.sub("<br></td>.*$", "", result)
             result = result.strip()
             result = result.decode("utf8")
-            jap_defs.append(Definition(result, None))
+            jap_defs.append(Definition([DefinitionPart(result)], None))
 
         return jap_defs
 
@@ -628,7 +691,7 @@ class NewCenturyDictionary(DaijirinDictionary):
 
                     kaiwa.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            definitions.append(Definition(english_def.decode("utf8"), example_sentences))
+            definitions.append(Definition([DefinitionPart(english_def.decode("utf8"))], example_sentences))
 
         return definitions
 
@@ -693,7 +756,7 @@ class ProgressiveDictionary(DaijirinDictionary):
                     eng_sent = m[1].decode("utf8")
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
-            definitions.append(Definition(english_def.decode("utf8"), example_sentences))
+            definitions.append(Definition([DefinitionPart(english_def.decode("utf8"))], example_sentences))
 
         return definitions
 
