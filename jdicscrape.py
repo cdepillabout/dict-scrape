@@ -84,27 +84,32 @@ class ExampleSentence(object):
             raise UnicodeError, "jap_sentence should be a unicode string"
         if type(eng_trans) is not type(unicode()):
             raise UnicodeError, "eng_trans should be a unicode string"
-        self.result_jap_sentence = jap_sentence
-        self.result_eng_trans = eng_trans
+        self._jap_sentence = jap_sentence
+        self._eng_trans = eng_trans
 
     @property
     def jap_sentence(self):
         """Return the Japanese sentence."""
-        return self.result_jap_sentence
+        return self._jap_sentence
 
     @property
     def eng_trans(self):
         """Return the English sentence."""
-        return self.result_eng_trans
+        return self._eng_trans
 
     def __unicode__(self):
-        result_string = u"\n      - %s" % self.result_jap_sentence
-        if self.result_eng_trans:
-            result_string += u"\n        %s" % self.result_eng_trans
+        result_string = u"\n      - %s" % self._jap_sentence
+        if self._eng_trans:
+            result_string += u"\n        %s" % self._eng_trans
         return result_string
 
     def __str__(self):
         return unicode(self).encode("utf8")
+
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__) and
+                self.jap_sentence == other.jap_sentence and
+                self.eng_trans == other.eng_trans)
 
     def to_jsonable(self):
         return {'jap_sentence': self.jap_sentence, 'eng_trans': self.eng_trans}
@@ -166,6 +171,11 @@ class Definition(object):
 
     def __str__(self):
         return unicode(self).encode("utf8")
+
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__) and
+                self.definition == other.definition and
+                self.example_sentences == other.example_sentences)
 
     def to_jsonable(self):
         #TODO: NOT GETTING KAIWA"""
@@ -272,6 +282,16 @@ class Result(object):
         for d in self._defs:
             result_string += unicode(d)
         return result_string
+
+    def __eq__(self, other):
+        return (isinstance(other, self.__class__) and
+                self.original_kanji == other.original_kanji and
+                self.original_kana == other.original_kana and
+                self.url == other.url and
+                self.kanji == other.kanji and
+                self.kana == other.kana and
+                self.accent == other.accent and
+                self.defs == other.defs)
 
     def to_jsonable(self):
         dfs = []

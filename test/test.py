@@ -16,20 +16,16 @@ def test_words_sanity():
     sts = os.waitpid(p.pid, 0)[1]
     assert sts == 0
 
-def test_test():
-    assert 1 == 1
-
 def checkword(dictionary, kanji, kana):
     html = manage_words.get_html_for_word(dictionary, kana, kanji)
     json_object = manage_words.get_json_for_word(dictionary, kana, kanji)
 
-    html_result = dictionary.lookup(kanji, kana, html)
+    html_parse_result = dictionary.lookup(kanji, kana, html)
     json_result = Result.from_jsonable(json_object)
 
-    print("JSON object: %s" % json_object)
-    print("JSON result: %s" % json_result)
-    print("HTML result: %s" % html_result)
-    assert 1 == 1
+    if (json_result != html_parse_result):
+        # TODO: find out what doesn't match
+        assert(json_result == html_parse_result)
 
 def test_words():
     words = manage_words.get_words_from_wordsdb()
