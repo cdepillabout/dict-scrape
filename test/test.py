@@ -34,9 +34,9 @@ def print_helper(object_a, object_b, object_a_desc, object_b_desc, member_string
 
     # print if different
     if value_a != value_b:
-        print(u'\n\t%s: %s -- %s' %
+        print(u'\n\t%s: "%s" attribute -- %s' %
                 (object_a_desc, member_string, value_a))
-        print(u'\t%s: %s -- %s' %
+        print(u'\t%s: "%s" attribute -- %s' %
                 (object_b_desc, member_string, value_b))
 
 def pretty_format(obj, tab_amount=0):
@@ -47,30 +47,36 @@ def pretty_format(obj, tab_amount=0):
     wrapper = textwrap.TextWrapper(initial_indent=indent, subsequent_indent=indent, width=35)
     return wrapper.fill(u'%s' % obj)
 
+def print_differences_example_sentence(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string):
+    """
+    Prints the differences to between two definitions.
+    """
+    print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "jap_sentence")
+    print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "eng_trans")
+
 def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
     """
     Prints the differences to between two definitions.
     """
     print_helper(def_a, def_b, def_a_string, def_b_string, "definition")
 
-    exs_a = result_a.example_sentences
-    exs_b = result_b.example_sentences
+    exs_a = def_a.example_sentences
+    exs_b = def_b.example_sentences
 
     if len(exs_a) != len(exs_b):
         print(u'\n\tnumber of example sentences for definition is different')
-        print(u'\n\tdefinition')
-        print(u'\texample sentences from %s:' % def_a_string)
-        for d in exs_a:
-            print(pretty_format(d, tab_amount=2))
-        print(u'\texample sentences from %s:' % def_a_string)
-        for d in exs_b:
-            print(pretty_format(d, tab_amount=2))
+        print(u'\n\tdefinition: %s' % def_a.definition)
+        print(u'\n\texample sentences from %s:' % def_a_string)
+        for e in exs_a:
+            print(e)
+        print(u'\n\texample sentences from %s:' % def_a_string)
+        for e in exs_b:
+            print(e)
     else:
-        for def_a, def_b in zip(exs_a, exs_b):
-            def_a_string = result_a_string + " for definition"
-            def_a_string = result_b_string + " for definition"
-            print_differences_definition(def_a, def_b, def_a_string, def_b_string)
-
+        for ex_a, ex_b in zip(exs_a, exs_b):
+            ex_a_string = def_a_string + ".example_sentence"
+            ex_b_string = def_b_string + ".example_sentence"
+            print_differences_example_sentence(ex_a, ex_b, ex_a_string, ex_b_string)
 
 def print_differences_result(result_a, result_b, result_a_string, result_b_string):
     """
@@ -96,7 +102,9 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
             print(pretty_format(d, tab_amount=2))
     else:
         for def_a, def_b in zip(defs_a, defs_b):
-            print_differences_definition(def_a, def_b, result_a_string, result_b_string)
+            def_a_string = result_a_string + ".definition"
+            def_b_string = result_b_string + ".definition"
+            print_differences_definition(def_a, def_b, def_a_string, def_b_string)
 
 def checkword(dictionary, kanji, kana):
     html = manage_words.get_html_for_word(dictionary, kana, kanji)
