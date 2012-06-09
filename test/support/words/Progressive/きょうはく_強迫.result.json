@@ -2,9 +2,6 @@
     "accent": "", 
     "defs": [
         {
-            "definition": [
-                "compulsion"
-            ], 
             "example_sentences": [
                 {
                     "eng_trans": "My donation <i>was</i> more <i>forced</i> than voluntary.", 
@@ -18,6 +15,9 @@
                     "eng_trans": "He <i>is obsessed with the idea</i> that he is being followed.", 
                     "jap_sentence": "彼は後を付けられているという強迫観念につきまとわれている"
                 }
+            ], 
+            "parts": [
+                "compulsion"
             ]
         }
     ], 

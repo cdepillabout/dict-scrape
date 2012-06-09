@@ -266,12 +266,12 @@ class Definition(object):
         ex_sentences = []
         for e in self.example_sentences:
             ex_sentences.append(e.to_jsonable())
-        return {"definition": parts, "example_sentences": ex_sentences}
+        return {"parts": parts, "example_sentences": ex_sentences}
 
     @classmethod
     def from_jsonable(cls, jsonable):
         parts = []
-        for p in jsonable["definition"]:
+        for p in jsonable["parts"]:
             parts.append(DefinitionPart.from_jsonable(p))
         ex_sentences = []
         for e in jsonable["example_sentences"]:

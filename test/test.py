@@ -79,7 +79,7 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
         for part_a, part_b in zip(parts_a, parts_b):
             part_a_string = def_a_string + ".part"
             part_b_string = def_b_string + ".part"
-            print_differences_example_sentence(part_a, part_b, part_a_string, part_b_string)
+            print_differences_definition_part(part_a, part_b, part_a_string, part_b_string)
 
     exs_a = def_a.example_sentences
     exs_b = def_b.example_sentences
