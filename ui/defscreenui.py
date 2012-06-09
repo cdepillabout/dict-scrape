@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from PyQt4 import QtCore, QtGui, QtWebKit
-import diclist
 
 class DefWebView(QtWebKit.QWebView):
     def __init__(self, parent=None, defs=[]):
@@ -14,32 +13,20 @@ class DefWebView(QtWebKit.QWebView):
 
         html = ''
         with open('deflisthtmlbeginning.html') as f:
-            html = f.read()
+            html = f.read().decode('utf8')
         self.defs = defs
-        for i in range(len(defs)):
-            idattr = "id='def%s'" % i
-            classattr = "class='notselected'"
-            onclickattr = "onclick='changeBackgroundColor(\"def%s\");'" % i
-            html += "\n<p %s %s %s>%s %s</p>" % \
-                    (idattr, classattr, onclickattr, unichr(ordinal + i), defs[i].definition)
-        html += "\n</body></html>"
+        for i, d in enumerate(defs):
+            html += u"\n<p>%s " % unichr(ordinal + i)
+            for j, p in enumerate(d.parts):
+                idattr = u"id='defpart_%s_%s'" % (i, j)
+                classattr = u"class='notselected'"
+                onclickattr = u"onclick='changeBackgroundColor(\"defpart_%s_%s\");'" % (i, j)
+                html += u'\n<span %s %s %s>%s</span>。' % \
+                        (idattr, classattr, onclickattr, p.part)
+            html += u"</p>"
+        html += u"\n</body></html>"
 
         self.setHtml(html)
-        #html = self.page().mainFrame().toHtml()
-        #print(html.toUtf8())
-
-    """
-    def mousePressEvent(self, mouseevent):
-        super(DefTextEdit, self).mousePressEvent(mouseevent)
-        #print("LALALALALA mouseevent(%s, %s)" % (mouseevent.x(), mouseevent.y()))
-        cursor = self.cursorForPosition(QtCore.QPoint(mouseevent.x(), mouseevent.y()))
-        position = cursor.position()
-        doc = self.document()
-        print("cursor = %s, position = %s, character = %s" %
-                (cursor, position, unichr(doc.characterAt(position).unicode())))
-        print("lala = %s" % (doc.findBlock(position).text()))
-    """
-
 
 class Ui_MainWindowReader(object):
 
@@ -64,30 +51,6 @@ class Ui_MainWindowReader(object):
         resultwordlabel.setText("")
         horizontallayout.addWidget(resultwordlabel)
 
-        #model = QtGui.QStandardItemModel()
-        model = None
-
-        """
-        listwidget = QtGui.QListWidget(self.centralwidget)
-        listwidget.setAlternatingRowColors(True)
-        #listwidget.setProperty("isWrapping", True)
-        #listwidget.setSpacing(2)
-        listwidget.setUniformItemSizes(False)
-        listwidget.setWordWrap(True)
-        listwidget.setObjectName(listobjectname)
-        listwidget.setSelectionMode(QtGui.QAbstractItemView.MultiSelection)
-        #listwidget.setModel(model)
-        #listwidget.setItemDelegate(diclist.DefListDelegate())
-        dictlabel.setBuddy(listwidget)
-        verticallayout.addWidget(listwidget)
-        """
-        """
-        textedit = DefTextEdit(self.centralwidget)
-        textedit.setObjectName(texteditobjectname)
-        textedit.setReadOnly(True)
-        dictlabel.setBuddy(textedit)
-        verticallayout.addWidget(textedit)
-        """
         webview = DefWebView(self.centralwidget)
         webview.setObjectName(webviewobjectname)
         dictlabel.setBuddy(webview)
@@ -97,7 +60,7 @@ class Ui_MainWindowReader(object):
         #textedit.customContextMenuRequested.connect(textedit.lalalala)
 
         # don't return the horizontal layout
-        return verticallayout, dictlabel, resultwordlabel, model, webview
+        return verticallayout, dictlabel, resultwordlabel, webview
 
     def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
@@ -148,14 +111,12 @@ class Ui_MainWindowReader(object):
         self.japdichorizlayout.setObjectName("japdichorizlayout")
 
         self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
-                self.daijisenlistmodel, self.daijisendefwebview = self.createlist(
-                        "daijisenverticallayout",
+                self.daijisendefwebview = self.createlist("daijisenverticallayout",
                         "daijisenhorizontallayout", "daijisenresultwordlabel",
                         "daijisenlabel", "daijisentextedit", u'大辞泉')
         self.japdichorizlayout.addLayout(self.daijisenverticallayout)
         self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
-                self.daijirinlistmodel, self.daijirindefwebview = self.createlist(
-                        "daijirinverticallayout",
+                self.daijirindefwebview = self.createlist("daijirinverticallayout",
                         "daijirinhorizontallayout", "daijirinresultwordlabel",
                         "daijirinlabel", "daijirintextedit", u'大辞林')
         self.japdichorizlayout.addLayout(self.daijirinverticallayout)
@@ -166,14 +127,12 @@ class Ui_MainWindowReader(object):
         self.engdichorizlayout.setObjectName("engdichorizlayout")
 
         self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
-                self.newcenturylistmodel, self.newcenturydefwebview = self.createlist(
-                        "newcenturyvertlayout",
+                self.newcenturydefwebview = self.createlist("newcenturyvertlayout",
                         "newcenturyhorizontallayout", "newcenturyresultwordlabel",
                         "newcenturylabel", "newcenturytextedit", "New Century")
         self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
         self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
-                self.progresslistmodel, self.progressdefwebview = self.createlist(
-                        "progressvertlayout",
+                self.progressdefwebview = self.createlist("progressvertlayout",
                         "progresshorizontallayout", "progressresultwordlabel",
                         "progresslabel", "progresstextedit", "Progressive")
         self.engdichorizlayout.addLayout(self.progressvertlayout)

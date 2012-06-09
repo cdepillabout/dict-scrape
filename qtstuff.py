@@ -43,15 +43,15 @@ class MainWindowReader(QtGui.QMainWindow):
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
         dicts = [
-                (daijirin, self.ui.daijirindefwebview, self.ui.daijirinlistmodel, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
-                (daijisen, self.ui.daijisendefwebview, self.ui.daijisenlistmodel, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
-                (progressive, self.ui.progressdefwebview, self.ui.progresslistmodel, self.ui.progresswebview, self.ui.progressresultwordlabel),
-                (newcentury, self.ui.newcenturydefwebview, self.ui.newcenturylistmodel, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
+                (daijirin, self.ui.daijirindefwebview, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
+                (daijisen, self.ui.daijisendefwebview, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
+                (progressive, self.ui.progressdefwebview, self.ui.progresswebview, self.ui.progressresultwordlabel),
+                (newcentury, self.ui.newcenturydefwebview, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
                 ]
 
         #self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
 
-        for d, defwebviewwidget, model, webviewwidget, resultwordlabel in dicts:
+        for d, defwebviewwidget, webviewwidget, resultwordlabel in dicts:
             result = d.lookup(word_kanji, word_kana)
             if d == daijirin:
                 if result.accent:
@@ -77,7 +77,7 @@ class MainWindowReader(QtGui.QMainWindow):
                 resultwordlabeltext = "NO DEFINITION FOUND"
             resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
 
-            self.addDefinition(defwebviewwidget, model, result)
+            self.addDefinition(defwebviewwidget, result)
 
 
 
@@ -100,9 +100,9 @@ class MainWindowReader(QtGui.QMainWindow):
         """
         pass
 
-    def addDefinition(self, defwebviewwidget, model, result):
+    def addDefinition(self, defwebviewwidget, result):
         # add result definitions
-        defwebviewwidget.setDefs(result.defs + result.defs + result.defs + result.defs)
+        defwebviewwidget.setDefs(result.defs)
 
 
 

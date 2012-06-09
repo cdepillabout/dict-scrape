@@ -608,7 +608,8 @@ class DaijisenDictionary(DaijirinDictionary):
         splits = definition_string.split(u'。')
         parts = []
         for s in splits:
-            parts.append(DefinitionPart(s))
+            if s:
+                parts.append(DefinitionPart(s))
         return parts
 
 
