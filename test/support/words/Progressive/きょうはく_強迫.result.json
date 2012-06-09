@@ -2,7 +2,9 @@
     "accent": "", 
     "defs": [
         {
-            "definition": "compulsion", 
+            "definition": [
+                "compulsion"
+            ], 
             "example_sentences": [
                 {
                     "eng_trans": "My donation <i>was</i> more <i>forced</i> than voluntary.", 
