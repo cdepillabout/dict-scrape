@@ -4,13 +4,17 @@
         {
             "example_sentences": [], 
             "parts": [
-                "あることをするよう無理に要求すること。むりじい。「寄付を―する」"
+                "あることをするよう無理に要求すること", 
+                "むりじい", 
+                "「寄付を―する」"
             ]
         }, 
         {
             "example_sentences": [], 
             "parts": [
-                "<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/17835700/\">民法</a>上、他人に違法な害悪を示して恐怖心を生じさせ、その人の自由な意思決定を妨げること。強迫による<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/00832400/\">意思表示</a>は取り消すことができる。"
+                "<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/17835700/\">民法</a>上、他人に違法な害悪を示して恐怖心を生じさせ、その人の自由な意思決定を妨げること", 
+                "強迫による<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/00832400/\">意思表示</a>は取り消すことができる", 
+                ""
             ]
         }
     ], 

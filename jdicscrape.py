@@ -602,20 +602,29 @@ class DaijisenDictionary(DaijirinDictionary):
     def __init__(self):
         pass
 
+    def split_def_parts(self, definition_string):
+        """Split a definition into definition parts."""
+        assert(isinstance(definition_string, unicode))
+        splits = definition_string.split(u'。')
+        parts = []
+        for s in splits:
+            parts.append(DefinitionPart(s))
+        return parts
+
+
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(defs, pretty_print=False, method="html", encoding='UTF-8')
+        result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
         jap_defs = []
-        matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
+        matches = re.findall(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', result)
         if matches:
             for m in matches:
-                jap_defs.append(Definition([DefinitionPart(m.decode("utf8"))], None))
+                jap_defs.append(Definition(self.split_def_parts(m), None))
         else:
-            result = re.sub("^<td>", "", result)
-            result = re.sub("<br></td>.*$", "", result)
+            result = re.sub(u'^<td>', u'', result)
+            result = re.sub(u'<br></td>.*$', u'', result)
             result = result.strip()
-            result = result.decode("utf8")
-            jap_defs.append(Definition([DefinitionPart(result)], None))
+            jap_defs.append(Definition(self.split_def_parts(m), None))
 
         return jap_defs
 
