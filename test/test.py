@@ -3,9 +3,11 @@ import json
 import os
 import subprocess
 import sys
+import textwrap
 import manage_test_words as manage_words
 
 from jdicscrape import Result
+
 
 def test_words_sanity():
     # TODO: This should be moved to the run_test.sh script.
@@ -37,6 +39,15 @@ def print_helper(object_a, object_b, object_a_desc, object_b_desc, member_string
         print(u'\t%s: %s -- %s' %
                 (object_b_desc, member_string, value_b))
 
+def pretty_format(obj, tab_amount=0):
+    indent = ""
+    for i in range(tab_amount):
+        indent += "\t"
+
+    wrapper = textwrap.TextWrapper(initial_indent=indent, subsequent_indent=indent, width=35)
+    return wrapper.fill(u'%s' % obj)
+
+
 def print_differences_result(result_a, result_b, result_a_string, result_b_string, kanji, kana):
     """
     Prints the differences to between two results.
@@ -47,6 +58,21 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
     print_helper(result_a, result_b, result_a_string, result_b_string, "kanji")
     print_helper(result_a, result_b, result_a_string, result_b_string, "kana")
     print_helper(result_a, result_b, result_a_string, result_b_string, "accent")
+
+    defs_a = result_a.defs
+    defs_b = result_b.defs
+
+    if len(defs_a) != len(defs_b):
+        print(u'\n\tnumber of definitions is different')
+        print(u'\tdefs from %s:')
+        for d in defs_a:
+            print(pretty_format(d, tab_amount=2))
+        print(u'\tdefs from %s:')
+        for d in defs_b:
+            print(pretty_format(d, tab_amount=2))
+
+    for def_a, def_b in zip(defs_a, defs_b):
+        pass
 
 def checkword(dictionary, kanji, kana):
     html = manage_words.get_html_for_word(dictionary, kana, kanji)
