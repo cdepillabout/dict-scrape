@@ -47,8 +47,32 @@ def pretty_format(obj, tab_amount=0):
     wrapper = textwrap.TextWrapper(initial_indent=indent, subsequent_indent=indent, width=35)
     return wrapper.fill(u'%s' % obj)
 
+def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
+    """
+    Prints the differences to between two definitions.
+    """
+    print_helper(def_a, def_b, def_a_string, def_b_string, "definition")
 
-def print_differences_result(result_a, result_b, result_a_string, result_b_string, kanji, kana):
+    exs_a = result_a.example_sentences
+    exs_b = result_b.example_sentences
+
+    if len(exs_a) != len(exs_b):
+        print(u'\n\tnumber of example sentences for definition is different')
+        print(u'\n\tdefinition')
+        print(u'\texample sentences from %s:' % def_a_string)
+        for d in exs_a:
+            print(pretty_format(d, tab_amount=2))
+        print(u'\texample sentences from %s:' % def_a_string)
+        for d in exs_b:
+            print(pretty_format(d, tab_amount=2))
+    else:
+        for def_a, def_b in zip(exs_a, exs_b):
+            def_a_string = result_a_string + " for definition"
+            def_a_string = result_b_string + " for definition"
+            print_differences_definition(def_a, def_b, def_a_string, def_b_string)
+
+
+def print_differences_result(result_a, result_b, result_a_string, result_b_string):
     """
     Prints the differences to between two results.
     """
@@ -64,15 +88,15 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
 
     if len(defs_a) != len(defs_b):
         print(u'\n\tnumber of definitions is different')
-        print(u'\tdefs from %s:')
+        print(u'\tdefs from %s:' % result_a_string)
         for d in defs_a:
             print(pretty_format(d, tab_amount=2))
-        print(u'\tdefs from %s:')
+        print(u'\tdefs from %s:' % result_b_string)
         for d in defs_b:
             print(pretty_format(d, tab_amount=2))
-
-    for def_a, def_b in zip(defs_a, defs_b):
-        pass
+    else:
+        for def_a, def_b in zip(defs_a, defs_b):
+            print_differences_definition(def_a, def_b, result_a_string, result_b_string)
 
 def checkword(dictionary, kanji, kana):
     html = manage_words.get_html_for_word(dictionary, kana, kanji)
@@ -83,8 +107,7 @@ def checkword(dictionary, kanji, kana):
 
     if (json_result != html_parse_result):
         # TODO: find out what doesn't match
-        print_differences_result(json_result, html_parse_result,
-                "JSON result", "HTML result", kanji, kana)
+        print_differences_result(json_result, html_parse_result, "JSON result", "HTML result")
         assert(json_result == html_parse_result)
 
 def test_words():
