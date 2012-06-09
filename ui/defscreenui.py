@@ -222,7 +222,7 @@ class Ui_MainWindowReader(object):
         # this shows the sender (but in this case it will only be the reset button)
         #sender = self.mainwindowreader.sender()
         mainframe = self.daijisendefwebview.page().mainFrame()
-        collection = mainframe.findAllElements('P[class="selected"]')
+        collection = mainframe.findAllElements('span[class="selected"]')
         for e in collection:
             print(e.toPlainText().toUtf8())
 
