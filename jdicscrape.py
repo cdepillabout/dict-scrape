@@ -87,6 +87,8 @@ class ExampleSentence(object):
         self._jap_sentence = jap_sentence
         self._eng_trans = eng_trans
 
+        self._definition = None
+
     @property
     def jap_sentence(self):
         """Return the Japanese sentence."""
@@ -96,6 +98,20 @@ class ExampleSentence(object):
     def eng_trans(self):
         """Return the English sentence."""
         return self._eng_trans
+
+    def set_definition(self, definition):
+        """Set the Definition that this ExampleSentence belongs to."""
+        self._definition = definition
+
+    @property
+    def definition(self):
+        """Return the Definition that this ExampleSentence belongs to."""
+        return self._definition
+
+    @property
+    def result(self):
+        """Return the Result that this ExampleSentence belongs to."""
+        return self.definition.result
 
     def __unicode__(self):
         result_string = u"\n      - %s" % self._jap_sentence
@@ -118,17 +134,15 @@ class ExampleSentence(object):
     def from_jsonable(cls, jsonable):
         return cls(jsonable['jap_sentence'], jsonable['eng_trans'])
 
-
-
 class Definition(object):
     """
     Contains the defintion from a dictionary along with example sentences.
     """
-    def __init__(self, definition, example_sentences, kaiwa = []):
+    def __init__(self, definition, example_sentences):
         """
         definition is the definition from a dictionary in either
         Japanese or English.  It should be a unicode object.
-        example_sentences and kaiwa are lists of ExampleSentence objects.
+        example_sentences is a lists of ExampleSentence objects.
         """
         if type(definition) is not type(unicode()):
             raise UnicodeError, "definition should be a unicode string"
@@ -136,14 +150,15 @@ class Definition(object):
 
         if example_sentences:
             self._example_sentences = example_sentences
+            for e in self._example_sentences:
+                if e.definition is not None:
+                    raise Exception(u'example sentence "%s" already has def object defined' %
+                            unicode(e))
+                e.set_definition(self)
         else:
             self._example_sentences = []
 
-        if kaiwa:
-            self._kaiwa = kaiwa
-        else:
-            self._kaiwa = []
-
+        self._result = None
 
     @property
     def definition(self):
@@ -159,6 +174,15 @@ class Definition(object):
     def kaiwai(self):
         """Return a list of kaiwa in the form of ExampleSentence objects."""
         return self._kaiwai
+
+    def set_result(self, result):
+        """Set the Result that this Definition belongs to."""
+        self._result = result
+
+    @property
+    def result(self):
+        """Return the Result that this Definition belongs to."""
+        return self._result
 
     def __unicode__(self):
         if self._definition:
@@ -195,9 +219,10 @@ class Result(object):
     """
     This is an object representing the result of a dictionary lookup.
     """
-    def __init__(self, original_kanji, original_kana, url,
+    def __init__(self, dic, original_kanji, original_kana, url,
             kanji=None, kana=None, accent=None, defs=[]):
         """
+        dic is the dictionary this result came from.
         original_kanji/kana is the kanji/kana that we searched for in the
         dictionary.
         url is the url that we searched on.
@@ -208,6 +233,7 @@ class Result(object):
         defs is a list of Definition objects for the definitions
         contained in the dictionary.
         """
+        assert(isinstance(dic, Dictionary))
         if type(original_kanji) is not type(unicode()):
             raise UnicodeError, "original_kanji should be a unicode string"
         if type(original_kana) is not type(unicode()):
@@ -216,6 +242,7 @@ class Result(object):
             raise UnicodeError, "kanji should be a unicode string"
         if type(kana) is not type(unicode()) and kana is not None:
             raise UnicodeError, "kana should be a unicode string"
+        self._dic = dic
         self._original_kanji = original_kanji
         self._original_kana = original_kana
         self._url = url
@@ -224,8 +251,17 @@ class Result(object):
         self._accent = accent
         if defs:
             self._defs = defs
+            for d in self._defs:
+                if d.result is not None:
+                    raise Exception(u'def "%s" already has result object defined' % unicode(d))
+                d.set_result(self)
         else:
             self._defs = []
+
+    @property
+    def dic(self):
+        """Return the dic that this result came from."""
+        return self._dic
 
     @property
     def original_kanji(self):
@@ -302,17 +338,13 @@ class Result(object):
                 "accent": self.accent, "defs": dfs}
 
     @classmethod
-    def from_jsonable(cls, jsonable):
+    def from_jsonable(cls, dictionary, jsonable):
         dfs = []
         for d in jsonable["defs"]:
             dfs.append(Definition.from_jsonable(d))
-        return cls(jsonable["original_kanji"], jsonable["original_kana"],
+        return cls(dictionary, jsonable["original_kanji"], jsonable["original_kana"],
                 jsonable["url"], jsonable["result_kanji"], jsonable["result_kana"],
                 jsonable["accent"], dfs)
-
-
-
-
 
 class Dictionary(object):
     """
@@ -352,17 +384,17 @@ class Dictionary(object):
         # return None if we can't find a definition
         if word_not_found_string in result or word_not_found_string_no_space in result:
             #print("NO DEFINITION FOUND")
-            return Result(word_kanji, word_kana, url)
+            return Result(self, word_kanji, word_kana, url)
 
         # make sure this is the new century and not the progressive definition
         if self.dic_type == Dictionary.NEW_CENTURY_TYPE:
             if u'<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
                 #print("NO DEFINITION FROM NEW CENTURY")
-                return Result(word_kanji, word_kana, url)
+                return Result(self, word_kanji, word_kana, url)
 
         kanji, kana, accent = self.parse_heading(tree)
         defs_sentences = self.parse_definition(tree)
-        return Result(word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
+        return Result(self, word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
 
     def _create_url(self, word_kanji, word_kana):
         """Returns a URL for the word/page we are trying to lookup."""
@@ -482,7 +514,7 @@ class DaijirinDictionary(Dictionary):
             result = re.sub("^<td>", "", result)
             result = re.sub("<br>.*$", "", result)
             result = result.strip()
-            jap_defs.append(Definition(result.decode("utf8"), None, None))
+            jap_defs.append(Definition(result.decode("utf8"), None))
 
         if not definition_tables:
             definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
@@ -493,7 +525,7 @@ class DaijirinDictionary(Dictionary):
                 result = re.sub("<br></td>$", "", result)
                 result = result.strip()
                 result = result.decode("utf8")
-                jap_defs.append(Definition(result, None, None))
+                jap_defs.append(Definition(result, None))
 
         return jap_defs
 
@@ -514,13 +546,13 @@ class DaijisenDictionary(DaijirinDictionary):
         matches = re.findall("<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>", result)
         if matches:
             for m in matches:
-                jap_defs.append(Definition(m.decode("utf8"), None, None))
+                jap_defs.append(Definition(m.decode("utf8"), None))
         else:
             result = re.sub("^<td>", "", result)
             result = re.sub("<br></td>.*$", "", result)
             result = result.strip()
             result = result.decode("utf8")
-            jap_defs.append(Definition(result, None, None))
+            jap_defs.append(Definition(result, None))
 
         return jap_defs
 
@@ -596,7 +628,7 @@ class NewCenturyDictionary(DaijirinDictionary):
 
                     kaiwa.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            definitions.append(Definition(english_def.decode("utf8"), example_sentences, kaiwa))
+            definitions.append(Definition(english_def.decode("utf8"), example_sentences))
 
         return definitions
 
@@ -661,7 +693,7 @@ class ProgressiveDictionary(DaijirinDictionary):
                     eng_sent = m[1].decode("utf8")
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
-            definitions.append(Definition(english_def.decode("utf8"), example_sentences, None))
+            definitions.append(Definition(english_def.decode("utf8"), example_sentences))
 
         return definitions
 

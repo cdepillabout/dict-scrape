@@ -197,7 +197,7 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
             example_sentence = ExampleSentence(
                     u'***JAPANESE SENTENCE***', u'***ENGLISH SENTENCE***')
             definition = Definition(u'***DEFINITION***', [example_sentence])
-            result = Result(word_kanji, word_kana, url,
+            result = Result(dic, word_kanji, word_kana, url,
                     u'***KANJI***', u'***KANA***', u'', [definition])
             jsonable = result.to_jsonable()
             json.dump(jsonable, f, encoding='utf8', sort_keys=True,
