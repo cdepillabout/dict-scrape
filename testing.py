@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-# A script for adding testable words.
+# A script for working with testing.
 import argparse
 import codecs
 import json
@@ -10,8 +10,8 @@ import os.path
 import sys
 import traceback
 
-PROJECT_ROOT = os.path.dirname(__file__)
-sys.path.append(os.path.join(PROJECT_ROOT, "..", "..", ".."))
+#PROJECT_ROOT = os.path.dirname(__file__)
+#sys.path.append(os.path.join(PROJECT_ROOT, "..", "..", ".."))
 
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
@@ -30,7 +30,7 @@ def die(string):
     else:
         raise Exception(error_string)
 
-words_db_rel_path = os.path.join(os.path.dirname(__file__), "words.db")
+words_db_rel_path = os.path.join("test", "support", "words", "words.db")
 words_db_abs_path = os.path.abspath(words_db_rel_path)
 if not (os.path.exists(words_db_abs_path)):
     die("words.db does not exist! Something is wrong!")
@@ -71,7 +71,8 @@ def get_paths_for_word(dic, kana, kanji):
 
 def get_paths_for_dic(dic):
     dirname = dic.short_name
-    rel_path = os.path.join(os.path.dirname(__file__), dic.short_name)
+    rel_path = os.path.join(os.path.dirname(__file__),
+            'test', 'support', 'words', dic.short_name)
     abs_path = os.path.abspath(rel_path)
 
     return dirname, rel_path, abs_path
@@ -296,3 +297,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
