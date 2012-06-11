@@ -283,7 +283,9 @@ def reparse(word_kana, word_kanji):
 def main():
     def unicode_type(utf8_string):
         return utf8_string.decode('utf8')
-    parser = argparse.ArgumentParser(description="Manage words that will be tested.")
+
+    description="Manage words that will be tested. Run all tests if no flags are provided."
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--add-word', '-a', action='store', nargs=2, metavar=('KANJI', 'KANA'),
             type=unicode_type, help="fetch files for word")
     parser.add_argument('--sanity-check', '-s', action='store_true',
@@ -304,10 +306,11 @@ def main():
         sanity_check()
         reparse(args.reparse[1], args.reparse[0])
         sys.exit(0)
-    else:
-        sanity_check()
-        test_jdicscrape_word_parsing.test_words()
-        sys.exit(0)
+
+    # if no options are specified, then just run all tests
+    sanity_check()
+    test_jdicscrape_word_parsing.test_words()
+    sys.exit(0)
 
 if __name__ == '__main__':
     main()
