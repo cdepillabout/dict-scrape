@@ -4,18 +4,27 @@
 import argparse
 import codecs
 import json
+import nose
 import operator
 import os
 import os.path
 import sys
+import subprocess
 import traceback
 
-#PROJECT_ROOT = os.path.dirname(__file__)
-#sys.path.append(os.path.join(PROJECT_ROOT, "..", "..", ".."))
+
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.append(os.path.join(PROJECT_ROOT, "dictesting"))
 
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
         DefinitionPart, Definition, Result
+
+import test_jdicscrape_word_parsing
+
+WORDS_DIR_REL_PATH = os.path.join("dictesting", "support", "words")
+WORDS_DIR_ABS_PATH = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), WORDS_DIR_REL_PATH))
 
 dics = [DaijirinDictionary(),
         DaijisenDictionary(),
@@ -30,8 +39,8 @@ def die(string):
     else:
         raise Exception(error_string)
 
-words_db_rel_path = os.path.join("test", "support", "words", "words.db")
-words_db_abs_path = os.path.abspath(words_db_rel_path)
+words_db_rel_path = os.path.join(WORDS_DIR_REL_PATH, "words.db")
+words_db_abs_path = os.path.join(WORDS_DIR_ABS_PATH, "words.db")
 if not (os.path.exists(words_db_abs_path)):
     die("words.db does not exist! Something is wrong!")
 
@@ -71,9 +80,8 @@ def get_paths_for_word(dic, kana, kanji):
 
 def get_paths_for_dic(dic):
     dirname = dic.short_name
-    rel_path = os.path.join(os.path.dirname(__file__),
-            'test', 'support', 'words', dic.short_name)
-    abs_path = os.path.abspath(rel_path)
+    rel_path = os.path.join(WORDS_DIR_REL_PATH, dic.short_name)
+    abs_path = os.path.join(WORDS_DIR_ABS_PATH, dic.short_name)
 
     return dirname, rel_path, abs_path
 
@@ -108,7 +116,9 @@ def sanity_check():
                         (kanji, kana, json_file_rel_path))
 
         for entry in os.listdir(abs_path):
-            entry = entry.decode('utf8')
+            if isinstance(entry, str):
+                entry = entry.decode('utf8')
+            assert(isinstance(entry, unicode))
             entry_rel_path = os.path.join(rel_path, entry)
             try:
                 # rip off the extension
@@ -293,6 +303,10 @@ def main():
     if args.reparse:
         sanity_check()
         reparse(args.reparse[1], args.reparse[0])
+        sys.exit(0)
+    else:
+        sanity_check()
+        test_jdicscrape_word_parsing.test_words()
         sys.exit(0)
 
 if __name__ == '__main__':

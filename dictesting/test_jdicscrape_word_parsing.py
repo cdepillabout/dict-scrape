@@ -1,22 +1,20 @@
+#!/usr/bin/env python2
 
 import json
 import os
 import subprocess
 import sys
 import textwrap
-import manage_test_words as manage_words
+import traceback
+
+# we need stuff from the directory above us
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.append(os.path.join(PROJECT_ROOT, ".."))
 
 from jdicscrape import Result
+import testing as manage_words
 
-
-def test_words_sanity():
-    # TODO: This should be moved to the run_test.sh script.
-    """Check sanity of words database (keep this test first)"""
-    script_path = os.path.join(os.path.dirname(__file__),
-            "support", "words", "manage_test_words.py")
-    p = subprocess.Popen([script_path, "-s"])
-    sts = os.waitpid(p.pid, 0)[1]
-    assert sts == 0
+ERRORS = []
 
 def print_helper(object_a, object_b, object_a_desc, object_b_desc, member_string):
     value_a = object_a.__getattribute__(member_string)
@@ -38,6 +36,7 @@ def print_helper(object_a, object_b, object_a_desc, object_b_desc, member_string
                 (object_a_desc, member_string, value_a))
         print(u'\t%s: "%s" attribute -- %s' %
                 (object_b_desc, member_string, value_b))
+        print_separator()
 
 def pretty_format(obj, tab_amount=0):
     indent = ""
@@ -46,6 +45,10 @@ def pretty_format(obj, tab_amount=0):
 
     wrapper = textwrap.TextWrapper(initial_indent=indent, subsequent_indent=indent, width=35)
     return wrapper.fill(u'%s' % obj)
+
+def print_separator():
+    print(u'--------------------------------------------')
+
 
 def print_differences_example_sentence(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string):
     """
@@ -71,10 +74,11 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
         print(u'\n\tnumber of parts for definition is different')
         print(u'\n\tparts from %s:' % def_a_string)
         for p in parts_a:
-            print(p)
-        print(u'\n\tparts from %s:' % def_a_string)
+            print(pretty_format(p, tab_amount=1))
+        print(u'\n\tparts from %s:' % def_b_string)
         for p in parts_b:
-            print(p)
+            print(pretty_format(p, tab_amount=1))
+        print_separator()
     else:
         for part_a, part_b in zip(parts_a, parts_b):
             part_a_string = def_a_string + ".part"
@@ -86,13 +90,14 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
 
     if len(exs_a) != len(exs_b):
         print(u'\n\tnumber of example sentences for definition is different')
-        print(u'\n\tdefinition: %s' % def_a.definition)
+        print(u'\tdefinition: %s' % def_a.pretty_definition().strip())
         print(u'\n\texample sentences from %s:' % def_a_string)
         for e in exs_a:
             print(e)
-        print(u'\n\texample sentences from %s:' % def_a_string)
+        print(u'\n\texample sentences from %s:' % def_b_string)
         for e in exs_b:
             print(e)
+        print_separator()
     else:
         for ex_a, ex_b in zip(exs_a, exs_b):
             ex_a_string = def_a_string + ".example_sentence"
@@ -121,6 +126,7 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
         print(u'\tdefs from %s:' % result_b_string)
         for d in defs_b:
             print(pretty_format(d, tab_amount=2))
+        print_separator()
     else:
         for def_a, def_b in zip(defs_a, defs_b):
             def_a_string = result_a_string + ".definition"
@@ -135,14 +141,28 @@ def checkword(dictionary, kanji, kana):
     json_result = Result.from_jsonable(dictionary, json_object)
 
     if (json_result != html_parse_result):
-        # TODO: find out what doesn't match
         print_differences_result(json_result, html_parse_result, "JSON result", "HTML result")
         assert(json_result == html_parse_result)
+
 
 def test_words():
     words = manage_words.get_words_from_wordsdb()
     for dic in manage_words.get_dics():
         for kana, kanji in words:
-            checkword.description = u'check %s (%s) in %s' % (kana, kanji, dic.short_name)
-            yield checkword, dic, kanji, kana
+            description = '%s (%s) in %s' % (kana, kanji, dic.short_name)
+            sys.stdout.write(u'check %s... ' % description)
+            try:
+                checkword(dic, kanji, kana)
+                print("PASS")
+            except:
+                tb = traceback.format_exc()
+                ERRORS.append([description, tb])
+                print("FAIL")
+    if ERRORS:
+        print("\n\n%d ERRORS:\n" % len(ERRORS))
+        for description, tb in ERRORS:
+            print("%s\n============================\n%s\n" % (description, tb))
 
+
+if __name__ == '__main__':
+    test_words()

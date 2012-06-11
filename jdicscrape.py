@@ -240,13 +240,18 @@ class Definition(object):
         """Return the Result that this Definition belongs to."""
         return self._result
 
-    def __unicode__(self):
+    def pretty_definition(self):
+        """Pretty print the definition parts."""
         if self._parts:
             result_string = u'\n＊ '
             for p in self.parts:
                 result_string += p.part + u'。'
         else:
             result_string = u"\nNO DEFINITION AVAILABLE"
+        return result_string
+
+    def __unicode__(self):
+        result_string = self.pretty_definition()
         for e in self._example_sentences:
             result_string += unicode(e)
         return result_string
