@@ -630,6 +630,20 @@ class DaijisenDictionary(DaijirinDictionary):
         return example_sentences
 
     def create_def(self, def_string):
+        """
+        Takes a def string, splits up the defintion parts,
+        takes out the example sentences, and puts it all together in
+        a definition object.
+
+        For instance, with the defintion string
+        "あることをするよう無理に要求すること。むりじい。「寄付を―する」",
+        it will basically create something like this:
+
+        part1 = DefinitionPart("あることをするよう無理に要求すること")
+        part2 = DefinitionPart("むりじい")
+        ex_sent = ExampleSentence("寄付を―する", "")
+        return Definition([part1, part2], [ex_sent])
+        """
         def_parts = self.split_def_parts(def_string)
         example_sentences = None
         
@@ -642,6 +656,13 @@ class DaijisenDictionary(DaijirinDictionary):
 
         return Definition(def_parts, example_sentences)
 
+    def clean_def_string(self, def_string):
+        """
+        Cleans a definition string.  It takes out <a> tags.
+        """
+        def_string = re.sub(u'<a.*?>', u'', def_string)
+        def_string = re.sub(u'</a>', u'', def_string)
+        return def_string
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
@@ -650,12 +671,14 @@ class DaijisenDictionary(DaijirinDictionary):
         matches = re.findall(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', result)
         if matches:
             for m in matches:
+                m = self.clean_def_string(m)
                 df = self.create_def(m)
                 jap_defs.append(df)
         else:
             result = re.sub(u'^<td>', u'', result)
             result = re.sub(u'<br></td>.*$', u'', result)
             result = result.strip()
+            result = self.clean_def_string(result)
             jap_defs.append(self.create_def(result))
 
         return jap_defs
@@ -812,6 +835,19 @@ def main(word_kanji, word_kana):
 
 if __name__ == '__main__':
 
+    daijirin_dic = DaijirinDictionary()
+    daijisen_dic = DaijisenDictionary()
+    new_century_dic = NewCenturyDictionary()
+    progressive_dic = ProgressiveDictionary()
+
+    if len(sys.argv) == 3:
+        kanji = sys.argv[1].decode("utf8")
+        kana = sys.argv[2].decode("utf8")
+        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
+            print("\t\t\t\t%s\n%s\n\n" % (d.short_name, d.lookup(kanji, kana)))
+        sys.exit(1)
+
+
     words = [
             (u'強迫', u'きょうはく'),
             (u'面白い', u'おもしろい'),
@@ -841,10 +877,6 @@ if __name__ == '__main__':
     print(result)
     """
 
-    daijirin_dic = DaijirinDictionary()
-    daijisen_dic = DaijisenDictionary()
-    new_century_dic = NewCenturyDictionary()
-    progressive_dic = ProgressiveDictionary()
 
     one = words[0]
     for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
