@@ -242,9 +242,9 @@ class Definition(object):
 
     def __unicode__(self):
         if self._parts:
-            result_string = u"\n＊ "
+            result_string = u'\n＊ '
             for p in self.parts:
-                result_string += p + "。"
+                result_string += p.part + u'。'
         else:
             result_string = u"\nNO DEFINITION AVAILABLE"
         for e in self._example_sentences:
@@ -507,6 +507,16 @@ class Dictionary(object):
         """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
+    def split_def_parts(self, definition_string, split_character=u'。'):
+        """Split a definition into definition parts."""
+        assert(isinstance(definition_string, unicode))
+        splits = definition_string.split(split_character)
+        parts = []
+        for s in splits:
+            if s:
+                parts.append(DefinitionPart(s))
+        return parts
+
     @property
     def long_dic_name(self):
         """Return the dictionary name."""
@@ -602,15 +612,35 @@ class DaijisenDictionary(DaijirinDictionary):
     def __init__(self):
         pass
 
-    def split_def_parts(self, definition_string):
-        """Split a definition into definition parts."""
-        assert(isinstance(definition_string, unicode))
-        splits = definition_string.split(u'。')
-        parts = []
+    def split_example_sentences(self, example_sentences_string):
+        """
+        Split a list of example sentences into separate ExampleSentence objects.
+        For instance, if passed the string 「これは日本語です。」「私は犬です。」,
+        it would return the list [ExampleSentence("これは日本語です。"),
+        ExampleSentence("私は犬です。")].
+        """
+        assert(isinstance(example_sentences_string, unicode))
+        splits = example_sentences_string.split(u'」')
+        example_sentences = []
         for s in splits:
             if s:
-                parts.append(DefinitionPart(s))
-        return parts
+                if s[0] == u'「':
+                    s = s[1:]
+                example_sentences.append(ExampleSentence(s, u''))
+        return example_sentences
+
+    def create_def(self, def_string):
+        def_parts = self.split_def_parts(def_string)
+        example_sentences = None
+        
+        # check to see if the last part of the definition contains
+        # example sentences
+        if def_parts[-1].part.startswith(u'「'):
+            example_sentences_string = def_parts[-1].part
+            def_parts = def_parts[:-1]
+            example_sentences = self.split_example_sentences(example_sentences_string)
+
+        return Definition(def_parts, example_sentences)
 
 
     def parse_definition(self, tree):
@@ -620,12 +650,13 @@ class DaijisenDictionary(DaijirinDictionary):
         matches = re.findall(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', result)
         if matches:
             for m in matches:
-                jap_defs.append(Definition(self.split_def_parts(m), None))
+                df = self.create_def(m)
+                jap_defs.append(df)
         else:
             result = re.sub(u'^<td>', u'', result)
             result = re.sub(u'<br></td>.*$', u'', result)
             result = result.strip()
-            jap_defs.append(Definition(self.split_def_parts(result), None))
+            jap_defs.append(self.create_def(result))
 
         return jap_defs
 
@@ -815,18 +846,18 @@ if __name__ == '__main__':
     new_century_dic = NewCenturyDictionary()
     progressive_dic = ProgressiveDictionary()
 
-    """
-    one = words[1]
+    one = words[0]
     for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
         print(d.lookup(one[0], one[1]))
         print
-        """
 
+    """
     for word in words:
         for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
             print(d.lookup(word[0], word[1]).to_jsonable())
             print
         print
+        """
 
     """
     daijirin_dic = DaijirinDictionary()
