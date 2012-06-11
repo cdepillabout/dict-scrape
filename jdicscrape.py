@@ -625,7 +625,7 @@ class DaijisenDictionary(DaijirinDictionary):
             result = re.sub(u'^<td>', u'', result)
             result = re.sub(u'<br></td>.*$', u'', result)
             result = result.strip()
-            jap_defs.append(Definition(self.split_def_parts(m), None))
+            jap_defs.append(Definition(self.split_def_parts(result), None))
 
         return jap_defs
 
