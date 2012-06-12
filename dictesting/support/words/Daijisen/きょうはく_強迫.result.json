@@ -2,18 +2,22 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "寄付を―する"
+                }
+            ], 
             "parts": [
                 "あることをするよう無理に要求すること", 
-                "むりじい", 
-                "「寄付を―する」"
+                "むりじい"
             ]
         }, 
         {
             "example_sentences": [], 
             "parts": [
-                "<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/17835700/\">民法</a>上、他人に違法な害悪を示して恐怖心を生じさせ、その人の自由な意思決定を妨げること", 
-                "強迫による<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/00832400/\">意思表示</a>は取り消すことができる"
+                "民法上、他人に違法な害悪を示して恐怖心を生じさせ、その人の自由な意思決定を妨げること", 
+                "強迫による意思表示は取り消すことができる"
             ]
         }
     ], 
