@@ -855,17 +855,17 @@ class ProgressiveDictionary(DaijirinDictionary):
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(defs, pretty_print=False, method="html", encoding='UTF-8')
+        result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
 
         definitions = []
 
         multiple_defs = True
 
         # do we have multiple definitions?
-        matches = re.search('^<td>\n<b>1</b> 〔', result)
+        matches = re.search(u'^<td>\n<b>1</b> 〔', result)
         if matches:
             # split the page into pieces for each definition
-            splits = re.split('(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', result)
+            splits = re.split(u'(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', result)
             # make sure we have an odd number of splits
             assert(len(splits) % 2 == 1)
             # throw away the first split because it's useless information
@@ -874,37 +874,37 @@ class ProgressiveDictionary(DaijirinDictionary):
             # This is stupidly complicated.  Basically we have a list like
             # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
             # to make a list like ["abcd", "efgh", "hijk"]
-            splits = ["%s%s" % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
+            splits = [u'%s%s' % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
         else:
             splits = [result]
             multiple_defs = False
 
         for splt in splits:
             # find english definition
-            english_def = ""
+            english_def = u''
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
             if multiple_defs == True:
-                match = re.search('<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔(.*?)<br><br>', splt)
+                match = re.search(u'<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔(.*?)<br><br>', splt)
                 if match:
-                    english_def = "〔%s" % match.group(1)
+                    english_def = u'〔%s' % match.group(1)
             else:
-                match = re.search('^<td>\n(.*?)<br>', splt)
+                match = re.search(u'^<td>\n(.*?)<br>', splt)
                 if match:
-                    if not match.group(1).startswith("[例文]"):
+                    if not match.group(1).startswith(u'[例文]'):
                         english_def =  match.group(1)
 
 
             # find example sentences
             example_sentences = []
-            matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
             if matches:
                 for m in matches:
-                    jap_sent = m[0].decode("utf8")
-                    eng_sent = m[1].decode("utf8")
+                    jap_sent = m[0]
+                    eng_sent = m[1]
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
-            definitions.append(Definition([DefinitionPart(english_def.decode("utf8"))], example_sentences))
+            definitions.append(Definition([DefinitionPart(english_def)], example_sentences))
 
         return definitions
 
