@@ -582,11 +582,29 @@ class DaijirinDictionary(Dictionary):
 
         return result_word, result_kana, result_accent
 
+    def parse_example_sentences(self, result):
+        """
+        Take an html definition string and parse out the example sentences.
+        This looks for example sentences through their coloring.
+        """
+        example_sentences = []
+
+        matches = re.findall(
+                u'<small><font color="#008800"><b>(.*?)</b></font></small>', result)
+        if matches:
+            for m in matches:
+                print(u'!!!!adding %s' % m)
+                example_sentences.append(ExampleSentence(m, u''))
+
+        return example_sentences
+
     def parse_definition(self, tree):
         jap_defs = []
         definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
         for defi in definition_tables:
             result = etree.tostring(defi, pretty_print=True, method="html", encoding='unicode')
+            example_sentences = self.parse_example_sentences(result)
+
             text_def = defi.xpath(u'tr/td')[1]
             result = etree.tostring(text_def, pretty_print=False, method="html",
                     encoding='unicode')
@@ -594,7 +612,7 @@ class DaijirinDictionary(Dictionary):
             result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
             def_parts = self.split_def_parts(result)
-            jap_defs.append(Definition(def_parts, None))
+            jap_defs.append(Definition(def_parts, example_sentences))
 
         if not definition_tables:
             definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
