@@ -519,6 +519,7 @@ class Dictionary(object):
         parts = []
         for s in splits:
             if s:
+                s = s.strip()
                 parts.append(DefinitionPart(s))
         return parts
 
@@ -722,8 +723,21 @@ class NewCenturyDictionary(DaijirinDictionary):
         """
         Cleans up a definition string and splits up the definition parts.
         """
-        print(def_string)
-        return [DefinitionPart(def_string)]
+        # remove things in brackets and parenthesis
+        def_string = re.sub(u'【.*?】', u'', def_string)
+        def_string = re.sub(u'〈.*?〉', u'', def_string)
+        def_string = re.sub(u'（.*?）', u'', def_string)
+
+        # strip whitespace
+        def_string = def_string.strip()
+
+        # remove trailing period
+        if def_string[-1] == u'.':
+            def_string = def_string[:-1]
+
+        # split up the definition parts, breaking on ';'
+        def_parts = self.split_def_parts(def_string, split_character=u';')
+        return def_parts
 
 
     def parse_definition(self, tree):
