@@ -853,7 +853,29 @@ class ProgressiveDictionary(DaijirinDictionary):
     def __init__(self):
         pass
 
+    def clean_def_string(self, def_string):
+        """
+        Cleans up a definition string and splits up the definition parts.
+        """
+        # remove things in parenthesis
+        def_string = re.sub(u'\(\(.*?\)\)', u'', def_string)
+        def_string = re.sub(u'\(.*?\)', u'', def_string)
+
+        # strip whitespace
+        def_string = def_string.strip()
+
+        # remove trailing period
+        if def_string[-1] == u'.':
+            def_string = def_string[:-1]
+
+        # split up the definition parts, breaking on ';'
+        def_parts = self.split_def_parts(def_string, split_character=u';')
+        return def_parts
+
     def parse_definition(self, tree):
+        # TODO: For now, we ignore words like "強迫観念" that come up when
+        # looking up "強迫".
+
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
         result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
 
@@ -889,10 +911,12 @@ class ProgressiveDictionary(DaijirinDictionary):
                 if match:
                     english_def = u'〔%s' % match.group(1)
             else:
-                match = re.search(u'^<td>\n(.*?)<br>', splt)
+                match = re.search(u'^<td>\n(.*?)<br>(<br>◇.*?｜(.*?)<br><br>)?', splt)
                 if match:
                     if not match.group(1).startswith(u'[例文]'):
                         english_def =  match.group(1)
+                        if match.group(3):
+                            english_def = "%s; %s" % (english_def, match.group(3))
 
 
             # find example sentences
@@ -904,7 +928,9 @@ class ProgressiveDictionary(DaijirinDictionary):
                     eng_sent = m[1]
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
-            definitions.append(Definition([DefinitionPart(english_def)], example_sentences))
+            def_parts = self.clean_def_string(english_def)
+
+            definitions.append(Definition(def_parts, example_sentences))
 
         return definitions
 
