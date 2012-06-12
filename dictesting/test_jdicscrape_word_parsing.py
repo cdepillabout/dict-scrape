@@ -49,13 +49,12 @@ def pretty_format(obj, tab_amount=0):
 def print_separator():
     print(u'--------------------------------------------')
 
-
-def print_differences_example_sentence(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string):
+def print_differences_example_sentence(exsent_a, exsent_b, exsent_a_string, exsent_b_string):
     """
     Prints the differences to between two example sentences.
     """
-    print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "jap_sentence")
-    print_helper(ex_sent_a, ex_sent_b, ex_sent_a_string, ex_sent_b_string, "eng_trans")
+    print_helper(exsent_a, exsent_b, exsent_a_string, exsent_b_string, "jap_sentence")
+    print_helper(exsent_a, exsent_b, exsent_a_string, exsent_b_string, "eng_trans")
 
 def print_differences_definition_part(part_a, part_b, part_a_string, part_b_string):
     """
@@ -72,12 +71,12 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
 
     if len(parts_a) != len(parts_b):
         print(u'\n\tnumber of parts for definition is different')
-        print(u'\n\tparts from %s:' % def_a_string)
+        print(u'\n\t\tparts from %s:' % def_a_string)
         for p in parts_a:
-            print(pretty_format(p, tab_amount=1))
-        print(u'\n\tparts from %s:' % def_b_string)
+            print(pretty_format(p, tab_amount=2))
+        print(u'\n\t\tparts from %s:' % def_b_string)
         for p in parts_b:
-            print(pretty_format(p, tab_amount=1))
+            print(pretty_format(p, tab_amount=2))
         print_separator()
     else:
         for part_a, part_b in zip(parts_a, parts_b):
@@ -91,12 +90,12 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
     if len(exs_a) != len(exs_b):
         print(u'\n\tnumber of example sentences for definition is different')
         print(u'\tdefinition: %s' % def_a.pretty_definition().strip())
-        print(u'\n\texample sentences from %s:' % def_a_string)
+        print(u'\n\t\texample sentences from %s:' % def_a_string)
         for e in exs_a:
-            print(e)
-        print(u'\n\texample sentences from %s:' % def_b_string)
+            print(pretty_format(e, tab_amount=2))
+        print(u'\n\t\texample sentences from %s:' % def_b_string)
         for e in exs_b:
-            print(e)
+            print(pretty_format(e, tab_amount=2))
         print_separator()
     else:
         for ex_a, ex_b in zip(exs_a, exs_b):
