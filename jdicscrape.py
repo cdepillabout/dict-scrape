@@ -586,24 +586,27 @@ class DaijirinDictionary(Dictionary):
         jap_defs = []
         definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
         for defi in definition_tables:
-            result = etree.tostring(defi, pretty_print=True, method="html", encoding='UTF-8')
-            text_def = defi.xpath("tr/td")[1]
-            result = etree.tostring(text_def, pretty_print=False, method="html", encoding='UTF-8')
-            result = re.sub("^<td>", "", result)
-            result = re.sub("<br>.*$", "", result)
+            result = etree.tostring(defi, pretty_print=True, method="html", encoding='unicode')
+            text_def = defi.xpath(u'tr/td')[1]
+            result = etree.tostring(text_def, pretty_print=False, method="html",
+                    encoding='unicode')
+            result = re.sub(u'^<td>', u'', result)
+            result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
-            jap_defs.append(Definition([DefinitionPart(result.decode("utf8"))], None))
+            def_parts = self.split_def_parts(result)
+            jap_defs.append(Definition(def_parts, None))
 
         if not definition_tables:
             definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
             for defi in definition_tables:
-                result = etree.tostring(defi, pretty_print=False, method="html", encoding='UTF-8')
-                result = re.sub("^<td>", "", result)
-                #result = re.sub("(?<! )<br>.*$", "", result)
-                result = re.sub("<br></td>$", "", result)
+                result = etree.tostring(defi, pretty_print=False, method="html",
+                        encoding='unicode')
+                result = re.sub(u'^<td>', u'', result)
+                #result = re.sub(u'(?<! )<br>.*$', u'', result)
+                result = re.sub(u'<br></td>$', u'', result)
                 result = result.strip()
-                result = result.decode("utf8")
-                jap_defs.append(Definition([DefinitionPart(result)], None))
+                def_parts = self.split_def_parts(result)
+                jap_defs.append(Definition(def_parts, None))
 
         return jap_defs
 
