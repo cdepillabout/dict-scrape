@@ -720,23 +720,24 @@ class NewCenturyDictionary(DaijirinDictionary):
 
     def parse_definition(self, tree):
         def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(def_elems, pretty_print=False, method="html", encoding='UTF-8')
+        result = etree.tostring(def_elems, pretty_print=False, method="html",
+                encoding='unicode')
 
         # some replacements to make our lives easier
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', '〈')
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', '〉')
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', '⁝')
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', '＊')
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', '（同）')
-        result = result.replace('<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', 'Æ')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', u'〈')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', u'〉')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', u'⁝')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', u'＊')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', u'（同）')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', u'Æ')
 
         definitions = []
 
         # do we have multiple definitions?
-        matches = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
+        matches = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
         if matches:
             # split the page into pieces for each definition
-            splits = re.split('(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
+            splits = re.split(u'(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
             # make sure we have an odd number of splits
             assert(len(splits) % 2 == 1)
             # throw away the first split because it's useless information
@@ -745,7 +746,7 @@ class NewCenturyDictionary(DaijirinDictionary):
             # This is stupidly complicated.  Basically we have a list like
             # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
             # to make a list like ["abcd", "efgh", "hijk"]
-            splits = ["%s%s" % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
+            splits = [u'%s%s' % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
         else:
             splits = [result]
 
@@ -754,31 +755,28 @@ class NewCenturyDictionary(DaijirinDictionary):
             english_def = None
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
-            match = re.search('<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
+            match = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
             if match:
                 english_def = match.group(1)
 
             # find example sentences
             example_sentences = []
-            matches = re.findall('<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
             if matches:
                 for m in matches:
-                    jap_example_sentence = m[0].decode("utf8")
-                    eng_trans = m[1].decode("utf8")
+                    jap_example_sentence = m[0]
+                    eng_trans = m[1]
                     example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
+            # find kaiwa
+            matches = re.findall(u'<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
             if matches:
                 for m in matches:
-                    jap_example_sentence = "%s」" % m[0]
-                    eng_trans = "“%s" % m[1]
-
-                    jap_example_sentence = jap_example_sentence.decode("utf8")
-                    eng_trans = eng_trans.decode("utf8")
-
+                    jap_example_sentence = u'%s」' % m[0]
+                    eng_trans = u'“%s' % m[1]
                     example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            definitions.append(Definition([DefinitionPart(english_def.decode("utf8"))], example_sentences))
+            definitions.append(Definition([DefinitionPart(english_def)], example_sentences))
 
         return definitions
 
