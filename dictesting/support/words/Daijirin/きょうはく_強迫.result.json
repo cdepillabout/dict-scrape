@@ -2,7 +2,12 @@
     "accent": "0", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―して仲間に引き込む"
+                }
+            ], 
             "parts": [
                 "相手を自分の意に従わせるため無理強いすること"
             ]

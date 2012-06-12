@@ -593,7 +593,6 @@ class DaijirinDictionary(Dictionary):
                 u'<small><font color="#008800"><b>(.*?)</b></font></small>', result)
         if matches:
             for m in matches:
-                print(u'!!!!adding %s' % m)
                 example_sentences.append(ExampleSentence(m, u''))
 
         return example_sentences
