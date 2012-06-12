@@ -47,6 +47,21 @@ if not (os.path.exists(words_db_abs_path)):
 def get_dics():
     return dics
 
+def no_null_dictionaries(f):
+    """
+    Decorator that looks through the function's kwargs and picks
+    out the dictionary argument.  If it is not available, or None,
+    it gets set to all of the dics we have available.  If the dictionary
+    argument is not a list, then it gets changed into a list.
+    """
+    def func_with_dictionaries(*args, **kwargs):
+        if "dictionaries" not in kwargs or not kwargs["dictionaries"]:
+            kwargs["dictionaries"] = get_dics()
+        if not isinstance(kwargs["dictionaries"], list):
+            kwargs["dictionaries"] = [kwargs["dictionaries"]]
+        f(*args, **kwargs)
+    return func_with_dictionaries
+
 def get_words_from_wordsdb():
     """Get all the words from the words.db."""
     words = []
@@ -232,7 +247,6 @@ def __write_word_html_file(dic, word_kana, word_kanji):
         f.write(page_string.encode('utf8'))
         print(u'Wrote html file: %s' % html_file_rel_path)
 
-
 def addword(word_kana, word_kanji):
     # make sure we get unicode words
     assert(type(word_kanji) == type(unicode()))
@@ -240,7 +254,7 @@ def addword(word_kana, word_kanji):
 
     add_word_to_wordsdb(word_kana, word_kanji)
 
-    for dic in dics:
+    for dic in get_dics():
         _, _, abs_path = get_paths_for_dic(dic)
         if not os.path.isdir(abs_path):
             die(u'Directory "%s" does not exist.' % abs_path)
@@ -260,8 +274,8 @@ def addword(word_kana, word_kanji):
         __write_word_html_file(dic, word_kana, word_kanji)
         __write_word_encoding_result(dic, word_kana, word_kanji)
 
-
-def reparse(word_kana, word_kanji):
+@no_null_dictionaries
+def reparse(word_kana, word_kanji, dictionaries=get_dics()):
     """
     Reparse the html files we already downloaded,
     and rewrite the KANA_KANJI.result.json file.
@@ -277,12 +291,15 @@ def reparse(word_kana, word_kanji):
         if len(existing_words) != 1:
             die("%s (%s) does not exist in words.db" % (kanji, kana))
 
-    for dic in dics:
+    for dic in dictionaries:
         __write_word_encoding_result(dic, word_kana, word_kanji)
 
 def main():
     def unicode_type(utf8_string):
         return utf8_string.decode('utf8')
+
+    def dic_choices():
+        return [d.short_name for d in dics]
 
     description="Manage words that will be tested. Run all tests if no flags are provided."
     parser = argparse.ArgumentParser(description=description)
@@ -292,24 +309,34 @@ def main():
             help="run a sanity check to make sure our words.db and actual files match up")
     parser.add_argument('--reparse', '-r', action='store', nargs=2, metavar=('KANJI', 'KANA'),
             type=unicode_type, help="reparse files for word and rewrite KANA_KANJI.result.json")
+    parser.add_argument('--dictionary', '-d', action='store',
+            metavar='DICTIONARY', choices=dic_choices(),
+            help="select a specific dictionary to operate on")
 
     args = parser.parse_args()
+
+    # set the dictionary we will be using
+    dictionary = None
+    if args.dictionary:
+        for dic in dics:
+            if dic.short_name == args.dictionary:
+                dictionary = dic
 
     if args.sanity_check:
         sanity_check()
         sys.exit(0)
     if args.add_word:
         sanity_check()
-        addword(args.add_word[1], args.add_word[0])
+        addword(args.add_word[1], args.add_word[0], dictionaries=dictionary)
         sys.exit(0)
     if args.reparse:
         sanity_check()
-        reparse(args.reparse[1], args.reparse[0])
+        reparse(args.reparse[1], args.reparse[0], dictionaries=dictionary)
         sys.exit(0)
 
     # if no options are specified, then just run all tests
     sanity_check()
-    test_jdicscrape_word_parsing.test_words()
+    test_jdicscrape_word_parsing.test_words(dictionaries=dictionary)
     sys.exit(0)
 
 if __name__ == '__main__':

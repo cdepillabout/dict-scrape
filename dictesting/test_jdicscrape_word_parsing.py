@@ -144,10 +144,10 @@ def checkword(dictionary, kanji, kana):
         print_differences_result(json_result, html_parse_result, "JSON result", "HTML result")
         assert(json_result == html_parse_result)
 
-
-def test_words():
+@manage_words.no_null_dictionaries
+def test_words(dictionaries=manage_words.get_dics()):
     words = manage_words.get_words_from_wordsdb()
-    for dic in manage_words.get_dics():
+    for dic in dictionaries:
         for kana, kanji in words:
             description = '%s (%s) in %s' % (kana, kanji, dic.short_name)
             sys.stdout.write(u'check %s... ' % description)
