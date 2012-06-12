@@ -718,6 +718,14 @@ class NewCenturyDictionary(DaijirinDictionary):
     def __init__(self):
         pass
 
+    def clean_def_string(self, def_string):
+        """
+        Cleans up a definition string and splits up the definition parts.
+        """
+        print(def_string)
+        return [DefinitionPart(def_string)]
+
+
     def parse_definition(self, tree):
         def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
         result = etree.tostring(def_elems, pretty_print=False, method="html",
@@ -730,6 +738,45 @@ class NewCenturyDictionary(DaijirinDictionary):
         result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', u'＊')
         result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', u'（同）')
         result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', u'Æ')
+
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1202.gif" align="absbottom" border="0">', u'c')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1203.gif" align="absbottom" border="0">', u'c')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1204.gif" align="absbottom" border="0">', u'c')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1205.gif" align="absbottom" border="0">', u'd')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1206.gif" align="absbottom" border="0">', u'e')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1207.gif" align="absbottom" border="0">', u'e')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1208.gif" align="absbottom" border="0">', u'e')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1209.gif" align="absbottom" border="0">', u'e')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1210.gif" align="absbottom" border="0">', u'g')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1211.gif" align="absbottom" border="0">', u'g')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1212.gif" align="absbottom" border="0">', u'h')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1213.gif" align="absbottom" border="0">', u'h')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1214.gif" align="absbottom" border="0">', u'h')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1215.gif" align="absbottom" border="0">', u'i')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1216.gif" align="absbottom" border="0">', u'i')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1217.gif" align="absbottom" border="0">', u'i')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1218.gif" align="absbottom" border="0">', u'i')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1219.gif" align="absbottom" border="0">', u'i')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1220.gif" align="absbottom" border="0">', u'o')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1221.gif" align="absbottom" border="0">', u'o')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1222.gif" align="absbottom" border="0">', u'o')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1223.gif" align="absbottom" border="0">', u'o')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1224.gif" align="absbottom" border="0">', u'o')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1225.gif" align="absbottom" border="0">', u'p')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1226.gif" align="absbottom" border="0">', u'P')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1227.gif" align="absbottom" border="0">', u'q')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1228.gif" align="absbottom" border="0">', u'r')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1229.gif" align="absbottom" border="0">', u'r')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1230.gif" align="absbottom" border="0">', u'u')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1231.gif" align="absbottom" border="0">', u'u')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1232.gif" align="absbottom" border="0">', u'u')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1233.gif" align="absbottom" border="0">', u'U')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1234.gif" align="absbottom" border="0">', u'w')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1235.gif" align="absbottom" border="0">', u'w')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1236.gif" align="absbottom" border="0">', u'x')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1237.gif" align="absbottom" border="0">', u'y')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
+        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
 
         definitions = []
 
@@ -776,7 +823,9 @@ class NewCenturyDictionary(DaijirinDictionary):
                     eng_trans = u'“%s' % m[1]
                     example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            definitions.append(Definition([DefinitionPart(english_def)], example_sentences))
+            def_parts = self.clean_def_string(english_def)
+
+            definitions.append(Definition(def_parts, example_sentences))
 
         return definitions
 
