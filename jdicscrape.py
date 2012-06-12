@@ -767,8 +767,6 @@ class NewCenturyDictionary(DaijirinDictionary):
                     eng_trans = m[1].decode("utf8")
                     example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
-            # find kaiwa
-            kaiwa = []
             matches = re.findall('<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
             if matches:
                 for m in matches:
@@ -778,7 +776,7 @@ class NewCenturyDictionary(DaijirinDictionary):
                     jap_example_sentence = jap_example_sentence.decode("utf8")
                     eng_trans = eng_trans.decode("utf8")
 
-                    kaiwa.append(ExampleSentence(jap_example_sentence, eng_trans))
+                    example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
 
             definitions.append(Definition([DefinitionPart(english_def.decode("utf8"))], example_sentences))
 
