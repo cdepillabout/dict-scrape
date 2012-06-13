@@ -163,8 +163,6 @@ def add_word_to_wordsdb(word_kana, word_kanji):
 
     # sort words
     words = sorted(words, key=operator.itemgetter(1,0))
-    for word in words:
-        print("%s (%s)" % (word[1], word[0]))
 
     # write sorted word list words
     with codecs.open(words_db_abs_path, 'w', 'utf8') as f:
@@ -327,7 +325,7 @@ def main():
         sys.exit(0)
     if args.add_word:
         sanity_check()
-        addword(args.add_word[1], args.add_word[0], dictionaries=dictionary)
+        addword(args.add_word[1], args.add_word[0])
         sys.exit(0)
     if args.reparse:
         sanity_check()
