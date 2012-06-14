@@ -746,6 +746,9 @@ class NewCenturyDictionary(DaijirinDictionary):
         def_string = re.sub(u'【.*?】', u'', def_string)
         def_string = re.sub(u'〈.*?〉', u'', def_string)
         def_string = re.sub(u'（.*?）', u'', def_string)
+        # remove bold
+        def_string = def_string.replace(u'<b>', u'')
+        def_string = def_string.replace(u'</b>', u'')
 
         # strip whitespace
         def_string = def_string.strip()
@@ -757,6 +760,42 @@ class NewCenturyDictionary(DaijirinDictionary):
         # split up the definition parts, breaking on ';'
         def_parts = self.split_def_parts(def_string, split_character=u';')
         return def_parts
+
+    def create_example_sentences(self, example_sentence_strings):
+        """
+        This creates example sentence objects.  The input is a
+        list of [japanese_example_sentence, english_translation] tuples.
+        This returns a list of ExampleSentence objects.
+        """
+        example_sentences = []
+
+        for jap_sentence, eng_trans in example_sentence_strings:
+            # remove links
+            eng_trans = re.sub(u'<a.*?>', u'', eng_trans)
+            eng_trans = re.sub(u'</a>', u'', eng_trans)
+
+            # Remove parenthesis.  This is a little difficult because
+            # we have to loop through the list multiple times until we
+            # are certain there are no more parenthesis.  Just to be
+            # on the safe side, we will raise an exception if we
+            # loop through too many times.
+            # In order to do this properly, we might need to use a
+            # proper parsing library like pyparsing.
+            count = 0
+            while re.search(u'（.*?）', eng_trans):
+                eng_trans = re.sub(u'（.[^（]*?）', u'', eng_trans)
+                count += 1
+                if count > 100:
+                    raise Exception(
+                            "Looped thru eng_trans too many times looking for matching ().")
+
+            # for japanese sentences, we want to change "." to "。"
+            jap_sentence = jap_sentence.replace(u'.', u'。')
+
+
+            example_sentences.append(ExampleSentence(jap_sentence, eng_trans))
+
+        return example_sentences
 
 
     def parse_definition(self, tree):
@@ -840,13 +879,13 @@ class NewCenturyDictionary(DaijirinDictionary):
                 english_def = match.group(1)
 
             # find example sentences
-            example_sentences = []
+            example_sentence_strings = []
             matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
             if matches:
                 for m in matches:
                     jap_example_sentence = m[0]
                     eng_trans = m[1]
-                    example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
+                    example_sentence_strings.append([jap_example_sentence, eng_trans])
 
             # find kaiwa
             matches = re.findall(u'<font color="#660000"><b>会話</b></font><br> <br><small>(.*?)」 “(.*?)</small>', splt)
@@ -854,9 +893,10 @@ class NewCenturyDictionary(DaijirinDictionary):
                 for m in matches:
                     jap_example_sentence = u'%s」' % m[0]
                     eng_trans = u'“%s' % m[1]
-                    example_sentences.append(ExampleSentence(jap_example_sentence, eng_trans))
+                    example_sentence_strings.append([jap_example_sentence, eng_trans])
 
             def_parts = self.clean_def_string(english_def)
+            example_sentences = self.create_example_sentences(example_sentence_strings)
 
             definitions.append(Definition(def_parts, example_sentences))
 

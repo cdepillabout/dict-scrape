@@ -68,6 +68,7 @@ class Ui_MainWindowReader(object):
 
         webview = DefWebView(self.centralwidget)
         webview.setObjectName(webviewobjectname)
+        webview.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         dictlabel.setBuddy(webview)
         verticallayout.addWidget(webview)
 

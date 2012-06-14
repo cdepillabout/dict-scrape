@@ -1,0 +1,94 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a very interesting [amusing, entertaining] play.", 
+                    "jap_sentence": "大変おもしろい劇"
+                }, 
+                {
+                    "eng_trans": "a funny joke.", 
+                    "jap_sentence": "おもしろい冗談"
+                }, 
+                {
+                    "eng_trans": "a really exciting close game.", 
+                    "jap_sentence": "実におもしろい接戦"
+                }, 
+                {
+                    "eng_trans": "a dull [a boring] book.", 
+                    "jap_sentence": "おもしろくない（＝退屈な）本"
+                }, 
+                {
+                    "eng_trans": "lose interest in English.", 
+                    "jap_sentence": "英語がおもしろくなくなる（＝興味を失う）"
+                }, 
+                {
+                    "eng_trans": "The story was very interesting to me./I was greatly amused at [by] the story.", 
+                    "jap_sentence": "その話は私にはとてもおもしろかった"
+                }, 
+                {
+                    "eng_trans": "I found the book interesting [boring].", 
+                    "jap_sentence": "その本は読んでみるとおもしろかった[おもしろくなかった]"
+                }, 
+                {
+                    "eng_trans": "I read the story with great interest.", 
+                    "jap_sentence": "その話を大変おもしろく読んだ"
+                }, 
+                {
+                    "eng_trans": "He's a very funny fellow./He is great [good] fun.", 
+                    "jap_sentence": "あの男はとてもおもしろいやつだ"
+                }, 
+                {
+                    "eng_trans": "Playing tag is a lot of fun [is really enjoyable, × is really interesting].", 
+                    "jap_sentence": "鬼ごっこはとてもおもしろい"
+                }, 
+                {
+                    "eng_trans": "We had lots of fun [had a very good time, enjoyed ourselves very much] at the party.", 
+                    "jap_sentence": "パーティーはとてもおもしろかった"
+                }, 
+                {
+                    "eng_trans": "(I found) the wrestling match was really exciting./I really enjoyed the wrestling match.", 
+                    "jap_sentence": "そのレスリングの試合は実におもしろかった"
+                }, 
+                {
+                    "eng_trans": "London is a really exciting [interesting] place.", 
+                    "jap_sentence": "ロンドンはとてもおもしろいところだ"
+                }, 
+                {
+                    "eng_trans": "Does that appeal to you?", 
+                    "jap_sentence": "あれはおもしろいですか（＝心に訴えますか）"
+                }, 
+                {
+                    "eng_trans": "His sissy attitude gets on my nerves.", 
+                    "jap_sentence": "彼のにやけた態度がおもしろくない（＝気にさわる）"
+                }, 
+                {
+                    "eng_trans": "“Would you like to go to the ballet next Saturday?”“Oh, that sounds interesting [like fun].”", 
+                    "jap_sentence": "「来週の土曜日バレエを見に行かないかい」 「まあ,おもしろそうね」"
+                }, 
+                {
+                    "eng_trans": "“Taro's still very keen on golf.”“I can't understand what he sees in it.”", 
+                    "jap_sentence": "「太郎はあいかわらずゴルフに夢中になってるよ」 「あんなものどこがおもしろいのか分からないよ」"
+                }, 
+                {
+                    "eng_trans": "“Please try to come. It won't be much of a party without you.”“It's nice of you to say that. I'll do my best.”", 
+                    "jap_sentence": "「なんとかしていらしてくださいね。あなたがいないとあまりおもしろいパーティーにならないから」 「そう言ってくれてありがとう。精々行くようにするよ」"
+                }
+            ], 
+            "parts": [
+                "interesting", 
+                "enjoyable", 
+                "amusing", 
+                "funny", 
+                "entertaining", 
+                "exciting"
+            ]
+        }
+    ], 
+    "original_kana": "おもしろい", 
+    "original_kanji": "面白い", 
+    "result_kana": "おもしろい", 
+    "result_kanji": "面白い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E9%9D%A2%E7%99%BD%E3%81%84%E3%80%80%E3%81%8A%E3%82%82%E3%81%97%E3%82%8D%E3%81%84&enc=UTF-8&stype=1&dtype=3"
+}
