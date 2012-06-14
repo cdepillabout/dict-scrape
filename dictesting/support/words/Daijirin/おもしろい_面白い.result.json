@@ -1,0 +1,100 @@
+{
+    "accent": "4", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "昨日見た映画は―・かった"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "勉強が―・くて仕方がない"
+                }
+            ], 
+            "parts": [
+                "楽しい", 
+                "愉快だ"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "何か―・い話はないか"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "最後にきて―・い展開を見せる"
+                }
+            ], 
+            "parts": [
+                "興味をそそる", 
+                "興味深い"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・いしぐさで人を笑わせる"
+                }
+            ], 
+            "parts": [
+                "こっけいだ", 
+                "おかしい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "病状が―・くない"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・くない結果に終わる"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "私に―・からぬ感情を抱いている"
+                }
+            ], 
+            "parts": [
+                "（多く、打ち消しの語を伴う）心にかなう", 
+                "好ましい", 
+                "望ましい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "十日あまりなれば、月―・し〔出典： 土左〕 "
+                }
+            ], 
+            "parts": [
+                "景色などが明るく広々とした感じで、気分がはればれとするようだ", 
+                "明るく目が覚めるようだ"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "昔を思ひやりてみれば―・かりける所なり〔出典： 土左〕 "
+                }
+            ], 
+            "parts": [
+                "心をひかれる", 
+                "趣が深い", 
+                "風流だ"
+            ]
+        }
+    ], 
+    "original_kana": "おもしろい", 
+    "original_kanji": "面白い", 
+    "result_kana": "おもしろ・い", 
+    "result_kanji": "面白い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E9%9D%A2%E7%99%BD%E3%81%84%E3%80%80%E3%81%8A%E3%82%82%E3%81%97%E3%82%8D%E3%81%84&enc=UTF-8&stype=1&dtype=0"
+}
