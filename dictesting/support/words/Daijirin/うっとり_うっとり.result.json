@@ -1,0 +1,49 @@
+{
+    "accent": "3", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―（と）音楽にききほれる"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―（と）した表情"
+                }
+            ], 
+            "parts": [
+                "快さに浸ってわれを忘れるさま", 
+                "恍惚<small>(こうこつ)</small>とするさま"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "別れのつらさに―と、気抜けのごとく〔出典： 浄瑠璃・寿の門松〕 "
+                }
+            ], 
+            "parts": [
+                "茫然<small>(ぼうぜん)</small>とするさま"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―として路傍に昏睡し〔出典： 万国奇談（輔清）〕 "
+                }
+            ], 
+            "parts": [
+                "気を失うさま", 
+                "朦朧<small>(もうろう)</small>"
+            ]
+        }
+    ], 
+    "original_kana": "うっとり", 
+    "original_kanji": "うっとり", 
+    "result_kana": "うっとり", 
+    "result_kanji": "うっとり", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A%E3%80%80%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A&enc=UTF-8&stype=1&dtype=0"
+}
