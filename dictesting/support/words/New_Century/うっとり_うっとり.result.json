@@ -1,0 +1,31 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The whole audience was charmed [enchanted, entranced] by [with] the sweet melody.", 
+                    "jap_sentence": "観客はみなその美しいメロディーにうっとりした"
+                }, 
+                {
+                    "eng_trans": "She gazed in [with] rapture at the engagement ring.", 
+                    "jap_sentence": "彼女はうっとりと婚約指輪を見つめた"
+                }, 
+                {
+                    "eng_trans": "He felt intoxicated by the wine.", 
+                    "jap_sentence": "彼はそのぶどう酒にうっとりした気持ちになった"
+                }
+            ], 
+            "parts": [
+                "be charmed", 
+                "be enchanted", 
+                "be entranced"
+            ]
+        }
+    ], 
+    "original_kana": "うっとり", 
+    "original_kanji": "うっとり", 
+    "result_kana": "うっとり", 
+    "result_kanji": "うっとりする", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A%E3%80%80%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A&enc=UTF-8&stype=1&dtype=3"
+}

@@ -518,10 +518,20 @@ class Dictionary(object):
         """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
-    def split_def_parts(self, definition_string, split_character=u'。'):
-        """Split a definition into definition parts."""
+    def split_def_parts(self, definition_string, split_characters=u'。'):
+        """
+        Split a definition into definition parts.
+        definition_string is just a string for the definition.
+        split_characters is either a list or a string.  If a string,
+        then it is used as a character to split on.  If it is a list,
+        then each character in the list is used as a split item.
+        """
         assert(isinstance(definition_string, unicode))
-        splits = definition_string.split(split_character)
+        if isinstance(split_characters, list):
+            pattern = '|'.join(map(re.escape, split_characters))
+            splits = re.split(pattern, definition_string)
+        else:
+            splits = definition_string.split(split_characters)
         parts = []
         for s in splits:
             if s:
@@ -773,7 +783,7 @@ class NewCenturyDictionary(DaijirinDictionary):
             def_string = def_string[:-1]
 
         # split up the definition parts, breaking on ';'
-        def_parts = self.split_def_parts(def_string, split_character=u';')
+        def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
         return def_parts
 
     def create_example_sentences(self, example_sentence_strings):
@@ -947,7 +957,7 @@ class ProgressiveDictionary(DaijirinDictionary):
             def_string = def_string[:-1]
 
         # split up the definition parts, breaking on ';'
-        def_parts = self.split_def_parts(def_string, split_character=u';')
+        def_parts = self.split_def_parts(def_string, split_characters=u';')
         return def_parts
 
     def clean_eng_example_sent(self, eng_trans):
