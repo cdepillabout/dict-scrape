@@ -310,6 +310,8 @@ def main():
     parser.add_argument('--dictionary', '-d', action='store',
             metavar='DICTIONARY', choices=dic_choices(),
             help="select a specific dictionary to operate on")
+    parser.add_argument('--test-word', '-t', action='store', nargs=2, metavar=('KANJI', 'KANA'),
+            type=unicode_type, help="run tests for just KANJI KANA")
 
     args = parser.parse_args()
 
@@ -332,9 +334,15 @@ def main():
         reparse(args.reparse[1], args.reparse[0], dictionaries=dictionary)
         sys.exit(0)
 
+    kanji = None
+    kana = None
+    if args.test_word:
+        kana = args.test_word[1]
+        kanji = args.test_word[0]
+
     # if no options are specified, then just run all tests
     sanity_check()
-    test_jdicscrape_word_parsing.test_words(dictionaries=dictionary)
+    test_jdicscrape_word_parsing.test_words(kanji=kanji, kana=kana, dictionaries=dictionary)
     sys.exit(0)
 
 if __name__ == '__main__':

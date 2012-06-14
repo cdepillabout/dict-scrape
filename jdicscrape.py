@@ -460,6 +460,12 @@ class Dictionary(object):
                 #print("NO DEFINITION FROM NEW CENTURY")
                 return Result(self, word_kanji, word_kana, url)
 
+        # make sure this is the Daijisen and not the Daijirin definition
+        if self.dic_type == Dictionary.DAIJISEN_TYPE:
+            if u'<span class="dic-zero">大辞泉</span>' in result:
+                #print("NO DEFINITION FROM NEW CENTURY")
+                return Result(self, word_kanji, word_kana, url)
+
         kanji, kana, accent = self.parse_heading(tree)
         defs_sentences = self.parse_definition(tree)
         return Result(self, word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)

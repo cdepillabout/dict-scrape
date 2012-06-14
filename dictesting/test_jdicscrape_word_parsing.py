@@ -144,8 +144,12 @@ def checkword(dictionary, kanji, kana):
         assert(json_result == html_parse_result)
 
 @manage_words.no_null_dictionaries
-def test_words(dictionaries=manage_words.get_dics()):
-    words = manage_words.get_words_from_wordsdb()
+def test_words(kanji=None, kana=None, dictionaries=manage_words.get_dics()):
+    if kanji is None and kana is None:
+        words = manage_words.get_words_from_wordsdb()
+    else:
+        words = [[kana, kanji]]
+
     for kana, kanji in words:
         for dic in dictionaries:
             description = '%s (%s) in %s' % (kana, kanji, dic.short_name)
