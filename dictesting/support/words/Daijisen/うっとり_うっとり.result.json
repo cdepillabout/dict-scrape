@@ -1,0 +1,41 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "音楽に―と聞きほれる"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―（と）したまなざし"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「好い加減に頭が疲れて、皆―した心持になって黙って了う」〈風葉・青春〉"
+                }
+            ], 
+            "parts": [
+                "美しいものなどに心を奪われて、ぼうっとしているさま", 
+                "また、気抜けしたさま"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「迷倦<small>(めくらみ)</small>を覚え、―として路傍に昏睡し」〈青木輔清訳・万国奇談〉"
+                }
+            ], 
+            "parts": [
+                "気を失うさま"
+            ]
+        }
+    ], 
+    "original_kana": "うっとり", 
+    "original_kanji": "うっとり", 
+    "result_kana": "うっとり", 
+    "result_kanji": "うっとり", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A%E3%80%80%E3%81%86%E3%81%A3%E3%81%A8%E3%82%8A&enc=UTF-8&stype=1&dtype=0"
+}

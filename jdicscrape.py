@@ -536,6 +536,10 @@ class Dictionary(object):
         for s in splits:
             if s:
                 s = s.strip()
+                # if the beginning of a definition part start with 'また、', then
+                # rip off the 'また'
+                if s.startswith(u'また、'):
+                    s = s[3:]
                 parts.append(DefinitionPart(s))
         return parts
 
