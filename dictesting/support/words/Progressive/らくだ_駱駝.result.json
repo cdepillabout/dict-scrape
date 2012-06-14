@@ -1,0 +1,40 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a hump", 
+                    "jap_sentence": "らくだのこぶ"
+                }, 
+                {
+                    "eng_trans": "an Arabian camel／a dromedary [dr<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D32.gif\" align=\"absmiddle\" border=\"0\">m<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif\" align=\"absmiddle\" border=\"0\">d<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE8.gif\" align=\"absmiddle\" border=\"0\">ri | dr<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D5D.gif\" align=\"absmiddle\" border=\"0\">m<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif\" align=\"absmiddle\" border=\"0\">d<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif\" align=\"absmiddle\" border=\"0\">ri]", 
+                    "jap_sentence": "ひとこぶらくだ"
+                }, 
+                {
+                    "eng_trans": "a Bactrian camel", 
+                    "jap_sentence": "ふたこぶらくだ"
+                }
+            ], 
+            "parts": [
+                "a camel"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a camel ('s) hair shirt", 
+                    "jap_sentence": "らくだのシャツ"
+                }
+            ], 
+            "parts": [
+                "camel's-hair cloth"
+            ]
+        }
+    ], 
+    "original_kana": "らくだ", 
+    "original_kanji": "駱駝", 
+    "result_kana": "らくだ", 
+    "result_kanji": "駱駝", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E9%A7%B1%E9%A7%9D%E3%80%80%E3%82%89%E3%81%8F%E3%81%A0&enc=UTF-8&stype=1&dtype=3"
+}
