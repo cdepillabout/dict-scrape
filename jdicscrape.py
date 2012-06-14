@@ -649,6 +649,9 @@ class DaijirinDictionary(Dictionary):
                     jap_defs.append(Definition([def_part], None))
                     continue
 
+                # this checks if there is a 補説 at the top of the file.  We don't want this.
+                result = re.sub(u'<b>〔補説〕</b> (.*?)<br>', u'', result)
+
                 result = re.sub(u'^<td>', u'', result)
                 result = re.sub(u'<br></td>$', u'', result)
                 result = result.strip()
