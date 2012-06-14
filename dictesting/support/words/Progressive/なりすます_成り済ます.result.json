@@ -1,0 +1,27 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "pose as a doctor", 
+                    "jap_sentence": "医者に成り済ます"
+                }, 
+                {
+                    "eng_trans": "He successfully impersonated [pretended to be] a member of the staff.", 
+                    "jap_sentence": "職員に成り済ました"
+                }, 
+                {
+                    "eng_trans": "He passed himself off as a university professor.", 
+                    "jap_sentence": "彼は大学教授に成り済ましていた"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "なりすます", 
+    "original_kanji": "成り済ます", 
+    "result_kana": "なりすます", 
+    "result_kanji": "成り済ます", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%88%90%E3%82%8A%E6%B8%88%E3%81%BE%E3%81%99%E3%80%80%E3%81%AA%E3%82%8A%E3%81%99%E3%81%BE%E3%81%99&enc=UTF-8&stype=1&dtype=3"
+}
