@@ -631,7 +631,6 @@ class DaijirinDictionary(Dictionary):
                 m = re.match(u'<td>\n<b>\(.*?\)</b> <br>→<a href=".*?">(.*?)</a><br></td>',
                         result)
                 if m:
-                    print(m.group(1))
                     def_part = DefinitionPart(m.group(1))
                     jap_defs.append(Definition([def_part], None))
                     continue
