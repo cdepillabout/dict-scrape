@@ -920,16 +920,36 @@ class ProgressiveDictionary(DaijirinDictionary):
         def_string = re.sub(u'\(\(.*?\)\)', u'', def_string)
         def_string = re.sub(u'\(.*?\)', u'', def_string)
 
+        # take out things in those weird japanese parenthesis
+        def_string = re.sub(u'〔.*?〕', u'', def_string)
+
+
         # strip whitespace
         def_string = def_string.strip()
 
         # remove trailing period
-        if def_string[-1] == u'.':
+        if len(def_string) > 0 and def_string[-1] == u'.':
             def_string = def_string[:-1]
 
         # split up the definition parts, breaking on ';'
         def_parts = self.split_def_parts(def_string, split_character=u';')
         return def_parts
+
+    def clean_eng_example_sent(self, eng_trans):
+        """
+        Cleans up an english example sentence.
+        """
+        # take out things in those weird japanese parenthesis
+        eng_trans = re.sub(u'〔.*?〕', u'', eng_trans)
+
+        # take out italic tags
+        eng_trans = eng_trans.replace(u'<i>', u'')
+        eng_trans = eng_trans.replace(u'</i>', u'')
+
+        # strip whitespace
+        eng_trans = eng_trans.strip()
+
+        return eng_trans
 
     def parse_definition(self, tree):
         # TODO: For now, we ignore words like "強迫観念" that come up when
@@ -984,7 +1004,7 @@ class ProgressiveDictionary(DaijirinDictionary):
             if matches:
                 for m in matches:
                     jap_sent = m[0]
-                    eng_sent = m[1]
+                    eng_sent = self.clean_eng_example_sent(m[1])
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
             def_parts = self.clean_def_string(english_def)

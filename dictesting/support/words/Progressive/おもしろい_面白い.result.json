@@ -1,0 +1,68 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Recently I've come to <i>enjoy</i> my studies.", 
+                    "jap_sentence": "このごろ勉強が面白い"
+                }, 
+                {
+                    "eng_trans": "My work at the office isn't <i>interesting</i> [any <i>fun</i>].", 
+                    "jap_sentence": "会社の仕事は面白くない"
+                }, 
+                {
+                    "eng_trans": "Did you <i>enjoy</i> the meeting?", 
+                    "jap_sentence": "会は面白かったですか"
+                }, 
+                {
+                    "eng_trans": "That was <i>fun</i>.", 
+                    "jap_sentence": "ああ面白かった〔何かが終わって〕"
+                }, 
+                {
+                    "eng_trans": "The fish were biting like crazy.", 
+                    "jap_sentence": "魚が面白いように釣れた"
+                }, 
+                {
+                    "eng_trans": "He's a very <i>interesting</i> fellow.／〔ちょっと変わっていて〕He's quite a character.", 
+                    "jap_sentence": "あれはなかなか面白い男だ"
+                }
+            ], 
+            "parts": [
+                "〔楽しい，興味をそそられる〕interesting", 
+                "〔人を楽しませる〕amusing"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The dialogue of the play is <i>witty</i>.", 
+                    "jap_sentence": "せりふが面白い芝居だ"
+                }, 
+                {
+                    "eng_trans": "This cartoon wasn't <i>funny</i>.", 
+                    "jap_sentence": "このまんがは面白くなかった"
+                }
+            ], 
+            "parts": [
+                "〔こっけいな〕funny"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The patient isn't doing very well.", 
+                    "jap_sentence": "どうも病状が面白くない"
+                }
+            ], 
+            "parts": [
+                "〔「面白くない」の形で，望ましくない〕"
+            ]
+        }
+    ], 
+    "original_kana": "おもしろい", 
+    "original_kanji": "面白い", 
+    "result_kana": "おもしろい", 
+    "result_kanji": "面白い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E9%9D%A2%E7%99%BD%E3%81%84%E3%80%80%E3%81%8A%E3%82%82%E3%81%97%E3%82%8D%E3%81%84&enc=UTF-8&stype=1&dtype=3"
+}
