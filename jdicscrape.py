@@ -975,6 +975,18 @@ class ProgressiveDictionary(DaijirinDictionary):
         def_parts = self.split_def_parts(def_string, split_characters=u';')
         return def_parts
 
+    def replace_gaiji(self, string):
+        """
+        Replace the gaiji that occur in the string with actual characters.
+        """
+        # TODO: this is nowhere near complete
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE8.gif" align="absmiddle" border="0">', u'e')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D32.gif" align="absmiddle" border="0">', u'a')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D5D.gif" align="absmiddle" border="0">', u'c')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif" align="absmiddle" border="0">', u'e')
+
+        return string
+
     def clean_eng_example_sent(self, eng_trans):
         """
         Cleans up an english example sentence.
@@ -988,6 +1000,9 @@ class ProgressiveDictionary(DaijirinDictionary):
 
         # strip whitespace
         eng_trans = eng_trans.strip()
+
+        # fix some gaiji
+        eng_trans = self.replace_gaiji(eng_trans)
 
         return eng_trans
 
