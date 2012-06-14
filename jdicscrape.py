@@ -687,7 +687,7 @@ class DaijisenDictionary(DaijirinDictionary):
                 example_sentences.append(ExampleSentence(s, u''))
         return example_sentences
 
-    def create_def(self, def_string, extra_example_sentences):
+    def create_def(self, def_string, extra_example_sentences=[]):
         """
         Takes a def string, splits up the defintion parts,
         takes out the example sentences, and puts it all together in
@@ -731,7 +731,7 @@ class DaijisenDictionary(DaijirinDictionary):
         result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
         jap_defs = []
         matches = re.split(u'(<b>[１|２|３|４|５|６|７|８|９|０]+</b>.*?<br>)', result)
-        if matches:
+        if matches and len(matches) > 1:
             for i,m in enumerate(matches):
                 # check this match and see if it has a definition
                 def_match = re.search(
@@ -754,6 +754,14 @@ class DaijisenDictionary(DaijirinDictionary):
         else:
             result = re.sub(u'^<td>', u'', result)
             result = re.sub(u'<br></td>.*$', u'', result)
+
+            # if it starts with an arrows group, then remove it
+            # (this is the character that looks like two greater than signs
+            # really close together)
+            result = re.sub(u'\u300A.*?\u300B', u'', result)
+
+            # if there are some </br>s in it, then remove them and everything after them
+            result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
             result = self.clean_def_string(result)
             jap_defs.append(self.create_def(result))
