@@ -71,10 +71,10 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
 
     if len(parts_a) != len(parts_b):
         print(u'\n\tnumber of parts for definition is different')
-        print(u'\n\t\tparts from %s:' % def_a_string)
+        print(u'\n\t\tparts from %s: (%s)' % (def_a_string, len(parts_a)))
         for p in parts_a:
             print(pretty_format(p, tab_amount=2))
-        print(u'\n\t\tparts from %s:' % def_b_string)
+        print(u'\n\t\tparts from %s: (%s)' % (def_b_string, len(parts_b)))
         for p in parts_b:
             print(pretty_format(p, tab_amount=2))
         print_separator()
@@ -90,10 +90,10 @@ def print_differences_definition(def_a, def_b, def_a_string, def_b_string):
     if len(exs_a) != len(exs_b):
         print(u'\n\tnumber of example sentences for definition is different')
         print(u'\tdefinition: %s' % def_a.pretty_definition().strip())
-        print(u'\n\t\texample sentences from %s:' % def_a_string)
+        print(u'\n\t\texample sentences from %s: (%s)' % (def_a_string, len(exs_a)))
         for e in exs_a:
             print(pretty_format(e, tab_amount=2))
-        print(u'\n\t\texample sentences from %s:' % def_b_string)
+        print(u'\n\t\texample sentences from %s: (%s)' % (def_b_string, len(exs_b)))
         for e in exs_b:
             print(pretty_format(e, tab_amount=2))
         print_separator()
@@ -119,10 +119,10 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
 
     if len(defs_a) != len(defs_b):
         print(u'\n\tnumber of definitions is different')
-        print(u'\tdefs from %s:' % result_a_string)
+        print(u'\tdefs from %s: (%s)' % (result_a_string, len(defs_a)))
         for d in defs_a:
             print(pretty_format(d, tab_amount=2))
-        print(u'\tdefs from %s:' % result_b_string)
+        print(u'\tdefs from %s: (%s)' % (result_b_string, len(defs_b)))
         for d in defs_b:
             print(pretty_format(d, tab_amount=2))
         print_separator()
@@ -146,8 +146,8 @@ def checkword(dictionary, kanji, kana):
 @manage_words.no_null_dictionaries
 def test_words(dictionaries=manage_words.get_dics()):
     words = manage_words.get_words_from_wordsdb()
-    for dic in dictionaries:
-        for kana, kanji in words:
+    for kana, kanji in words:
+        for dic in dictionaries:
             description = '%s (%s) in %s' % (kana, kanji, dic.short_name)
             sys.stdout.write(u'check %s... ' % description)
             try:

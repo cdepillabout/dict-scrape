@@ -1,0 +1,102 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "何か―・いことはないか"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "仕事が―・くなってきた"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "この作品は―・くなかった"
+                }
+            ], 
+            "parts": [
+                "興味をそそられて、心が引かれるさま", 
+                "興味深い"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "この漫画はなんとも―・い"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・くもない冗談"
+                }
+            ], 
+            "parts": [
+                "つい笑いたくなるさま", 
+                "こっけいだ"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "夏休みを―・く過ごした"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "無視されたようで―・くなかった"
+                }
+            ], 
+            "parts": [
+                "心が晴れ晴れするさま", 
+                "快く楽しい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・い癖"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・い声"
+                }
+            ], 
+            "parts": [
+                "一風変わっている", 
+                "普通と違っていてめずらしい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "結果が―・くない"
+                }
+            ], 
+            "parts": [
+                "（多く、打消しの語を伴って用いる）思ったとおりである", 
+                "好ましい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「月の―・きに、夜更くるまで遊びをぞし給ふなる」〈源・桐壺〉"
+                }
+            ], 
+            "parts": [
+                "風流だ", 
+                "趣が深い"
+            ]
+        }
+    ], 
+    "original_kana": "おもしろい", 
+    "original_kanji": "面白い", 
+    "result_kana": "おも‐しろ・い", 
+    "result_kanji": "面白い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E9%9D%A2%E7%99%BD%E3%81%84%E3%80%80%E3%81%8A%E3%82%82%E3%81%97%E3%82%8D%E3%81%84&enc=UTF-8&stype=1&dtype=0"
+}

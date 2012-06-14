@@ -655,7 +655,7 @@ class DaijisenDictionary(DaijirinDictionary):
                 example_sentences.append(ExampleSentence(s, u''))
         return example_sentences
 
-    def create_def(self, def_string):
+    def create_def(self, def_string, extra_example_sentences):
         """
         Takes a def string, splits up the defintion parts,
         takes out the example sentences, and puts it all together in
@@ -671,7 +671,7 @@ class DaijisenDictionary(DaijirinDictionary):
         return Definition([part1, part2], [ex_sent])
         """
         def_parts = self.split_def_parts(def_string)
-        example_sentences = None
+        example_sentences = []
         
         # check to see if the last part of the definition contains
         # example sentences
@@ -679,6 +679,10 @@ class DaijisenDictionary(DaijirinDictionary):
             example_sentences_string = def_parts[-1].part
             def_parts = def_parts[:-1]
             example_sentences = self.split_example_sentences(example_sentences_string)
+
+        # append the extra example sentences
+        for e in extra_example_sentences:
+            example_sentences.append(ExampleSentence(self.clean_def_string(e), u''))
 
         return Definition(def_parts, example_sentences)
 
@@ -694,11 +698,26 @@ class DaijisenDictionary(DaijirinDictionary):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
         result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
         jap_defs = []
-        matches = re.findall(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', result)
+        matches = re.split(u'(<b>[１|２|３|４|５|６|７|８|９|０]+</b>.*?<br>)', result)
         if matches:
-            for m in matches:
-                m = self.clean_def_string(m)
-                df = self.create_def(m)
+            for i,m in enumerate(matches):
+                # check this match and see if it has a definition
+                def_match = re.search(
+                        u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', m)
+                # if there is no match, then we just continue the function
+                if not def_match:
+                    continue
+                definition = def_match.group(1)
+
+                # look for extra example sentences in the next match object
+                extra_example_sentences = []
+                if len(matches) > i+1:
+                    extra_example_sentences_matches = re.findall(
+                            u'<table border="0" cellpadding="0" cellspacing="0"><tbody><tr valign="top"><td><img src="http://i.yimg.jp/images/clear.gif" height="1" width="25"></td><td valign="top"></td><td><small><font color="#008800"><b>(.*?)</b></font></small></td></tr></tbody></table>', matches[i+1])
+                    for match in extra_example_sentences_matches:
+                        extra_example_sentences.append(match)
+                definition = self.clean_def_string(definition)
+                df = self.create_def(definition, extra_example_sentences)
                 jap_defs.append(df)
         else:
             result = re.sub(u'^<td>', u'', result)
