@@ -625,8 +625,18 @@ class DaijirinDictionary(Dictionary):
             for defi in definition_tables:
                 result = etree.tostring(defi, pretty_print=False, method="html",
                         encoding='unicode')
+
+                # this checks for if we are redirected to another entry.  For example,
+                # for the word 赤し
+                m = re.match(u'<td>\n<b>\(.*?\)</b> <br>→<a href=".*?">(.*?)</a><br></td>',
+                        result)
+                if m:
+                    print(m.group(1))
+                    def_part = DefinitionPart(m.group(1))
+                    jap_defs.append(Definition([def_part], None))
+                    continue
+
                 result = re.sub(u'^<td>', u'', result)
-                #result = re.sub(u'(?<! )<br>.*$', u'', result)
                 result = re.sub(u'<br></td>$', u'', result)
                 result = result.strip()
                 def_parts = self.split_def_parts(result)
