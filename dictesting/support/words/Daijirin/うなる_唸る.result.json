@@ -1,0 +1,104 @@
+{
+    "accent": "2", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "犬が―・る"
+                }
+            ], 
+            "parts": [
+                "獣が威嚇するような、低い声を発する"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "病人が―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "試験問題がむずかしくて―・る"
+                }
+            ], 
+            "parts": [
+                "人が苦しくて、言葉にならない低い声を出す", 
+                "うめく"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "大向こうを―・らせる名演技"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "あまりの豪華さに―・ってしまった"
+                }
+            ], 
+            "parts": [
+                "立派さや豪華さに感嘆の声を発する"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "一節<small>(ひとふし)</small>―・る"
+                }
+            ], 
+            "parts": [
+                "（浪曲などを）力を入れて語る"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "モーターが―・り始める"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "風で電線が―・る"
+                }
+            ], 
+            "parts": [
+                "にぶく低い音が長く尾を引くように鳴る"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "腕が―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "金庫には金が―・っている"
+                }
+            ], 
+            "parts": [
+                "たまった力や勢いが外にあふれ出そうになる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "今時の大臣―・つた事もせぬ〔出典： 浮世草子・禁短気〕 "
+                }
+            ], 
+            "parts": [
+                "びっくりするほど豪勢にする"
+            ]
+        }
+    ], 
+    "original_kana": "うなる", 
+    "original_kanji": "唸る", 
+    "result_kana": "うな・る", 
+    "result_kanji": "唸る", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E5%94%B8%E3%82%8B%E3%80%80%E3%81%86%E3%81%AA%E3%82%8B&enc=UTF-8&stype=1&dtype=0"
+}

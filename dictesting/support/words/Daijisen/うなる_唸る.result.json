@@ -1,0 +1,86 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "痛くてうんうん―・る"
+                }
+            ], 
+            "parts": [
+                "力を入れたり苦しんだりするときに、長く引いた低い声を出す", 
+                "うめく"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "犬が―・る"
+                }
+            ], 
+            "parts": [
+                "獣が低く力の入った声を出す"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "モーターが―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "風が―・る"
+                }
+            ], 
+            "parts": [
+                "鈍く低い音を長く響かせながら出す"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "義太夫を―・る"
+                }
+            ], 
+            "parts": [
+                "謡曲・浄瑠璃などを、のどをしぼるように低音でうたったり語ったりする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "満員の観衆を―・らせる"
+                }
+            ], 
+            "parts": [
+                "感嘆のあまり、思わず、<b>1</b>のような声を出す", 
+                "ひどく感心する"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "腕が―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "金が―・るほどある"
+                }
+            ], 
+            "parts": [
+                "内に満ちている力が、あふれ出るばかりになる"
+            ]
+        }
+    ], 
+    "original_kana": "うなる", 
+    "original_kanji": "唸る", 
+    "result_kana": "う‐な・る", 
+    "result_kanji": "唸る", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E5%94%B8%E3%82%8B%E3%80%80%E3%81%86%E3%81%AA%E3%82%8B&enc=UTF-8&stype=1&dtype=0"
+}
