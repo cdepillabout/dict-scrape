@@ -806,12 +806,27 @@ class NewCenturyDictionary(DaijirinDictionary):
         def_string = def_string.replace(u'<b>', u'')
         def_string = def_string.replace(u'</b>', u'')
 
+        # remove stars
+        def_string = def_string.replace(u'＊', u'')
+
+        # replace big spaces with small spaces
+        def_string = def_string.replace(u'  ', u' ')
+
+        # deleting stars sometimes leaves extra spaces. remove these spaces
+        def_string = def_string.replace(u'  ', u'')
+
+        # the def string may start with a number like ［１］. delete this.
+        def_string = re.sub(u'^［(１|２|３|４|５|６|７|８|９|０)+］', u'', def_string)
+
         # strip whitespace
         def_string = def_string.strip()
 
         # remove trailing period
         if def_string[-1] == u'.':
             def_string = def_string[:-1]
+
+        # strip whitespace again after deleting previous period
+        def_string = def_string.strip()
 
         # split up the definition parts, breaking on ';'
         def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])

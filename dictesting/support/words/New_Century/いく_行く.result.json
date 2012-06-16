@@ -1,0 +1,170 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "go away.", 
+                    "jap_sentence": "あっちへ行く"
+                }, 
+                {
+                    "eng_trans": "I'll go [come] there tomorrow.", 
+                    "jap_sentence": "あすそちらに行きます"
+                }, 
+                {
+                    "eng_trans": "I must go now./(I think) I must be going now.", 
+                    "jap_sentence": "もう行かないといけません"
+                }, 
+                {
+                    "eng_trans": "I'm coming [× going].", 
+                    "jap_sentence": "今行きます（呼ばれたときの返事）"
+                }, 
+                {
+                    "eng_trans": "Where do you want to go [× go to, × visit]?（※「どの国へ行きたいですか」ならWhat country do you want to visit [go to, × go]?", 
+                    "jap_sentence": "どこへ行きたいですか"
+                }, 
+                {
+                    "eng_trans": "Does this train go to Boston?/Does this train take us to Boston?/Is this train (bound) for Boston?", 
+                    "jap_sentence": "この列車はボストンまで行きますか"
+                }, 
+                {
+                    "eng_trans": "Go down [along] this street, and you will get to the station./This street takes you [leads (you)] to the station.", 
+                    "jap_sentence": "この通りを行くと駅に出ます"
+                }, 
+                {
+                    "eng_trans": "He drove [walked] to school./He went to school by car [on foot].", 
+                    "jap_sentence": "彼は車で[歩いて]学校へ行った"
+                }, 
+                {
+                    "eng_trans": "I flew (over) to Tokyo./I went to Tokyo by plane./I took a plane to Tokyo.", 
+                    "jap_sentence": "私は東京へ飛行機で行きました"
+                }, 
+                {
+                    "eng_trans": "He's going (to go) to New York.", 
+                    "jap_sentence": "彼はニューヨークに行くつもりだ"
+                }, 
+                {
+                    "eng_trans": "When will you leave for America?", 
+                    "jap_sentence": "いつアメリカへ行きますか（＝出発しますか）"
+                }, 
+                {
+                    "eng_trans": "Did you go to [〈やや書〉 attend] the last class reunion?", 
+                    "jap_sentence": "この前のクラス会へは行きましたか（＝出席しましたか）"
+                }, 
+                {
+                    "eng_trans": "I'll come over [come to your house, visit you] next Sunday.", 
+                    "jap_sentence": "次の日曜日君のところへ行くよ"
+                }, 
+                {
+                    "eng_trans": "Have you ever been [〈米話〉 Have you ever gone] to England?/Did you ever go to England?", 
+                    "jap_sentence": "英国へ行ったことがありますか"
+                }, 
+                {
+                    "eng_trans": "Go and see [〈米〉 Go see] him right away.", 
+                    "jap_sentence": "すぐ彼のところへ行きなさい"
+                }, 
+                {
+                    "eng_trans": "Could you tell [show, × teach] me how to get to the station?", 
+                    "jap_sentence": "駅へ行く道（＝行き方）を教えてくれませんか"
+                }, 
+                {
+                    "eng_trans": "I went shopping at [in, × to] the department store yesterday./I went to the department store to do some [the] shopping yesterday.", 
+                    "jap_sentence": "きのうデパートへ買い物に行きました"
+                }, 
+                {
+                    "eng_trans": "He has gone to London now./He is (away) in London now.", 
+                    "jap_sentence": "彼は今ロンドンに行っています"
+                }, 
+                {
+                    "eng_trans": "I have been to Kyushu, but (I have) never been to Shikoku.", 
+                    "jap_sentence": "私は九州には行ったことがあるが,四国へは行ったことがない"
+                }, 
+                {
+                    "eng_trans": "Which road shall we take?", 
+                    "jap_sentence": "どちらの道を行きましょうか"
+                }, 
+                {
+                    "eng_trans": "“Would you like to come over for a cup of tea?”“OK. I'll be right over.”", 
+                    "jap_sentence": "「お茶に来ない？」 「うん,すぐ行くよ」"
+                }, 
+                {
+                    "eng_trans": "“I'm going to [× going (and)] meet Mary.”“Can I come too?”“I'd love you to come.”", 
+                    "jap_sentence": "「メアリーを迎えに行くところなの」 「私も行っていいかしら」 「あなたが行ってくださればうれしいわ」"
+                }, 
+                {
+                    "eng_trans": "“Where have you been?”“I have been to Narita Airport to see my friend off.”", 
+                    "jap_sentence": "「どこへ行っていたのですか」 「友達を見送りに成田空港に行っていたの」"
+                }
+            ], 
+            "parts": [
+                "go", 
+                "come", 
+                "take", 
+                "get to...", 
+                "leave", 
+                "attend", 
+                "visit", 
+                "call"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Everything went well (<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g1147.gif\" align=\"absbottom\" border=\"0\">badly)./Everything came [turned] out all right.", 
+                    "jap_sentence": "何もかもうまく行った"
+                }, 
+                {
+                    "eng_trans": "Things don't always go as smooth(ly) [well] as we might expect.", 
+                    "jap_sentence": "物事はそう思うようにはうまくいかないものだ"
+                }, 
+                {
+                    "eng_trans": "He seems to have done well [have been successful] in the entrance exam.", 
+                    "jap_sentence": "彼の入学試験はうまくいったようだ"
+                }, 
+                {
+                    "eng_trans": "Are you getting along [on] (well) with your work?", 
+                    "jap_sentence": "仕事はうまくいっていますか"
+                }, 
+                {
+                    "eng_trans": "I bought some flowers on my [the] way to the hospital.", 
+                    "jap_sentence": "病院へ行く途中で花を買った"
+                }, 
+                {
+                    "eng_trans": "I found it difficult to cover [make, do] the distance in three hours.", 
+                    "jap_sentence": "その距離を3時間で行くのは大変だった"
+                }, 
+                {
+                    "eng_trans": "He sent his sister around to the shop for some cigarettes.", 
+                    "jap_sentence": "彼は妹に店にたばこを買いに行かせた"
+                }, 
+                {
+                    "eng_trans": "A patrol car is running up and down (in) [to and fro in] the street.", 
+                    "jap_sentence": "パトカーが道を行ったり来たりしている"
+                }, 
+                {
+                    "eng_trans": "What has become of my watch?", 
+                    "jap_sentence": "ぼくの時計はどこへ行ったのか（＝どうなったのか）"
+                }, 
+                {
+                    "eng_trans": "Everything he did fell short of (<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g1147.gif\" align=\"absbottom\" border=\"0\">came up to) his expectations.", 
+                    "jap_sentence": "彼のすることすべてが思いどおりいかなかった"
+                }, 
+                {
+                    "eng_trans": "“They all got it wrong.”“Well, Taro came close.”", 
+                    "jap_sentence": "「彼らはみんなそれを間違ったんだよ」 「でも太郎はもう少しってところまでいったんだよ」"
+                }
+            ], 
+            "parts": [
+                "go", 
+                "do", 
+                "work", 
+                "get along [on] (well)"
+            ]
+        }
+    ], 
+    "original_kana": "いく", 
+    "original_kanji": "行く", 
+    "result_kana": "いく", 
+    "result_kanji": "行く", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E8%A1%8C%E3%81%8F%E3%80%80%E3%81%84%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}
