@@ -1078,6 +1078,12 @@ class ProgressiveDictionary(DaijirinDictionary):
         eng_trans = eng_trans.replace(u'<i>', u'')
         eng_trans = eng_trans.replace(u'</i>', u'')
 
+        # remove 「
+        eng_trans = eng_trans.replace(u'「', u'')
+
+        # remove ((口))
+        eng_trans = eng_trans.replace(u'((口))', u'')
+
         # strip whitespace
         eng_trans = eng_trans.strip()
 
