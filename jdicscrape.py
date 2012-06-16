@@ -821,8 +821,10 @@ class NewCenturyDictionary(DaijirinDictionary):
         # strip whitespace
         def_string = def_string.strip()
 
+        print(def_string)
+
         # remove trailing period
-        if def_string[-1] == u'.':
+        if len(def_string) > 0 and def_string[-1] == u'.':
             def_string = def_string[:-1]
 
         # strip whitespace again after deleting previous period
