@@ -625,13 +625,24 @@ class DaijirinDictionary(Dictionary):
             result = etree.tostring(defi, pretty_print=True, method="html", encoding='unicode')
             example_sentences = self.parse_example_sentences(result)
 
-            text_def = defi.xpath(u'tr/td')[1]
-            result = etree.tostring(text_def, pretty_print=False, method="html",
-                    encoding='unicode')
+            # words like 遊ぶ（あすぶ） don't have any tr/td elements, but they
+            # do have example sentences
+            if not defi.xpath(u'tr/td'):
+                definition = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+                result = etree.tostring(definition, pretty_print=False, method="html",
+                            encoding='unicode')
+            else:
+                text_def = defi.xpath(u'tr/td')[1]
+                result = etree.tostring(text_def, pretty_print=False, method="html",
+                        encoding='unicode')
+
             result = re.sub(u'^<td>', u'', result)
 
+            # remove the verb conjugation from the beginning
+            result = re.sub(u'^\n?<b>\(動..［.］\)</b> <br>', u'', result)
+
             # remove the 補説 from the beginning
-            result = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', result)
+            result = re.sub(u'^\n?<b>〔補説〕</b> .*?<br>', u'', result)
 
             # remove everything after the first <br>
             result = re.sub(u'<br>.*$', u'', result)
@@ -663,7 +674,6 @@ class DaijirinDictionary(Dictionary):
 
                 # remove verb conjugation types at the top of the entry
                 result = re.sub(u'^<b>\(動..［.］\)</b> <br>', u'', result)
-                #<b>(動カ五［四］)</b> <br>「ゆく（行・往）（逝）」に同じ。<br><b>〔可能〕</b> いける<br></td>
 
                 # remove the〔可能〕at the end of the entry
                 result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
