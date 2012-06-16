@@ -832,6 +832,10 @@ class NewCenturyDictionary(DaijirinDictionary):
         def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
         return def_parts
 
+    def replace_gaiji(self, string):
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1147.gif" align="absbottom" border="0">', u'⇔')
+        return string
+
     def create_example_sentences(self, example_sentence_strings):
         """
         This creates example sentence objects.  The input is a
@@ -844,6 +848,9 @@ class NewCenturyDictionary(DaijirinDictionary):
             # remove links
             eng_trans = re.sub(u'<a.*?>', u'', eng_trans)
             eng_trans = re.sub(u'</a>', u'', eng_trans)
+
+            # replace gaiji characters
+            eng_trans = self.replace_gaiji(eng_trans)
 
             # Remove parenthesis.  This is a little difficult because
             # we have to loop through the list multiple times until we
@@ -860,9 +867,45 @@ class NewCenturyDictionary(DaijirinDictionary):
                     raise Exception(
                             "Looped thru eng_trans too many times looking for matching ().")
 
+            # Sometimes there are （※ without a matching ） on the end of the line...
+            # Try to remove them.
+            if re.search(u'（※', eng_trans) and not re.search(u'）', eng_trans):
+                eng_trans = re.sub(u'（※.*$', u'', eng_trans)
+
+            # Take out things like 〈やや書〉, 〈米話〉, and 〈米〉.
+            eng_trans = re.sub(u'〈(やや書|米話|米)〉(\s*)', u'', eng_trans)
+
+            # There are often hints to japanese users that suggest words not to use
+            # This looks like [show, × teach].
+            # We want to take out the × items, but leave in the correct items.
+            matches = re.findall(u'\[(.*?)\]', eng_trans)
+            for m in matches:
+                words = m.split(',')
+                new_words = []
+                for w in words:
+                    w = w.strip()
+                    a = w[0] != u'×'
+                    if w[0] != u'×':
+                        new_words.append(w)
+                new_suggest = u''
+                for w in new_words:
+                    new_suggest += u'%s, ' % w
+                if len(new_suggest) > 2 and new_suggest[-2:] == ', ':
+                    new_suggest = new_suggest[:-2]
+
+                eng_trans = re.sub(u'\[%s\]' % re.escape(m),
+                        u'[%s]' % new_suggest, eng_trans)
+
+            # after the previous replacement, we have to make sure there are
+            # no [] groups left
+            eng_trans = re.sub(u'(\s*)\[\]', u'', eng_trans)
+
+            # There are occasionally suggestions for opposites.
+            # For example, "(⇔came up to)".  Take these out.
+            eng_trans = re.sub(u'(\s*)\(⇔.*?\)', u'', eng_trans)
+
             # for japanese sentences, we want to change "." to "。"
             jap_sentence = jap_sentence.replace(u'.', u'。')
-
 
             example_sentences.append(ExampleSentence(jap_sentence, eng_trans))
 

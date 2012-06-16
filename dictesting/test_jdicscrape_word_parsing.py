@@ -158,7 +158,7 @@ def test_words(kanji=None, kana=None, dictionaries=manage_words.get_dics()):
                 checkword(dic, kanji, kana)
                 print("PASS")
             except:
-                tb = traceback.format_exc()
+                tb = traceback.format_exc().decode('utf8')
                 ERRORS.append([description, tb])
                 print("FAIL")
     if ERRORS:
