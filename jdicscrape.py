@@ -755,12 +755,19 @@ class DaijisenDictionary(DaijirinDictionary):
             result = re.sub(u'^<td>', u'', result)
             result = re.sub(u'<br></td>.*$', u'', result)
 
-            # if it starts with an arrows group, then remove it
+            # remove "arrows" groups
             # (this is the character that looks like two greater than signs
             # really close together)
             result = re.sub(u'\u300A.*?\u300B', u'', result)
 
-            # if there are some </br>s in it, then remove them and everything after them
+            # remove the verb conjugation markings
+            # for instance, we take out things like ［動カ五（四）］
+            result = re.sub(u'^\n［動.*?］', u'', result)
+
+            # remove any arrows (⇒) redirecting to other entries
+            result = result.replace(u'⇒', u'')
+
+            # remove the </br>s and everything after them
             result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
             result = self.clean_def_string(result)
