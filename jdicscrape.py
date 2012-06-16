@@ -629,6 +629,11 @@ class DaijirinDictionary(Dictionary):
             result = etree.tostring(text_def, pretty_print=False, method="html",
                     encoding='unicode')
             result = re.sub(u'^<td>', u'', result)
+
+            # remove the 補説 from the beginning
+            result = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', result)
+
+            # remove everything after the first <br>
             result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
             def_parts = self.split_def_parts(result)
