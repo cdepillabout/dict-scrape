@@ -6,11 +6,26 @@
                 {
                     "eng_trans": "The wolf growled low [gave a low growl／snarled].", 
                     "jap_sentence": "おおかみは低くうなった"
-                }, 
+                }
+            ], 
+            "parts": [
+                "growl"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "The pain of their wounds is making them groan [moan].", 
                     "jap_sentence": "彼らは傷の痛みでうなっている"
-                }, 
+                }
+            ], 
+            "parts": [
+                "groan", 
+                "moan"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "I ran through the whistling bullets.", 
                     "jap_sentence": "弾丸がうなる中を私は駆け抜けた"
@@ -22,11 +37,21 @@
                 {
                     "eng_trans": "The wind roared through the trees.", 
                     "jap_sentence": "風がうなりながら木々の間を吹き抜けた"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "intone a naniwa-bushi ballad (in a deep voice)", 
                     "jap_sentence": "浪曲をうなる"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "Yoshiko impressed [won the admiration of] the whole school by giving a fine speech in English.", 
                     "jap_sentence": "良子は英語ですばらしいスピーチをやってのけて全校をうならせた"
@@ -34,15 +59,18 @@
                 {
                     "eng_trans": "The spectators shouted in admiration [oohed and aahed] at the spectacular play.", 
                     "jap_sentence": "ファインプレイに観衆はうなった"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "She is rolling in money.／ She's got oodles of money.", 
                     "jap_sentence": "彼女はうなるほどお金を持っている"
                 }
             ], 
-            "parts": [
-                "<b>I</b>"
-            ]
+            "parts": []
         }
     ], 
     "original_kana": "うなる", 

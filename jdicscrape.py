@@ -1124,7 +1124,7 @@ class ProgressiveDictionary(DaijirinDictionary):
         multiple_defs = True
 
         # do we have multiple definitions?
-        matches = re.search(u'^<td>\n<b>1</b> 〔', result)
+        matches = re.search(u'^<td>\n(<b>I</b><br><br>)?<b>1</b> 〔', result)
         if matches:
             # split the page into pieces for each definition
             splits = re.split(u'(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', result)
