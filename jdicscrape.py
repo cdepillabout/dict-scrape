@@ -649,11 +649,20 @@ class DaijirinDictionary(Dictionary):
                     jap_defs.append(Definition([def_part], None))
                     continue
 
-                # this checks if there is a 補説 at the top of the file.  We don't want this.
-                result = re.sub(u'<b>〔補説〕</b> (.*?)<br>', u'', result)
-
                 result = re.sub(u'^<td>', u'', result)
                 result = re.sub(u'<br></td>$', u'', result)
+                result = result.strip()
+
+                # remove 補説 at the top of the entry
+                result = re.sub(u'^<b>〔補説〕</b> (.*?)<br>', u'', result)
+
+                # remove verb conjugation types at the top of the entry
+                result = re.sub(u'^<b>\(動..［.］\)</b> <br>', u'', result)
+                #<b>(動カ五［四］)</b> <br>「ゆく（行・往）（逝）」に同じ。<br><b>〔可能〕</b> いける<br></td>
+
+                # remove the〔可能〕at the end of the entry
+                result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
+
                 result = result.strip()
                 def_parts = self.split_def_parts(result)
                 jap_defs.append(Definition(def_parts, None))
