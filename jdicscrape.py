@@ -1037,6 +1037,8 @@ class ProgressiveDictionary(DaijirinDictionary):
         # take out things in those weird japanese parenthesis
         def_string = re.sub(u'〔.*?〕', u'', def_string)
 
+        # if it is just a redirect, then just take the word being redirected to
+        def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
 
         # strip whitespace
         def_string = def_string.strip()
