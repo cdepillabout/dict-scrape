@@ -2,17 +2,10 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [
-                {
-                    "eng_trans": "", 
-                    "jap_sentence": "あそぶ"
-                }, 
-                {
-                    "eng_trans": "", 
-                    "jap_sentence": "の音変化"
-                }
-            ], 
-            "parts": []
+            "example_sentences": [], 
+            "parts": [
+                "「あそぶ」の音変化"
+            ]
         }
     ], 
     "original_kana": "あすぶ", 

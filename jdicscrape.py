@@ -728,10 +728,13 @@ class DaijisenDictionary(DaijirinDictionary):
         """
         def_parts = self.split_def_parts(def_string)
         example_sentences = []
-        
+
         # check to see if the last part of the definition contains
-        # example sentences
-        if def_parts[-1].part.startswith(u'「'):
+        # example sentences.  The second part of this comparison is trying to
+        # catch bad things like the definition for 遊ぶ（あすぶ）which is something
+        # like 「あそぶ」の音変化。TODO: This still wouldn't work if it had example
+        # sentences.
+        if def_parts[-1].part.startswith(u'「') and def_parts[-1].part[-1] == u'」':
             example_sentences_string = def_parts[-1].part
             def_parts = def_parts[:-1]
             example_sentences = self.split_example_sentences(example_sentences_string)
