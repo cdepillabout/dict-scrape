@@ -878,7 +878,7 @@ class NewCenturyDictionary(DaijirinDictionary):
                 eng_trans = re.sub(u'（※.*$', u'', eng_trans)
 
             # Take out things like 〈やや書〉, 〈米話〉, and 〈米〉.
-            eng_trans = re.sub(u'〈(やや書|米話|米)〉(\s*)', u'', eng_trans)
+            eng_trans = re.sub(u'〈(やや書|米話|米|ことわざ|話|軽蔑的)〉(\s*)', u'', eng_trans)
 
             # There are often hints to japanese users that suggest words not to use
             # This looks like [show, × teach].
@@ -915,7 +915,6 @@ class NewCenturyDictionary(DaijirinDictionary):
             example_sentences.append(ExampleSentence(jap_sentence, eng_trans))
 
         return example_sentences
-
 
     def parse_definition(self, tree):
         def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
