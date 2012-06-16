@@ -1,0 +1,110 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "play [amuse oneself] with a toy", 
+                    "jap_sentence": "おもちゃで遊ぶ"
+                }, 
+                {
+                    "eng_trans": "play hide-and-seek", 
+                    "jap_sentence": "隠れん坊をして遊ぶ"
+                }, 
+                {
+                    "eng_trans": "They played (at) soldiers.", 
+                    "jap_sentence": "兵隊ごっこをして遊んだ"
+                }, 
+                {
+                    "eng_trans": "We heard the voices of children at play.", 
+                    "jap_sentence": "遊んでいる子供たちの声が聞こえた"
+                }, 
+                {
+                    "eng_trans": "The children had a 「lot of fun [pleasant time] in the field.", 
+                    "jap_sentence": "子供たちは野原で楽しく遊んだ"
+                }, 
+                {
+                    "eng_trans": "The boy enjoyed blowing soap bubbles.", 
+                    "jap_sentence": "男の子はシャボン玉を飛ばして遊んだ"
+                }, 
+                {
+                    "eng_trans": "He was 「enjoying himself [((口))fooling around] while the others were at work.", 
+                    "jap_sentence": "他の人たちが働いているのに彼は遊んでいた"
+                }, 
+                {
+                    "eng_trans": "I am not in the mood for fun.", 
+                    "jap_sentence": "今，遊ぶ気分にはなれない"
+                }
+            ], 
+            "parts": [
+                "play", 
+                "enjoy <i>oneself</i>"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "go on a day trip to Kamakura／spend a day in Kamakura", 
+                    "jap_sentence": "1日鎌倉に遊ぶ"
+                }, 
+                {
+                    "eng_trans": "He spent a year in Paris (in order) to study art.", 
+                    "jap_sentence": "彼は美術を研究するために1年間パリに遊んだ"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He frequented the red-light district in his youth.", 
+                    "jap_sentence": "彼は若いころよく花街に遊んだ"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He is idle because he is out of work now.", 
+                    "jap_sentence": "失業して遊んでいる"
+                }, 
+                {
+                    "eng_trans": "I'm taking life easy after my retirement.", 
+                    "jap_sentence": "退職後は遊んで暮らしている"
+                }, 
+                {
+                    "eng_trans": "After the car accident I spent a year doing nothing.", 
+                    "jap_sentence": "自動車事故の後1年間は遊んで暮らした"
+                }
+            ], 
+            "parts": [
+                "be idle"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a spare room", 
+                    "jap_sentence": "遊んでいる部屋"
+                }, 
+                {
+                    "eng_trans": "an idle machine", 
+                    "jap_sentence": "遊んでいる機械"
+                }, 
+                {
+                    "eng_trans": "land lying idle", 
+                    "jap_sentence": "遊んでいる土地"
+                }
+            ], 
+            "parts": [
+                "be not in use"
+            ]
+        }
+    ], 
+    "original_kana": "あそぶ", 
+    "original_kanji": "遊ぶ", 
+    "result_kana": "あそぶ", 
+    "result_kanji": "遊ぶ", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E9%81%8A%E3%81%B6%E3%80%80%E3%81%82%E3%81%9D%E3%81%B6&enc=UTF-8&stype=1&dtype=3"
+}

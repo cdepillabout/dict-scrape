@@ -1,0 +1,85 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "play with dolls [blocks].", 
+                    "jap_sentence": "人形[積木]で遊ぶ"
+                }, 
+                {
+                    "eng_trans": "play a video game.", 
+                    "jap_sentence": "テレビゲームで遊ぶ"
+                }, 
+                {
+                    "eng_trans": "play with one's friend.", 
+                    "jap_sentence": "友達と遊ぶ"
+                }, 
+                {
+                    "eng_trans": "play around.", 
+                    "jap_sentence": "遊び回る"
+                }, 
+                {
+                    "eng_trans": "The children were playing [at play] in the backyard.", 
+                    "jap_sentence": "子供たちは裏庭で遊んでいた"
+                }, 
+                {
+                    "eng_trans": "Work hard, play hard./〈ことわざ〉 All work and no play makes Jack a dull boy.", 
+                    "jap_sentence": "よく学び,よく遊べ"
+                }, 
+                {
+                    "eng_trans": "I had a good time [amused myself, enjoyed myself, relaxed, had a drink] at Shinjuku after work last night.", 
+                    "jap_sentence": "昨夜仕事が終わってから新宿で遊んだ"
+                }, 
+                {
+                    "eng_trans": "They amused [enjoyed] themselves (by) playing cards./They played cards.", 
+                    "jap_sentence": "彼らはトランプをして遊んだ"
+                }, 
+                {
+                    "eng_trans": "I am so busy with my work these days that I've got no time to enjoy myself.", 
+                    "jap_sentence": "ここのところ仕事が忙しくて遊ぶひまがないんだ"
+                }
+            ], 
+            "parts": [
+                "play", 
+                "have a good time", 
+                "amuse [enjoy] oneself"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "I'd like to find a job because I can't be idle [〈軽蔑的〉 fool around].", 
+                    "jap_sentence": "遊んでばかりもいられないので仕事を見つけたい"
+                }, 
+                {
+                    "eng_trans": "He idled his life away./He loafed through his life.", 
+                    "jap_sentence": "彼は一生遊んで暮らした"
+                }, 
+                {
+                    "eng_trans": "There are a lot of machines lying idle in the factory.", 
+                    "jap_sentence": "その工場には遊んでいる機械が多い"
+                }
+            ], 
+            "parts": [
+                "idleaway", 
+                "be idle", 
+                "loaf"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He spent a lot of time and money on pleasure [led a very dissipated life, 〈話〉 womanized] when he was single.", 
+                    "jap_sentence": "彼は独身のときは相当遊んだ"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "あそぶ", 
+    "original_kanji": "遊ぶ", 
+    "result_kana": "あそぶ", 
+    "result_kanji": "遊ぶ", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E9%81%8A%E3%81%B6%E3%80%80%E3%81%82%E3%81%9D%E3%81%B6&enc=UTF-8&stype=1&dtype=3"
+}
