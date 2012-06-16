@@ -2,7 +2,12 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「卒業してから三年になるが、まだ―・んでるぜ」〈漱石・野分〉"
+                }
+            ], 
             "parts": [
                 "「あそぶ」の音変化"
             ]

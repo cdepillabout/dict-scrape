@@ -794,11 +794,18 @@ class DaijisenDictionary(DaijirinDictionary):
             # remove any arrows (⇒) redirecting to other entries
             result = result.replace(u'⇒', u'')
 
+            # look for extra example sentences
+            extra_example_sentences = []
+            extra_example_sentences_matches = re.findall(
+                        u'<table border="0" cellpadding="0" cellspacing="0"><tbody><tr valign="top"><td><img src="http://i.yimg.jp/images/clear.gif" height="1" width="25"></td><td valign="top"></td><td><small><font color="#008800"><b>(.*?)</b></font></small></td></tr></tbody></table>', result)
+            for match in extra_example_sentences_matches:
+                extra_example_sentences.append(match)
+
             # remove the </br>s and everything after them
             result = re.sub(u'<br>.*$', u'', result)
             result = result.strip()
             result = self.clean_def_string(result)
-            jap_defs.append(self.create_def(result))
+            jap_defs.append(self.create_def(result, extra_example_sentences))
 
         return jap_defs
 
