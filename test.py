@@ -14,7 +14,7 @@ import traceback
 
 
 PROJECT_ROOT = os.path.dirname(__file__)
-sys.path.append(os.path.join(PROJECT_ROOT, "dictesting"))
+sys.path.append(os.path.join(PROJECT_ROOT, "testing"))
 
 from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
@@ -22,7 +22,7 @@ from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
 
 import test_jdicscrape_word_parsing
 
-WORDS_DIR_REL_PATH = os.path.join("dictesting", "support", "words")
+WORDS_DIR_REL_PATH = os.path.join("testing", "support", "words")
 WORDS_DIR_ABS_PATH = os.path.abspath(
         os.path.join(os.path.dirname(__file__), WORDS_DIR_REL_PATH))
 

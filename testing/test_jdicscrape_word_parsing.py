@@ -12,7 +12,7 @@ PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.append(os.path.join(PROJECT_ROOT, ".."))
 
 from jdicscrape import Result
-import testing as manage_words
+import test as manage_words
 
 ERRORS = []
 
