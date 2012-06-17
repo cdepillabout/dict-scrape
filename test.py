@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# -*- coding: UTF-8 -*-
 
 # A script for working with testing.
 import argparse
@@ -16,7 +17,7 @@ import traceback
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.append(os.path.join(PROJECT_ROOT, "testing"))
 
-from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
+from dictscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
         DefinitionPart, Definition, Result
 

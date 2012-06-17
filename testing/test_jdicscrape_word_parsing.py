@@ -1,4 +1,5 @@
 #!/usr/bin/env python2
+# -*- coding: UTF-8 -*-
 
 import json
 import os
@@ -11,7 +12,7 @@ import traceback
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.append(os.path.join(PROJECT_ROOT, ".."))
 
-from jdicscrape import Result
+from dictscrape import Result
 import test as manage_words
 
 ERRORS = []
