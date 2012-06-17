@@ -20,7 +20,7 @@ import os
 import sys
 from PyQt4 import QtGui, QtCore, uic
 from ui.defscreenui import Ui_MainWindowReader
-from jdicscrape import DaijirinDictionary, DaijisenDictionary, \
+from dictscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary
 
 
