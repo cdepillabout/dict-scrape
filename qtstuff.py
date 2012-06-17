@@ -79,8 +79,6 @@ class MainWindowReader(QtGui.QMainWindow):
 
             self.addDefinition(defwebviewwidget, result)
 
-
-
     def __init__(self, parent, word_kanji, word_kana):
         QtGui.QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindowReader()

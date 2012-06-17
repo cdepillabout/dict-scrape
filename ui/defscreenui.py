@@ -2,6 +2,56 @@
 
 from PyQt4 import QtCore, QtGui, QtWebKit
 
+DEF_LIST_HTML_BEGINNING = """
+<html>
+    <head>
+        <style type="text/css">
+            body {
+                font-family: arial, sans-serif;
+                font-size: 120%;
+            }
+            div.ex_sent_selected, span.defpart_selected {
+                background-color: #dddddd;
+            }
+            div.ex_sent_notselected, span.defpart_notselected {
+                background-color: #ffffff;
+            }
+            span.jap_sentence {
+                color: #004400;
+                font-weight: bold;
+            }
+            span.eng_trans {
+                font-style: italic;
+            }
+
+            div.ex_sent_list {
+                padding-left: 10%;
+            }
+        </style>
+        <script language="javascript" type="text/javascript">
+            function changeBackgroundColor(objDivID)
+            {
+                elem = document.getElementById(objDivID);
+                attr = elem.getAttribute("class");
+                if(attr == "defpart_selected") {
+                    elem.setAttribute("class", "defpart_notselected");
+                }
+                else if (attr == "defpart_notselected") {
+                    elem.setAttribute("class", "defpart_selected");
+                }
+                else if (attr == "ex_sent_selected") {
+                    elem.setAttribute("class", "ex_sent_notselected");
+                }
+                else if (attr == "ex_sent_notselected") {
+                    elem.setAttribute("class", "ex_sent_selected");
+                }
+            }
+        </script>
+    </head>
+
+    <body onmousedown="return false;">
+"""
+
 class DefWebView(QtWebKit.QWebView):
     def __init__(self, parent=None, defs=[]):
         super(DefWebView, self).__init__(parent)
@@ -11,9 +61,7 @@ class DefWebView(QtWebKit.QWebView):
         first = u'➀'
         ordinal = ord(first)
 
-        html = ''
-        with open('deflisthtmlbeginning.html') as f:
-            html = f.read().decode('utf8')
+        html = DEF_LIST_HTML_BEGINNING
         self.defs = defs
         for i, d in enumerate(defs):
             # add definitions
