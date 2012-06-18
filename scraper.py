@@ -16,99 +16,49 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import sys
-from PyQt4 import QtGui, QtCore, uic
-from ui.defscreenui import Ui_MainWindowReader
-from dictscrape import DaijirinDictionary, DaijisenDictionary, \
-        ProgressiveDictionary, NewCenturyDictionary
+from PyQt4 import QtGui
+
+from scraper_gui.selector import MainWindowSelector
 
 
-def buildResPath(relative):
-    directory = os.path.split(__file__)[0]
-    return os.path.join(directory, relative)
+class DictScraper(object):
+    def __init__(self):
+        pass
 
-class JDicScrapeStandalone(object):
+class DictScraperStandalone(DictScraper):
     def __init__(self, word_kanji, word_kana):
+        super(DictScraperStandalone, self).__init__()
         self.application = QtGui.QApplication(sys.argv)
-        self.window = MainWindowReader(None, word_kanji, word_kana)
+        self.window = MainWindowSelector(None, word_kanji, word_kana)
         self.window.show()
         self.application.exec_()
 
-class MainWindowReader(QtGui.QMainWindow):
+class DictScraperPlugin(DictScraper):
+    def __init__(self):
+        super(DictScraperPlugin, self).__init__()
 
-    def fillin(self, word_kanji, word_kana):
-        daijirin = DaijirinDictionary()
-        daijisen = DaijisenDictionary()
-        progressive = ProgressiveDictionary()
-        newcentury = NewCenturyDictionary()
-        dicts = [
-                (daijirin, self.ui.daijirindefwebview, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
-                (daijisen, self.ui.daijisendefwebview, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
-                (progressive, self.ui.progressdefwebview, self.ui.progresswebview, self.ui.progressresultwordlabel),
-                (newcentury, self.ui.newcenturydefwebview, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
-                ]
-
-        #self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
-
-        for d, defwebviewwidget, webviewwidget, resultwordlabel in dicts:
-            result = d.lookup(word_kanji, word_kana)
-            if d == daijirin:
-                if result.accent:
-                    self.ui.accentlineedit.setText(result.accent)
-                    self.ui.accentlineedit.setEnabled(True)
-                    self.ui.useaccentcheckbox.setEnabled(True)
-                else:
-                    self.ui.accentlineedit.setText("NO ACCENT")
-                    self.ui.accentlineedit.setEnabled(False)
-                    self.ui.useaccentcheckbox.setEnabled(False)
-
-            # add webview
-            webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
-
-            # add the resulting word
-            resultwordlabeltext = ""
-            if result.definition_found():
-                if result.kanji == result.kana:
-                    resultwordlabeltext = "%s" % result.kanji
-                else:
-                    resultwordlabeltext = "%s (%s)" % (result.kanji, result.kana)
-            else:
-                resultwordlabeltext = "NO DEFINITION FOUND"
-            resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
-
-            self.addDefinition(defwebviewwidget, result)
-
-    def __init__(self, parent, word_kanji, word_kana):
-        QtGui.QMainWindow.__init__(self, parent)
-        self.ui = Ui_MainWindowReader()
-        self.ui.setupUi(self)
-        self.fillin(word_kanji, word_kana)
-
-    # pop up a dialog box asking if we are sure we want to quit
-    def closeEvent(self, event):
         """
-        reply = QtGui.QMessageBox.question(self, 'Message',
-                "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
-                QtGui.QMessageBox.No, QtGui.QMessageBox.No)
-        if reply == QtGui.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
+        self.toolIconVisible = False
+        self.window = None
+        self.anki = anki_host.Anki()
+        self.parent = self.anki.window()
+        self.separator = QtGui.QAction(self.parent)
+        self.separator.setSeparator(True)
+        self.action = QtGui.QAction(QtGui.QIcon(buildResPath('img/logo32x32.png')), '&Yomichan...', self.parent)
+        self.action.setIconVisibleInMenu(True)
+        self.action.triggered.connect(self.onShowRequest)
+
+        self.anki.addHook('loadDeck', self.onDeckLoad)
+        self.anki.addHook('deckClosed', self.onDeckClose)
         """
-        pass
-
-    def addDefinition(self, defwebviewwidget, result):
-        # add result definitions
-        defwebviewwidget.setDefs(result.defs)
-
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("ERROR! Need 2 args")
         sys.exit(1)
-    instance = JDicScrapeStandalone(sys.argv[1].decode("utf8"), sys.argv[2].decode("utf8"))
-#else:
-#    from yomi_base import anki_host
-#    instance = YomichanPlugin()
+    instance = DictScraperStandalone(sys.argv[1].decode("utf8"), sys.argv[2].decode("utf8"))
+else:
+    from scraper_gui import anki_host
+    instance = DictScraperPlugin()

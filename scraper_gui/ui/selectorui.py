@@ -91,7 +91,7 @@ class DefWebView(QtWebKit.QWebView):
 
         self.setHtml(html)
 
-class Ui_MainWindowReader(object):
+class Ui_MainWindowSelector(object):
 
     def createlist(self, verticallayoutobjectname, horizontallayoutobjectname,
             dictlabelobjectname, resultwordlabelobjectname, webviewobjectname, labeltext):
@@ -138,16 +138,16 @@ class Ui_MainWindowReader(object):
 
         return tab, tabvertlayout, webview
 
-    def setupUi(self, mainwindowreader):
-        self.mainwindowreader = mainwindowreader
-        mainwindowreader.setObjectName("mainwindowreader")
-        mainwindowreader.resize(900, 650)
-        #mainwindowreader.setAcceptDrops(False)
+    def setupUi(self, mainwindowselector):
+        self.mainwindowselector = mainwindowselector
+        mainwindowselector.setObjectName("mainwindowselector")
+        mainwindowselector.resize(900, 650)
+        #mainwindowselector.setAcceptDrops(False)
         #icon = QtGui.QIcon()
         #pixmap = QtGui.QPixmap("../img/logo32x32.png")
         #icon.addPixmap(pixmap, QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        #mainwindowreader.setWindowIcon(icon)
-        self.centralwidget = QtGui.QWidget(mainwindowreader)
+        #mainwindowselector.setWindowIcon(icon)
+        self.centralwidget = QtGui.QWidget(mainwindowselector)
         self.centralwidget.setObjectName("centralwidget")
 
         # main vertical layout that holds the tabwidget
@@ -232,19 +232,19 @@ class Ui_MainWindowReader(object):
 
 
         # status bar
-        self.statusbar = QtGui.QStatusBar(mainwindowreader)
+        self.statusbar = QtGui.QStatusBar(mainwindowselector)
         self.statusbar.setObjectName("statusbar")
-        mainwindowreader.setStatusBar(self.statusbar)
+        mainwindowselector.setStatusBar(self.statusbar)
 
         # menubar
-        self.menuBar = QtGui.QMenuBar(mainwindowreader)
+        self.menuBar = QtGui.QMenuBar(mainwindowselector)
         self.menuBar.setObjectName("menuBar")
         self.menuFile = QtGui.QMenu(self.menuBar)
         self.menuFile.setObjectName("menuFile")
         self.menuFile.setTitle("File")
-        mainwindowreader.setMenuBar(self.menuBar)
+        mainwindowselector.setMenuBar(self.menuBar)
 
-        self.actionExit = QtGui.QAction(mainwindowreader)
+        self.actionExit = QtGui.QAction(mainwindowselector)
         self.actionExit.setEnabled(True)
         self.actionExit.setObjectName("actionExit")
         self.actionExit.setText("Exit")
@@ -265,39 +265,27 @@ class Ui_MainWindowReader(object):
                 "progresstab", "progresstabvertlayout", "progresswebview")
         self.tabwidget.addTab(self.progresstab, "Progressive")
 
-        mainwindowreader.setCentralWidget(self.centralwidget)
-        mainwindowreader.setWindowTitle("JDicScrape")
+        mainwindowselector.setCentralWidget(self.centralwidget)
+        mainwindowselector.setWindowTitle("JDicScrape")
 
         # new style signals
-        self.buttonBox.accepted.connect(mainwindowreader.close)
+        self.buttonBox.accepted.connect(mainwindowselector.close)
         # old style signals
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"),
-                mainwindowreader.close)
+                mainwindowselector.close)
 
         # reset form
         self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(self.resetclicked)
 
         # close window from menubar
-        self.actionExit.triggered.connect(mainwindowreader.close)
+        self.actionExit.triggered.connect(mainwindowselector.close)
 
-        QtCore.QMetaObject.connectSlotsByName(mainwindowreader)
+        QtCore.QMetaObject.connectSlotsByName(mainwindowselector)
 
     def resetclicked(self, button):
         # this shows the sender (but in this case it will only be the reset button)
-        #sender = self.mainwindowreader.sender()
+        #sender = self.mainwindowselector.sender()
         mainframe = self.daijisendefwebview.page().mainFrame()
         collection = mainframe.findAllElements('span[class="selected"]')
         for e in collection:
             print(e.toPlainText().toUtf8())
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    mainwindowreader = QtGui.QMainWindow()
-    ui = Ui_MainWindowReader()
-    ui.setupUi(mainwindowreader)
-    mainwindowreader.show()
-    sys.exit(app.exec_())
-
