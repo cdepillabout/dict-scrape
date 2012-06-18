@@ -58,7 +58,7 @@ def createFact(fields, tags=unicode()):
     return fact
 
 def browseFact(factId):
-    browser = ankiqt.ui.dialogs.get('CardList', window())
+    browser = ankiqt.ui.dialogs.get('CardList', ankiqt.mw)
     browser.dialog.filterEdit.setText('fid:' + str(factId))
     browser.updateSearch()
     browser.onFact()
@@ -72,19 +72,16 @@ def fields():
     ]
 
 def deck():
-    return window().deck
+    return ankiqt.mw.deck
 
 def model():
     return deck().currentModel
 
-def window():
-    return ankiqt.mw
-
 def toolsMenu():
-    return window().mainWin.menuTools
+    return ankiqt.mw.mainWin.menuTools
 
 def toolBar():
-    return window().mainWin.toolBar
+    return ankiqt.mw.mainWin.toolBar
 
 def addHook(name, callback):
     hooks.addHook(name, callback)

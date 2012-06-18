@@ -17,10 +17,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-from PyQt4 import QtGui
+from PyQt4 import QtCore, QtGui
 
 from scraper_gui.selector import MainWindowSelector
 
+from ankiqt.ui import facteditor
+import ankiqt
+import anki.hooks
 
 class DictScraper(object):
     def __init__(self):
@@ -38,32 +41,17 @@ class DictScraperPlugin(DictScraper):
     def __init__(self):
         super(DictScraperPlugin, self).__init__()
 
-        #self.parent = anki_host.window()
-        anki_host.addHook('loadDeck', self.onDeckLoad)
+        facteditor.FactEditor.setupFields = anki.hooks.wrap(facteditor.FactEditor.setupFields,
+                self.newsetupfields, "after")
 
-        """
-        self.toolIconVisible = False
-        self.window = None
-        self.separator = QtGui.QAction(self.parent)
-        self.separator.setSeparator(True)
-        self.action = QtGui.QAction(QtGui.QIcon(buildResPath('img/logo32x32.png')), '&Yomichan...', self.parent)
-        self.action.setIconVisibleInMenu(True)
-        self.action.triggered.connect(self.onShowRequest)
+    def launchGUI(self, factedit):
+        print("from launchGUI: factedit = %s (%s)" % (factedit, type(factedit)))
 
-        anki_host.addHook('loadDeck', self.onDeckLoad)
-        anki_host.addHook('deckClosed', self.onDeckClose)
-        """
-
-    def onDeckLoad(self):
-        print("HELLO")
-        """
-        anki_host.toolsMenu().addAction(self.separator)
-        self.anki.toolsMenu().addAction(self.action)
-
-        if self.preferences.ankiShowIcon:
-            self.showToolIcon()
-        """
-
+    def newsetupfields(self, factedit):
+        print("from newsetupfields: factedit = %s (%s)" % (factedit, type(factedit)))
+        s = QtGui.QShortcut(QtGui.QKeySequence(_("Ctrl+j")), factedit.parent)
+        s.connect(s, QtCore.SIGNAL("activated()"),
+                lambda factedit=factedit: self.launchGUI(factedit))
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
