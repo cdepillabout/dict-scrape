@@ -40,15 +40,29 @@ class DictScraperStandalone(DictScraper):
 class DictScraperPlugin(DictScraper):
     def __init__(self):
         super(DictScraperPlugin, self).__init__()
+        self.window = None
 
         facteditor.FactEditor.setupFields = anki.hooks.wrap(facteditor.FactEditor.setupFields,
                 self.newsetupfields, "after")
 
     def launchGUI(self, factedit):
         print("from launchGUI: factedit = %s (%s)" % (factedit, type(factedit)))
+        factedit.saveFieldsNow()
+        kanji = factedit.fact["Vocab"]
+        kana = factedit.fact["VocabKana"]
+
+        self.window = MainWindowSelector(factedit.widget, kanji, kana)
+        self.window.show()
+        """
+        if self.window:
+            self.window.setVisible(True)
+            self.window.activateWindow()
+        else:
+            self.window = MainWindowReader(self.parent, kanji, kana)
+            self.window.show()
+            """
 
     def newsetupfields(self, factedit):
-        print("from newsetupfields: factedit = %s (%s)" % (factedit, type(factedit)))
         s = QtGui.QShortcut(QtGui.QKeySequence(_("Ctrl+j")), factedit.parent)
         s.connect(s, QtCore.SIGNAL("activated()"),
                 lambda factedit=factedit: self.launchGUI(factedit))
