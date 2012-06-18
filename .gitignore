@@ -25,3 +25,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# This is used for developement but should not be checked into the tracker
+/scraper_gui/dictscrape
