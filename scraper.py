@@ -38,19 +38,30 @@ class DictScraperPlugin(DictScraper):
     def __init__(self):
         super(DictScraperPlugin, self).__init__()
 
+        #self.parent = anki_host.window()
+        anki_host.addHook('loadDeck', self.onDeckLoad)
+
         """
         self.toolIconVisible = False
         self.window = None
-        self.anki = anki_host.Anki()
-        self.parent = self.anki.window()
         self.separator = QtGui.QAction(self.parent)
         self.separator.setSeparator(True)
         self.action = QtGui.QAction(QtGui.QIcon(buildResPath('img/logo32x32.png')), '&Yomichan...', self.parent)
         self.action.setIconVisibleInMenu(True)
         self.action.triggered.connect(self.onShowRequest)
 
-        self.anki.addHook('loadDeck', self.onDeckLoad)
-        self.anki.addHook('deckClosed', self.onDeckClose)
+        anki_host.addHook('loadDeck', self.onDeckLoad)
+        anki_host.addHook('deckClosed', self.onDeckClose)
+        """
+
+    def onDeckLoad(self):
+        print("HELLO")
+        """
+        anki_host.toolsMenu().addAction(self.separator)
+        self.anki.toolsMenu().addAction(self.action)
+
+        if self.preferences.ankiShowIcon:
+            self.showToolIcon()
         """
 
 
