@@ -8,6 +8,29 @@ from dictscrape import DaijirinDictionary, DaijisenDictionary, \
 
 class MainWindowSelector(QtGui.QMainWindow):
 
+    def __init__(self, word_kanji, word_kana, parent=None, factedit=None, fact=None):
+        QtGui.QMainWindow.__init__(self, parent)
+        self.ui = Ui_MainWindowSelector()
+        self.ui.setupUi(self)
+        self.fillin(word_kanji, word_kana)
+
+    # pop up a dialog box asking if we are sure we want to quit
+    def closeEvent(self, event):
+        """
+        reply = QtGui.QMessageBox.question(self, 'Message',
+                "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
+                QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+        """
+        pass
+
+    def addDefinition(self, defwebviewwidget, result):
+        # add result definitions
+        defwebviewwidget.setDefs(result.defs)
+
     def fillin(self, word_kanji, word_kana):
         daijirin = DaijirinDictionary()
         daijisen = DaijisenDictionary()
@@ -49,26 +72,3 @@ class MainWindowSelector(QtGui.QMainWindow):
             resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
 
             self.addDefinition(defwebviewwidget, result)
-
-    def __init__(self, parent, word_kanji, word_kana):
-        QtGui.QMainWindow.__init__(self, parent)
-        self.ui = Ui_MainWindowSelector()
-        self.ui.setupUi(self)
-        self.fillin(word_kanji, word_kana)
-
-    # pop up a dialog box asking if we are sure we want to quit
-    def closeEvent(self, event):
-        """
-        reply = QtGui.QMessageBox.question(self, 'Message',
-                "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
-                QtGui.QMessageBox.No, QtGui.QMessageBox.No)
-        if reply == QtGui.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
-        """
-        pass
-
-    def addDefinition(self, defwebviewwidget, result):
-        # add result definitions
-        defwebviewwidget.setDefs(result.defs)

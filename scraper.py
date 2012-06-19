@@ -33,7 +33,7 @@ class DictScraperStandalone(DictScraper):
     def __init__(self, word_kanji, word_kana):
         super(DictScraperStandalone, self).__init__()
         self.application = QtGui.QApplication(sys.argv)
-        self.window = MainWindowSelector(None, word_kanji, word_kana)
+        self.window = MainWindowSelector(word_kanji, word_kana)
         self.window.show()
         self.application.exec_()
 
@@ -51,8 +51,9 @@ class DictScraperPlugin(DictScraper):
         kanji = factedit.fact["Vocab"]
         kana = factedit.fact["VocabKana"]
 
-        self.window = MainWindowSelector(factedit.widget, kanji, kana)
+        self.window = MainWindowSelector(kanji, kana, factedit.widget, factedit, fact)
         self.window.show()
+        print("HELLO")
         """
         if self.window:
             self.window.setVisible(True)
