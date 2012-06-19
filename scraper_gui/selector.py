@@ -43,10 +43,31 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe.evaluateJavaScript(u"resetAll()")
 
     def okay(self):
-        mainframe = self.ui.daijisendefwebview.page().mainFrame()
-        collection = mainframe.findAllElements('span[class="selected"]')
-        for e in collection:
-            print(e.toPlainText().toUtf8())
+        jap_webviews = [self.ui.daijisendefwebview, self.ui.daijirindefwebview]
+        eng_webviews = [self.ui.newcenturydefwebview, self.ui.progressdefwebview]
+
+        jap_defs = u''
+        eng_defs = u''
+
+        example_sentence_jap = u''
+        example_sentence_eng = u''
+
+        for w in jap_webviews:
+            mainframe = w.page().mainFrame()
+            def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
+            for elem in def_parts:
+                jap_defs += u'%s。' % elem.toPlainText()
+
+        for w in eng_webviews:
+            mainframe = w.page().mainFrame()
+            def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
+            for i, elem in enumerate(def_parts):
+                if i + 1 == len(def_parts):
+                    eng_defs += u'%s' % elem.toPlainText()
+                else:
+                    eng_defs += u'%s, ' % elem.toPlainText()
+
+        print("Definition: %s%s" % (jap_defs, eng_defs))
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions
