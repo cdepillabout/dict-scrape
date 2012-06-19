@@ -10,6 +10,9 @@ class MainWindowSelector(QtGui.QMainWindow):
 
     def __init__(self, word_kanji, word_kana, parent=None, factedit=None, fact=None):
         QtGui.QMainWindow.__init__(self, parent)
+        self.parent = parent
+        self.factedit = factedit
+        self.fact = fact
         self.ui = Ui_MainWindowSelector()
         self.ui.setupUi(self)
         self.fillin(word_kanji, word_kana)
@@ -26,6 +29,26 @@ class MainWindowSelector(QtGui.QMainWindow):
             event.ignore()
         """
         pass
+
+    def resetall(self, button):
+        """
+        This resets all the selected definition parts and sentences.
+        """
+        # this shows the sender (but in this case it will only be the reset button)
+        #sender = self.mainwindowselector.sender()
+        webviews = [self.ui.daijisendefwebview,
+                self.ui.daijirindefwebview,
+                self.ui.newcenturydefwebview,
+                self.ui.progressdefwebview]
+        for w in webviews:
+            mainframe = w.page().mainFrame()
+            mainframe.evaluateJavaScript(u"resetAll()")
+
+    def okay(self, button):
+        mainframe = self.ui.daijisendefwebview.page().mainFrame()
+        collection = mainframe.findAllElements('span[class="selected"]')
+        for e in collection:
+            print(e.toPlainText().toUtf8())
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions

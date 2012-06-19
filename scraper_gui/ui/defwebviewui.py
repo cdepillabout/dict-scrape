@@ -31,19 +31,41 @@ DEF_LIST_HTML_BEGINNING = """
         <script language="javascript" type="text/javascript">
             function changeBackgroundColor(objDivID)
             {
-                elem = document.getElementById(objDivID);
-                attr = elem.getAttribute("class");
-                if(attr == "defpart_selected") {
+                var elem = document.getElementById(objDivID);
+                var attr = elem.getAttribute("class");
+                if(attr == "defpart_selected")
+                {
                     elem.setAttribute("class", "defpart_notselected");
                 }
-                else if (attr == "defpart_notselected") {
+                else if (attr == "defpart_notselected")
+                {
                     elem.setAttribute("class", "defpart_selected");
                 }
-                else if (attr == "ex_sent_selected") {
+                else if (attr == "ex_sent_selected")
+                {
                     elem.setAttribute("class", "ex_sent_notselected");
                 }
-                else if (attr == "ex_sent_notselected") {
+                else if (attr == "ex_sent_notselected")
+                {
                     elem.setAttribute("class", "ex_sent_selected");
+                }
+            }
+
+            function resetAll()
+            {
+                allelements = document.getElementsByTagName('*');
+                for(i = 0; i < allelements.length; i++)
+                {
+                    var elem = allelements[i];
+                    var attr = elem.getAttribute("class");
+                    if(attr == "defpart_selected")
+                    {
+                        elem.setAttribute("class", "defpart_notselected");
+                    }
+                    else if (attr == "ex_sent_selected")
+                    {
+                        elem.setAttribute("class", "ex_sent_notselected");
+                    }
                 }
             }
         </script>
@@ -51,6 +73,18 @@ DEF_LIST_HTML_BEGINNING = """
 
     <body onmousedown="return false;">
 """
+
+class DefWebPage(QtWebKit.QWebPage):
+    """
+    This is an overridden webpage that prints javascript error messages
+    to the console.  This helps in debugging.
+    """
+    def __init__(self, parent=None):
+        super(DefWebPage, self).__init__(parent)
+
+    def javaScriptConsoleMessage(self, message, linenumber, sourceid):
+        print("javascript ERROR! (%s) %s: %s" % (sourceid, linenumber, message))
+
 
 class DefWebView(QtWebKit.QWebView):
     def __init__(self, parent=None, defs=[]):
@@ -88,5 +122,9 @@ class DefWebView(QtWebKit.QWebView):
             html += u"</div>"
 
         html += u"\n</body></html>"
+        #self.setHtml(html)
 
-        self.setHtml(html)
+        webpage = DefWebPage(self)
+        webpage.mainFrame().setHtml(html)
+        self.setPage(webpage)
+

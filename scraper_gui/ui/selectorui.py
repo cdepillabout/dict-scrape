@@ -188,17 +188,10 @@ class Ui_MainWindowSelector(object):
                 mainwindowselector.close)
 
         # reset form
-        self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(self.resetclicked)
+        self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(
+                mainwindowselector.resetall)
 
         # close window from menubar
         self.actionExit.triggered.connect(mainwindowselector.close)
 
         QtCore.QMetaObject.connectSlotsByName(mainwindowselector)
-
-    def resetclicked(self, button):
-        # this shows the sender (but in this case it will only be the reset button)
-        #sender = self.mainwindowselector.sender()
-        mainframe = self.daijisendefwebview.page().mainFrame()
-        collection = mainframe.findAllElements('span[class="selected"]')
-        for e in collection:
-            print(e.toPlainText().toUtf8())
