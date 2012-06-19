@@ -181,15 +181,15 @@ class Ui_MainWindowSelector(object):
         mainwindowselector.setCentralWidget(self.centralwidget)
         mainwindowselector.setWindowTitle("JDicScrape")
 
-        # new style signals
-        self.buttonBox.accepted.connect(mainwindowselector.close)
-        # old style signals
+        # okay button (new style signals)
+        self.buttonBox.accepted.connect(mainwindowselector.okay)
+        # cancel button (old style signals)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"),
                 mainwindowselector.close)
 
         # reset form
         self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(
-                mainwindowselector.resetall)
+                mainwindowselector.reset)
 
         # close window from menubar
         self.actionExit.triggered.connect(mainwindowselector.close)

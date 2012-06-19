@@ -19,7 +19,6 @@ class MainWindowSelector(QtGui.QMainWindow):
 
     # pop up a dialog box asking if we are sure we want to quit
     def closeEvent(self, event):
-        """
         reply = QtGui.QMessageBox.question(self, 'Message',
                 "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
                 QtGui.QMessageBox.No, QtGui.QMessageBox.No)
@@ -27,12 +26,11 @@ class MainWindowSelector(QtGui.QMainWindow):
             event.accept()
         else:
             event.ignore()
-        """
-        pass
 
-    def resetall(self, button):
+    def reset(self, button):
         """
-        This resets all the selected definition parts and sentences.
+        This is the action for the reset button.
+        It resets all the selected definition parts and sentences.
         """
         # this shows the sender (but in this case it will only be the reset button)
         #sender = self.mainwindowselector.sender()
@@ -44,7 +42,7 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe = w.page().mainFrame()
             mainframe.evaluateJavaScript(u"resetAll()")
 
-    def okay(self, button):
+    def okay(self):
         mainframe = self.ui.daijisendefwebview.page().mainFrame()
         collection = mainframe.findAllElements('span[class="selected"]')
         for e in collection:
