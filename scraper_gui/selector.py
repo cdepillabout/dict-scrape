@@ -43,31 +43,55 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe.evaluateJavaScript(u"resetAll()")
 
     def okay(self):
+
+        def collect_example_sentences(mainframe):
+            example_sentences = []
+
+            ex_sent_divs = mainframe.findAllElements(u'div[class="ex_sent_selected"]')
+            for elem in ex_sent_divs:
+                jap_sent_elem = elem.findFirst(u'span[class="jap_sentence"]')
+                eng_sent_elem = elem.findFirst(u'span[class="eng_trans"]')
+                jap_sent = unicode(jap_sent_elem.toPlainText())
+                eng_sent = unicode(eng_sent_elem.toPlainText())
+                example_sentence = (jap_sent, eng_sent)
+                example_sentences.append(example_sentence)
+
+            return example_sentences
+
+
         jap_webviews = [self.ui.daijisendefwebview, self.ui.daijirindefwebview]
         eng_webviews = [self.ui.newcenturydefwebview, self.ui.progressdefwebview]
 
-        jap_defs = u''
-        eng_defs = u''
+        jap_def = u''
+        eng_def = u''
 
-        example_sentence_jap = u''
-        example_sentence_eng = u''
+        # list of tuples of (japanese_sentences, english_sentence)
+        # english_sentence may be none
+        example_sentences = []
 
         for w in jap_webviews:
             mainframe = w.page().mainFrame()
             def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
             for elem in def_parts:
-                jap_defs += u'%s。' % elem.toPlainText()
+                jap_def += u'%s。' % elem.toPlainText()
+
+            example_sentences += collect_example_sentences(mainframe)
+
 
         for w in eng_webviews:
             mainframe = w.page().mainFrame()
             def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
             for i, elem in enumerate(def_parts):
                 if i + 1 == len(def_parts):
-                    eng_defs += u'%s' % elem.toPlainText()
+                    eng_def += u'%s' % unicode(elem.toPlainText())
                 else:
-                    eng_defs += u'%s, ' % elem.toPlainText()
+                    eng_def += u'%s, ' % unicode(elem.toPlainText())
 
-        print("Definition: %s%s" % (jap_defs, eng_defs))
+            example_sentences += collect_example_sentences(mainframe)
+
+        print("Definition: %s%s" % (jap_def, eng_def))
+        for jp, eng in example_sentences:
+            print("%s\n%s" % (jp, eng))
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions
