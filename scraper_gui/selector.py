@@ -120,12 +120,12 @@ class MainWindowSelector(QtGui.QMainWindow):
 
         self.factedit.saveFieldsNow()
 
-        self.fact["VocabEnglish"] = "%s%s" % (jap_def, eng_def)
+        self.fact["VocabEnglish"] = u"%s%s" % (jap_def, eng_def)
         if example_sentences:
-            self.fact["Sentence"] = "%s" % example_sentences[0][0]
-            self.fact["SentenceEnglish"] = "%s" % example_sentences[0][1]
+            self.fact["Sentence"] = u"%s" % example_sentences[0][0]
+            self.fact["SentenceEnglish"] = u"%s" % example_sentences[0][1]
 
-        if accent != "NO ACCENT":
+        if accent != u"NO ACCENT":
             self.fact["Intonation"] = accent
 
         self.fact.setModified(textChanged=True, deck=ankiqt.mw.deck)
@@ -170,14 +170,24 @@ class MainWindowSelector(QtGui.QMainWindow):
             webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
 
             # add the resulting word
-            resultwordlabeltext = ""
+            resultwordlabeltext = u""
             if result.definition_found():
                 if result.kanji == result.kana:
-                    resultwordlabeltext = "%s" % result.kanji
+                    resultwordlabeltext = u"%s" % result.kanji
                 else:
-                    resultwordlabeltext = "%s (%s)" % (result.kanji, result.kana)
+                    resultwordlabeltext = u"%s (%s)" % (result.kanji, result.kana)
             else:
-                resultwordlabeltext = "NO DEFINITION FOUND"
+                resultwordlabeltext = u"NO DEFINITION FOUND"
+
+            resultwordlabel.setToolTip(resultwordlabeltext)
+            resultwordlabeltext = self.abbreviate(resultwordlabeltext)
             resultwordlabel.setText(u'<font color="#555555">%s</font>' % resultwordlabeltext)
 
             self.addDefinition(defwebviewwidget, result)
+
+    def abbreviate(self, text):
+        """Abbreviate a string."""
+        if len(text) > 20:
+            return u"%s%s%s" % (text[0:8], u"...", text[-8:])
+        else:
+            return text
