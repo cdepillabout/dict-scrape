@@ -2,12 +2,16 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―のいい部屋"
+                }
+            ], 
             "parts": [
                 "風が吹き抜けること", 
                 "そのぐあい", 
-                "かざとおし", 
-                "「―のいい部屋」《<b>季</b> 夏》"
+                "かざとおし"
             ]
         }, 
         {

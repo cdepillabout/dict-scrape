@@ -55,6 +55,7 @@ class DaijisenDictionary(YahooDictionary):
         def_parts = self.split_def_parts(def_string)
         example_sentences = []
 
+
         # check to see if the last part of the definition contains
         # example sentences.  The second part of this comparison is trying to
         # catch bad things like the definition for 遊ぶ（あすぶ）which is something
@@ -77,6 +78,12 @@ class DaijisenDictionary(YahooDictionary):
         """
         def_string = re.sub(u'<a.*?>', u'', def_string)
         def_string = re.sub(u'</a>', u'', def_string)
+
+        # remove "arrows" groups
+        # (this is the character that looks like two greater than signs
+        # really close together)
+        def_string = re.sub(u'\u300A.*?\u300B', u'', def_string)
+
         return def_string
 
     def parse_definition(self, tree):
