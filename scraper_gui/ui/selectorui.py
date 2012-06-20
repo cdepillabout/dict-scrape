@@ -185,13 +185,13 @@ class Ui_MainWindowSelector(object):
         self.buttonBox.accepted.connect(mainwindowselector.okay)
         # cancel button (old style signals)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"),
-                mainwindowselector.close)
+                mainwindowselector.exit)
 
         # reset form
         self.buttonBox.button(QtGui.QDialogButtonBox.Reset).clicked.connect(
                 mainwindowselector.reset)
 
         # close window from menubar
-        self.actionExit.triggered.connect(mainwindowselector.close)
+        self.actionExit.triggered.connect(mainwindowselector.exit)
 
         QtCore.QMetaObject.connectSlotsByName(mainwindowselector)

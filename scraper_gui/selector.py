@@ -23,15 +23,12 @@ class MainWindowSelector(QtGui.QMainWindow):
         self.ui.setupUi(self)
         self.fillin(word_kanji, word_kana)
 
-    # pop up a dialog box asking if we are sure we want to quit
-    def closeEvent(self, event):
+    def exit(self):
         reply = QtGui.QMessageBox.question(self, 'Message',
                 "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
                 QtGui.QMessageBox.No, QtGui.QMessageBox.No)
         if reply == QtGui.QMessageBox.Yes:
-            event.accept()
-        else:
-            event.ignore()
+            self.close()
 
     def reset(self, button):
         """
@@ -109,6 +106,8 @@ class MainWindowSelector(QtGui.QMainWindow):
                 print("%s\n%s" % (jp, eng))
         else:
             self.updatefact(accent, jap_def, eng_def, example_sentences)
+
+        self.close()
 
     def updatefact(self, accent, jap_def, eng_def="", example_sentences=[]):
         assert(isinstance(accent, unicode))
