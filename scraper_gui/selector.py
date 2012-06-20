@@ -125,7 +125,8 @@ class MainWindowSelector(QtGui.QMainWindow):
             self.fact["Sentence"] = "%s" % example_sentences[0][0]
             self.fact["SentenceEnglish"] = "%s" % example_sentences[0][1]
 
-        self.fact["Intonation"] = accent
+        if accent != "NO ACCENT":
+            self.fact["Intonation"] = accent
 
         self.fact.setModified(textChanged=True, deck=ankiqt.mw.deck)
         ankiqt.mw.deck.setModified()
