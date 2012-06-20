@@ -1,16 +1,9 @@
 {
-    "accent": "", 
-    "defs": [
-        {
-            "example_sentences": [], 
-            "parts": [
-                "⇒<a href=\"http://dic.yahoo.co.jp/dsearch/0/0na/04814400/\">金環食</a>"
-            ]
-        }
-    ], 
+    "accent": null, 
+    "defs": [], 
     "original_kana": "きんかんにっしょく", 
     "original_kanji": "金環日食", 
-    "result_kana": "きんかん‐にっしょく〔キンクワン‐〕", 
-    "result_kanji": "金環日食／金環日蝕", 
+    "result_kana": null, 
+    "result_kanji": null, 
     "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E9%87%91%E7%92%B0%E6%97%A5%E9%A3%9F%E3%80%80%E3%81%8D%E3%82%93%E3%81%8B%E3%82%93%E3%81%AB%E3%81%A3%E3%81%97%E3%82%87%E3%81%8F&enc=UTF-8&stype=1&dtype=0"
 }

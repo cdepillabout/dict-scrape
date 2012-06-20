@@ -45,21 +45,28 @@ class Dictionary(object):
                 u'<p><em>%s%s</em>に一致する情報はみつかりませんでした。</p>' % \
                 (word_kanji, word_kana)
 
-        # return None if we can't find a definition
+        # return empty result if we can't find a definition
         if word_not_found_string in result or word_not_found_string_no_space in result:
-            #print("NO DEFINITION FOUND")
             return Result(self, word_kanji, word_kana, url)
-
-        # make sure this is the new century and not the progressive definition
-        if self.dic_type == Dictionary.NEW_CENTURY_TYPE:
-            if u'<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
-                #print("NO DEFINITION FROM NEW CENTURY")
-                return Result(self, word_kanji, word_kana, url)
 
         # make sure this is the Daijisen and not the Daijirin definition
         if self.dic_type == Dictionary.DAIJISEN_TYPE:
             if u'<span class="dic-zero">大辞泉</span>' in result:
-                #print("NO DEFINITION FROM NEW CENTURY")
+                return Result(self, word_kanji, word_kana, url)
+
+        # make sure this is the Daijirin and not the Daijisen definition
+        if self.dic_type == Dictionary.DAIJIRIN_TYPE:
+            if u'<span class="dic-zero">大辞林</span>' in result:
+                return Result(self, word_kanji, word_kana, url)
+
+        # make sure this is the new century and not the progressive definition
+        if self.dic_type == Dictionary.NEW_CENTURY_TYPE:
+            if u'<span class="dic-zero">ニューセンチュリー和英辞典</span>' in result:
+                return Result(self, word_kanji, word_kana, url)
+
+        # make sure this is the progressive and not the new century definition
+        if self.dic_type == Dictionary.PROGRESSIVE_TYPE:
+            if u'<span class="dic-zero">プログレッシブ和英中辞典</span>' in result:
                 return Result(self, word_kanji, word_kana, url)
 
         kanji, kana, accent = self.parse_heading(tree)
