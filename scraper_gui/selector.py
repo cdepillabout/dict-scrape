@@ -101,45 +101,12 @@ class MainWindowSelector(QtGui.QMainWindow):
         if eng_def:
             eng_def = eng_def[2:]
 
-        if self.standalone:
-            print("Definition: (%s) %s%s" % (accent, jap_def, eng_def))
-            for jp, eng in example_sentences:
-                print("%s\n%s" % (jp, eng))
-        else:
-            self.updatefact(accent, jap_def, eng_def, example_sentences)
 
         self.close()
         self.defeditorwindow = DefEditor(accent, jap_def, eng_def, example_sentences,
                 self.word_kanji, self.word_kana, standalone=self.standalone,
                 parent=self.parent, factedit=self.factedit, fact=self.fact)
         self.defeditorwindow.show()
-
-
-    def updatefact(self, accent, jap_def, eng_def="", example_sentences=[]):
-        assert(isinstance(accent, unicode))
-        assert(isinstance(jap_def, unicode))
-        assert(isinstance(eng_def, unicode))
-        for jap_sent, eng_sent in example_sentences:
-            assert(isinstance(jap_sent, unicode))
-            assert(isinstance(eng_sent, unicode))
-
-        self.factedit.saveFieldsNow()
-
-        self.fact["VocabEnglish"] = u"%s%s" % (jap_def, eng_def)
-        if example_sentences:
-            self.fact["Sentence"] = u"%s" % example_sentences[0][0]
-            self.fact["SentenceEnglish"] = u"%s" % example_sentences[0][1]
-
-        if accent != u"NO ACCENT":
-            self.fact["Intonation"] = accent
-
-        self.fact.setModified(textChanged=True, deck=ankiqt.mw.deck)
-        ankiqt.mw.deck.setModified()
-        self.factedit.loadFields()
-        #ankiqt.mw.deck.flushMod()
-        #ankiqt.mw.deck.save()
-        #self.factedit.updateAfterCardChange()
-        #self.factedit.saveFieldsNow()
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions

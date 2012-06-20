@@ -33,6 +33,7 @@ class Ui_DefEditor(object):
 
         self.sentencepicker_listWidget = QtGui.QListWidget(self.centralwidget)
         self.sentencepicker_listWidget.setObjectName("sentencepicker_listWidget")
+        self.sentencepicker_listWidget.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.formLayout.addRow(u"Main Sentence:", self.sentencepicker_listWidget)
 
         self.buttonBox = QtGui.QDialogButtonBox(self.centralwidget)
