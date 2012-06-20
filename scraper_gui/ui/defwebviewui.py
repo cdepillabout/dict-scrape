@@ -55,6 +55,7 @@ DEF_LIST_HTML_BEGINNING = """
             {
                 // TODO: we might be able to use document.getElementsByClassName('*_selected')
                 // or something like that
+                // http://forums.devshed.com/javascript-development-115/javascript-get-all-elements-of-class-abc-24349.html
                 allelements = document.getElementsByTagName('*');
                 for(i = 0; i < allelements.length; i++)
                 {
