@@ -1,0 +1,25 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an airy [an airless, a stuffy] room.", 
+                    "jap_sentence": "風通しがいい[悪い]部屋"
+                }, 
+                {
+                    "eng_trans": "This room is airy [is not airy]./This room is well [poorly, not well] ventilated.", 
+                    "jap_sentence": "この部屋は風通しがよい[悪い]"
+                }
+            ], 
+            "parts": [
+                "ventilation"
+            ]
+        }
+    ], 
+    "original_kana": "かぜとおし", 
+    "original_kanji": "風通し", 
+    "result_kana": "かぜとおし", 
+    "result_kanji": "風通し", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E9%A2%A8%E9%80%9A%E3%81%97%E3%80%80%E3%81%8B%E3%81%9C%E3%81%A8%E3%81%8A%E3%81%97&enc=UTF-8&stype=1&dtype=3"
+}

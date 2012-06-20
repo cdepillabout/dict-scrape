@@ -1,0 +1,31 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "風が吹き抜けること", 
+                "そのぐあい", 
+                "かざとおし", 
+                "「―のいい部屋」《<b>季</b> 夏》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "部内の―をよくする"
+                }
+            ], 
+            "parts": [
+                "組織内部での意思や情報の通じるぐあい", 
+                "かざとおし"
+            ]
+        }
+    ], 
+    "original_kana": "かぜとおし", 
+    "original_kanji": "風通し", 
+    "result_kana": "かぜ‐とおし〔‐とほし〕", 
+    "result_kanji": "風通し", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E9%A2%A8%E9%80%9A%E3%81%97%E3%80%80%E3%81%8B%E3%81%9C%E3%81%A8%E3%81%8A%E3%81%97&enc=UTF-8&stype=1&dtype=0"
+}
