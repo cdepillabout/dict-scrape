@@ -46,7 +46,6 @@ class DictScraperPlugin(DictScraper):
                 self.newsetupfields, "after")
 
     def launchGUI(self, factedit):
-        print("from launchGUI: factedit = %s (%s)" % (factedit, type(factedit)))
         factedit.saveFieldsNow()
         fact = factedit.fact
         kanji = fact["Vocab"]
