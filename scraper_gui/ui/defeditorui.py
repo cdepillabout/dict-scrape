@@ -27,6 +27,14 @@ class Ui_DefEditor(object):
         self.engdef_textEdit.setObjectName(u"engdef_textEdit")
         self.formLayout.addRow(u"Edit Eng Def:", self.engdef_textEdit)
 
+        #self.sentencepicker_comboBox = QtGui.QComboBox(self.centralwidget)
+        #self.sentencepicker_comboBox.setObjectName(u"sentencepicker_comboBox")
+        #self.formLayout.addRow(u"Main Sentence:", self.sentencepicker_comboBox)
+
+        self.sentencepicker_listWidget = QtGui.QListWidget(self.centralwidget)
+        self.sentencepicker_listWidget.setObjectName("sentencepicker_listWidget")
+        self.formLayout.addRow(u"Main Sentence:", self.sentencepicker_listWidget)
+
         self.buttonBox = QtGui.QDialogButtonBox(self.centralwidget)
         self.buttonBox.setStandardButtons(
                 QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)

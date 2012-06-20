@@ -37,3 +37,9 @@ class DefEditor(QtGui.QMainWindow):
     def fillin(self, jap_def, eng_def, example_sentences):
         self.ui.japdef_textEdit.setText(jap_def)
         self.ui.engdef_textEdit.setText(eng_def)
+        for jap_sent, eng_sent in example_sentences:
+            #self.ui.sentencepicker_comboBox.addItem(jap_sent, [jap_sent, eng_sent])
+            item = QtGui.QListWidgetItem()
+            item.setData(QtCore.Qt.UserRole, [jap_sent, eng_sent])
+            item.setText(jap_sent)
+            self.ui.sentencepicker_listWidget.addItem(item)
