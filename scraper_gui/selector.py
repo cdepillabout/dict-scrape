@@ -4,6 +4,7 @@ import ankiqt
 
 from PyQt4 import QtGui, QtCore
 from .ui.selectorui import Ui_MainWindowSelector
+from .defeditor import DefEditor
 
 from dictscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary
@@ -88,17 +89,17 @@ class MainWindowSelector(QtGui.QMainWindow):
 
             example_sentences += collect_example_sentences(mainframe)
 
-
         for w in eng_webviews:
             mainframe = w.page().mainFrame()
             def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
             for i, elem in enumerate(def_parts):
-                if i + 1 == len(def_parts):
-                    eng_def += u'%s' % unicode(elem.toPlainText())
-                else:
-                    eng_def += u'%s, ' % unicode(elem.toPlainText())
+                eng_def += u', %s' % unicode(elem.toPlainText())
 
             example_sentences += collect_example_sentences(mainframe)
+
+        # get rid of the ", " at the beginning of the definitions
+        if eng_def:
+            eng_def = eng_def[2:]
 
         if self.standalone:
             print("Definition: (%s) %s%s" % (accent, jap_def, eng_def))
@@ -108,6 +109,11 @@ class MainWindowSelector(QtGui.QMainWindow):
             self.updatefact(accent, jap_def, eng_def, example_sentences)
 
         self.close()
+        self.defeditorwindow = DefEditor(accent, jap_def, eng_def, example_sentences,
+                self.word_kanji, self.word_kana, standalone=self.standalone,
+                parent=self.parent, factedit=self.factedit, fact=self.fact)
+        self.defeditorwindow.show()
+
 
     def updatefact(self, accent, jap_def, eng_def="", example_sentences=[]):
         assert(isinstance(accent, unicode))
