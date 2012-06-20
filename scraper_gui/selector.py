@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
 
+import ankiqt
+
 from PyQt4 import QtGui, QtCore
 from .ui.selectorui import Ui_MainWindowSelector
 
@@ -8,8 +10,12 @@ from dictscrape import DaijirinDictionary, DaijisenDictionary, \
 
 class MainWindowSelector(QtGui.QMainWindow):
 
-    def __init__(self, word_kanji, word_kana, parent=None, factedit=None, fact=None):
+    def __init__(self, word_kanji, word_kana, standalone=True,
+            parent=None, factedit=None, fact=None):
         QtGui.QMainWindow.__init__(self, parent)
+        self.word_kanji = word_kanji
+        self.word_kana = word_kana
+        self.standalone = standalone
         self.parent = parent
         self.factedit = factedit
         self.fact = fact
@@ -43,8 +49,14 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe.evaluateJavaScript(u"resetAll()")
 
     def okay(self):
-
+        """
+        Action for the okay button.  This collects the selected definition
+        parts and example sentences from our definition web views.
+        """
         def collect_example_sentences(mainframe):
+            """
+            Return a list of all the example_sentences in a qwebframe object.
+            """
             example_sentences = []
 
             ex_sent_divs = mainframe.findAllElements(u'div[class="ex_sent_selected"]')
@@ -58,6 +70,8 @@ class MainWindowSelector(QtGui.QMainWindow):
 
             return example_sentences
 
+        # get accent
+        accent = unicode(self.ui.accentlineedit.text())
 
         jap_webviews = [self.ui.daijisendefwebview, self.ui.daijirindefwebview]
         eng_webviews = [self.ui.newcenturydefwebview, self.ui.progressdefwebview]
@@ -89,9 +103,37 @@ class MainWindowSelector(QtGui.QMainWindow):
 
             example_sentences += collect_example_sentences(mainframe)
 
-        print("Definition: %s%s" % (jap_def, eng_def))
-        for jp, eng in example_sentences:
-            print("%s\n%s" % (jp, eng))
+        if self.standalone:
+            print("Definition: (%s) %s%s" % (accent, jap_def, eng_def))
+            for jp, eng in example_sentences:
+                print("%s\n%s" % (jp, eng))
+        else:
+            self.updatefact(accent, jap_def, eng_def, example_sentences)
+
+    def updatefact(self, accent, jap_def, eng_def="", example_sentences=[]):
+        assert(isinstance(accent, unicode))
+        assert(isinstance(jap_def, unicode))
+        assert(isinstance(eng_def, unicode))
+        for jap_sent, eng_sent in example_sentences:
+            assert(isinstance(jap_sent, unicode))
+            assert(isinstance(eng_sent, unicode))
+
+        self.factedit.saveFieldsNow()
+
+        self.fact["VocabEnglish"] = "%s%s" % (jap_def, eng_def)
+        if example_sentences:
+            self.fact["Sentence"] = "%s" % example_sentences[0][0]
+            self.fact["SentenceEnglish"] = "%s" % example_sentences[0][1]
+
+        self.fact["Intonation"] = accent
+
+        self.fact.setModified(textChanged=True, deck=ankiqt.mw.deck)
+        ankiqt.mw.deck.setModified()
+        self.factedit.loadFields()
+        #ankiqt.mw.deck.flushMod()
+        #ankiqt.mw.deck.save()
+        #self.factedit.updateAfterCardChange()
+        #self.factedit.saveFieldsNow()
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions

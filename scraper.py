@@ -48,12 +48,13 @@ class DictScraperPlugin(DictScraper):
     def launchGUI(self, factedit):
         print("from launchGUI: factedit = %s (%s)" % (factedit, type(factedit)))
         factedit.saveFieldsNow()
-        kanji = factedit.fact["Vocab"]
-        kana = factedit.fact["VocabKana"]
+        fact = factedit.fact
+        kanji = fact["Vocab"]
+        kana = fact["VocabKana"]
 
-        self.window = MainWindowSelector(kanji, kana, factedit.widget, factedit, fact)
+        self.window = MainWindowSelector(kanji, kana, standalone=False,
+                parent=factedit.widget, factedit=factedit, fact=fact)
         self.window.show()
-        print("HELLO")
         """
         if self.window:
             self.window.setVisible(True)
