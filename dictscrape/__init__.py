@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 
 from .example_sentence import ExampleSentence
 from .definition import Definition, DefinitionPart
