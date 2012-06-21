@@ -16,6 +16,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+Tests for comparing parsing for dictionary entries.
+"""
+
 import json
 import os
 import subprocess
@@ -149,6 +153,11 @@ def print_differences_result(result_a, result_b, result_a_string, result_b_strin
             print_differences_definition(def_a, def_b, def_a_string, def_b_string)
 
 def checkword(dictionary, kanji, kana):
+    """
+    dictionary (Dictionary): the dictionary we want to check in
+    kanji (unicode): the kanji we want to check
+    kana (unicode): the kana we want to check
+    """
     html = manage_words.get_html_for_word(dictionary, kana, kanji)
     json_object = manage_words.get_json_for_word(dictionary, kana, kanji)
 
@@ -161,6 +170,25 @@ def checkword(dictionary, kanji, kana):
 
 @manage_words.no_null_dictionaries
 def test_words(kanji=None, kana=None, dictionaries=manage_words.get_dics()):
+    """
+    Test our words to make sure everything parses correct.  This tries to parse
+    an hmlt page for a word and compares its output to that of the json file
+    from disk.  If something doesn't match, then we have an error.
+
+    This is used to make sure that changes made to the Dictionary's parsing
+    functions don't make some other word/definition mess up.  For instance,
+    if we are trying to fix something where we need to take out the 動 kanji,
+    we may make an error and remove all 動 from the entire definition.  These
+    tests would catch this error.
+
+    kanji (unicode): the kanji we want to check
+    kana (unicode): the kana we want to check
+    dictionaries (list of Dictionary objects): the dictionaries we want to check in
+
+    kanji and kana should correspond to a word in our words.db.
+
+    Prints errors if there are any.
+    """
     if kanji is None and kana is None:
         words = manage_words.get_words_from_wordsdb()
     else:
