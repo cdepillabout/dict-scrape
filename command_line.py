@@ -16,6 +16,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+This is a small example program that uses the dictscrape library.
+You can pass KANJI and KANA on the command line and this program
+will look up that word and print it out.
+
+$ ./command_line.py 強迫 きょうはく
+.....
+$
+
+Another possibility is to just run this program without any arguments.
+It will print out some example searches.
+
+$ ./command_line.py
+.....
+$
+"""
+
 import re
 import sys
 import urllib
@@ -24,30 +41,15 @@ import urllib
 from dictscrape import DaijisenDictionary, DaijirinDictionary, \
         NewCenturyDictionary, ProgressiveDictionary
 
-def main(word_kanji, word_kana):
-    check_daijirin(word_kanji, word_kana)
-    print
-    check_daijisen(word_kanji, word_kana)
-    print
-    check_new_century(word_kanji, word_kana)
-    print
-    check_progressive(word_kanji, word_kana)
+daijirin_dic = DaijirinDictionary()
+daijisen_dic = DaijisenDictionary()
+new_century_dic = NewCenturyDictionary()
+progressive_dic = ProgressiveDictionary()
 
-if __name__ == '__main__':
-
-    daijirin_dic = DaijirinDictionary()
-    daijisen_dic = DaijisenDictionary()
-    new_century_dic = NewCenturyDictionary()
-    progressive_dic = ProgressiveDictionary()
-
-    if len(sys.argv) == 3:
-        kanji = sys.argv[1].decode("utf8")
-        kana = sys.argv[2].decode("utf8")
-        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-            if d:
-                print("\t\t\t\t%s\n%s\n\n" % (d.short_name, d.lookup(kanji, kana)))
-        sys.exit(1)
-
+def main():
+    """
+    This shows some uses of the the dictscrape library.
+    """
 
     words = [
             (u'強迫', u'きょうはく'),
@@ -66,65 +68,42 @@ if __name__ == '__main__':
             #(u'唸る', u'うなる'),         # this doesn't parse right in the progressive dict
             ]
 
-    """
-    for one, two in words:
-        main(one, two)
-        print
-        """
-
-    """
-    one = words[0]
-    result = NewCenturyDictionary().lookup(one[0], one[1])
+    print("\t\t\tLOOK UP ONE WORD IN ONE DICTIONARY:")
+    print("\t\t\t-----------------------------------")
+    kanji = words[0][0]
+    kana = words[0][1]
+    result = new_century_dic.lookup(kanji, kana)
     print(result)
-    """
 
-
-    one = words[0]
+    print("\n\t\t\tLOOK UP ONE WORD IN ALL DICTIONARIES:")
+    print("\t\t\t-------------------------------------")
+    kanji = words[3][0]
+    kana = words[3][1]
     for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-        print(d.lookup(one[0], one[1]))
+        print(d.lookup(kanji, kana))
         print
 
-    """
-    for word in words:
+    print("\n\t\t\tLOOK UP ACCENT FOR ALL WORDS:")
+    print("\t\t\t-----------------------------")
+    for kanji, kana in words:
+        result = daijirin_dic.lookup(kanji, kana)
+        accent = "NO ACCENT AVAILABLE"
+        if len(result.accent):
+            accent = result.accent
+        print("%s (%s): %s" % (kanji, kana, accent))
+
+
+if __name__ == '__main__':
+    # If the user passes kanji and kana on the command line, then we
+    # look up that word and print the results.
+    if len(sys.argv) == 3:
+        kanji = sys.argv[1].decode("utf8")
+        kana = sys.argv[2].decode("utf8")
         for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-            print(d.lookup(word[0], word[1]).to_jsonable())
-            print
-        print
-        """
+            if d:
+                print("\t\t\t\t%s\n%s\n\n" % (d.short_name, d.lookup(kanji, kana)))
+        sys.exit(1)
 
-    """
-    daijirin_dic = DaijirinDictionary()
-    daijisen_dic = DaijisenDictionary()
-    new_century_dic = NewCenturyDictionary()
-    progressive_dic = ProgressiveDictionary()
-    """
+    main()
 
-    """
-    def print_all_defs(defs):
-        for i in range(len(defs)):
-            d = ""
-            if defs[i].definition:
-                definition = defs[i].definition
-            else:
-                definition = "NO DEFINITION AVAILABLE"
-            print("(%2d) %s" % (i, definition))
-            for e in defs[i].example_sentences:
-                print("    - %s" % e.jap_sentence)
-                if e.eng_trans:
-                    print("      %s" % e.eng_trans)
-
-
-    for word in words:
-        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
-            print ("FROM %s" % d.dic_name)
-            result = d.lookup(word[0], word[1])
-            if not result:
-                print("NO RESULT FOUND!!!!!")
-                print
-                continue
-
-            print ("%s (%s) %s:" % (result.kanji, result.kana, result.accent))
-            print_all_defs(result.defs)
-            print
-            """
 
