@@ -15,6 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+This contains the DefinitionPart and Definition objects.  These are
+used by the Result object to represent definitions returned from
+a Dictionary object.
+"""
+
 from .example_sentence import ExampleSentence
 
 class DefinitionPart(object):
@@ -28,7 +34,7 @@ class DefinitionPart(object):
     """
     def __init__(self, part):
         """
-        item is a string corresponding to a part of a definition.
+        part (unicode): part of a definition
         """
         if type(part) is not type(unicode()):
             raise UnicodeError, "item should be a unicode string"
@@ -37,7 +43,7 @@ class DefinitionPart(object):
 
     @property
     def part(self):
-        """Return the part."""
+        """Return the definition part."""
         return self._part
 
     def set_definition(self, definition):
@@ -66,21 +72,23 @@ class DefinitionPart(object):
                 self.part == other.part)
 
     def to_jsonable(self):
+        """Return a jsonable object that represents this DefinitionPart class."""
         return self.part
 
     @classmethod
     def from_jsonable(cls, jsonable):
+        """Return a DefinitionPart object based on the jsonable object."""
         return cls(jsonable)
 
 class Definition(object):
     """
-    Contains the defintion from a dictionary along with example sentences.
+    Contains the defintion parts from a dictionary along with example sentences.
     """
     def __init__(self, parts, example_sentences):
         """
-        parts is a list of DefinitionPart objects from a dictionary in either
-        Japanese or English.
-        example_sentences is a lists of ExampleSentence objects.
+        parts (list of DefinitionPart objects): parts of the definition
+        example_sentences (list of ExampleSentence objects): example sentences
+        that go with this definition.
         """
         if parts:
             self._parts = parts
@@ -148,6 +156,7 @@ class Definition(object):
                 self.example_sentences == other.example_sentences)
 
     def to_jsonable(self):
+        """Return a jsonable object that represents this Definition class."""
         parts = []
         for p in self.parts:
             parts.append(p.to_jsonable())
@@ -158,6 +167,7 @@ class Definition(object):
 
     @classmethod
     def from_jsonable(cls, jsonable):
+        """Return a DefinitionPart object based on the jsonable object."""
         parts = []
         for p in jsonable["parts"]:
             parts.append(DefinitionPart.from_jsonable(p))

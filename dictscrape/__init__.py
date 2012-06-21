@@ -15,6 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+This is a library for scrapping information from dictionaries.
+Use dictionaries from the dictionaries module.  These dictionaries
+return definitions and example sentences in the form of a Result object.
+The Result object is defined in the result module.
+"""
+
 from .example_sentence import ExampleSentence
 from .definition import Definition, DefinitionPart
 from .result import Result
