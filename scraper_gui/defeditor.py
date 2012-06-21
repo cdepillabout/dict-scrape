@@ -48,77 +48,11 @@ class DefEditor(QtGui.QMainWindow):
                     print("%s\n%s" % (jp_sent, eng_sent))
             self.close()
         else:
-            #self.updatefact(jap_def, eng_def, self.main_sent, self.other_sents)
             self.close()
             self.mainfacteditorwindow = MainFactEditor(self.accent, editeddef, self.main_sent,
                     self.other_sents, self.word_kanji, self.word_kana,
                     parent=self.parent, factedit=self.factedit, fact=self.fact)
             self.mainfacteditorwindow.show()
-
-    def updatefact(self, jap_def, eng_def=u"", main_sentence=[], other_sentences=[]):
-        pass
-        """
-        if main_sentence:
-            main_jap_sent, main_eng_sent = main_sentence
-        else:
-            main_jap_sent = u""
-            main_eng_sent = u""
-
-        assert(isinstance(self.accent, unicode))
-        assert(isinstance(self.word_kanji, unicode))
-        assert(isinstance(self.word_kana, unicode))
-        assert(isinstance(jap_def, unicode))
-        assert(isinstance(eng_def, unicode))
-        assert(isinstance(main_jap_sent, unicode))
-        assert(isinstance(main_eng_sent, unicode))
-        for jap_sent, eng_sent in other_sentences:
-            assert(isinstance(jap_sent, unicode))
-            assert(isinstance(eng_sent, unicode))
-
-        action = anki.lang._('Add')
-        ankiqt.mw.deck.setUndoStart(action)
-
-        self.factedit.saveFieldsNow()
-
-        self.fact["VocabEnglish"] = u"%s%s" % (jap_def, eng_def)
-        if main_sentence:
-            self.fact["Sentence"] = u"%s" % main_jap_sent
-            self.fact["SentenceEnglish"] = u"%s" % main_eng_sent
-
-        if self.accent != u"NO ACCENT":
-            self.fact["Intonation"] = self.accent
-
-        self.fact.setModified(textChanged=True, deck=ankiqt.mw.deck)
-        ankiqt.mw.deck.setModified()
-        self.factedit.loadFields()
-        #ankiqt.mw.deck.flushMod()
-        #ankiqt.mw.deck.save()
-        #self.factedit.updateAfterCardChange()
-        #self.factedit.saveFieldsNow()
-
-        for jap_sent, eng_sent in other_sentences:
-            # get sentence model
-            sentence_model = None
-            for model in ankiqt.mw.deck.models:
-                if model.name == "Sentences":
-                    sentence_model = model
-            assert(sentence_model is not None)
-
-            fact = ankiqt.mw.deck.newFact(sentence_model)
-            fact["Sentence"] = jap_sent
-            fact["SentenceEnglish"] = eng_sent
-            fact["Notes"] = u"「%s（%s）〔%s〕」：%s%s" % \
-                    (self.word_kanji, self.word_kana, self.accent, jap_def, eng_def)
-
-            ankiqt.mw.deck.addFact(fact)
-
-        ankiqt.mw.deck.setUndoEnd(action)
-        ankiqt.mw.deck.rebuildCounts()
-        ankiqt.mw.deck.s.flush()
-        ankiqt.mw.deck.rebuildCSS()
-        ankiqt.mw.deck.save()
-        ankiqt.mw.reset()
-        """
 
     def fillin(self, defs):
 
