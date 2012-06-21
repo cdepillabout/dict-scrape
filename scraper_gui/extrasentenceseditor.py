@@ -33,25 +33,21 @@ class ExtraSentencesEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
-        pass
-        """
-        vocab = unicode(self.ui.vocab_lineEdit.text())
-        vocabkana = unicode(self.ui.vocabkana_lineEdit.text())
-        vocabenglish = unicode(self.ui.vocabenglish_textEdit.toPlainText())
         sentence = unicode(self.ui.sentence_textEdit.toPlainText())
         sentenceenglish = unicode(self.ui.sentenceenglish_textEdit.toPlainText())
         notes = unicode(self.ui.notes_textEdit.toPlainText())
 
-        self.updatefact(vocabenglish, sentence, sentenceenglish, notes)
+        #self.addNewSentence(sentence, sentenceenglish, notes)
         self.close()
 
-        #self.mainfactediterwindow = MainFactEditer(self.accent, editeddefs, self.main_sent,
-        #        self.other_sents, self.word_kanji, self.word_kana,
-        #        parent=self.parent, factedit=self.factedit, fact=self.fact)
-        #self.mainfactediterwindow.show()
-        """
+        if len(self.other_sents) > 1:
+            self.extrasentenceseditorwindow = ExtraSentencesEditor(self.accent,
+                    self.def_string, self.other_sents[1:], self.word_kanji, self.word_kana,
+                    parent=self.parent, factedit=self.factedit)
+            self.extrasentenceseditorwindow.show()
 
-    def updatefact(self, definition, sentence, sentenceenglish, notes):
+
+    def addNewSentence(self, definition, sentence, sentenceenglish, notes):
         return
 
         assert(isinstance(definition, unicode))
