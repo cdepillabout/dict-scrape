@@ -24,16 +24,14 @@ class Result(object):
     def __init__(self, dic, original_kanji, original_kana, url,
             kanji=None, kana=None, accent=None, defs=[]):
         """
-        dic is the dictionary this result came from.
-        original_kanji/kana is the kanji/kana that we searched for in the
-        dictionary.
-        url is the url that we searched on.
-        kanji is a string with the kanji from the result. This may be the same
-        as kana.
-        kana is a string with the kana from the result.
-        accent is the accent marking.  This may be None.
-        defs is a list of Definition objects for the definitions
-        contained in the dictionary.
+        dic (Dictioanry): the dictionary this result came from
+        original_kanji/kana (unicode):  the kanji/kana that we searched for in the
+        dictionary
+        url (str): the url that we searched on
+        kanji (unicode): the kanji from the result. This may be the same as kana.
+        kana (unicode): the kana from the result
+        accent (unicode): is the accent marking.  This may be None.
+        defs (list of Definition objects): the definitions contained in the dictionary.
         """
         #assert(isinstance(dic, Dictionary))
         if type(original_kanji) is not type(unicode()):
@@ -98,8 +96,7 @@ class Result(object):
     @property
     def defs(self):
         """
-        Return the Japanese definitions from the dictionary in
-        a list of Definition objects.
+        Return the definitions from the dictionary in a list of Definition objects.
         """
         return self._defs
 
@@ -132,6 +129,7 @@ class Result(object):
                 self.defs == other.defs)
 
     def to_jsonable(self):
+        """Return a jsonable object that represents this Result class."""
         dfs = []
         for d in self.defs:
             dfs.append(d.to_jsonable())
@@ -141,6 +139,7 @@ class Result(object):
 
     @classmethod
     def from_jsonable(cls, dictionary, jsonable):
+        """Return an Result object based on the jsonable object."""
         dfs = []
         for d in jsonable["defs"]:
             dfs.append(Definition.from_jsonable(d))

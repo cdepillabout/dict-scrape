@@ -15,6 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+This contains the  ExampleSentence objects.  These are used by the Definition
+object to represent example sentences returned from a Dictionary object.
+"""
+
 class ExampleSentence(object):
     """
     A Japanese example sentence with an optional English translation.
@@ -22,7 +27,7 @@ class ExampleSentence(object):
     def __init__(self, jap_sentence, eng_trans):
         """
         jap_sentence is a sentence in Japanese and eng_trans is
-        the English translation of that sentence.  Both are strings.
+        the English translation of that sentence.  Both are unicode strings.
         """
         if type(jap_sentence) is not type(unicode()):
             raise UnicodeError, "jap_sentence should be a unicode string"
@@ -72,8 +77,10 @@ class ExampleSentence(object):
                 self.eng_trans == other.eng_trans)
 
     def to_jsonable(self):
+        """Return a jsonable object that represents this ExampleSentence class."""
         return {'jap_sentence': self.jap_sentence, 'eng_trans': self.eng_trans}
 
     @classmethod
     def from_jsonable(cls, jsonable):
+        """Return an ExampleSentence object based on the jsonable object."""
         return cls(jsonable['jap_sentence'], jsonable['eng_trans'])
