@@ -4,25 +4,23 @@ import ankiqt
 import anki.lang
 
 from PyQt4 import QtGui, QtCore
-from .ui.mainfacteditorui import Ui_MainFactEditor
-from .extrasentenceseditor import ExtraSentencesEditor
+from .ui.extrasentenceseditorui import Ui_ExtraSentencesEditor
 
-class MainFactEditor(QtGui.QMainWindow):
-
-    def __init__(self, accent, def_string, main_sent, other_sents, word_kanji, word_kana,
-            parent=None, factedit=None, fact=None):
+class ExtraSentencesEditor(QtGui.QMainWindow):
+    def __init__(self, accent, def_string, other_sents, word_kanji, word_kana,
+            parent=None, factedit=None):
+        assert(other_sents)
+        assert(len(other_sents) >= 1)
         QtGui.QMainWindow.__init__(self, parent)
         self.accent = accent
         self.def_string = def_string
-        self.main_sent = main_sent
         self.other_sents = other_sents
         self.word_kanji = word_kanji
         self.word_kana = word_kana
         self.parent = parent
         self.factedit = factedit
-        self.fact = fact
 
-        self.ui = Ui_MainFactEditor()
+        self.ui = Ui_ExtraSentencesEditor()
         self.ui.setupUi(self)
 
         self.fillin()
@@ -35,6 +33,8 @@ class MainFactEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
+        pass
+        """
         vocab = unicode(self.ui.vocab_lineEdit.text())
         vocabkana = unicode(self.ui.vocabkana_lineEdit.text())
         vocabenglish = unicode(self.ui.vocabenglish_textEdit.toPlainText())
@@ -45,13 +45,15 @@ class MainFactEditor(QtGui.QMainWindow):
         self.updatefact(vocabenglish, sentence, sentenceenglish, notes)
         self.close()
 
-        if self.other_sents:
-            self.extrasentenceseditorwindow = ExtraSentencesEditor(self.accent,
-                    self.def_string, self.other_sents, self.word_kanji, self.word_kana,
-                    parent=self.parent, factedit=self.factedit)
-            self.extrasentenceseditorwindow.show()
+        #self.mainfactediterwindow = MainFactEditer(self.accent, editeddefs, self.main_sent,
+        #        self.other_sents, self.word_kanji, self.word_kana,
+        #        parent=self.parent, factedit=self.factedit, fact=self.fact)
+        #self.mainfactediterwindow.show()
+        """
 
     def updatefact(self, definition, sentence, sentenceenglish, notes):
+        return
+
         assert(isinstance(definition, unicode))
         assert(isinstance(sentence, unicode))
         assert(isinstance(sentenceenglish, unicode))
@@ -71,7 +73,6 @@ class MainFactEditor(QtGui.QMainWindow):
         self.fact["VocabEnglish"] = u"%s" % definition
         self.fact["Sentence"] = u"%s" % sentence
         self.fact["SentenceEnglish"] = u"%s" % sentenceenglish
-        self.fact["Notes"] = u"%s" % notes
 
         if self.accent != u"NO ACCENT":
             self.fact["Intonation"] = self.accent
@@ -110,9 +111,13 @@ class MainFactEditor(QtGui.QMainWindow):
         ankiqt.mw.reset()
 
     def fillin(self):
-        self.ui.vocab_lineEdit.setText(self.word_kanji)
-        self.ui.vocabkana_lineEdit.setText(self.word_kana)
-        self.ui.vocabenglish_textEdit.setText(self.def_string)
-        self.ui.sentence_textEdit.setText(self.main_sent[0])
-        self.ui.sentenceenglish_textEdit.setText(self.main_sent[1])
-        self.ui.notes_textEdit.setText(u'')
+        jap_sent, eng_sent = self.other_sents[0]
+
+        self.ui.sentence_textEdit.setText(jap_sent)
+        self.ui.sentenceenglish_textEdit.setText(eng_sent)
+
+        notes_text = u'「%s（%s）〔%s〕」：%s' % \
+                (self.word_kanji, self.word_kana, self.accent, self.def_string)
+
+        self.ui.notes_textEdit.setText(notes_text)
+
