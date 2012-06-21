@@ -101,9 +101,6 @@ class MainWindowSelector(QtGui.QMainWindow):
         self.defordererwindow = DefOrderer(accent, jap_defs, eng_defs, example_sentences,
                 self.word_kanji, self.word_kana, standalone=self.standalone,
                 parent=self.parent, factedit=self.factedit, fact=self.fact)
-        #self.defeditorwindow = DefEditor(accent, jap_def, eng_def, example_sentences,
-        #        self.word_kanji, self.word_kana, standalone=self.standalone,
-        #        parent=self.parent, factedit=self.factedit, fact=self.fact)
         self.defordererwindow.show()
 
     def addDefinition(self, defwebviewwidget, result):

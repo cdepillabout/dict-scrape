@@ -34,45 +34,28 @@ class DefEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
-        pass
-        """
-        jap_def = unicode(self.ui.japdef_textEdit.toPlainText())
-        eng_def = unicode(self.ui.engdef_textEdit.toPlainText())
-
-        selected_sent = None
-        other_sents = []
-        count = self.ui.sentencepicker_listWidget.count()
-        for i in range(count):
-            item = self.ui.sentencepicker_listWidget.item(i)
-            jap_sent, eng_sent = item.data(QtCore.Qt.UserRole).toPyObject()
-            jap_sent = unicode(jap_sent)
-            eng_sent = unicode(eng_sent)
-            if item.isSelected():
-                assert(selected_sent is None)
-                selected_sent = [jap_sent, eng_sent]
-            else:
-                other_sents.append([jap_sent, eng_sent])
-
-        # make sure there are no other sentences if we don't have a selected sentence
-        if other_sents:
-            assert(selected_sent)
+        editeddef = unicode(self.ui.def_textEdit.toPlainText())
 
         if self.standalone:
-            print("Definition: (%s) %s%s" % (self.accent, jap_def, eng_def))
-            if selected_sent:
-                jp_sent, eng_sent = selected_sent
-                print("\nMAIN SENTENCE:\n%s\n%s" % (jp_sent, eng_sent))
-            if other_sents:
-                print("\nOTHER SENTENCES:")
-                for jp_sent, eng_sent in other_sents:
+            print(u"Definition: (%s) %s" % (self.accent, editeddef))
+            if self.main_sent:
+                jp_sent, eng_sent = self.main_sent
+                print(u"\nMAIN SENTENCE:\n%s\n%s" % (jp_sent, eng_sent))
+            if self.other_sents:
+                print(u"\nOTHER SENTENCES:")
+                for jp_sent, eng_sent in self.other_sents:
                     print("%s\n%s" % (jp_sent, eng_sent))
+            self.close()
         else:
-            self.updatefact(jap_def, eng_def, selected_sent, other_sents)
+            #self.updatefact(jap_def, eng_def, self.main_sent, self.other_sents)
+            self.close()
+            #self.mainfactediterwindow = MainFactEditer(accent, jap_defs, eng_defs,
+            #        example_sentences, self.word_kanji, self.word_kana,
+            #        standalone=self.standalone, parent=self.parent,
+            #        factedit=self.factedit, fact=self.fact)
+            #self.defordererwindow.show()
 
-        self.close()
-        """
-
-    def updatefact(self, jap_def, eng_def="", main_sentence=[], other_sentences=[]):
+    def updatefact(self, jap_def, eng_def=u"", main_sentence=[], other_sentences=[]):
         pass
         """
         if main_sentence:
@@ -137,21 +120,19 @@ class DefEditor(QtGui.QMainWindow):
         ankiqt.mw.reset()
         """
 
-
     def fillin(self, defs):
 
         def_text = u""
 
         previous_def_type = None
         for def_type, df in defs:
-            print("type: %s, def: %s" % (def_type, df))
-            if def_type == "japdef" and previous_def_type == "japdef":
+            if def_type == u"japdef" and previous_def_type == u"japdef":
                 def_text += u"。%s" % df
-            elif def_type == "japdef" and previous_def_type == "engdef":
+            elif def_type == u"japdef" and previous_def_type == u"engdef":
                 def_text += u"。%s" % df
-            elif def_type == "engdef" and previous_def_type == "japdef":
+            elif def_type == u"engdef" and previous_def_type == u"japdef":
                 def_text += u"。%s" % df
-            elif def_type == "engdef" and previous_def_type == "engdef":
+            elif def_type == u"engdef" and previous_def_type == u"engdef":
                 def_text += u", %s" % df
             else:
                 # This is when there is no previous def_type
@@ -159,7 +140,7 @@ class DefEditor(QtGui.QMainWindow):
 
             previous_def_type = def_type
 
-        if previous_def_type == "japdef":
+        if previous_def_type == u"japdef":
             def_text += u"。"
 
         self.ui.def_textEdit.setText(def_text)
