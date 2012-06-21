@@ -24,55 +24,6 @@ import urllib
 from dictscrape import DaijisenDictionary, DaijirinDictionary, \
         NewCenturyDictionary, ProgressiveDictionary
 
-#from IPython import embed ; embed()
-
-hiragana = """
-あいうえお
-ぁぃぅぇぉ
-かきくけこ
-がぎぐげご
-さしすせそ
-ざじずぜぞ
-たちつてと
-だぢづでど
-なにぬねの
-はひふへほ
-ばびぶべぼ
-ぱぴぷぺぽ
-や　ゆ　よ
-ゃ　ゅ　ょ
-らりるれろ
-わゐ　ゑを
-ゎ　っ
-ん　ゔ　ー
-"""
-katakana = """
-アイウエオ
-ァィゥェォ
-カキクケコ
-ガギグゲゴ
-サシスセソ
-ザジズゼゾ
-タチツテト
-ダヂヅデド
-ナニヌネノ
-ハヒフヘホ
-バビブベボ
-パピプペポ
-ヤ　ユ　ヨ
-ャ　ュ　ョ
-ラリルレロ
-ワヰ　ヱヲ
-ヮ　ッ
-ン　ヴ　ー
-"""
-# get rid of unwanted characters
-for i in (hiragana, katakana):
-    i.replace("\n", "")
-    i.replace(" ", "")
-    i.replace("　", "")
-
-
 def main(word_kanji, word_kana):
     check_daijirin(word_kanji, word_kana)
     print
