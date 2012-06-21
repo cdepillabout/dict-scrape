@@ -4,28 +4,27 @@ import ankiqt
 import anki.lang
 
 from PyQt4 import QtGui, QtCore
-from .ui.defeditorui import Ui_DefEditor
-from .mainfacteditor import MainFactEditor
+from .ui.mainfacteditorui import Ui_MainFactEditor
 
-class DefEditor(QtGui.QMainWindow):
-    def __init__(self, accent, defs, main_sent, other_sents, word_kanji, word_kana,
-            standalone=True, parent=None, factedit=None, fact=None):
+class MainFactEditor(QtGui.QMainWindow):
+
+    def __init__(self, accent, def_string, main_sent, other_sents, word_kanji, word_kana,
+            parent=None, factedit=None, fact=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.accent = accent
-        self.defs = defs
+        self.def_string = def_string
         self.main_sent = main_sent
         self.other_sents = other_sents
         self.word_kanji = word_kanji
         self.word_kana = word_kana
-        self.standalone = standalone
         self.parent = parent
         self.factedit = factedit
         self.fact = fact
 
-        self.ui = Ui_DefEditor()
+        self.ui = Ui_MainFactEditor()
         self.ui.setupUi(self)
 
-        self.fillin(defs)
+        self.fillin()
 
     def exit(self):
         reply = QtGui.QMessageBox.question(self, 'Message',
@@ -35,6 +34,7 @@ class DefEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
+        """
         editeddef = unicode(self.ui.def_textEdit.toPlainText())
 
         if self.standalone:
@@ -50,10 +50,11 @@ class DefEditor(QtGui.QMainWindow):
         else:
             #self.updatefact(jap_def, eng_def, self.main_sent, self.other_sents)
             self.close()
-            self.mainfacteditorwindow = MainFactEditor(self.accent, editeddef, self.main_sent,
+            self.mainfactediterwindow = MainFactEditer(self.accent, editeddefs, self.main_sent,
                     self.other_sents, self.word_kanji, self.word_kana,
                     parent=self.parent, factedit=self.factedit, fact=self.fact)
-            self.mainfacteditorwindow.show()
+            self.mainfactediterwindow.show()
+        """
 
     def updatefact(self, jap_def, eng_def=u"", main_sentence=[], other_sentences=[]):
         pass
@@ -120,27 +121,10 @@ class DefEditor(QtGui.QMainWindow):
         ankiqt.mw.reset()
         """
 
-    def fillin(self, defs):
-
-        def_text = u""
-
-        previous_def_type = None
-        for def_type, df in defs:
-            if def_type == u"japdef" and previous_def_type == u"japdef":
-                def_text += u"。%s" % df
-            elif def_type == u"japdef" and previous_def_type == u"engdef":
-                def_text += u"。%s" % df
-            elif def_type == u"engdef" and previous_def_type == u"japdef":
-                def_text += u"。%s" % df
-            elif def_type == u"engdef" and previous_def_type == u"engdef":
-                def_text += u", %s" % df
-            else:
-                # This is when there is no previous def_type
-                def_text += u"%s" % df
-
-            previous_def_type = def_type
-
-        if previous_def_type == u"japdef":
-            def_text += u"。"
-
-        self.ui.def_textEdit.setText(def_text)
+    def fillin(self):
+        self.ui.vocab_lineEdit.setText(self.word_kanji)
+        self.ui.vocabkana_lineEdit.setText(self.word_kana)
+        self.ui.vocabenglish_textEdit.setText(self.def_string)
+        self.ui.sentence_textEdit.setText(self.main_sent[0])
+        self.ui.sentenceenglish_textEdit.setText(self.main_sent[1])
+        self.ui.notes_textEdit.setText(u'')
