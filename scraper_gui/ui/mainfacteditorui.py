@@ -3,13 +3,13 @@
 from PyQt4 import QtCore, QtGui
 
 class Ui_MainFactEditor(object):
-    def setupUi(self, defeditor):
-        defeditor.setObjectName(u"defeditor")
-        defeditor.resize(900, 650)
+    def setupUi(self, mainfacteditor):
+        mainfacteditor.setObjectName(u"mainfacteditor")
+        mainfacteditor.resize(900, 650)
 
-        self.centralwidget = QtGui.QWidget(defeditor)
+        self.centralwidget = QtGui.QWidget(mainfacteditor)
         self.centralwidget.setObjectName(u"centralwidget")
-        defeditor.setCentralWidget(self.centralwidget)
+        mainfacteditor.setCentralWidget(self.centralwidget)
 
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -49,8 +49,8 @@ class Ui_MainFactEditor(object):
         self.buttonBox.setObjectName(u"buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.buttonBox.accepted.connect(defeditor.okay)
-        self.buttonBox.rejected.connect(defeditor.exit)
+        self.buttonBox.accepted.connect(mainfacteditor.okay)
+        self.buttonBox.rejected.connect(mainfacteditor.exit)
 
-        QtCore.QMetaObject.connectSlotsByName(defeditor)
+        QtCore.QMetaObject.connectSlotsByName(mainfacteditor)
 
