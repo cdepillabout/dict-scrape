@@ -14,6 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"""
+This module deals with getting information from dictionaries.
+A dictionary can get information from any resource, such as
+a website, an epwing dictionary, a database, etc.
+"""
+
 from .dictionary import Dictionary
 from .yahoo import YahooDictionary, DaijirinDictionary, DaijisenDictionary, \
         NewCenturyDictionary, ProgressiveDictionary

@@ -29,9 +29,12 @@ class Dictionary(object):
     """
     An object representing an online dictionary in which to lookup
     definitions.
+
+    TODO: Many of these functions will probably have to be added to the
+    YahooDictionary object.
     """
 
-    # These are constants for the type of a dictionary.
+    #These are constants for the type of a dictionary.
     DAIJIRIN_TYPE = 0
     DAIJISEN_TYPE = 1
     NEW_CENTURY_TYPE = 2
@@ -42,12 +45,18 @@ class Dictionary(object):
 
     def lookup(self, word_kanji, word_kana, html=None):
         """
-        Lookup a word in a dictionary.  word_kanji is a string for the kanji
-        you want to lookup, and word_kana is the same but for the kana. html is
-        the source of the page we will parse to lookup the defintion. If html
-        is None, then we will fetch the page from the internet.  Returns a
-        Definition object or None if no result could be found.
+        Lookup a word in a dictionary.
+
+        word_kanji (unicode): the kanji you want to lookup
+        word_kana (unicode): the kanji for the word you want to lookup
+        html (unicode): the source of the page we will parse to lookup the defintion.
+        If html is None, then we will fetch the page from the internet.
+
+        Returns a Result object.  If no result could be found, then it returns
+        a Result object with everything blank ("").
         """
+        # possibly download the html and create a tree for the page for the
+        # word we are looking up.
         tree = self.__create_page_tree(word_kanji, word_kana, html)
 
         # make sure there is an entry
@@ -85,8 +94,8 @@ class Dictionary(object):
                 return Result(self, word_kanji, word_kana, url)
 
         kanji, kana, accent = self.parse_heading(tree)
-        defs_sentences = self.parse_definition(tree)
-        return Result(self, word_kanji, word_kana, url, kanji, kana, accent, defs_sentences)
+        defs = self.parse_definition(tree)
+        return Result(self, word_kanji, word_kana, url, kanji, kana, accent, defs)
 
     def _create_url(self, word_kanji, word_kana):
         """Returns a URL for the word/page we are trying to lookup."""
@@ -106,10 +115,18 @@ class Dictionary(object):
 
     def __create_page_tree(self, word_kanji, word_kana, html=None):
         """
-        Fetches a page from the internet and parses the page with
-        etree.parse(StringIO(page_string), etree.HTMLParser()). If html is not
-        None, then it is used as the html source.  It is not fetched from the
-        internet.  Returns the parsed tree.
+        Fetches a parses the page for the word we are looking up with
+        etree.parse(StringIO(page_string), etree.HTMLParser()).
+        If html is None, then the page is fetched from the internet.
+        If html is not None, then it is used as the html source.
+        It is not fetched from the internet.
+
+        word_kanji (unicode): the kanji you want to lookup
+        word_kana (unicode): the kanji for the word you want to lookup
+        html (unicode): the source of the page we will parse to lookup the defintion.
+        If html is None, then we will fetch the page from the internet.
+
+        Returns the parsed tree.
         """
         if html:
             page_string = html
@@ -130,19 +147,21 @@ class Dictionary(object):
 
     def parse_definition(self, tree):
         """
-        Parses the main definition of the dictionary page and returns a 2-tuple of
-        a list of Definition objects for the Japanese definitions, and a list of
-        Definition objects for the English definitions.
+        Parses the main definition of the dictionary page and returns a
+        a list of Definition objects.
         """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
     def split_def_parts(self, definition_string, split_characters=u'。'):
         """
         Split a definition into definition parts.
-        definition_string is just a string for the definition.
-        split_characters is either a list or a string.  If a string,
-        then it is used as a character to split on.  If it is a list,
-        then each character in the list is used as a split item.
+
+        definition_string (unicode):  the definition
+        split_characters (list or unicode): If a string, then it is used as
+            the character to split on.  If it is a list,
+            then each character in the list is used as a split item.
+
+        Returns list of DefinitionPart objects.
         """
         assert(isinstance(definition_string, unicode))
         if isinstance(split_characters, list):
