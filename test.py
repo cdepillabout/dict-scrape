@@ -16,7 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# A script for working with testing.
+"""
+A script for working with testing.
+
+This script enables you do add words to the test database,
+reparse words, and run all the tests.
+
+Running partial tests of only some of the words is also possible.
+"""
+
 import argparse
 import codecs
 import json
@@ -61,6 +69,9 @@ if not (os.path.exists(words_db_abs_path)):
     die("words.db does not exist! Something is wrong!")
 
 def get_dics():
+    """
+    Return a list of all our dictionary objects.
+    """
     return dics
 
 def no_null_dictionaries(f):
@@ -93,6 +104,18 @@ def get_words_from_wordsdb():
     return words
 
 def get_paths_for_word(dic, kana, kanji):
+    """
+    Returns the paths for the html and json result files for the
+    word.
+
+    dic (Dictionary object): Dictionary to look in.
+    kana/kanji (unicode): Word to look up.
+
+    Returns a 6tuple of the html filename, the json result file name,
+    the absolute path to the html file, the absolute path to the json
+    result file, the relative path to the html file, and the relative
+    path to the json result file.
+    """
     dirname, rel_path, abs_path = get_paths_for_dic(dic)
 
     html_filename = u'%s_%s.html' % (kana, kanji)
@@ -110,6 +133,15 @@ def get_paths_for_word(dic, kana, kanji):
             json_file_abs_path, html_file_rel_path, json_file_rel_path
 
 def get_paths_for_dic(dic):
+    """
+    Returns the relative and absolute paths for the folder for the
+    html files and result files for this dictionary.
+
+    dic (Dictionary object): Dictionary to use
+
+    Returns a 3tuple of the directory name, the relative path to the
+    directory, and the absolute path to the directory.
+    """
     dirname = dic.short_name
     rel_path = os.path.join(WORDS_DIR_REL_PATH, dic.short_name)
     abs_path = os.path.join(WORDS_DIR_ABS_PATH, dic.short_name)
@@ -197,7 +229,7 @@ def get_html_for_word(dic, word_kana, word_kanji):
         return f.read()
 
 def get_json_for_word(dic, word_kana, word_kanji):
-    """Return the html file for the word."""
+    """Return the json result file for the word."""
     _, _, _, json_abs_path, _, json_rel_path = get_paths_for_word(
             dic, word_kana, word_kanji)
 
@@ -213,6 +245,11 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
     Try to get the result of the encoding and write it so we have
     something to work with.  If we can't get it, then just error
     out and write a blank result.
+
+    dic (Dictionary object): dictionary to use to get the page.
+    word_kana/kanji (unicode): words in kana and kanji to parse result of.
+
+    Writes DictionaryName/WORDKANA_WORDKANJI.result.json file.
     """
     _, _, html_abs_path, json_abs_path, html_rel_path, json_rel_path = get_paths_for_word(
             dic, word_kana, word_kanji)
@@ -247,9 +284,12 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
 
 def __write_word_html_file(dic, word_kana, word_kanji):
     """
-    Try to get the result of the encoding and write it so we have
-    something to work with.  If we can't get it, then just error
-    out and write a blank result.
+    Fetch the page html file from dictoinary and save it to disk.
+
+    dic (Dictionary object): dictionary to use to get the page.
+    word_kana/kanji (unicode): words in kana and kanji to download.
+
+    Writes DictionaryName/WORDKANA_WORDKANJI.html file.
     """
     _, _, html_file_abs_path, _, html_file_rel_path, _ = get_paths_for_word(
             dic, word_kana, word_kanji)
@@ -262,6 +302,13 @@ def __write_word_html_file(dic, word_kana, word_kanji):
         print(u'Wrote html file: %s' % html_file_rel_path)
 
 def addword(word_kana, word_kanji):
+    """
+    Add words to be tested.  Download the html files for a word and
+    parse those files. Write the parsed json result files.  Add words
+    to words.db
+
+    word_kana/kanji (unicode): words in kana and kanji to add.
+    """
     # make sure we get unicode words
     assert(type(word_kanji) == type(unicode()))
     assert(type(word_kana) == type(unicode()))
@@ -291,8 +338,15 @@ def addword(word_kana, word_kanji):
 @no_null_dictionaries
 def reparse(word_kana, word_kanji, dictionaries=get_dics()):
     """
-    Reparse the html files we already downloaded,
-    and rewrite the KANA_KANJI.result.json file.
+    Reparse the html files we already downloaded, and rewrite the
+    KANA_KANJI.result.json file.  This could be be used when updating
+    how parsing takes place and adding corrections for words that
+    are now parsed correctly.
+
+    word_kana/kanji (unicode): words in kana and kanji to reparse.
+        These words should already be in the words.db.
+    dictionaries (list of Dictionary objects): dictionaries to reparse
+        in.
     """
     # make sure we get unicode words
     assert(type(word_kanji) == type(unicode()))
@@ -350,6 +404,7 @@ def main():
         reparse(args.reparse[1], args.reparse[0], dictionaries=dictionary)
         sys.exit(0)
 
+    # specify the words that we will use
     kanji = None
     kana = None
     if args.test_word:
