@@ -7,23 +7,24 @@ from PyQt4 import QtGui, QtCore
 from .ui.defeditorui import Ui_DefEditor
 
 class DefEditor(QtGui.QMainWindow):
-    def __init__(self, accent, jap_def, eng_def, example_sentences, word_kanji, word_kana,
+    def __init__(self, accent, defs, main_sent, other_sents, word_kanji, word_kana,
             standalone=True, parent=None, factedit=None, fact=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.accent = accent
-        self.jap_def = jap_def
-        self.eng_def = eng_def
-        self.example_sentences = example_sentences
+        self.defs = defs
+        self.main_sent = main_sent
+        self.other_sents = other_sents
         self.word_kanji = word_kanji
         self.word_kana = word_kana
         self.standalone = standalone
         self.parent = parent
         self.factedit = factedit
         self.fact = fact
+
         self.ui = Ui_DefEditor()
         self.ui.setupUi(self)
 
-        self.fillin(jap_def, eng_def, example_sentences)
+        self.fillin(defs)
 
     def exit(self):
         reply = QtGui.QMessageBox.question(self, 'Message',
@@ -33,6 +34,8 @@ class DefEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
+        pass
+        """
         jap_def = unicode(self.ui.japdef_textEdit.toPlainText())
         eng_def = unicode(self.ui.engdef_textEdit.toPlainText())
 
@@ -67,8 +70,11 @@ class DefEditor(QtGui.QMainWindow):
             self.updatefact(jap_def, eng_def, selected_sent, other_sents)
 
         self.close()
+        """
 
     def updatefact(self, jap_def, eng_def="", main_sentence=[], other_sentences=[]):
+        pass
+        """
         if main_sentence:
             main_jap_sent, main_eng_sent = main_sentence
         else:
@@ -129,18 +135,31 @@ class DefEditor(QtGui.QMainWindow):
         ankiqt.mw.deck.rebuildCSS()
         ankiqt.mw.deck.save()
         ankiqt.mw.reset()
+        """
 
 
-    def fillin(self, jap_def, eng_def, example_sentences):
-        self.ui.japdef_textEdit.setText(jap_def)
-        self.ui.engdef_textEdit.setText(eng_def)
+    def fillin(self, defs):
 
-        for i, (jap_sent, eng_sent) in enumerate(example_sentences):
-            item = QtGui.QListWidgetItem()
-            item.setData(QtCore.Qt.UserRole, [jap_sent, eng_sent])
-            item.setText(jap_sent)
-            self.ui.sentencepicker_listWidget.addItem(item)
+        def_text = u""
 
-            # set the first item as selected
-            if i == 0:
-                self.ui.sentencepicker_listWidget.setItemSelected(item, True)
+        previous_def_type = None
+        for def_type, df in defs:
+            print("type: %s, def: %s" % (def_type, df))
+            if def_type == "japdef" and previous_def_type == "japdef":
+                def_text += u"。%s" % df
+            elif def_type == "japdef" and previous_def_type == "engdef":
+                def_text += u"。%s" % df
+            elif def_type == "engdef" and previous_def_type == "japdef":
+                def_text += u"。%s" % df
+            elif def_type == "engdef" and previous_def_type == "engdef":
+                def_text += u", %s" % df
+            else:
+                # This is when there is no previous def_type
+                def_text += u"%s" % df
+
+            previous_def_type = def_type
+
+        if previous_def_type == "japdef":
+            def_text += u"。"
+
+        self.ui.def_textEdit.setText(def_text)

@@ -4,7 +4,7 @@ import ankiqt
 
 from PyQt4 import QtGui, QtCore
 from .ui.selectorui import Ui_MainWindowSelector
-from .defeditor import DefEditor
+from .deforderer import DefOrderer
 
 from dictscrape import DaijirinDictionary, DaijisenDictionary, \
         ProgressiveDictionary, NewCenturyDictionary
@@ -74,8 +74,8 @@ class MainWindowSelector(QtGui.QMainWindow):
         jap_webviews = [self.ui.daijisendefwebview, self.ui.daijirindefwebview]
         eng_webviews = [self.ui.newcenturydefwebview, self.ui.progressdefwebview]
 
-        jap_def = u''
-        eng_def = u''
+        jap_defs = []
+        eng_defs = []
 
         # list of tuples of (japanese_sentences, english_sentence)
         # english_sentence may be none
@@ -85,7 +85,7 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe = w.page().mainFrame()
             def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
             for elem in def_parts:
-                jap_def += u'%s。' % elem.toPlainText()
+                jap_defs.append(u'%s' % unicode(elem.toPlainText()))
 
             example_sentences += collect_example_sentences(mainframe)
 
@@ -93,20 +93,18 @@ class MainWindowSelector(QtGui.QMainWindow):
             mainframe = w.page().mainFrame()
             def_parts = mainframe.findAllElements(u'span[class="defpart_selected"]')
             for i, elem in enumerate(def_parts):
-                eng_def += u', %s' % unicode(elem.toPlainText())
+                eng_defs.append(u'%s' % unicode(elem.toPlainText()))
 
             example_sentences += collect_example_sentences(mainframe)
 
-        # get rid of the ", " at the beginning of the definitions
-        if eng_def:
-            eng_def = eng_def[2:]
-
-
         self.close()
-        self.defeditorwindow = DefEditor(accent, jap_def, eng_def, example_sentences,
+        self.defordererwindow = DefOrderer(accent, jap_defs, eng_defs, example_sentences,
                 self.word_kanji, self.word_kana, standalone=self.standalone,
                 parent=self.parent, factedit=self.factedit, fact=self.fact)
-        self.defeditorwindow.show()
+        #self.defeditorwindow = DefEditor(accent, jap_def, eng_def, example_sentences,
+        #        self.word_kanji, self.word_kana, standalone=self.standalone,
+        #        parent=self.parent, factedit=self.factedit, fact=self.fact)
+        self.defordererwindow.show()
 
     def addDefinition(self, defwebviewwidget, result):
         # add result definitions
