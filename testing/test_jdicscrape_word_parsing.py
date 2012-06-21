@@ -185,7 +185,8 @@ def test_words(kanji=None, kana=None, dictionaries=manage_words.get_dics()):
     kana (unicode): the kana we want to check
     dictionaries (list of Dictionary objects): the dictionaries we want to check in
 
-    kanji and kana should correspond to a word in our words.db.
+    kanji and kana should correspond to a word in our words.db.  If kanji and kana
+    are None, then we just test all the words.
 
     Prints errors if there are any.
     """
