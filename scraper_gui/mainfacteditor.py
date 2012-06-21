@@ -34,45 +34,30 @@ class MainFactEditor(QtGui.QMainWindow):
             self.close()
 
     def okay(self):
-        """
-        editeddef = unicode(self.ui.def_textEdit.toPlainText())
+        vocab = unicode(self.ui.vocab_lineEdit.text())
+        vocabkana = unicode(self.ui.vocabkana_lineEdit.text())
+        vocabenglish = unicode(self.ui.vocabenglish_textEdit.toPlainText())
+        sentence = unicode(self.ui.sentence_textEdit.toPlainText())
+        sentenceenglish = unicode(self.ui.sentenceenglish_textEdit.toPlainText())
+        notes = unicode(self.ui.notes_textEdit.toPlainText())
 
-        if self.standalone:
-            print(u"Definition: (%s) %s" % (self.accent, editeddef))
-            if self.main_sent:
-                jp_sent, eng_sent = self.main_sent
-                print(u"\nMAIN SENTENCE:\n%s\n%s" % (jp_sent, eng_sent))
-            if self.other_sents:
-                print(u"\nOTHER SENTENCES:")
-                for jp_sent, eng_sent in self.other_sents:
-                    print("%s\n%s" % (jp_sent, eng_sent))
-            self.close()
-        else:
-            #self.updatefact(jap_def, eng_def, self.main_sent, self.other_sents)
-            self.close()
-            self.mainfactediterwindow = MainFactEditer(self.accent, editeddefs, self.main_sent,
-                    self.other_sents, self.word_kanji, self.word_kana,
-                    parent=self.parent, factedit=self.factedit, fact=self.fact)
-            self.mainfactediterwindow.show()
-        """
+        self.updatefact(vocabenglish, sentence, sentenceenglish, notes)
+        self.close()
 
-    def updatefact(self, jap_def, eng_def=u"", main_sentence=[], other_sentences=[]):
-        pass
-        """
-        if main_sentence:
-            main_jap_sent, main_eng_sent = main_sentence
-        else:
-            main_jap_sent = u""
-            main_eng_sent = u""
+        #self.mainfactediterwindow = MainFactEditer(self.accent, editeddefs, self.main_sent,
+        #        self.other_sents, self.word_kanji, self.word_kana,
+        #        parent=self.parent, factedit=self.factedit, fact=self.fact)
+        #self.mainfactediterwindow.show()
 
+    def updatefact(self, definition, sentence, sentenceenglish, notes):
+        assert(isinstance(definition, unicode))
+        assert(isinstance(sentence, unicode))
+        assert(isinstance(sentenceenglish, unicode))
+        assert(isinstance(notes, unicode))
         assert(isinstance(self.accent, unicode))
         assert(isinstance(self.word_kanji, unicode))
         assert(isinstance(self.word_kana, unicode))
-        assert(isinstance(jap_def, unicode))
-        assert(isinstance(eng_def, unicode))
-        assert(isinstance(main_jap_sent, unicode))
-        assert(isinstance(main_eng_sent, unicode))
-        for jap_sent, eng_sent in other_sentences:
+        for jap_sent, eng_sent in self.other_sents:
             assert(isinstance(jap_sent, unicode))
             assert(isinstance(eng_sent, unicode))
 
@@ -81,10 +66,9 @@ class MainFactEditor(QtGui.QMainWindow):
 
         self.factedit.saveFieldsNow()
 
-        self.fact["VocabEnglish"] = u"%s%s" % (jap_def, eng_def)
-        if main_sentence:
-            self.fact["Sentence"] = u"%s" % main_jap_sent
-            self.fact["SentenceEnglish"] = u"%s" % main_eng_sent
+        self.fact["VocabEnglish"] = u"%s" % definition
+        self.fact["Sentence"] = u"%s" % sentence
+        self.fact["SentenceEnglish"] = u"%s" % sentenceenglish
 
         if self.accent != u"NO ACCENT":
             self.fact["Intonation"] = self.accent
@@ -97,6 +81,7 @@ class MainFactEditor(QtGui.QMainWindow):
         #self.factedit.updateAfterCardChange()
         #self.factedit.saveFieldsNow()
 
+        """
         for jap_sent, eng_sent in other_sentences:
             # get sentence model
             sentence_model = None
@@ -112,6 +97,7 @@ class MainFactEditor(QtGui.QMainWindow):
                     (self.word_kanji, self.word_kana, self.accent, jap_def, eng_def)
 
             ankiqt.mw.deck.addFact(fact)
+        """
 
         ankiqt.mw.deck.setUndoEnd(action)
         ankiqt.mw.deck.rebuildCounts()
@@ -119,7 +105,6 @@ class MainFactEditor(QtGui.QMainWindow):
         ankiqt.mw.deck.rebuildCSS()
         ankiqt.mw.deck.save()
         ankiqt.mw.reset()
-        """
 
     def fillin(self):
         self.ui.vocab_lineEdit.setText(self.word_kanji)
