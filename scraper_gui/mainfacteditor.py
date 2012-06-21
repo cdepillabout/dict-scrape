@@ -4,6 +4,9 @@ import ankiqt
 import anki.lang
 
 from PyQt4 import QtGui, QtCore
+
+from . import anki_host
+
 from .ui.mainfacteditorui import Ui_MainFactEditor
 from .extrasentenceseditor import ExtraSentencesEditor
 
@@ -68,10 +71,10 @@ class MainFactEditor(QtGui.QMainWindow):
 
         self.factedit.saveFieldsNow()
 
-        self.fact["VocabEnglish"] = u"%s" % definition
-        self.fact["Sentence"] = u"%s" % sentence
-        self.fact["SentenceEnglish"] = u"%s" % sentenceenglish
-        self.fact["Notes"] = u"%s" % notes
+        self.fact["VocabEnglish"] = u"%s" % anki_host.fieldtoanki(definition)
+        self.fact["Sentence"] = u"%s" % anki_host.fieldtoanki(sentence)
+        self.fact["SentenceEnglish"] = u"%s" % anki_host.fieldtoanki(sentenceenglish)
+        self.fact["Notes"] = u"%s" % anki_host.fieldtoanki(notes)
 
         if self.accent != u"NO ACCENT":
             self.fact["Intonation"] = self.accent
@@ -113,6 +116,12 @@ class MainFactEditor(QtGui.QMainWindow):
         self.ui.vocab_lineEdit.setText(self.word_kanji)
         self.ui.vocabkana_lineEdit.setText(self.word_kana)
         self.ui.vocabenglish_textEdit.setText(self.def_string)
-        self.ui.sentence_textEdit.setText(self.main_sent[0])
-        self.ui.sentenceenglish_textEdit.setText(self.main_sent[1])
+
+        if self.main_sent:
+            self.ui.sentence_textEdit.setText(self.main_sent[0])
+            self.ui.sentenceenglish_textEdit.setText(self.main_sent[1])
+        else:
+            self.ui.sentence_textEdit.setText(u'')
+            self.ui.sentenceenglish_textEdit.setText(u'')
+
         self.ui.notes_textEdit.setText(u'')

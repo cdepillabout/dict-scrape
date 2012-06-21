@@ -4,6 +4,9 @@ import ankiqt
 import anki.lang
 
 from PyQt4 import QtGui, QtCore
+
+from . import anki_host
+
 from .ui.extrasentenceseditorui import Ui_ExtraSentencesEditor
 
 class ExtraSentencesEditor(QtGui.QMainWindow):
@@ -52,24 +55,25 @@ class ExtraSentencesEditor(QtGui.QMainWindow):
         assert(isinstance(sentenceenglish, unicode))
         assert(isinstance(notes, unicode))
 
-        action = anki.lang._('Add')
+        action = anki.lang._(u'Add')
         ankiqt.mw.deck.setUndoStart(action)
 
         # get sentence model
         sentence_model = None
         for model in ankiqt.mw.deck.models:
-            if model.name == "Sentences":
+            if model.name == u"Sentences":
                 sentence_model = model
         assert(sentence_model is not None)
 
         fact = ankiqt.mw.deck.newFact(sentence_model)
-        fact["Sentence"] = sentence
-        fact["SentenceEnglish"] = sentenceenglish
-        fact["Notes"] = notes
+        fact[u"Sentence"] = anki_host.fieldtoanki(sentence)
+        fact[u"SentenceEnglish"] = anki_host.fieldtoanki(sentenceenglish)
+        fact[u"Notes"] = anki_host.fieldtoanki(notes)
 
         ankiqt.mw.deck.addFact(fact)
 
         ankiqt.mw.deck.setUndoEnd(action)
+        ankiqt.mw.deck.setModified()
         ankiqt.mw.deck.rebuildCounts()
         ankiqt.mw.deck.s.flush()
         ankiqt.mw.deck.rebuildCSS()
