@@ -26,6 +26,10 @@ from ...example_sentence import ExampleSentence
 from ...definition import Definition
 
 class NewCenturyDictionary(YahooDictionary):
+    """
+    New Century Dictionary from Yahoo.
+    """
+
     long_dictionary_name = u"Yahoo's New Century Dictionary (ニューセンチュリー和英辞典)"
     short_dictionary_name = "New_Century"
     dictionary_type = Dictionary.NEW_CENTURY_TYPE
@@ -38,6 +42,11 @@ class NewCenturyDictionary(YahooDictionary):
     def clean_def_string(self, def_string):
         """
         Cleans up a definition string and splits up the definition parts.
+        Removed some html, a long with things in parenthesis.
+
+        def_string (unicode): A definition string from an entry.
+
+        Returns list of cleaned definition parts.
         """
         # remove things in brackets and parenthesis
         def_string = re.sub(u'【.*?】', u'', def_string)
@@ -74,14 +83,67 @@ class NewCenturyDictionary(YahooDictionary):
         return def_parts
 
     def replace_gaiji(self, string):
+        """
+        Replace the gaiji that occur in the string with actual characters.
+        """
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', u'〈')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', u'〉')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', u'⁝')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', u'＊')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', u'（同）')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', u'Æ')
+
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1147.gif" align="absbottom" border="0">', u'⇔')
+
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1202.gif" align="absbottom" border="0">', u'c')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1203.gif" align="absbottom" border="0">', u'c')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1204.gif" align="absbottom" border="0">', u'c')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1205.gif" align="absbottom" border="0">', u'd')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1206.gif" align="absbottom" border="0">', u'e')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1207.gif" align="absbottom" border="0">', u'e')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1208.gif" align="absbottom" border="0">', u'e')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1209.gif" align="absbottom" border="0">', u'e')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1210.gif" align="absbottom" border="0">', u'g')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1211.gif" align="absbottom" border="0">', u'g')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1212.gif" align="absbottom" border="0">', u'h')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1213.gif" align="absbottom" border="0">', u'h')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1214.gif" align="absbottom" border="0">', u'h')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1215.gif" align="absbottom" border="0">', u'i')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1216.gif" align="absbottom" border="0">', u'i')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1217.gif" align="absbottom" border="0">', u'i')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1218.gif" align="absbottom" border="0">', u'i')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1219.gif" align="absbottom" border="0">', u'i')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1220.gif" align="absbottom" border="0">', u'o')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1221.gif" align="absbottom" border="0">', u'o')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1222.gif" align="absbottom" border="0">', u'o')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1223.gif" align="absbottom" border="0">', u'o')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1224.gif" align="absbottom" border="0">', u'o')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1225.gif" align="absbottom" border="0">', u'p')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1226.gif" align="absbottom" border="0">', u'P')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1227.gif" align="absbottom" border="0">', u'q')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1228.gif" align="absbottom" border="0">', u'r')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1229.gif" align="absbottom" border="0">', u'r')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1230.gif" align="absbottom" border="0">', u'u')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1231.gif" align="absbottom" border="0">', u'u')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1232.gif" align="absbottom" border="0">', u'u')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1233.gif" align="absbottom" border="0">', u'U')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1234.gif" align="absbottom" border="0">', u'w')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1235.gif" align="absbottom" border="0">', u'w')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1236.gif" align="absbottom" border="0">', u'x')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1237.gif" align="absbottom" border="0">', u'y')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
         return string
 
     def create_example_sentences(self, example_sentence_strings):
         """
-        This creates example sentence objects.  The input is a
-        list of [japanese_example_sentence, english_translation] tuples.
-        This returns a list of ExampleSentence objects.
+        Create example sentence objects.
+
+        example_sentence_strings (list of [jap_example_sent, eng_trans] tuples):
+            These are the example sentences we want to clean up and turn
+            into ExampleSentence objects.
+
+        Returns a list of clean ExampleSentence objects.
         """
         example_sentences = []
 
@@ -91,7 +153,7 @@ class NewCenturyDictionary(YahooDictionary):
             eng_trans = re.sub(u'</a>', u'', eng_trans)
 
             # replace gaiji characters
-            eng_trans = self.replace_gaiji(eng_trans)
+            #eng_trans = self.replace_gaiji(eng_trans)
 
             # Remove parenthesis.  This is a little difficult because
             # we have to loop through the list multiple times until we
@@ -108,7 +170,7 @@ class NewCenturyDictionary(YahooDictionary):
                     raise Exception(
                             "Looped thru eng_trans too many times looking for matching ().")
 
-            # Sometimes there are （※ without a matching ） on the end of the line...
+            # Sometimes there are "（※"  without a matching "）" on the end of the line...
             # Try to remove them.
             if re.search(u'（※', eng_trans) and not re.search(u'）', eng_trans):
                 eng_trans = re.sub(u'（※.*$', u'', eng_trans)
@@ -157,52 +219,7 @@ class NewCenturyDictionary(YahooDictionary):
         result = etree.tostring(def_elems, pretty_print=False, method="html",
                 encoding='unicode')
 
-        # some replacements to make our lives easier
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111a.gif" align="absbottom" border="0">', u'〈')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111b.gif" align="absbottom" border="0">', u'〉')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111c.gif" align="absbottom" border="0">', u'⁝')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111d.gif" align="absbottom" border="0">', u'＊')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111e.gif" align="absbottom" border="0">', u'（同）')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g111f.gif" align="absbottom" border="0">', u'Æ')
-
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1202.gif" align="absbottom" border="0">', u'c')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1203.gif" align="absbottom" border="0">', u'c')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1204.gif" align="absbottom" border="0">', u'c')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1205.gif" align="absbottom" border="0">', u'd')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1206.gif" align="absbottom" border="0">', u'e')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1207.gif" align="absbottom" border="0">', u'e')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1208.gif" align="absbottom" border="0">', u'e')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1209.gif" align="absbottom" border="0">', u'e')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1210.gif" align="absbottom" border="0">', u'g')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1211.gif" align="absbottom" border="0">', u'g')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1212.gif" align="absbottom" border="0">', u'h')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1213.gif" align="absbottom" border="0">', u'h')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1214.gif" align="absbottom" border="0">', u'h')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1215.gif" align="absbottom" border="0">', u'i')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1216.gif" align="absbottom" border="0">', u'i')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1217.gif" align="absbottom" border="0">', u'i')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1218.gif" align="absbottom" border="0">', u'i')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1219.gif" align="absbottom" border="0">', u'i')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1220.gif" align="absbottom" border="0">', u'o')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1221.gif" align="absbottom" border="0">', u'o')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1222.gif" align="absbottom" border="0">', u'o')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1223.gif" align="absbottom" border="0">', u'o')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1224.gif" align="absbottom" border="0">', u'o')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1225.gif" align="absbottom" border="0">', u'p')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1226.gif" align="absbottom" border="0">', u'P')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1227.gif" align="absbottom" border="0">', u'q')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1228.gif" align="absbottom" border="0">', u'r')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1229.gif" align="absbottom" border="0">', u'r')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1230.gif" align="absbottom" border="0">', u'u')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1231.gif" align="absbottom" border="0">', u'u')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1232.gif" align="absbottom" border="0">', u'u')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1233.gif" align="absbottom" border="0">', u'U')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1234.gif" align="absbottom" border="0">', u'w')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1235.gif" align="absbottom" border="0">', u'w')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1236.gif" align="absbottom" border="0">', u'x')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1237.gif" align="absbottom" border="0">', u'y')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
-        result = result.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
+        result = self.replace_gaiji(result)
 
         definitions = []
 

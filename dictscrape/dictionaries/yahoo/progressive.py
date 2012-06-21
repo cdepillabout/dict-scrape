@@ -26,6 +26,10 @@ from ...example_sentence import ExampleSentence
 from ...definition import Definition
 
 class ProgressiveDictionary(YahooDictionary):
+    """
+    Progressive Dictionary from Yahoo.
+    """
+
     long_dictionary_name = u"Yahoo's Progressive Dictionary (プログレッシブ和英中辞典)"
     short_dictionary_name = "Progressive"
     dictionary_type = Dictionary.PROGRESSIVE_TYPE
@@ -38,6 +42,11 @@ class ProgressiveDictionary(YahooDictionary):
     def clean_def_string(self, def_string):
         """
         Cleans up a definition string and splits up the definition parts.
+        Removed some html, a long with things in parenthesis.
+
+        def_string (unicode): A definition string from an entry.
+
+        Returns list of cleaned definition parts.
         """
         # remove things in parenthesis
         def_string = re.sub(u'\(\(.*?\)\)', u'', def_string)
@@ -75,6 +84,10 @@ class ProgressiveDictionary(YahooDictionary):
     def clean_eng_example_sent(self, eng_trans):
         """
         Cleans up an english example sentence.
+
+        eng_trans (unicode): a dirty english example sentence
+
+        Returns a clean english example sentence.
         """
         # take out things in those weird japanese parenthesis
         eng_trans = re.sub(u'〔.*?〕', u'', eng_trans)

@@ -26,6 +26,10 @@ from ...example_sentence import ExampleSentence
 from ...definition import DefinitionPart, Definition
 
 class DaijirinDictionary(YahooDictionary):
+    """
+    Daijirin Dictionary from Yahoo.
+    """
+
     long_dictionary_name = u"Yahoo's Daijirin (大辞林)"
     short_dictionary_name = "Daijirin"
     dictionary_type = Dictionary.DAIJIRIN_TYPE
@@ -39,7 +43,11 @@ class DaijirinDictionary(YahooDictionary):
     def parse_example_sentences(self, result):
         """
         Take an html definition string and parse out the example sentences.
-        This looks for example sentences through their coloring.
+        This looks for example sentences through their html and coloring coloring.
+
+        result (unicode): the html string for this definition
+
+        Returns a list of ExampleSentence objects.
         """
         example_sentences = []
 

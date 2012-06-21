@@ -26,6 +26,10 @@ from ...example_sentence import ExampleSentence
 from ...definition import Definition
 
 class DaijisenDictionary(YahooDictionary):
+    """
+    Daijisen Dictionary from Yahoo.
+    """
+
     long_dictionary_name = u"Yahoo's Daijisen (大辞泉)"
     short_dictionary_name = "Daijisen"
     dictionary_type = Dictionary.DAIJISEN_TYPE
