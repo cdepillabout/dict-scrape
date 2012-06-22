@@ -303,3 +303,21 @@ Here is my work flow when working with the testing system:
     process.
 
     `$ ./test.py`
+
+
+Bugs
+----
+
+There are currently a lot of bugs.  If you find a word that doesn't parse correctly,
+a problem with the GUI, an error in the documentation, don't hesitate to write a bug
+report https://github.com/cdepillabout/dict-scrape/issues.
+
+
+Coding Assistance
+------------------
+
+I appreciate any and all pull requests.  This is my first serious Qt project, so
+any Qt related fixes would be divine.  Parsing the html definition files is also
+a pain, so any help in that area would be great.
+
+Fork from here: https://github.com/cdepillabout/dict-scrape
