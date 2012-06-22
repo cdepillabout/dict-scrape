@@ -127,6 +127,45 @@ $ ln -sf ~/.anki/plugins/scraper_gui /path/to/git/dict-scrape/scraper_gui
 $ ln -sf ~/.anki/plugins/scraper_gui/dictscrape /path/to/git/dict-scrape/dictscrape
 ```
 
+Models Needed for using the Anki Plugin
+---------------------------------------
+
+Currently, you need a deck with specific models in order to use this plugin.
+You deck needs to have two models, "Words" and "Sentences".
+
+The "Words" model needs to have 7 fields, "Vocab", "VocabKana", "VocabEnglish",
+"Sentence", "SentenceEnglish", "Intonation", and "Notes".
+
+<dl>
+    <dt>Vocab</dt>
+    <dd>the kanji for the vocab word</dd>
+
+    <dt>VocabKana</dt>
+    <dd>the kana for the vocab word</dd>
+
+    <dt>VocabEnglish</dt>
+    <dd>the definition of this vocab word (NOTE: this was named poorly.  The
+    definition can contain both Japanese and English)</dd>
+
+    <dt>Sentence</dt>
+    <dd>an example sentence for the vocab word</dd>
+
+    <dt>SentenceEnglish</dt>
+    <dd>an english translation of the example sentence</dd>
+
+    <dt>Intonation</dt>
+    <dd>accent for the word</dd>
+
+    <dt>Notes</dt>
+    <dd>Addition notes.  Definitions of any other hard words from the example
+    sentence.</dd>
+</dl>
+
+
 Using the GUI (with Anki)
 -------------------------
 
+Here's a short walkthrough in actually using the Anki plugin.  You must setup
+the development environment before you can use the plugin.
+
+1. 
