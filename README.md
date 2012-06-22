@@ -91,17 +91,17 @@ Playing Around With the Library and GUI (without Anki)
 There are a couple easy ways you can play around with the library and the
 accompanying GUI program.  
 
-1. Run `command_line.py` to see a couple examples of the library in action.
+1. Run `command\_line.py` to see a couple examples of the library in action.
    Try passing kanji and kana to the program to lookup the kanji and kana and
    print the results.  For instance, to look up the word 強迫, run the program
    like this:
 
-   `$ ./command_line.py 強迫 きょうはく`
+   `$ ./command\_line.py 強迫 きょうはく`
 
-2. Read through the code in `command_line.py` to see how everything works.  
+2. Read through the code in `command\_line.py` to see how everything works.  
    There are a couple short examples for getting and printing results from 
    the available dictionaries.  Also, read through
-   `dictscrape/{result,definition,example_sentence}.py` to see how Result objects
+   `dictscrape/{result,definition,example\_sentence}.py` to see how Result objects
    can be used.  The dictscrape library has documentation, so it shouldn't be that
    difficult to figure out how these objects work.  Please feel free to add issues
    on github for anything confusing.
@@ -131,10 +131,10 @@ Models Needed for using the Anki Plugin
 ---------------------------------------
 
 Currently, you need a deck with specific models in order to use this plugin.
-You deck needs to have two models, "Words" and "Sentences".
+You deck needs to have two models, `Words` and `Sentences`.
 
-The "Words" model needs to have 7 fields, "Vocab", "VocabKana", "VocabEnglish",
-"Sentence", "SentenceEnglish", "Intonation", and "Notes".
+The `Words` model needs to have at least the 7 fields, `Vocab`, `VocabKana`,
+`VocabEnglish`, `Sentence`, `SentenceEnglish`, `Intonation`, and `Notes`.
 
 <dl>
     <dt>Vocab</dt>
@@ -161,11 +161,76 @@ The "Words" model needs to have 7 fields, "Vocab", "VocabKana", "VocabEnglish",
     sentence.</dd>
 </dl>
 
+The `Sentences` model needs to have at least the 3 fields, `Sentence`,
+`SentenceEnglish`, and `Notes`.
+
+<dl>
+    <dt>Sentence</dt>
+    <dd>a japanese sentence</dd>
+
+    <dt>SentenceEnglish</dt>
+    <dd>an english translation of the sentence</dd>
+
+    <dt>Notes</dt>
+    <dd>Addition notes.  Definitions of any other hard words from the sentence.</dd>
+</dl>
+
 
 Using the GUI (with Anki)
 -------------------------
 
 Here's a short walkthrough in actually using the Anki plugin.  You must setup
-the development environment before you can use the plugin.
+the development environment before you can use the plugin.  You also must add
+the previously mentioned `Words` model and `Sentences` model.
 
-1. 
+1.  Add a `Words` model card while only filling in the `Vocab` and `VocabKana`
+    fields.
+2.  Go to that card in the card browser.  
+3.  With the card selected (i.e. the card that is currently being edited), hit
+    `Ctrl-J` to open up the scrapper plugin.  NOTE: this make take a while to 
+    actually open.  The window itself is shown after all the information has
+    been downloaded.
+4.  Click on the definition parts and examples sentences you want to use.
+5.  Click 'Okay'.
+6.  The next window will be comprised of two list widgets.  In the top list widget
+    you can rearrange the order of the definition parts.  In the bottom list widget
+    you can select the sentence you want to be used on the `Words` model card
+    (i.e. the vocab card).  The unselected sentences will be used to make
+    `Sentences` model cards.  If there are no sentences, then no sentence cards
+    will be made.
+7.  Click 'Okay'.
+8.  The next window will show you a text edit widget that allows you to edit the
+    definition.  The definition parts will be ordered in the same fashion as
+    you ordered them on the last window.  
+9.  Make any additions/changes and click 'Okay'.
+10. The next window will show you text edit widgets to edit your vocab card.  
+    You can't do any special formatting here, but you can make noraml edits.
+11. After clicking 'Okay', sucessive windows will be opened for you to edit the
+    additional sentence cards in a similar fashion, or you will be taken back
+    to Anki.  You can go to the card browser to see your new cards.
+
+
+Testing and the Testing Framework
+---------------------------------
+
+Other than learning Qt, the hardest part about writing the library and plugin has
+been parsing the definitions from the yahoo dictionaries.  They are set up in many
+different styles and there are many different types of entries.  There is also a
+lot of information that the user doesn't want to see.  Taking out all of this 
+extra information an just presenting the pure definitions/example sentences to the
+user is a pain.  
+
+You can see the code for parsing in `dictscrape/dictionaries/yahoo/\*.py.`  
+Check the parse_definition() function.  I usually use a lot of debugging print
+statements to see what's going on.  One fear I had is that changing how something
+is parsed may fix one word, but end up breaking the parsing for another word.
+So I may change the parse_definition() function to correctly parse the page for
+the 強迫, but this might unintentionally end up breaking the parsing for 面白い.
+
+In order to work around this problem, I created a rather comprehensive testing
+framework for testing the parsing.  Basically it is a collection of webpages to
+try parsing, and correctly parsed examples.  For example, consider the word
+強迫.  You can find the webpages for 強迫 at
+`testing/support/words/\*/きょうはく\_強迫.html`.  These are the html files that has
+been downloaded from yahoo's servers.  When adding these html files, the html files
+are parsed and json'd Result() objects are written to disk.
