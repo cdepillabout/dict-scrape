@@ -1,0 +1,27 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "one's (new) post; the place of appointment.", 
+                    "jap_sentence": "赴任地"
+                }, 
+                {
+                    "eng_trans": "a business bachelor.", 
+                    "jap_sentence": "単身赴任者"
+                }, 
+                {
+                    "eng_trans": "In April, he left for his (new) post in Tokyo without his family.", 
+                    "jap_sentence": "彼は4月に東京へ単身赴任した"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ふにん", 
+    "original_kanji": "赴任", 
+    "result_kana": "ふにん", 
+    "result_kanji": "赴任", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E8%B5%B4%E4%BB%BB%E3%80%80%E3%81%B5%E3%81%AB%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}

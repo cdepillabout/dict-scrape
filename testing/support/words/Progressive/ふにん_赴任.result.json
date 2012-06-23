@@ -1,0 +1,29 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a new teacher", 
+                    "jap_sentence": "新しく赴任して来た教師"
+                }, 
+                {
+                    "eng_trans": "My first assignment was the branch office in Kofu.", 
+                    "jap_sentence": "最初に赴任したのは甲府の支店でした"
+                }, 
+                {
+                    "eng_trans": "He was assigned to Sapporo and lives there apart from his family.", 
+                    "jap_sentence": "彼は札幌に単身赴任している"
+                }
+            ], 
+            "parts": [
+                "set off [out] for <i>one's</i> new post"
+            ]
+        }
+    ], 
+    "original_kana": "ふにん", 
+    "original_kanji": "赴任", 
+    "result_kana": "ふにん", 
+    "result_kanji": "赴任", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E8%B5%B4%E4%BB%BB%E3%80%80%E3%81%B5%E3%81%AB%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}

@@ -242,7 +242,7 @@ class NewCenturyDictionary(YahooDictionary):
 
         for splt in splits:
             # find english definition
-            english_def = None
+            english_def = u''
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
             match = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
