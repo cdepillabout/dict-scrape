@@ -124,9 +124,9 @@ Here's how to setup the development environment for hacking on and using this
 this plugin in Anki.
 
 ```bash
-$ ln -sf ~/.anki/plugins/scraper.py /path/to/git/dict-scrape/scraper.py
-$ ln -sf ~/.anki/plugins/scraper_gui /path/to/git/dict-scrape/scraper_gui
-$ ln -sf ~/.anki/plugins/scraper_gui/dictscrape /path/to/git/dict-scrape/dictscrape
+$ ln -sf /path/to/git/dict-scrape/scraper.py ~/.anki/plugins/scraper.py
+$ ln -sf /path/to/git/dict-scrape/scraper_gui ~/.anki/plugins/scraper_gui
+$ ln -sf /path/to/git/dict-scrape/dictscrape ~/.anki/plugins/scraper_gui/dictscrape
 ```
 
 Models Needed for using the Anki Plugin
