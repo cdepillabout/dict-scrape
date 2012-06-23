@@ -77,10 +77,12 @@ class DaijirinDictionary(YahooDictionary):
                 result = etree.tostring(text_def, pretty_print=False, method="html",
                         encoding='unicode')
 
-            result = re.sub(u'^<td>', u'', result)
+            result = re.sub(u'^<td>(\n)?', u'', result)
 
             # remove the verb conjugation from the beginning
             result = re.sub(u'^\n?<b>\(動..［.］\)</b> <br>', u'', result)
+            result = re.sub(u'^\n?<b>\(形動\)</b> <br>', u'', result)
+            result = re.sub(u'^\n?<b><small>\[文\]ナリ</small></b> <br>', u'', result)
 
             # remove the 補説 from the beginning
             result = re.sub(u'^\n?<b>〔補説〕</b> .*?<br>', u'', result)
@@ -115,6 +117,8 @@ class DaijirinDictionary(YahooDictionary):
 
                 # remove verb conjugation types at the top of the entry
                 result = re.sub(u'^<b>\(動..［.］\)</b> <br>', u'', result)
+                result = re.sub(u'^\n?<b>\(形動\)</b> <br>', u'', result)
+                result = re.sub(u'^\n?<b><small>\[文\]ナリ</small></b> <br>', u'', result)
 
                 # remove the〔可能〕at the end of the entry
                 result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
