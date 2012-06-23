@@ -104,9 +104,10 @@ class DaijisenDictionary(YahooDictionary):
         def_string = re.sub(u'\u300A.*?\u300B', u'', def_string)
 
         # this removes ［形動］, etc from the beginning of a definition
-        def_string = re.sub(u'^［形動］', u'', def_string)
+        def_string = re.sub(u'^［(形動|名)］', u'', def_string)
         def_string = re.sub(u'^［文］', u'', def_string)
         def_string = re.sub(u'^［ナリ］', u'', def_string)
+        def_string = re.sub(u'^\(スル\)', u'', def_string)
 
         return def_string
 
