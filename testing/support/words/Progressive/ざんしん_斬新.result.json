@@ -1,0 +1,26 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a novel [an original] design", 
+                    "jap_sentence": "斬新なデザイン"
+                }, 
+                {
+                    "eng_trans": "She always has [comes up with] original ideas.", 
+                    "jap_sentence": "彼女はいつも斬新なアイデアを出す"
+                }
+            ], 
+            "parts": [
+                "◇斬新さ｜novelty", 
+                "originality"
+            ]
+        }
+    ], 
+    "original_kana": "ざんしん", 
+    "original_kanji": "斬新", 
+    "result_kana": "ざんしん", 
+    "result_kanji": "斬新", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%96%AC%E6%96%B0%E3%80%80%E3%81%96%E3%82%93%E3%81%97%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}
