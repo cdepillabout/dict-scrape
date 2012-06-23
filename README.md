@@ -86,6 +86,13 @@ I created this program and library to aid in card creation.  It is much faster
 creating cards using this plugin than doing it completely by hand.  This plugin
 semi-automates the process.
 
+    
+Prereqs
+-------
+
+The only libraries/modules you need installed to use this program are lxml and
+the python bindings for it.
+
 
 Playing Around With the Library and GUI (without Anki)
 ------------------------------------------------------
