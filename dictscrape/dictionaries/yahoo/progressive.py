@@ -58,6 +58,15 @@ class ProgressiveDictionary(YahooDictionary):
         # if it is just a redirect, then just take the word being redirected to
         def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
 
+        # remove those little stars from the beginning of the definition
+        def_string = re.sub(u'^◇', u'', def_string)
+
+        # sometimes there is a japanese word, and then a '|', and then an
+        # English definition.  Try to search for this and remove it.
+        def_string = re.sub(
+                u'^[\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]*｜',
+                u'', def_string)
+
         # strip whitespace
         def_string = def_string.strip()
 
