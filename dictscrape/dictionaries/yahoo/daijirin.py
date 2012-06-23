@@ -59,6 +59,31 @@ class DaijirinDictionary(YahooDictionary):
 
         return example_sentences
 
+    def clean_definition(self, result):
+        """
+        Cleans a definition string.
+        """
+        result = re.sub(u'^<td>(\n)?', u'', result)
+        result = re.sub(u'<br></td>$', u'', result)
+        result = result.strip()
+
+        # remove the verb conjugation from the beginning
+        result = re.sub(u'^\n?<b>\(動..［.］\)</b> <br>', u'', result)
+        result = re.sub(u'^\n?<b>\((形動|名)\)</b> <br>', u'', result)
+        result = re.sub(u'^\n?<b><small>(\[文\])?(ナリ|スル)</small></b> <br>', u'', result)
+
+        # remove the 補説 from the beginning
+        result = re.sub(u'^\n?<b>〔補説〕</b> .*?<br>', u'', result)
+
+        # remove the〔可能〕at the end of the entry
+        result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
+
+        # remove everything after the first <br>
+        result = re.sub(u'<br>.*$', u'', result)
+        result = result.strip()
+
+        return result
+
     def parse_definition(self, tree):
         jap_defs = []
         definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
@@ -77,19 +102,7 @@ class DaijirinDictionary(YahooDictionary):
                 result = etree.tostring(text_def, pretty_print=False, method="html",
                         encoding='unicode')
 
-            result = re.sub(u'^<td>(\n)?', u'', result)
-
-            # remove the verb conjugation from the beginning
-            result = re.sub(u'^\n?<b>\(動..［.］\)</b> <br>', u'', result)
-            result = re.sub(u'^\n?<b>\(形動\)</b> <br>', u'', result)
-            result = re.sub(u'^\n?<b><small>\[文\]ナリ</small></b> <br>', u'', result)
-
-            # remove the 補説 from the beginning
-            result = re.sub(u'^\n?<b>〔補説〕</b> .*?<br>', u'', result)
-
-            # remove everything after the first <br>
-            result = re.sub(u'<br>.*$', u'', result)
-            result = result.strip()
+            result = self.clean_definition(result)
             def_parts = self.split_def_parts(result)
             jap_defs.append(Definition(def_parts, example_sentences))
 
@@ -108,22 +121,7 @@ class DaijirinDictionary(YahooDictionary):
                     jap_defs.append(Definition([def_part], None))
                     continue
 
-                result = re.sub(u'^<td>', u'', result)
-                result = re.sub(u'<br></td>$', u'', result)
-                result = result.strip()
-
-                # remove 補説 at the top of the entry
-                result = re.sub(u'^<b>〔補説〕</b> (.*?)<br>', u'', result)
-
-                # remove verb conjugation types at the top of the entry
-                result = re.sub(u'^<b>\(動..［.］\)</b> <br>', u'', result)
-                result = re.sub(u'^\n?<b>\(形動\)</b> <br>', u'', result)
-                result = re.sub(u'^\n?<b><small>\[文\]ナリ</small></b> <br>', u'', result)
-
-                # remove the〔可能〕at the end of the entry
-                result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
-
-                result = result.strip()
+                result = self.clean_definition(result)
                 def_parts = self.split_def_parts(result)
                 jap_defs.append(Definition(def_parts, None))
 
