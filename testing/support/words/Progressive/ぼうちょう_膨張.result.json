@@ -1,0 +1,60 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The gas expanded with heat.", 
+                    "jap_sentence": "ガスが熱で膨張した"
+                }, 
+                {
+                    "eng_trans": "a distended abdomen", 
+                    "jap_sentence": "膨張した腹部"
+                }
+            ], 
+            "parts": [
+                "swelling", 
+                "swell", 
+                "expanding"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an increase in the budget", 
+                    "jap_sentence": "予算の膨張"
+                }, 
+                {
+                    "eng_trans": "an inflated [a bloated] budget", 
+                    "jap_sentence": "膨張した予算"
+                }, 
+                {
+                    "eng_trans": "inflation (of a currency)", 
+                    "jap_sentence": "通貨の膨張"
+                }, 
+                {
+                    "eng_trans": "Military expenditure has swollen to a vast sum.", 
+                    "jap_sentence": "軍事費が膨張して莫大<small>(ばくだい)</small>な額になった"
+                }, 
+                {
+                    "eng_trans": "Every year some towns expand [grow] into cities.", 
+                    "jap_sentence": "毎年幾つかの町が市に膨張していく"
+                }, 
+                {
+                    "eng_trans": "an expansion coefficient; expansion ratio", 
+                    "jap_sentence": "膨張係数"
+                }, 
+                {
+                    "eng_trans": "the rate of expansion", 
+                    "jap_sentence": "膨張率"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ぼうちょう", 
+    "original_kanji": "膨張", 
+    "result_kana": "ぼうちょう", 
+    "result_kanji": "膨張", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E8%86%A8%E5%BC%B5%E3%80%80%E3%81%BC%E3%81%86%E3%81%A1%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

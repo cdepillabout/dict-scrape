@@ -1,0 +1,43 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "ふくれあがること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "都市が―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "予算が―する"
+                }
+            ], 
+            "parts": [
+                "規模が広がって大きくなること", 
+                "数量が増大すること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "熱―"
+                }
+            ], 
+            "parts": [
+                "物体の長さまたは体積が増大すること"
+            ]
+        }
+    ], 
+    "original_kana": "ぼうちょう", 
+    "original_kanji": "膨張", 
+    "result_kana": "ぼう‐ちょう〔バウチヤウ〕", 
+    "result_kanji": "膨張／膨脹", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E8%86%A8%E5%BC%B5%E3%80%80%E3%81%BC%E3%81%86%E3%81%A1%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}

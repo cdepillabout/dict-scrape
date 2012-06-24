@@ -1,0 +1,40 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "ふくれること", 
+                "ふくれて大きくなること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "歳出が年々―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "市街地が―して郊外へのびて行く"
+                }
+            ], 
+            "parts": [
+                "大きく発展すること", 
+                "数量がふえること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "<b>〔専門〕</b> 物 物体の長さ・体積が増大すること", 
+                "特に、温度の上昇に伴う膨張を熱膨張という"
+            ]
+        }
+    ], 
+    "original_kana": "ぼうちょう", 
+    "original_kanji": "膨張", 
+    "result_kana": "ぼうちょう［ばうちやう］", 
+    "result_kanji": "膨張・膨脹", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E8%86%A8%E5%BC%B5%E3%80%80%E3%81%BC%E3%81%86%E3%81%A1%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}

@@ -1,0 +1,37 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the expansion of metals [currency].", 
+                    "jap_sentence": "金属[通貨]の膨張"
+                }, 
+                {
+                    "eng_trans": "the rate of expansion; the expansion rate.", 
+                    "jap_sentence": "膨張率"
+                }, 
+                {
+                    "eng_trans": "a rapidly expanding [increasing] population.", 
+                    "jap_sentence": "急速に膨張する人口"
+                }, 
+                {
+                    "eng_trans": "Iron expands with heat [when (it is) heated]./Heat expands iron.", 
+                    "jap_sentence": "鉄は熱で膨張する"
+                }, 
+                {
+                    "eng_trans": "The gas in the balloon expanded [was expanded] and exploded.", 
+                    "jap_sentence": "ガスが膨張して気球が破裂した"
+                }
+            ], 
+            "parts": [
+                "expansion"
+            ]
+        }
+    ], 
+    "original_kana": "ぼうちょう", 
+    "original_kanji": "膨張", 
+    "result_kana": "ぼうちょう", 
+    "result_kanji": "膨張", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E8%86%A8%E5%BC%B5%E3%80%80%E3%81%BC%E3%81%86%E3%81%A1%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}
