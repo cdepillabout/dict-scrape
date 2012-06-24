@@ -1,0 +1,47 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "神に―する"
+                }
+            ], 
+            "parts": [
+                "神仏・主君・師などに、つつしんでつかえること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "社会に―する"
+                }
+            ], 
+            "parts": [
+                "利害を離れて国家や社会などのために尽くすこと"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "特価で御―しております"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―品"
+                }
+            ], 
+            "parts": [
+                "商人が品物を安く売ること"
+            ]
+        }
+    ], 
+    "original_kana": "ほうし", 
+    "original_kanji": "奉仕", 
+    "result_kana": "ほう‐し", 
+    "result_kanji": "奉仕", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E5%A5%89%E4%BB%95%E3%80%80%E3%81%BB%E3%81%86%E3%81%97&enc=UTF-8&stype=1&dtype=0"
+}

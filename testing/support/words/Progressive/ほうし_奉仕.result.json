@@ -1,0 +1,42 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "volunteer social service work／social service", 
+                    "jap_sentence": "社会奉仕"
+                }, 
+                {
+                    "eng_trans": "volunteer labor", 
+                    "jap_sentence": "勤労奉仕"
+                }, 
+                {
+                    "eng_trans": "serve the public [community]", 
+                    "jap_sentence": "社会に奉仕する"
+                }, 
+                {
+                    "eng_trans": "She gave her services free to the home for the elderly.", 
+                    "jap_sentence": "彼女は無料で老人ホームに奉仕した"
+                }
+            ], 
+            "parts": [
+                "service"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "They are offering [selling] woolen yarn at bargain prices.／Woolen yarn is on sale at a reduced price.", 
+                    "jap_sentence": "毛糸を格安で奉仕している"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ほうし", 
+    "original_kanji": "奉仕", 
+    "result_kana": "ほうし", 
+    "result_kanji": "奉仕", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%A5%89%E4%BB%95%E3%80%80%E3%81%BB%E3%81%86%E3%81%97&enc=UTF-8&stype=1&dtype=3"
+}

@@ -1,0 +1,49 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "free service; service without reward.", 
+                    "jap_sentence": "無料奉仕"
+                }, 
+                {
+                    "eng_trans": "volunteer social service.", 
+                    "jap_sentence": "社会奉仕"
+                }, 
+                {
+                    "eng_trans": "volunteer labor.", 
+                    "jap_sentence": "勤労奉仕"
+                }, 
+                {
+                    "eng_trans": "volunteer work.", 
+                    "jap_sentence": "奉仕活動"
+                }, 
+                {
+                    "eng_trans": "a bargain.", 
+                    "jap_sentence": "奉仕品"
+                }, 
+                {
+                    "eng_trans": "a bargain price.", 
+                    "jap_sentence": "奉仕価格"
+                }, 
+                {
+                    "eng_trans": "serve one's country [the community].", 
+                    "jap_sentence": "国家[社会]に奉仕する"
+                }, 
+                {
+                    "eng_trans": "The special today is on eggs./Eggs are on special today.", 
+                    "jap_sentence": "本日は卵を特別奉仕（＝値引き）しています"
+                }
+            ], 
+            "parts": [
+                "(a) service"
+            ]
+        }
+    ], 
+    "original_kana": "ほうし", 
+    "original_kanji": "奉仕", 
+    "result_kana": "ほうし", 
+    "result_kanji": "奉仕", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E5%A5%89%E4%BB%95%E3%80%80%E3%81%BB%E3%81%86%E3%81%97&enc=UTF-8&stype=1&dtype=3"
+}
