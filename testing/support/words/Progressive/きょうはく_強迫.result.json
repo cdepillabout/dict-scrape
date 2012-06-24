@@ -12,8 +12,16 @@
                     "jap_sentence": "彼は強迫されて屈服した"
                 }, 
                 {
+                    "eng_trans": "an obsession", 
+                    "jap_sentence": "強迫観念"
+                }, 
+                {
                     "eng_trans": "He is obsessed with the idea that he is being followed.", 
                     "jap_sentence": "彼は後を付けられているという強迫観念につきまとわれている"
+                }, 
+                {
+                    "eng_trans": "obsessive-compulsive neurosis", 
+                    "jap_sentence": "強迫神経症"
                 }
             ], 
             "parts": [
