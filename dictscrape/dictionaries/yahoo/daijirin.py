@@ -84,45 +84,92 @@ class DaijirinDictionary(YahooDictionary):
 
         return result
 
+    def clean_html(self, html_string):
+        """
+        Clean up the big picture HTML. For example, this cleans things out from
+        the beginning that we don't want.
+        """
+        # remove beginning <td>
+        html_string = re.sub(u'^<td>\n?', u'', html_string)
+
+        #<b>(形)</b> <br><b><small>[文]ク おもしろ・し</small>
+
+        # remove beginning word type
+        html_string = re.sub(u'^<b>\((形ク?|動..［.］|名|形動)\)</b> ?(<br>)?', u'', html_string)
+
+        #<b><small>[文]ク おもしろ・し</small></b> <br>
+
+        # remove conjugation stuff
+        html_string = re.sub(u'^<b><small>.*?</small></b> ?(<br>)?', u'', html_string)
+
+        # remove verb types
+
+        # remove 補説
+        html_string = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', html_string)
+
+        # turn redirections into just the normal word
+        html_string = re.sub(u'→<a href="http://.*?">(.*?)</a>', ur'\1', html_string)
+
+        return html_string
+
     def parse_definition(self, tree):
         jap_defs = []
-        definition_tables = tree.xpath("//table[@class='d-detail']/tr/td/table")
-        for defi in definition_tables:
-            result = etree.tostring(defi, pretty_print=True, method="html", encoding='unicode')
-            example_sentences = self.parse_example_sentences(result)
 
-            # words like 遊ぶ（あすぶ） don't have any tr/td elements, but they
-            # do have example sentences
-            if not defi.xpath(u'tr/td'):
-                definition = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-                result = etree.tostring(definition, pretty_print=False, method="html",
-                            encoding='unicode')
-            else:
-                text_def = defi.xpath(u'tr/td')[1]
-                result = etree.tostring(text_def, pretty_print=False, method="html",
-                        encoding='unicode')
+        def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        result = etree.tostring(def_elems, pretty_print=False, method="html",
+                encoding='unicode')
 
-            result = self.clean_definition(result)
-            def_parts = self.split_def_parts(result)
-            jap_defs.append(Definition(def_parts, example_sentences))
+        #print result
 
-        if not definition_tables:
-            definition_tables = tree.xpath("//table[@class='d-detail']/tr/td")
-            for defi in definition_tables:
-                result = etree.tostring(defi, pretty_print=False, method="html",
-                        encoding='unicode')
+        result = self.clean_html(result)
 
-                # this checks for if we are redirected to another entry.  For example,
-                # for the word 赤し
-                m = re.match(u'<td>\n<b>\(.*?\)</b> <br>→<a href=".*?">(.*?)</a><br></td>',
-                        result)
-                if m:
-                    def_part = DefinitionPart(m.group(1))
-                    jap_defs.append(Definition([def_part], None))
-                    continue
+        #print result
+        definitions = []
+        matches = re.search(u'<table><tr valign="top" align="left" num="3"><td><b>［1］</b>', result)
+        if matches:
+            # split the page into pieces for each definition
+            splits = re.split(u'(<table><tr valign="top" align="left" num="3"><td><b>.*?</b>)', result)
 
-                result = self.clean_definition(result)
-                def_parts = self.split_def_parts(result)
-                jap_defs.append(Definition(def_parts, None))
+            # throw away the first split
+            splits = splits[1:]
 
-        return jap_defs
+            # throw away odd splits
+            splits = [s for i, s in enumerate(splits) if i % 2 == 1]
+        else:
+            splits = [result]
+
+        for splt in splits:
+            # find english definition
+            jap_def = u''
+
+            # remove leading <td>
+            splt = re.sub(u'^<td>\n?', u'', splt)
+            # remove leading </td>
+            splt = re.sub(u'^</td>\n?', u'', splt)
+            # remove leading <td>
+            splt = re.sub(u'^<td>\n?', u'', splt)
+
+            # remove 補説
+            splt = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', splt)
+
+            match = re.search(u'^(.*?)(?=<br>)', splt)
+            if match:
+                jap_def = match.group(1)
+
+            # find example sentences
+            example_sentence_strings = []
+            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+            if matches:
+                for m in matches:
+                    jap_example_sentence = m[0]
+                    eng_trans = m[1]
+                    example_sentence_strings.append([jap_example_sentence, eng_trans])
+
+            jap_def = self.clean_definition(jap_def)
+            def_parts = self.split_def_parts(jap_def)
+            example_sentences = self.parse_example_sentences(splt)
+
+            definitions.append(Definition(def_parts, example_sentences))
+
+
+        return definitions
