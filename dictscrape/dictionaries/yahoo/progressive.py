@@ -58,6 +58,10 @@ class ProgressiveDictionary(YahooDictionary):
         # if it is just a redirect, then just take the word being redirected to
         def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
 
+        # remove italics
+        def_string = def_string.replace(u'<i>', u'')
+        def_string = def_string.replace(u'</i>', u'')
+
         # remove those little stars from the beginning of the definition
         def_string = re.sub(u'^◇', u'', def_string)
 
@@ -76,6 +80,14 @@ class ProgressiveDictionary(YahooDictionary):
 
         # split up the definition parts, breaking on ';'
         def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
+
+        # only get unique def parts
+        new_def_parts = []
+        for part in def_parts:
+            if part not in new_def_parts:
+                new_def_parts.append(part)
+        def_parts = new_def_parts
+
         return def_parts
 
     def replace_gaiji(self, string):
@@ -161,13 +173,26 @@ class ProgressiveDictionary(YahooDictionary):
                 if match:
                     english_def = u'〔%s' % match.group(1)
             else:
-                match = re.search(u'^<td>\n(.*?)<br>(<br>◇.*?｜(.*?)<br><br>)?', splt)
+                #match = re.search(u'^<td>\n(.*?)<br>(<br>◇.*?｜(.*?)<br><br>)?', splt)
+                #if match:
+                #    if not match.group(1).startswith(u'[例文]'):
+                #        english_def =  match.group(1)
+                #        if match.group(3):
+                #            english_def = "%s; %s" % (english_def, match.group(3))
+
+                match = re.search(u'^<td>\n(.*?)<br>', splt)
                 if match:
                     if not match.group(1).startswith(u'[例文]'):
                         english_def =  match.group(1)
-                        if match.group(3):
-                            english_def = "%s; %s" % (english_def, match.group(3))
 
+            # look for additional verb definitions and add them to our main
+            # definnition
+            match = re.search(u'<br>◇.*?｜(.*?)<br><br>', splt)
+            if match:
+                if english_def:
+                    english_def = "%s; %s" % (english_def, match.group(1))
+                else:
+                    english_def = match.group(1)
 
             # find example sentences
             example_sentences = []
@@ -178,22 +203,18 @@ class ProgressiveDictionary(YahooDictionary):
 
             # match either real example sentences or those other bold words
             # like "強迫観念" that come up when looking up "強迫".
-            matches = re.findall(u'(?:<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|(?:<br><b>(.*?)</b>｜(.*?)<br>)|(?:◇(.*?)｜(.*?)<br>)', splt)
+            matches = re.findall(u'(?:<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|(?:<br><b>(.*?)</b>｜(.*?)<br>)', splt)
             if matches:
                 for m in matches:
-                    assert(len(m) == 6)
+                    assert(len(m) == 4)
                     if m[0]:
-                        assert(not m[2] and not m[3] and not m[4] and not m[5])
+                        assert(not m[2] and not m[3])
                         jap_sent = m[0]
                         eng_sent = self.clean_eng_example_sent(m[1])
-                    elif m[2]:
-                        assert(not m[0] and not m[1] and not m[4] and not m[5])
+                    else:
+                        assert(not m[0] and not m[1])
                         jap_sent = m[2]
                         eng_sent = self.clean_eng_example_sent(m[3])
-                    else:
-                        assert(not m[0] and not m[1] and not m[2] and not m[3])
-                        jap_sent = m[4]
-                        eng_sent = self.clean_eng_example_sent(m[5])
 
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
