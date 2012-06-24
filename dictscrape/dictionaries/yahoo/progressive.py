@@ -168,11 +168,21 @@ class ProgressiveDictionary(YahooDictionary):
 
             # find example sentences
             example_sentences = []
-            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
+
+            # match either real example sentences or those other bold words
+            # like "強迫観念" that come up when looking up "強迫".
+            matches = re.findall(u'(?:<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|(?:<br><b>(.*?)</b>｜(.*?)<br>)', splt)
             if matches:
                 for m in matches:
-                    jap_sent = m[0]
-                    eng_sent = self.clean_eng_example_sent(m[1])
+                    assert(len(m) == 4)
+                    if m[0]:
+                        assert(not m[2] and not m[3])
+                        jap_sent = m[0]
+                        eng_sent = self.clean_eng_example_sent(m[1])
+                    else:
+                        assert(not m[0] and not m[1])
+                        jap_sent = m[2]
+                        eng_sent = self.clean_eng_example_sent(m[3])
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
             def_parts = self.clean_def_string(english_def)
