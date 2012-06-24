@@ -1,0 +1,34 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the Tsugaru Straits", 
+                    "jap_sentence": "津軽海峡"
+                }, 
+                {
+                    "eng_trans": "the Straits of Dover", 
+                    "jap_sentence": "ドーバー海峡"
+                }, 
+                {
+                    "eng_trans": "the (English) Channel", 
+                    "jap_sentence": "イギリス海峡"
+                }, 
+                {
+                    "eng_trans": "the blockade of a strait", 
+                    "jap_sentence": "海峡封鎖"
+                }
+            ], 
+            "parts": [
+                "a strait", 
+                "a channel, a sound"
+            ]
+        }
+    ], 
+    "original_kana": "かいきょう", 
+    "original_kanji": "海峡", 
+    "result_kana": "かいきょう", 
+    "result_kanji": "海峡", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%B5%B7%E5%B3%A1%E3%80%80%E3%81%8B%E3%81%84%E3%81%8D%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}
