@@ -97,12 +97,8 @@ class DaijirinDictionary(YahooDictionary):
         # remove beginning word type
         html_string = re.sub(u'^<b>\((形ク?|動..［.］|名|形動)\)</b> ?(<br>)?', u'', html_string)
 
-        #<b><small>[文]ク おもしろ・し</small></b> <br>
-
         # remove conjugation stuff
         html_string = re.sub(u'^<b><small>.*?</small></b> ?(<br>)?', u'', html_string)
-
-        # remove verb types
 
         # remove 補説
         html_string = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', html_string)

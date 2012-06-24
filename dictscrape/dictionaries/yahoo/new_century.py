@@ -95,6 +95,10 @@ class NewCenturyDictionary(YahooDictionary):
 
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1147.gif" align="absbottom" border="0">', u'⇔')
 
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g11f7.gif" align="absbottom" border="0">', u'a')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g11f8.gif" align="absbottom" border="0">', u'a')
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g11f9.gif" align="absbottom" border="0">', u'a')
+
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1202.gif" align="absbottom" border="0">', u'c')
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1203.gif" align="absbottom" border="0">', u'c')
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1204.gif" align="absbottom" border="0">', u'c')
@@ -133,6 +137,8 @@ class NewCenturyDictionary(YahooDictionary):
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1237.gif" align="absbottom" border="0">', u'y')
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
         string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g1238.gif" align="absbottom" border="0">', u'y')
+
+        string = string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/g129b.gif" align="absbottom" border="0">', u'e')
         return string
 
     def create_example_sentences(self, example_sentence_strings):
