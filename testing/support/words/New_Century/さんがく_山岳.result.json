@@ -1,0 +1,25 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountainous /m<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11f7.gif\" align=\"absbottom\" border=\"0\">unt<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g129b.gif\" align=\"absbottom\" border=\"0\">n<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g129b.gif\" align=\"absbottom\" border=\"0\">s/ district [region].", 
+                    "jap_sentence": "山岳地帯"
+                }, 
+                {
+                    "eng_trans": "a mountaineering [a mountain climbers', an alpine] club.", 
+                    "jap_sentence": "山岳部"
+                }
+            ], 
+            "parts": [
+                "mountains"
+            ]
+        }
+    ], 
+    "original_kana": "さんがく", 
+    "original_kanji": "山岳", 
+    "result_kana": "さんがく", 
+    "result_kanji": "山岳", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E5%B1%B1%E5%B2%B3%E3%80%80%E3%81%95%E3%82%93%E3%81%8C%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}

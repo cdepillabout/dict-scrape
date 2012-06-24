@@ -1,0 +1,34 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―地帯"
+                }
+            ], 
+            "parts": [
+                "やま", 
+                "特に、高く険しい山々"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―部"
+                }
+            ], 
+            "parts": [
+                "やま", 
+                "特に、高く険しい山々"
+            ]
+        }
+    ], 
+    "original_kana": "さんがく", 
+    "original_kanji": "山岳", 
+    "result_kana": "さんがく", 
+    "result_kanji": "山岳", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E5%B1%B1%E5%B2%B3%E3%80%80%E3%81%95%E3%82%93%E3%81%8C%E3%81%8F&enc=UTF-8&stype=1&dtype=0"
+}
