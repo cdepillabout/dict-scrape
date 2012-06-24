@@ -4,6 +4,10 @@
         {
             "example_sentences": [
                 {
+                    "eng_trans": "swell; expand", 
+                    "jap_sentence": "膨張する［させる］"
+                }, 
+                {
                     "eng_trans": "The gas expanded with heat.", 
                     "jap_sentence": "ガスが熱で膨張した"
                 }, 
