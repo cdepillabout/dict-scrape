@@ -87,6 +87,9 @@ class ProgressiveDictionary(YahooDictionary):
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D32.gif" align="absmiddle" border="0">', u'a')
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D5D.gif" align="absmiddle" border="0">', u'c')
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif" align="absmiddle" border="0">', u'e')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D92.gif" align="absmiddle" border="0">', u'e')
+
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/_817C.gif" align="absmiddle" border="0">', u':')
 
         return string
 
@@ -168,6 +171,10 @@ class ProgressiveDictionary(YahooDictionary):
 
             # find example sentences
             example_sentences = []
+
+            # take out bolded words if they are not part of an example sentence
+            # or if they are not followed by a ｜ character
+            splt = re.sub(ur'(?<=<br>)<b>.*?</b>(?!(</font>)|｜)', u'', splt)
 
             # match either real example sentences or those other bold words
             # like "強迫観念" that come up when looking up "強迫".
