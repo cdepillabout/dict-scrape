@@ -75,7 +75,7 @@ class ProgressiveDictionary(YahooDictionary):
             def_string = def_string[:-1]
 
         # split up the definition parts, breaking on ';'
-        def_parts = self.split_def_parts(def_string, split_characters=u';')
+        def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
         return def_parts
 
     def replace_gaiji(self, string):
