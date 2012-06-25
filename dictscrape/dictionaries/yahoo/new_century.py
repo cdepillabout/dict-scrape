@@ -182,7 +182,7 @@ class NewCenturyDictionary(YahooDictionary):
                 eng_trans = re.sub(u'（※.*$', u'', eng_trans)
 
             # Take out things like 〈やや書〉, 〈米話〉, and 〈米〉.
-            eng_trans = re.sub(u'〈(やや書|米話|米|ことわざ|話|軽蔑的)〉(\s*)', u'', eng_trans)
+            eng_trans = re.sub(u'〈(やや書|米話|米|ことわざ|話|軽蔑的|集合的)〉(\s*)', u'', eng_trans)
 
             # There are often hints to japanese users that suggest words not to use
             # This looks like [show, × teach].
@@ -215,6 +215,9 @@ class NewCenturyDictionary(YahooDictionary):
 
             # for japanese sentences, we want to change "." to "。"
             jap_sentence = jap_sentence.replace(u'.', u'。')
+
+            eng_trans = eng_trans.strip()
+            jap_sentence = jap_sentence.strip()
 
             example_sentences.append(ExampleSentence(jap_sentence, eng_trans))
 
