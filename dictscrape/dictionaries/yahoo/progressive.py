@@ -147,6 +147,9 @@ class ProgressiveDictionary(YahooDictionary):
         # remove (▼...)
         eng_trans = re.sub(u'\(▼.*?\)', u'', eng_trans)
 
+        # remove ⇒見出し語
+        eng_trans = re.sub(u'⇒<a href=".*?">見出し語</a>', u'', eng_trans)
+
         # strip whitespace
         eng_trans = eng_trans.strip()
 
