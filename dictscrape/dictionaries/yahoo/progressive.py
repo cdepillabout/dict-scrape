@@ -139,6 +139,9 @@ class ProgressiveDictionary(YahooDictionary):
         # remove ((口))
         eng_trans = eng_trans.replace(u'((口))', u'')
 
+        # remove (▼...)
+        eng_trans = re.sub(u'\(▼.*?\)', u'', eng_trans)
+
         # strip whitespace
         eng_trans = eng_trans.strip()
 
