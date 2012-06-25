@@ -102,19 +102,24 @@ class ProgressiveDictionary(YahooDictionary):
         Replace the gaiji that occur in the string with actual characters.
         """
         # TODO: this is nowhere near complete
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE8.gif" align="absmiddle" border="0">', u'e')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFA.gif" align="absmiddle" border="0">', u'u')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFB.gif" align="absmiddle" border="0">', u'u')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFC.gif" align="absmiddle" border="0">', u'u')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFD.gif" align="absmiddle" border="0">', u'y')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFE.gif" align="absmiddle" border="0">', u'p')
+        def helper(string, gaiji_code, real_character):
+            return string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/%s.gif" align="absmiddle" border="0">' % gaiji_code, real_character)
 
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D32.gif" align="absmiddle" border="0">', u'a')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D5D.gif" align="absmiddle" border="0">', u'c')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif" align="absmiddle" border="0">', u'e')
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D92.gif" align="absmiddle" border="0">', u'e')
+        string = helper(string, u'AE8', u'e')
+        string = helper(string, u'AED', u'i')
+        string = helper(string, u'AEE', u'i')
+        string = helper(string, u'AFA', u'u')
+        string = helper(string, u'AFB', u'u')
+        string = helper(string, u'AFC', u'u')
+        string = helper(string, u'AFD', u'y')
+        string = helper(string, u'AFE', u'p')
 
-        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/_817C.gif" align="absmiddle" border="0">', u':')
+        string = helper(string, u'D32', u'a')
+        string = helper(string, u'D5D', u'c')
+        string = helper(string, u'D90', u'e')
+        string = helper(string, u'D92', u'e')
+
+        string = helper(string, u'_817C', u':')
 
         return string
 
