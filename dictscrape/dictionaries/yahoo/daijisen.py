@@ -71,9 +71,12 @@ class DaijisenDictionary(YahooDictionary):
         ex_sent = ExampleSentence("寄付を―する", "")
         return Definition([part1, part2], [ex_sent])
         """
+        # this is trying to catch things like 彫刻 where there is →彫塑
+        # at the end of the definition string.  Move this to before the 「」 parts.
+        def_string = re.sub(u'^(.*?。)(「.*?)→(.*?)$', ur'\1\3。\2', def_string)
+
         def_parts = self.split_def_parts(def_string)
         example_sentences = []
-
 
         # check to see if the last part of the definition contains
         # example sentences.  The second part of this comparison is trying to
@@ -87,82 +90,90 @@ class DaijisenDictionary(YahooDictionary):
 
         # append the extra example sentences
         for e in extra_example_sentences:
-            example_sentences.append(ExampleSentence(self.clean_def_string(e), u''))
+            example_sentences.append(ExampleSentence(e, u''))
 
         return Definition(def_parts, example_sentences)
 
-    def clean_def_string(self, def_string):
+    def create_definitions_from_html(self, html_definitions):
         """
-        Cleans a definition string.  It takes out <a> tags.
+        Returns a list of definition objects created from the list
+        of html_definitions.
         """
-        def_string = re.sub(u'<a.*?>', u'', def_string)
-        def_string = re.sub(u'</a>', u'', def_string)
+        definitions = []
+        for html_def in html_definitions:
+
+            splits = html_def.split(u'<br>')
+            html_def = splits[0]
+            html_def = html_def.strip()
+
+            # look for extra example sentences
+            extra = u'<br>'.join(splits[1:])
+            extra_example_sentences = []
+            extra_example_sentences_matches = re.findall(
+                        u'<table border="0" cellpadding="0" cellspacing="0"><tbody><tr valign="top"><td><img src="http://i.yimg.jp/images/clear.gif" height="1" width="25"></td><td valign="top"></td><td><small><font color="#008800"><b>(.*?)</b></font></small></td></tr></tbody></table>', extra)
+            for match in extra_example_sentences_matches:
+                extra_example_sentences.append(match)
+
+            df = self.create_def(html_def, extra_example_sentences=extra_example_sentences)
+            definitions.append(df)
+
+        return definitions
+
+    def split_definitions_html(self, html):
+        """
+        Splits the html for the definitions into different pieces for
+        each definition.  Returns a list of strings of html for each definition.
+        """
+        definitions = []
+
+        matches = re.search(u'<b>１</b>', html)
+        if matches:
+            splits = re.split(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b>', html)
+            # throw away the first split because it's useless information
+            splits = splits[1:]
+            definitions = splits
+        else:
+            definitions = [html]
+
+        return definitions
+
+    def preclean_html(self, html):
+        """
+        Cleans the html before it has been split or anything has been done to it.
+        This will take out leading <td>s, verb types, etc.
+        """
+        html = re.sub(u'^<td>\n?', u'', html)
+
+        # remove the verb conjugation markings
+        # this removes ［形動］, etc from the beginning of a definition
+        html = re.sub(u'^［(形動|名|動.*?)］', u'', html)
+        html = re.sub(u'^［文］', u'', html)
+        html = re.sub(u'^［ナリ］', u'', html)
+        html = re.sub(u'^\(スル\)', u'', html)
 
         # remove "arrows" groups
         # (this is the character that looks like two greater than signs
         # really close together)
-        def_string = re.sub(u'\u300A.*?\u300B', u'', def_string)
+        html = re.sub(u'\u300A.*?\u300B', u'', html)
 
-        # this removes ［形動］, etc from the beginning of a definition
-        def_string = re.sub(u'^［(形動|名)］', u'', def_string)
-        def_string = re.sub(u'^［文］', u'', def_string)
-        def_string = re.sub(u'^［ナリ］', u'', def_string)
-        def_string = re.sub(u'^\(スル\)', u'', def_string)
+        #html = re.sub(u'<br></td>.*$', u'', html)
 
-        return def_string
+        # remove links
+        html = re.sub(u'<a.*?>', u'', html)
+        html = re.sub(u'</a>', u'', html)
+
+        # remove any arrows (⇒) redirecting to other entries
+        html = html.replace(u'⇒', u'')
+
+        #result = result.replace(u'⇒', u'')
+        return html
 
     def parse_definition(self, tree):
         defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
-        jap_defs = []
-        matches = re.split(u'(<b>[１|２|３|４|５|６|７|８|９|０]+</b>.*?<br>)', result)
-        if matches and len(matches) > 1:
-            for i,m in enumerate(matches):
-                # check this match and see if it has a definition
-                def_match = re.search(
-                        u'<b>[１|２|３|４|５|６|７|８|９|０]+</b> (.*?)<br>', m)
-                # if there is no match, then we just continue the function
-                if not def_match:
-                    continue
-                definition = def_match.group(1)
+        html = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
 
-                # look for extra example sentences in the next match object
-                extra_example_sentences = []
-                if len(matches) > i+1:
-                    extra_example_sentences_matches = re.findall(
-                            u'<table border="0" cellpadding="0" cellspacing="0"><tbody><tr valign="top"><td><img src="http://i.yimg.jp/images/clear.gif" height="1" width="25"></td><td valign="top"></td><td><small><font color="#008800"><b>(.*?)</b></font></small></td></tr></tbody></table>', matches[i+1])
-                    for match in extra_example_sentences_matches:
-                        extra_example_sentences.append(match)
-                definition = self.clean_def_string(definition)
-                df = self.create_def(definition, extra_example_sentences)
-                jap_defs.append(df)
-        else:
-            result = re.sub(u'^<td>', u'', result)
-            result = re.sub(u'<br></td>.*$', u'', result)
+        html = self.preclean_html(html)
+        definitions_html = self.split_definitions_html(html)
+        definitions = self.create_definitions_from_html(definitions_html)
 
-            # remove "arrows" groups
-            # (this is the character that looks like two greater than signs
-            # really close together)
-            result = re.sub(u'\u300A.*?\u300B', u'', result)
-
-            # remove the verb conjugation markings
-            # for instance, we take out things like ［動カ五（四）］
-            result = re.sub(u'^\n［動.*?］', u'', result)
-
-            # remove any arrows (⇒) redirecting to other entries
-            result = result.replace(u'⇒', u'')
-
-            # look for extra example sentences
-            extra_example_sentences = []
-            extra_example_sentences_matches = re.findall(
-                        u'<table border="0" cellpadding="0" cellspacing="0"><tbody><tr valign="top"><td><img src="http://i.yimg.jp/images/clear.gif" height="1" width="25"></td><td valign="top"></td><td><small><font color="#008800"><b>(.*?)</b></font></small></td></tr></tbody></table>', result)
-            for match in extra_example_sentences_matches:
-                extra_example_sentences.append(match)
-
-            # remove the </br>s and everything after them
-            result = re.sub(u'<br>.*$', u'', result)
-            result = result.strip()
-            result = self.clean_def_string(result)
-            jap_defs.append(self.create_def(result, extra_example_sentences))
-
-        return jap_defs
+        return definitions

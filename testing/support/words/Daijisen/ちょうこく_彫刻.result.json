@@ -2,12 +2,21 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "大理石に―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "仏像―"
+                }
+            ], 
             "parts": [
                 "木・石・金属などに文字や絵・模様を彫り込むこと", 
                 "木・石・金属などを彫り刻んで立体的な像につくり上げること", 
                 "その作品", 
-                "「大理石に―する」「仏像―」→彫塑<small>(ちょうそ)</small>"
+                "彫塑<small>(ちょうそ)</small>"
             ]
         }
     ], 
