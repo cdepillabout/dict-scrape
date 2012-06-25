@@ -1,0 +1,122 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "古新聞をひもで―・る"
+                }
+            ], 
+            "parts": [
+                "ひもや縄などを掛けて、ばらばらの物を一つにまとめて縛る", 
+                "束ねる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "犯人を木に―・る"
+                }
+            ], 
+            "parts": [
+                "ある物に他の物を縛りつける", 
+                "ひっくくる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "話を―・る"
+                }
+            ], 
+            "parts": [
+                "物事にまとまりをつける", 
+                "締めくくる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "数式a＋bを括弧で―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "アイドルとひと言で―・るのは無理がある"
+                }
+            ], 
+            "parts": [
+                "一つにまとめる", 
+                "ひとまとまりにする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "首を―・る"
+                }
+            ], 
+            "parts": [
+                "（「縊る」とも書く）自分で首をつって命を断つ", 
+                "縊死<small>(いし)</small>する"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "ちょっとした傷とたかを―・る"
+                }
+            ], 
+            "parts": [
+                "（「たかをくくる」の形で）程度を予測する", 
+                "物事を軽くみる", 
+                "見くびる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "腹を―・って結果を待つ"
+                }
+            ], 
+            "parts": [
+                "（「腹をくくる」の形で）覚悟を決める", 
+                "決意を固める"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「ちはやぶる神代も聞かず竜田川からくれなゐに水―・るとは」〈古今・秋下〉"
+                }
+            ], 
+            "parts": [
+                "くくり染めにする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「耳へ入れば夜明けまで―・られる」〈浄・天の網島〉"
+                }
+            ], 
+            "parts": [
+                "自由を拘束する", 
+                "引き留める"
+            ]
+        }
+    ], 
+    "original_kana": "くくる", 
+    "original_kanji": "括る", 
+    "result_kana": "くく・る", 
+    "result_kanji": "括る", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E6%8B%AC%E3%82%8B%E3%80%80%E3%81%8F%E3%81%8F%E3%82%8B&enc=UTF-8&stype=1&dtype=0"
+}

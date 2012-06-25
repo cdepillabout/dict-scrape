@@ -1,0 +1,90 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "小包みをひもで―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "首を―・る"
+                }
+            ], 
+            "parts": [
+                "紐などを物の周りに巻いて締める"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "柱に―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "犯人を―・る"
+                }
+            ], 
+            "parts": [
+                "紐などで縛って動けないようにする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "古新聞を―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "髪を―・る"
+                }
+            ], 
+            "parts": [
+                "ばらばらになっているものを紐や縄で一まとめに縛る", 
+                "たばねる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "収支を―・る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "引用の部分をかぎ括弧で―・る"
+                }
+            ], 
+            "parts": [
+                "全体をひとつにまとめる"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "予想する", 
+                "はかる", 
+                "現代では多く「たかをくくる」の形で用いる"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "立田川から紅に水―・るとは〔出典： 古今（秋下）〕 "
+                }
+            ], 
+            "parts": [
+                "括り染めにする"
+            ]
+        }
+    ], 
+    "original_kana": "くくる", 
+    "original_kanji": "括る", 
+    "result_kana": "くく・る", 
+    "result_kanji": "括る", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E6%8B%AC%E3%82%8B%E3%80%80%E3%81%8F%E3%81%8F%E3%82%8B&enc=UTF-8&stype=1&dtype=0"
+}

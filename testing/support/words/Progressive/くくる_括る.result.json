@@ -1,0 +1,49 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The criminal was tied up [bound] hand and foot.", 
+                    "jap_sentence": "犯人は手足をくくられた"
+                }, 
+                {
+                    "eng_trans": "tie up old newspapers with string", 
+                    "jap_sentence": "古新聞をひもでくくる"
+                }
+            ], 
+            "parts": [
+                "tie up", 
+                "bind", 
+                "fasten"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "hang oneself (▼この意味のhangは規則変化)", 
+                    "jap_sentence": "首をくくる"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The parts of the sentence enclosed in parentheses can be omitted.", 
+                    "jap_sentence": "文中のかっこでくくってある部分は省略可能である"
+                }, 
+                {
+                    "eng_trans": "settle an account", 
+                    "jap_sentence": "収支をくくる"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "くくる", 
+    "original_kanji": "括る", 
+    "result_kana": "くくる", 
+    "result_kanji": "括る", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%8B%AC%E3%82%8B%E3%80%80%E3%81%8F%E3%81%8F%E3%82%8B&enc=UTF-8&stype=1&dtype=3"
+}
