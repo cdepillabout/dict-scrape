@@ -1,0 +1,35 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "ほりきざむこと"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "象牙に―する"
+                }
+            ], 
+            "parts": [
+                "石や木などをほりきざんだり、または粘土や蝋<small>(ろう)</small>などを肉付けしたりしてものの像を立体的にかたちづくる芸術", 
+                "彫像と塑像", 
+                "彫塑"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "板木に文字・絵をほること"
+            ]
+        }
+    ], 
+    "original_kana": "ちょうこく", 
+    "original_kanji": "彫刻", 
+    "result_kana": "ちょうこく［てう―］", 
+    "result_kanji": "彫刻", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E5%BD%AB%E5%88%BB%E3%80%80%E3%81%A1%E3%82%87%E3%81%86%E3%81%93%E3%81%8F&enc=UTF-8&stype=1&dtype=0"
+}

@@ -1,0 +1,70 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(a) bronze sculpture", 
+                    "jap_sentence": "ブロンズの彫刻"
+                }, 
+                {
+                    "eng_trans": "a carving in wood／a wooden sculpture", 
+                    "jap_sentence": "木の彫刻"
+                }, 
+                {
+                    "eng_trans": "He carved [sculpted／sculptured] a statue out of marble.", 
+                    "jap_sentence": "彼は大理石で像を彫刻した"
+                }, 
+                {
+                    "eng_trans": "He engraved the family crest on the tombstone.", 
+                    "jap_sentence": "墓石に家紋を彫刻した"
+                }, 
+                {
+                    "eng_trans": "He carved a statue of (the) Buddha in wood with a chisel.", 
+                    "jap_sentence": "のみで木の仏像を彫刻した"
+                }, 
+                {
+                    "eng_trans": "chiseled [clear-cut] features", 
+                    "jap_sentence": "彫刻のような顔立"
+                }, 
+                {
+                    "eng_trans": "a sculpturesque body", 
+                    "jap_sentence": "彫刻のように均整のとれた体"
+                }, 
+                {
+                    "eng_trans": "a sculptor; an engraver", 
+                    "jap_sentence": "彫刻家"
+                }, 
+                {
+                    "eng_trans": "the Sculptor's Tool; Caelum [s<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AED.gif\" align=\"absmiddle\" border=\"0\">:lem]", 
+                    "jap_sentence": "彫刻具座"
+                }, 
+                {
+                    "eng_trans": "the Sculptor; the Sculptor's Workshop", 
+                    "jap_sentence": "彫刻室座"
+                }, 
+                {
+                    "eng_trans": "a chisel", 
+                    "jap_sentence": "彫刻刀"
+                }
+            ], 
+            "parts": [
+                "sculpture", 
+                "engraving", 
+                "carving", 
+                "a sculpture", 
+                "a carving", 
+                "an engraving", 
+                "a relief", 
+                "sculpt", 
+                "engrave", 
+                "carve"
+            ]
+        }
+    ], 
+    "original_kana": "ちょうこく", 
+    "original_kanji": "彫刻", 
+    "result_kana": "ちょうこく", 
+    "result_kanji": "彫刻", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%BD%AB%E5%88%BB%E3%80%80%E3%81%A1%E3%82%87%E3%81%86%E3%81%93%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}
