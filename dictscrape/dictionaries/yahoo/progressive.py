@@ -78,6 +78,13 @@ class ProgressiveDictionary(YahooDictionary):
         if len(def_string) > 0 and def_string[-1] == u'.':
             def_string = def_string[:-1]
 
+        # replace gaiji characters
+        def_string = self.replace_gaiji(def_string)
+
+        # replace japanse ， with english ,
+        def_string = def_string.replace(u'，', u',')
+        def_string = def_string.replace(u'、', u',')
+
         # split up the definition parts, breaking on ';'
         def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
 
@@ -96,6 +103,12 @@ class ProgressiveDictionary(YahooDictionary):
         """
         # TODO: this is nowhere near complete
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE8.gif" align="absmiddle" border="0">', u'e')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFA.gif" align="absmiddle" border="0">', u'u')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFB.gif" align="absmiddle" border="0">', u'u')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFC.gif" align="absmiddle" border="0">', u'u')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFD.gif" align="absmiddle" border="0">', u'y')
+        string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AFE.gif" align="absmiddle" border="0">', u'p')
+
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D32.gif" align="absmiddle" border="0">', u'a')
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D5D.gif" align="absmiddle" border="0">', u'c')
         string = string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/D90.gif" align="absmiddle" border="0">', u'e')
