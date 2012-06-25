@@ -84,7 +84,77 @@ class DaijirinDictionary(YahooDictionary):
 
         return result
 
-    def clean_html(self, html_string):
+    def create_definitions_from_html(self, html_definitions):
+        """
+        Returns a list of definition objects created from the list
+        of html_definitions.
+        """
+        definitions = []
+
+        for html_def in html_definitions:
+            # find english definition
+            jap_def = u''
+
+            # remove leading <td>
+            html_def = re.sub(u'^<td>\n?', u'', html_def)
+            # remove leading </td>
+            html_def = re.sub(u'^</td>\n?', u'', html_def)
+            # remove leading <td>
+            html_def = re.sub(u'^<td>\n?', u'', html_def)
+
+            if re.match(u'^<b>〔専門〕</b> (心|物) ', html_def):
+                html_def = re.sub(u'^(<b>〔専門〕</b> )(心|物) ', ur'\1\2。', html_def)
+            else:
+                # remove <br> after 専門
+                html_def = re.sub(u'^(<b>〔専門〕</b> .*?)<br>', ur'\1。', html_def)
+
+            # remove <br> after 補説
+            html_def = re.sub(u'(<b>〔補説〕</b> .*?)<br>', ur'\1。', html_def)
+
+            match = re.search(u'^(.*?)(?=<br>)', html_def)
+            if match:
+                jap_def = match.group(1)
+
+            # find example sentences
+            example_sentence_strings = []
+            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', html_def)
+            if matches:
+                for m in matches:
+                    jap_example_sentence = m[0]
+                    eng_trans = m[1]
+                    example_sentence_strings.append([jap_example_sentence, eng_trans])
+
+            jap_def = self.clean_definition(jap_def)
+            def_parts = self.split_def_parts(jap_def)
+            example_sentences = self.parse_example_sentences(html_def)
+
+            definitions.append(Definition(def_parts, example_sentences))
+
+        return definitions
+
+    def split_definitions_html(self, html):
+        """
+        Splits the html for the definitions into different pieces for
+        each definition.  Returns a list of strings of html for each definition.
+        """
+        definitions = []
+        matches = re.search(u'<table><tr valign="top" align="left" num="3"><td><b>［1］</b>',
+                html)
+        if matches:
+            # split the page into pieces for each definition
+            definitions = re.split(u'(<table><tr valign="top" align="left" num="3"><td><b>.*?</b>)', html)
+
+            # throw away the first split
+            definitions = definitions[1:]
+
+            # throw away odd splits
+            definitions = [s for i, s in enumerate(definitions) if i % 2 == 1]
+        else:
+            definitions = [html]
+
+        return definitions
+
+    def preclean_html(self, html_string):
         """
         Clean up the big picture HTML. For example, this cleans things out from
         the beginning that we don't want.
@@ -109,63 +179,11 @@ class DaijirinDictionary(YahooDictionary):
         return html_string
 
     def parse_definition(self, tree):
-        jap_defs = []
+        defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        html = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
 
-        def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(def_elems, pretty_print=False, method="html",
-                encoding='unicode')
-
-        #print result
-
-        result = self.clean_html(result)
-
-        #print result
-        definitions = []
-        matches = re.search(u'<table><tr valign="top" align="left" num="3"><td><b>［1］</b>', result)
-        if matches:
-            # split the page into pieces for each definition
-            splits = re.split(u'(<table><tr valign="top" align="left" num="3"><td><b>.*?</b>)', result)
-
-            # throw away the first split
-            splits = splits[1:]
-
-            # throw away odd splits
-            splits = [s for i, s in enumerate(splits) if i % 2 == 1]
-        else:
-            splits = [result]
-
-        for splt in splits:
-            # find english definition
-            jap_def = u''
-
-            # remove leading <td>
-            splt = re.sub(u'^<td>\n?', u'', splt)
-            # remove leading </td>
-            splt = re.sub(u'^</td>\n?', u'', splt)
-            # remove leading <td>
-            splt = re.sub(u'^<td>\n?', u'', splt)
-
-            # remove 補説
-            splt = re.sub(u'^<b>〔補説〕</b> .*?<br>', u'', splt)
-
-            match = re.search(u'^(.*?)(?=<br>)', splt)
-            if match:
-                jap_def = match.group(1)
-
-            # find example sentences
-            example_sentence_strings = []
-            matches = re.findall(u'<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>', splt)
-            if matches:
-                for m in matches:
-                    jap_example_sentence = m[0]
-                    eng_trans = m[1]
-                    example_sentence_strings.append([jap_example_sentence, eng_trans])
-
-            jap_def = self.clean_definition(jap_def)
-            def_parts = self.split_def_parts(jap_def)
-            example_sentences = self.parse_example_sentences(splt)
-
-            definitions.append(Definition(def_parts, example_sentences))
-
+        html = self.preclean_html(html)
+        definitions_html = self.split_definitions_html(html)
+        definitions = self.create_definitions_from_html(definitions_html)
 
         return definitions
