@@ -1,0 +1,37 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "損害を―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―を要求する"
+                }
+            ], 
+            "parts": [
+                "損失などを埋め合わせること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "損害賠償として財産上の損失を金銭で補填<small>(ほてん)</small>すること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "<b>〔専門〕</b> 心"
+            ]
+        }
+    ], 
+    "original_kana": "ほしょう", 
+    "original_kanji": "補償", 
+    "result_kana": "ほしょう［―しやう］", 
+    "result_kanji": "補償", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E8%A3%9C%E5%84%9F%E3%80%80%E3%81%BB%E3%81%97%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}

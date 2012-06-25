@@ -1,0 +1,30 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(a) compensation;<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11bd.gif\" align=\"absbottom\" border=\"0\">法律<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11be.gif\" align=\"absbottom\" border=\"0\">damages.", 
+                    "jap_sentence": "補償金"
+                }, 
+                {
+                    "eng_trans": "claim $10,000 damages.", 
+                    "jap_sentence": "1万ドルの補償を請求する"
+                }, 
+                {
+                    "eng_trans": "The company compensated him for his injury.", 
+                    "jap_sentence": "会社は彼のけがに対して補償をした"
+                }
+            ], 
+            "parts": [
+                "compensation", 
+                "reparation"
+            ]
+        }
+    ], 
+    "original_kana": "ほしょう", 
+    "original_kanji": "補償", 
+    "result_kana": "ほしょう", 
+    "result_kanji": "補償", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E8%A3%9C%E5%84%9F%E3%80%80%E3%81%BB%E3%81%97%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

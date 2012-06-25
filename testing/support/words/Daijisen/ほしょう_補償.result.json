@@ -1,0 +1,37 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "労働災害を―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "公害―裁判"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―金"
+                }
+            ], 
+            "parts": [
+                "損失を補って、つぐなうこと", 
+                "特に、損害賠償として、財産や健康上の損失を金銭でつぐなうこと"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "心理学で、身体的・精神的な原因によって劣等感をもつとき、それを補おうとする心の働き", 
+                "アドラーの用語"
+            ]
+        }
+    ], 
+    "original_kana": "ほしょう", 
+    "original_kanji": "補償", 
+    "result_kana": "ほ‐しょう〔‐シヤウ〕", 
+    "result_kanji": "補償", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E8%A3%9C%E5%84%9F%E3%80%80%E3%81%BB%E3%81%97%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}

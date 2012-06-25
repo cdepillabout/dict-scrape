@@ -1,0 +1,36 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The state should compensate [make compensation to] the plaintiff for his court costs.", 
+                    "jap_sentence": "国は原告の訴訟費用を補償すべきである"
+                }, 
+                {
+                    "eng_trans": "He demanded compensation from the firm for the injury he received at work.", 
+                    "jap_sentence": "作業中のけがに対し，会社に補償を請求した"
+                }, 
+                {
+                    "eng_trans": "compensation", 
+                    "jap_sentence": "補償作用"
+                }, 
+                {
+                    "eng_trans": "⇒<a href=\"http://dic.yahoo.co.jp/dsearch/3/2na/04042400/\">見出し語</a>", 
+                    "jap_sentence": "補償金"
+                }
+            ], 
+            "parts": [
+                "compensation", 
+                "indemnification", 
+                "compensate", 
+                "indemnify"
+            ]
+        }
+    ], 
+    "original_kana": "ほしょう", 
+    "original_kanji": "補償", 
+    "result_kana": "ほしょう", 
+    "result_kanji": "補償", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E8%A3%9C%E5%84%9F%E3%80%80%E3%81%BB%E3%81%97%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}
