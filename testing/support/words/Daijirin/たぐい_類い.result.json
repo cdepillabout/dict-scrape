@@ -1,0 +1,67 @@
+{
+    "accent": "03", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "この―のものはたくさんある"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "リンゴやミカンの―の果物"
+                }
+            ], 
+            "parts": [
+                "性質の似たもの", 
+                "同じ種類のもの", 
+                "仲間", 
+                "るい"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―まれな逸品"
+                }
+            ], 
+            "parts": [
+                "同じ程度のもの", 
+                "匹敵するもの"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "山川に鴛鴦<small>(おし)</small>二つ居て―よくたぐへる妹を〔出典： 日本書紀（孝徳）〕 "
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―おはせぬだにさうざうしく思しつるに〔出典： 源氏（葵）〕 "
+                }
+            ], 
+            "parts": [
+                "一緒にいるもの"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "この事を知りて、もらし伝ふる―やあらむ〔出典： 源氏（薄雲）〕 "
+                }
+            ], 
+            "parts": [
+                "人々", 
+                "連中"
+            ]
+        }
+    ], 
+    "original_kana": "たぐい", 
+    "original_kanji": "類い", 
+    "result_kana": "たぐい［たぐひ］", 
+    "result_kanji": "類い・比い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E9%A1%9E%E3%81%84%E3%80%80%E3%81%9F%E3%81%90%E3%81%84&enc=UTF-8&stype=1&dtype=0"
+}

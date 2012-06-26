@@ -1,0 +1,74 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "市場にこの―の物が出まわる"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "小動物の―"
+                }
+            ], 
+            "parts": [
+                "同じ種類のもの", 
+                "同類"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―まれな才能"
+                }
+            ], 
+            "parts": [
+                "同じ程度のもの", 
+                "同等のもの"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「同じさまにものし給ふなるを、―になさせ給へ」〈源・若紫〉"
+                }
+            ], 
+            "parts": [
+                "一緒にいるもの", 
+                "仲間"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「―おはせぬをだに、さうざうしく思しつるに」〈源・葵〉"
+                }
+            ], 
+            "parts": [
+                "対になっているもの", 
+                "夫婦や兄弟・姉妹"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「必ずあるべき加階などをだにせずなどして、嘆く―いと多かり」〈源・賢木〉"
+                }
+            ], 
+            "parts": [
+                "何人かの人", 
+                "連中"
+            ]
+        }
+    ], 
+    "original_kana": "たぐい", 
+    "original_kanji": "類い", 
+    "result_kana": "たぐい〔たぐひ〕", 
+    "result_kanji": "類い／比い", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E9%A1%9E%E3%81%84%E3%80%80%E3%81%9F%E3%81%90%E3%81%84&enc=UTF-8&stype=1&dtype=0"
+}
