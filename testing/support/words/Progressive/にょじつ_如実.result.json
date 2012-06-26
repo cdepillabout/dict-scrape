@@ -1,0 +1,26 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "It describes their mode of life vividly [realistically].", 
+                    "jap_sentence": "それは彼らの生態を如実に描き出している"
+                }, 
+                {
+                    "eng_trans": "The picture gives a vivid portrayal of the terrible damage.", 
+                    "jap_sentence": "その写真は被害のひどさを如実に物語っている"
+                }
+            ], 
+            "parts": [
+                "vividly", 
+                "realistically"
+            ]
+        }
+    ], 
+    "original_kana": "にょじつ", 
+    "original_kanji": "如実", 
+    "result_kana": "にょじつ", 
+    "result_kanji": "如実", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%A6%82%E5%AE%9F%E3%80%80%E3%81%AB%E3%82%87%E3%81%98%E3%81%A4&enc=UTF-8&stype=1&dtype=3"
+}
