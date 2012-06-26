@@ -111,17 +111,16 @@ class DaijirinDictionary(YahooDictionary):
             # remove <br> after 補説
             html_def = re.sub(u'(<b>〔補説〕</b> .*?)<br>', ur'\1。', html_def)
 
-            # If there are （ア）and （イ）sub definitions, replace them.
-            # This is slightly more complicated than normal because we need to get the
-            # <br> at the end of the last replacement.  This is used in the next
-            # re.search() for finding the end of the definition.
-            while re.search(u'(?:<br>)?<table><tr valign="top" align="left" num="3"><td><b>（(?:ア|イ|ウ|エ|オ)）</b></td><td>(.*?)<br></td></tr></table>', html_def):
-                html_def = re.sub(u'(?:<br>)?<table><tr valign="top" align="left" num="3"><td><b>（(?:ア|イ|ウ|エ|オ)）</b></td><td>(.*?)<br></td></tr></table>', ur'\1<br>', html_def, count=1)
-
-            match = re.search(u'^(.*?)(?=<br>)', html_def)
+            # find the main definition.
+            match = re.search(u'^(.*?)(?=(<br>|<table>))', html_def)
             if match:
-                jap_def = match.group(1)
+                jap_def = match.group(1) + jap_def
 
+            # If there are （ア）and （イ）sub definitions, add them to the main
+            # definition.
+            matches = re.findall(u'(?:<br>)?<table><tr valign="top" align="left" num="3"><td><b>（(?:ア|イ|ウ|エ|オ)）</b></td><td>(.*?)<br>', html_def)
+            for m in matches:
+                jap_def = jap_def + m
 
             # find example sentences
             example_sentence_strings = []
