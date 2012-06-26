@@ -1,0 +1,37 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the pleasures of life", 
+                    "jap_sentence": "人生の快楽"
+                }, 
+                {
+                    "eng_trans": "seek pleasure", 
+                    "jap_sentence": "快楽を求める"
+                }, 
+                {
+                    "eng_trans": "give oneself up to pleasure", 
+                    "jap_sentence": "快楽にふける"
+                }, 
+                {
+                    "eng_trans": "epicureanism; hedonism", 
+                    "jap_sentence": "快楽主義"
+                }, 
+                {
+                    "eng_trans": "an epicurean; a hedonist", 
+                    "jap_sentence": "快楽主義者"
+                }
+            ], 
+            "parts": [
+                "pleasure"
+            ]
+        }
+    ], 
+    "original_kana": "かいらく", 
+    "original_kanji": "快楽", 
+    "result_kana": "かいらく", 
+    "result_kanji": "快楽", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%BF%AB%E6%A5%BD%E3%80%80%E3%81%8B%E3%81%84%E3%82%89%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}
