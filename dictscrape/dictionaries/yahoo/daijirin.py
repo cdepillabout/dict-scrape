@@ -111,9 +111,17 @@ class DaijirinDictionary(YahooDictionary):
             # remove <br> after 補説
             html_def = re.sub(u'(<b>〔補説〕</b> .*?)<br>', ur'\1。', html_def)
 
+            # If there are （ア）and （イ）sub definitions, replace them.
+            # This is slightly more complicated than normal because we need to get the
+            # <br> at the end of the last replacement.  This is used in the next
+            # re.search() for finding the end of the definition.
+            while re.search(u'(?:<br>)?<table><tr valign="top" align="left" num="3"><td><b>（(?:ア|イ|ウ|エ|オ)）</b></td><td>(.*?)<br></td></tr></table>', html_def):
+                html_def = re.sub(u'(?:<br>)?<table><tr valign="top" align="left" num="3"><td><b>（(?:ア|イ|ウ|エ|オ)）</b></td><td>(.*?)<br></td></tr></table>', ur'\1<br>', html_def, count=1)
+
             match = re.search(u'^(.*?)(?=<br>)', html_def)
             if match:
                 jap_def = match.group(1)
+
 
             # find example sentences
             example_sentence_strings = []
@@ -142,13 +150,10 @@ class DaijirinDictionary(YahooDictionary):
                 html)
         if matches:
             # split the page into pieces for each definition
-            definitions = re.split(u'(<table><tr valign="top" align="left" num="3"><td><b>.*?</b>)', html)
+            definitions = re.split(u'<table><tr valign="top" align="left" num="3"><td><b>［(?:1|2|3|4|5|6|7|8|9|0)+］</b>', html)
 
             # throw away the first split
             definitions = definitions[1:]
-
-            # throw away odd splits
-            definitions = [s for i, s in enumerate(definitions) if i % 2 == 1]
         else:
             definitions = [html]
 
