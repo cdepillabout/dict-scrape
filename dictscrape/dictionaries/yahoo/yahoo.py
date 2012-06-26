@@ -27,9 +27,9 @@ class YahooDictionary(Dictionary):
 
         result_accent = ""
         if children:
-            for c in children:
+            for i, c in enumerate(children):
                 if c.tag == 'sub':
-                    result_accent = heading.getchildren()[0].text
+                    result_accent += heading.getchildren()[i].text
 
         result = heading.xpath("text()")
         result = "".join(result)
