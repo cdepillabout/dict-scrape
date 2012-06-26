@@ -89,63 +89,161 @@ class NewCenturyDictionary(YahooDictionary):
         def helper(string, gaiji_code, real_character):
             return string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/%s.gif" align="absbottom" border="0">' % gaiji_code, real_character)
 
-        string = helper(string, u'g111a', u'〈')
-        string = helper(string, u'g111b', u'〉')
-        string = helper(string, u'g111c', u'⁝')
-        string = helper(string, u'g111d', u'＊')
-        string = helper(string, u'g111e', u'（同）')
-        string = helper(string, u'g111f', u'Æ')
+        chars = [
+                    (u'g111a', u'〈'),
+                    (u'g111b', u'〉'),
+                    (u'g111c', u'⁝'),
+                    (u'g111d', u'＊'),
+                    (u'g111e', u'（同）'),
+                    (u'g111f', u'Æ'),
+                    (u'g1138', u'[形]'),
+                    (u'g1139', u'[助]'),
+                    (u'g113b', u'[接]'),
+                    (u'g113e', u'[前]'),
+                    (u'g113f', u'[代]'),
+                    (u'g1142', u'[動]'),
+                    (u'g1144', u'[副]'),
+                    (u'g1145', u'[名]'),
+                    (u'g1147', u'⇔'),
+                    (u'g11f7', u'a'),
+                    (u'g11f8', u'a'),
+                    (u'g11f9', u'a'),
+                    (u'g11bd', u'〔'),
+                    (u'g11be', u'〕'),
+                    (u'g1202', u'c'),
+                    (u'g1203', u'c'),
+                    (u'g1204', u'c'),
+                    (u'g1205', u'd'),
+                    (u'g1206', u'e'),
+                    (u'g1207', u'e'),
+                    (u'g1208', u'e'),
+                    (u'g1209', u'e'),
+                    (u'g120a', u'e'),
+                    (u'g120b', u'e'),
+                    (u'g120c', u'e'),
+                    (u'g120d', u'e'),
+                    (u'g120e', u'f'),
+                    (u'g120f', u'g'),
+                    (u'g1210', u'g'),
+                    (u'g1211', u'g'),
+                    (u'g1212', u'h'),
+                    (u'g1213', u'h'),
+                    (u'g1214', u'h'),
+                    (u'g1215', u'i'),
+                    (u'g1216', u'i'),
+                    (u'g1217', u'i'),
+                    (u'g1218', u'i'),
+                    (u'g1219', u'i'),
+                    (u'g121a', u'j'),
+                    (u'g121b', u'm'),
+                    (u'g121c', u'm'),
+                    (u'g121d', u'n'),
+                    (u'g121e', u'n'),
+                    (u'g121f', u'n'),
+                    (u'g1220', u'o'),
+                    (u'g1221', u'o'),
+                    (u'g1222', u'o'),
+                    (u'g1223', u'o'),
+                    (u'g1224', u'o'),
+                    (u'g1225', u'p'),
+                    (u'g1226', u'P'),
+                    (u'g1227', u'q'),
+                    (u'g1228', u'r'),
+                    (u'g1229', u'r'),
+                    (u'g122a', u'r'),
+                    (u'g122b', u'r'),
+                    (u'g122c', u's'),
+                    (u'g122d', u's'),
+                    (u'g122e', u't'),
+                    (u'g122f', u'u'),
+                    (u'g1230', u'u'),
+                    (u'g1231', u'u'),
+                    (u'g1232', u'u'),
+                    (u'g1233', u'U'),
+                    (u'g1234', u'w'),
+                    (u'g1235', u'w'),
+                    (u'g1236', u'x'),
+                    (u'g1237', u'y'),
+                    (u'g1238', u'y'),
+                    (u'g1239', u'y'),
+                    (u'g1253', u'A'),
+                    (u'g1254', u'A'),
+                    (u'g1255', u'B'),
+                    (u'g1256', u'B'),
+                    (u'g1257', u'C'),
+                    (u'g1258', u'C'),
+                    (u'g1259', u'D'),
+                    (u'g125a', u'D'),
+                    (u'g125b', u'E'),
+                    (u'g125c', u'E'),
+                    (u'g125d', u'F'),
+                    (u'g125e', u'F'),
+                    (u'g125f', u'G'),
+                    (u'g1260', u'G'),
+                    (u'g1261', u'H'),
+                    (u'g1262', u'H'),
+                    (u'g1263', u'I'),
+                    (u'g1264', u'I'),
+                    (u'g1265', u'I'),
+                    (u'g1266', u'I'),
+                    (u'g1267', u'L'),
+                    (u'g1268', u'L'),
+                    (u'g1269', u'M'),
+                    (u'g126a', u'N'),
+                    (u'g126b', u'N'),
+                    (u'g126c', u'O'),
+                    (u'g126d', u'O'),
+                    (u'g126e', u'O'),
+                    (u'g126f', u'O'),
+                    (u'g1270', u'O'),
+                    (u'g1271', u'P'),
+                    (u'g1272', u'Q'),
+                    (u'g1273', u'S'),
+                    (u'g1274', u'S'),
+                    (u'g1275', u'T'),
+                    (u'g1276', u'T'),
+                    (u'g1277', u'U'),
+                    (u'g1278', u'U'),
+                    (u'g1279', u'U'),
+                    (u'g127a', u'V'),
+                    (u'g127b', u'W'),
+                    (u'g127c', u'X'),
+                    (u'g127d', u'Y'),
+                    (u'g127e', u'Z'),
+                    (u'g127f', u'C'),
+                    (u'g1280', u'L'),
+                    (u'g1281', u'M'),
+                    (u'g1282', u'V'),
+                    (u'g1283', u'X'),
+                    (u'g1293', u'e'),
+                    (u'g1294', u'c'),
+                    (u'g1295', u'A'),
+                    (u'g1296', u'e'),
+                    (u'g1297', u'G'),
+                    (u'g1298', u'0'),
+                    (u'g1299', u'o'),
+                    (u'g129a', u'3'),
+                    (u'g129b', u'e'),
+                    (u'g129c', u'f'),
+                    (u'g129d', u'n'),
+                    (u'g129e', u'ae'),
+                    (u'g129f', u'ae'),
+                    (u'g12a0', u'c'),
+                    (u'g12a1', u'c'),
+                    (u'g12a2', u'A'),
+                    (u'g12a3', u'e'),
+                    (u'g12a4', u'e'),
+                    (u'g12a5', u'e'),
+                    (u'g12a6', u'e'),
+                    (u'g12a7', u'ae'),
+                    (u'g12cf', u':'),
+                ]
 
-        string = helper(string, u'g1147', u'⇔')
+        for gaiji_code, real_char in chars:
+            string = helper(string, gaiji_code, real_char)
 
-        string = helper(string, u'g11f7', u'a')
-        string = helper(string, u'g11f8', u'a')
-        string = helper(string, u'g11f9', u'a')
+        string = re.sub(u'(<img src="http://i.yimg.jp/images/dic/ss/gnc/([0-9a-z]+).gif" align="absbottom" border="0">)', ur'＜\1:\2＞', string)
 
-        string = helper(string, u'g11bd', u'〔')
-        string = helper(string, u'g11be', u'〕')
-
-        string = helper(string, u'g1202', u'c')
-        string = helper(string, u'g1203', u'c')
-        string = helper(string, u'g1204', u'c')
-        string = helper(string, u'g1205', u'd')
-        string = helper(string, u'g1206', u'e')
-        string = helper(string, u'g1207', u'e')
-        string = helper(string, u'g1208', u'e')
-        string = helper(string, u'g1209', u'e')
-        string = helper(string, u'g1210', u'g')
-        string = helper(string, u'g1211', u'g')
-        string = helper(string, u'g1212', u'h')
-        string = helper(string, u'g1213', u'h')
-        string = helper(string, u'g1214', u'h')
-        string = helper(string, u'g1215', u'i')
-        string = helper(string, u'g1216', u'i')
-        string = helper(string, u'g1217', u'i')
-        string = helper(string, u'g1218', u'i')
-        string = helper(string, u'g1219', u'i')
-        string = helper(string, u'g1220', u'o')
-        string = helper(string, u'g1221', u'o')
-        string = helper(string, u'g1222', u'o')
-        string = helper(string, u'g1223', u'o')
-        string = helper(string, u'g1224', u'o')
-        string = helper(string, u'g1225', u'p')
-        string = helper(string, u'g1226', u'P')
-        string = helper(string, u'g1227', u'q')
-        string = helper(string, u'g1228', u'r')
-        string = helper(string, u'g1229', u'r')
-        string = helper(string, u'g1230', u'u')
-        string = helper(string, u'g1231', u'u')
-        string = helper(string, u'g1232', u'u')
-        string = helper(string, u'g1233', u'U')
-        string = helper(string, u'g1234', u'w')
-        string = helper(string, u'g1235', u'w')
-        string = helper(string, u'g1236', u'x')
-        string = helper(string, u'g1237', u'y')
-        string = helper(string, u'g1238', u'y')
-        string = helper(string, u'g1238', u'y')
-
-
-        string = helper(string, u'g129b', u'e')
         return string
 
     def create_example_sentences(self, example_sentence_strings):
@@ -275,7 +373,7 @@ class NewCenturyDictionary(YahooDictionary):
             english_def = u''
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
-            match = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!<img src=".*?\.gif" align="absbottom" border="0">)(.*?)</td></tr></table>', splt)
+            match = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!\[(?:名|副|動|形|助|前|代|接)\])(.*?)</td></tr></table>', splt)
             if match:
                 english_def = match.group(1)
 
