@@ -60,8 +60,8 @@ class YahooDictionary(Dictionary):
         Replace gaiji in html.
         """
         def helper(string, gaiji_code, real_character):
-            return string.replace(u'<img src="%s%s.gif" align="absbottom" border="0">' %
-                    (self.gaiji_url, gaiji_code), real_character)
+            return re.sub(u'<img src="%s%s.gif" align="abs(bottom|middle)" border="0">' %
+                    (self.gaiji_url, gaiji_code), real_character, string)
 
         # replace all gaiji characters that have been specified
         for gaiji_code, real_char in self.gaiji:
@@ -69,8 +69,8 @@ class YahooDictionary(Dictionary):
 
         # replace all non-specified characters with something that is
         # easy to see and replace by hand
-        html = re.sub(u'(<img src="%s([0-9a-z]+).gif" align="absbottom" border="0">)' %
-                re.escape(self.gaiji_url), ur'＜\1:\2＞', html)
+        html = re.sub(u'(<img src="%s([0-9a-z]+).gif" align="abs(?:bottom|middle)" border="0">)'
+                % re.escape(self.gaiji_url), ur'＜\1:\2＞', html)
 
         return html
 

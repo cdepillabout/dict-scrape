@@ -106,6 +106,11 @@ class DaijisenDictionary(YahooDictionary):
             html_def = splits[0]
             html_def = html_def.strip()
 
+            # look for extra definitions
+            for s in splits:
+                if re.match(u'^(①|②|③|④|⑤|⑥|⑦|⑧|⑨|⑩|⑪|⑫|⑬|⑭|⑮|⑯|⑰|⑱|⑲|⑳)', s):
+                    html_def += s[1:]
+
             # look for extra example sentences
             extra = u'<br>'.join(splits[1:])
             extra_example_sentences = []
@@ -137,6 +142,35 @@ class DaijisenDictionary(YahooDictionary):
 
         return definitions
 
+    @property
+    def gaiji(self):
+        return [
+                    (u'01676', u'①'),
+                    (u'01678', u'②'),
+                    #(u'', u'③'),
+                    #(u'', u'④'),
+                    #(u'', u'⑤'),
+                    #(u'', u'⑥'),
+                    #(u'', u'⑦'),
+                    #(u'', u'⑧'),
+                    #(u'', u'⑨'),
+                    #(u'', u'⑩'),
+                    #(u'', u'⑪'),
+                    #(u'', u'⑫'),
+                    #(u'', u'⑬'),
+                    #(u'', u'⑭'),
+                    #(u'', u'⑮'),
+                    #(u'', u'⑯'),
+                    #(u'', u'⑰'),
+                    #(u'', u'⑱'),
+                    #(u'', u'⑲'),
+                    #(u'', u'⑳'),
+               ]
+
+    @property
+    def gaiji_url(self):
+        return "http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/"
+
     def preclean_html(self, html):
         """
         Cleans the html before it has been split or anything has been done to it.
@@ -165,7 +199,8 @@ class DaijisenDictionary(YahooDictionary):
         # remove any arrows (⇒) redirecting to other entries
         html = html.replace(u'⇒', u'')
 
-        #result = result.replace(u'⇒', u'')
+        html = self.replace_gaiji(html)
+
         return html
 
     def parse_definition(self, tree):
