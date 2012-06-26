@@ -82,14 +82,9 @@ class NewCenturyDictionary(YahooDictionary):
         def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
         return def_parts
 
-    def replace_gaiji(self, string):
-        """
-        Replace the gaiji that occur in the string with actual characters.
-        """
-        def helper(string, gaiji_code, real_character):
-            return string.replace(u'<img src="http://i.yimg.jp/images/dic/ss/gnc/%s.gif" align="absbottom" border="0">' % gaiji_code, real_character)
-
-        chars = [
+    @property
+    def gaiji(self):
+        return [
                     (u'g111a', u'〈'),
                     (u'g111b', u'〉'),
                     (u'g111c', u'⁝'),
@@ -239,12 +234,9 @@ class NewCenturyDictionary(YahooDictionary):
                     (u'g12cf', u':'),
                 ]
 
-        for gaiji_code, real_char in chars:
-            string = helper(string, gaiji_code, real_char)
-
-        string = re.sub(u'(<img src="http://i.yimg.jp/images/dic/ss/gnc/([0-9a-z]+).gif" align="absbottom" border="0">)', ur'＜\1:\2＞', string)
-
-        return string
+    @property
+    def gaiji_url(self):
+        return u'http://i.yimg.jp/images/dic/ss/gnc/'
 
     def create_example_sentences(self, example_sentence_strings):
         """

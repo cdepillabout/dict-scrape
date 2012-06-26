@@ -53,3 +53,38 @@ class YahooDictionary(Dictionary):
             result_word = m.group(1)
 
         return result_word, result_kana, result_accent
+
+
+    def replace_gaiji(self, html):
+        """
+        Replace gaiji in html.
+        """
+        def helper(string, gaiji_code, real_character):
+            return string.replace(u'<img src="%s%s.gif" align="absbottom" border="0">' %
+                    (self.gaiji_url, gaiji_code), real_character)
+
+        # replace all gaiji characters that have been specified
+        for gaiji_code, real_char in self.gaiji:
+            html = helper(html, gaiji_code, real_char)
+
+        # replace all non-specified characters with something that is
+        # easy to see and replace by hand
+        html = re.sub(u'(<img src="%s([0-9a-z]+).gif" align="absbottom" border="0">)' %
+                re.escape(self.gaiji_url), ur'＜\1:\2＞', html)
+
+        return html
+
+    @property
+    def gaiji(self):
+        """
+        Return the gaiji for this dictionary.
+        """
+        raise NotImplementedError, "This needs to be overrode in a child class."
+
+    @property
+    def gaiji_url(self):
+        """
+        Return the gaiji base URL for this dictionary.
+        """
+        raise NotImplementedError, "This needs to be overrode in a child class."
+
