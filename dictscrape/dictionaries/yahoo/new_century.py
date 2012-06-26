@@ -197,27 +197,38 @@ class NewCenturyDictionary(YahooDictionary):
             # There are often hints to japanese users that suggest words not to use
             # This looks like [show, × teach].
             # We want to take out the × items, but leave in the correct items.
-            matches = re.findall(u'\[(.*?)\]', eng_trans)
-            for m in matches:
-                words = m.split(',')
-                new_words = []
-                for w in words:
-                    w = w.strip()
-                    a = w[0] != u'×'
-                    if w[0] != u'×':
-                        new_words.append(w)
-                new_suggest = u''
-                for w in new_words:
-                    new_suggest += u'%s, ' % w
-                if len(new_suggest) > 2 and new_suggest[-2:] == ', ':
-                    new_suggest = new_suggest[:-2]
+            def remove_x_in_parens(eng_trans, opening_char, closing_char):
+                escaped_opening_char = re.escape(opening_char)
+                escaped_closing_char = re.escape(closing_char)
 
-                eng_trans = re.sub(u'\[%s\]' % re.escape(m),
-                        u'[%s]' % new_suggest, eng_trans)
+                matches = re.findall(u'%s(.*?)%s' %
+                        (escaped_opening_char, escaped_closing_char), eng_trans)
+                for m in matches:
+                    words = m.split(',')
+                    new_words = []
+                    for w in words:
+                        w = w.strip()
+                        if w[0] != u'×':
+                            new_words.append(w)
+                    new_suggest = u''
+                    for w in new_words:
+                        new_suggest += u'%s, ' % w
+                    if len(new_suggest) > 2 and new_suggest[-2:] == ', ':
+                        new_suggest = new_suggest[:-2]
 
-            # after the previous replacement, we have to make sure there are
-            # no [] groups left
-            eng_trans = re.sub(u'(\s*)\[\]', u'', eng_trans)
+                    eng_trans = re.sub(u'%s%s%s' %
+                            (escaped_opening_char, re.escape(m), escaped_closing_char),
+                            u'%s%s%s' % (opening_char, new_suggest, closing_char), eng_trans)
+
+                # after the previous replacement, we have to make sure there are
+                # no [] groups left
+                eng_trans = re.sub(u'(\s*)%s%s' % (escaped_opening_char, escaped_closing_char),
+                        u'', eng_trans)
+
+                return eng_trans
+
+            eng_trans = remove_x_in_parens(eng_trans, '[', ']')
+            eng_trans = remove_x_in_parens(eng_trans, '(', ')')
 
             # There are occasionally suggestions for opposites.
             # For example, "(⇔came up to)".  Take these out.
