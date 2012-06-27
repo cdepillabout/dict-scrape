@@ -158,64 +158,39 @@ class ProgressiveDictionary(YahooDictionary):
 
         return eng_trans
 
-    def parse_definition(self, tree):
-        # TODO: For now, we ignore words like "強迫観念" that come up when
-        # looking up "強迫".
-
-        defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
-
+    def create_definitions_from_html(self, html_definitions):
+        """
+        Returns a list of definition objects created from the list
+        of html_definitions.
+        """
         definitions = []
 
-        multiple_defs = True
-
-        # do we have multiple definitions?
-        matches = re.search(u'^<td>\n(<b>I</b><br><br>)?<b>1</b> 〔', result)
-        if matches:
-            # split the page into pieces for each definition
-            splits = re.split(u'(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', result)
-            # make sure we have an odd number of splits
-            assert(len(splits) % 2 == 1)
-            # throw away the first split because it's useless information
-            splits = splits[1:]
-            # combine the following splits
-            # This is stupidly complicated.  Basically we have a list like
-            # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
-            # to make a list like ["abcd", "efgh", "hijk"]
-            splits = [u'%s%s' % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
-        else:
-            splits = [result]
-            multiple_defs = False
-
-        for splt in splits:
+        for html_def in html_definitions:
             # find english definition
             english_def = u''
+
+            # remove leading <td>
+            html_def = re.sub(u'^<td>(\n)?', u'', html_def)
+
+            # remove leading bold number
+            html_def = re.sub(u'^<b>[1|2|3|4|5|6|7|8|9|0]+</b> ?', u'', html_def)
+
+            # remove leading japanese word
+            html_def = re.sub(u'^〔.*?〕', u'', html_def)
+
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
-            if multiple_defs == True:
-                match = re.search(u'<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔(.*?)<br><br>', splt)
-                if match:
-                    english_def = u'〔%s' % match.group(1)
-            else:
-                #match = re.search(u'^<td>\n(.*?)<br>(<br>◇.*?｜(.*?)<br><br>)?', splt)
-                #if match:
-                #    if not match.group(1).startswith(u'[例文]'):
-                #        english_def =  match.group(1)
-                #        if match.group(3):
-                #            english_def = "%s; %s" % (english_def, match.group(3))
-
-                match = re.search(u'^<td>\n(.*?)<br>', splt)
-                if match:
-                    # don't match this if will be caught below
-                    if not match.group(1).startswith(u'◇'):
-                        # don't match this if there is no definition and just
-                        # example sentences
-                        if not match.group(1).startswith(u'[例文]'):
-                            english_def =  match.group(1)
+            match = re.search(u'^(.*?)<br>', html_def)
+            if match:
+                match_text = match.group(1)
+                if not match_text.startswith(u'◇'):
+                    if not match_text.startswith(u'[例文]'):
+                        if not re.search(u'^<b>.*?</b>｜(.*?)(<br>|$)', match_text):
+                            english_def = match_text
 
             # look for additional verb definitions and add them to our main
             # definnition
-            match = re.search(u'(?:<br>)?◇.*?｜(.*?)<br><br>', splt)
+            match = re.search(u'(?:<br>)?◇.*?｜(.*?)<br><br>', html_def)
             if match:
                 if english_def:
                     english_def = "%s; %s" % (english_def, match.group(1))
@@ -227,27 +202,71 @@ class ProgressiveDictionary(YahooDictionary):
 
             # take out bolded words if they are not part of an example sentence
             # or if they are not followed by a ｜ character
-            splt = re.sub(ur'(?<=<br>)<b>.*?</b>(?!(</font>)|｜)', u'', splt)
+            html_def = re.sub(ur'(?<=<br>)<b>.*?</b>(?!(</font>)|｜)', u'', html_def)
 
             # match either real example sentences or those other bold words
             # like "強迫観念" that come up when looking up "強迫".
-            matches = re.findall(u'(?:<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|(?:<br><b>(.*?)</b>｜(.*?)<br>)', splt)
+            matches = re.findall(u'(<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|((?:<br>)?<b>(.*?)</b>｜(.*?)<br>)', html_def)
             if matches:
                 for m in matches:
-                    assert(len(m) == 4)
-                    if m[0]:
-                        assert(not m[2] and not m[3])
-                        jap_sent = m[0]
-                        eng_sent = self.clean_eng_example_sent(m[1])
+                    assert(len(m) == 6)
+                    if m[1]:
+                        assert(not m[4] and not m[5])
+                        jap_sent = m[1]
+                        eng_sent = self.clean_eng_example_sent(m[2])
                     else:
-                        assert(not m[0] and not m[1])
-                        jap_sent = m[2]
-                        eng_sent = self.clean_eng_example_sent(m[3])
+                        assert(not m[1] and not m[2])
+                        jap_sent = m[4]
+                        eng_sent = self.clean_eng_example_sent(m[5])
 
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
             def_parts = self.clean_def_string(english_def)
 
             definitions.append(Definition(def_parts, example_sentences))
+
+        return definitions
+
+    def split_definitions_html(self, html):
+        """
+        Splits the html for the definitions into different pieces for
+        each definition.  Returns a list of strings of html for each definition.
+        """
+        html_definitions = []
+
+        # do we have multiple definitions?
+        matches = re.search(u'^<td>\n(<b>I</b><br><br>)?<b>1</b> 〔', html)
+        if matches:
+            # split the page into pieces for each definition
+            html_definitions = re.split(u'(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', html)
+            # make sure we have an odd number of splits
+            assert(len(html_definitions) % 2 == 1)
+            # throw away the first split because it's useless information
+            html_definitions = html_definitions[1:]
+            # combine the following html_definitions
+            # This is stupidly complicated.  Basically we have a list like
+            # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
+            # to make a list like ["abcd", "efgh", "hijk"]
+            html_definitions = [u'%s%s' % (html_definitions[i], html_definitions[i+1])
+                    for i in range(0, len(html_definitions), 2)]
+        else:
+            html_definitions = [html]
+
+        return html_definitions
+
+    def preclean_html(self, html_string):
+        """
+        Clean up the big picture HTML. For example, this cleans things out from
+        the beginning that we don't want.
+        """
+        return html_string
+
+    def parse_definition(self, tree):
+        defs = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        html = etree.tostring(defs, pretty_print=False, method="html", encoding='unicode')
+
+        html = self.preclean_html(html)
+        html_definitions = self.split_definitions_html(html)
+        definitions = self.create_definitions_from_html(html_definitions)
 
         return definitions

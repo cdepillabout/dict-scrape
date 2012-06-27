@@ -2,11 +2,13 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
-            "parts": [
-                "<b>首唱者</b>｜the first person to advocate", 
-                "the earliest advocate"
-            ]
+            "example_sentences": [
+                {
+                    "eng_trans": "the first person to advocate ((pacifism)); the earliest advocate ((of pacifism))", 
+                    "jap_sentence": "首唱者"
+                }
+            ], 
+            "parts": []
         }
     ], 
     "original_kana": "しゅしょう", 
