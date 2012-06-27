@@ -206,12 +206,16 @@ class ProgressiveDictionary(YahooDictionary):
 
                 match = re.search(u'^<td>\n(.*?)<br>', splt)
                 if match:
-                    if not match.group(1).startswith(u'[例文]'):
-                        english_def =  match.group(1)
+                    # don't match this if will be caught below
+                    if not match.group(1).startswith(u'◇'):
+                        # don't match this if there is no definition and just
+                        # example sentences
+                        if not match.group(1).startswith(u'[例文]'):
+                            english_def =  match.group(1)
 
             # look for additional verb definitions and add them to our main
             # definnition
-            match = re.search(u'<br>◇.*?｜(.*?)<br><br>', splt)
+            match = re.search(u'(?:<br>)?◇.*?｜(.*?)<br><br>', splt)
             if match:
                 if english_def:
                     english_def = "%s; %s" % (english_def, match.group(1))

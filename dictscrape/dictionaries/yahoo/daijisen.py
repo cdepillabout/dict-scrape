@@ -180,7 +180,7 @@ class DaijisenDictionary(YahooDictionary):
 
         # remove the verb conjugation markings
         # this removes ［形動］, etc from the beginning of a definition
-        html = re.sub(u'^［(形動|名|動.*?)］', u'', html)
+        html = re.sub(u'^［(形動|名|動.*?|名・形動)］', u'', html)
         html = re.sub(u'^［文］', u'', html)
         html = re.sub(u'^［ナリ］', u'', html)
         html = re.sub(u'^\(スル\)', u'', html)
