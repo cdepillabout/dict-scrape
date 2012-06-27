@@ -279,7 +279,8 @@ class NewCenturyDictionary(YahooDictionary):
                 eng_trans = re.sub(u'（※.*$', u'', eng_trans)
 
             # Take out things like 〈やや書〉, 〈米話〉, and 〈米〉.
-            eng_trans = re.sub(u'〈(やや書|米話|米|ことわざ|話|軽蔑的|集合的|英)〉(\s*)', u'', eng_trans)
+            eng_trans = re.sub(u'〈(やや書|米話|米|ことわざ|話|軽蔑的|集合的|英|書)〉(\s*)',
+                    u'', eng_trans)
 
             # Take out things like 〔法律〕
             eng_trans = re.sub(u'〔法律〕(\s*)', u' ', eng_trans)
@@ -323,6 +324,9 @@ class NewCenturyDictionary(YahooDictionary):
             # There are occasionally suggestions for opposites.
             # For example, "(⇔came up to)".  Take these out.
             eng_trans = re.sub(u'(\s*)\(⇔.*?\)', u'', eng_trans)
+
+            # for japanese sentences, we want to change "..." to "…"
+            jap_sentence = jap_sentence.replace(u'...', u'…')
 
             # for japanese sentences, we want to change "." to "。"
             jap_sentence = jap_sentence.replace(u'.', u'。')
