@@ -234,23 +234,19 @@ class ProgressiveDictionary(YahooDictionary):
         """
         html_definitions = []
 
-        # do we have multiple definitions?
-        matches = re.search(u'^<td>\n(<b>I</b><br><br>)?<b>1</b> 〔', html)
-        if matches:
+        # split the definitions into the big I, II, groups
+        big_splits = re.split(u'(?:<b>(?:I|II|III|IV|V|VI|VII|VIII|IX|X)</b>)', html)
+        if len(big_splits) > 1:
+            big_splits = big_splits[1:]
+
+        for s in big_splits:
             # split the page into pieces for each definition
-            html_definitions = re.split(u'(<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔)', html)
-            # make sure we have an odd number of splits
-            assert(len(html_definitions) % 2 == 1)
+            small_splits = re.split(u'(?:<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔.*?〕)', s)
             # throw away the first split because it's useless information
-            html_definitions = html_definitions[1:]
-            # combine the following html_definitions
-            # This is stupidly complicated.  Basically we have a list like
-            # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
-            # to make a list like ["abcd", "efgh", "hijk"]
-            html_definitions = [u'%s%s' % (html_definitions[i], html_definitions[i+1])
-                    for i in range(0, len(html_definitions), 2)]
-        else:
-            html_definitions = [html]
+            if len(small_splits) > 1:
+                small_splits = small_splits[1:]
+
+            html_definitions += small_splits
 
         return html_definitions
 

@@ -1,0 +1,29 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a superheater.", 
+                    "jap_sentence": "過熱器"
+                }, 
+                {
+                    "eng_trans": "an overheated [a superheated] argument.", 
+                    "jap_sentence": "過熱気味の論議"
+                }, 
+                {
+                    "eng_trans": "The motor overheated [superheated].", 
+                    "jap_sentence": "モーターが過熱した"
+                }
+            ], 
+            "parts": [
+                "overheating"
+            ]
+        }
+    ], 
+    "original_kana": "かねつ", 
+    "original_kanji": "過熱", 
+    "result_kana": "かねつ", 
+    "result_kanji": "過熱", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E9%81%8E%E7%86%B1%E3%80%80%E3%81%8B%E3%81%AD%E3%81%A4&enc=UTF-8&stype=1&dtype=3"
+}

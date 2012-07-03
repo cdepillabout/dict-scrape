@@ -1,0 +1,41 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "エンジンが―する"
+                }
+            ], 
+            "parts": [
+                "必要以上に、また限界以上に熱くなること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―ぎみの景気"
+                }
+            ], 
+            "parts": [
+                "物事の状態が限度を超えて激しくなること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "<b>〔専門〕</b> 物", 
+                "蒸気を沸点以上に加熱すること", 
+                "沸点以上に熱せられた液体が沸騰しない状態", 
+                "この状態は不安定で、振動などでも沸騰（突沸）を起こす"
+            ]
+        }
+    ], 
+    "original_kana": "かねつ", 
+    "original_kanji": "過熱", 
+    "result_kana": "かねつ［くわ―］", 
+    "result_kanji": "過熱", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E9%81%8E%E7%86%B1%E3%80%80%E3%81%8B%E3%81%AD%E3%81%A4&enc=UTF-8&stype=1&dtype=0"
+}

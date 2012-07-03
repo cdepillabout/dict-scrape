@@ -1,0 +1,34 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The motor is overheated.", 
+                    "jap_sentence": "モーターが過熱している"
+                }
+            ], 
+            "parts": [
+                "overheating"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "The antigovernment movement got out of hand [went too far].", 
+                    "jap_sentence": "反政府運動は過熱状態に達した"
+                }, 
+                {
+                    "eng_trans": "Right now they are a bit too worked up over that problem.", 
+                    "jap_sentence": "その問題を巡る彼らの興奮はこのところ過熱ぎみである"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かねつ", 
+    "original_kanji": "過熱", 
+    "result_kana": "かねつ", 
+    "result_kanji": "過熱", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E9%81%8E%E7%86%B1%E3%80%80%E3%81%8B%E3%81%AD%E3%81%A4&enc=UTF-8&stype=1&dtype=3"
+}

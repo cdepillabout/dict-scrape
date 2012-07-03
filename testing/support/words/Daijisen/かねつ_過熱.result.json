@@ -1,0 +1,40 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "ボイラーが―して火災を起こす"
+                }
+            ], 
+            "parts": [
+                "必要以上に熱くなること", 
+                "許容の範囲を超えて熱くなること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "液体を沸騰させずにその沸点以上に熱すること", 
+                "沸点以上になっても沸騰しない状態"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "議論が―する"
+                }
+            ], 
+            "parts": [
+                "度を超した状態になること"
+            ]
+        }
+    ], 
+    "original_kana": "かねつ", 
+    "original_kanji": "過熱", 
+    "result_kana": "か‐ねつ〔クワ‐〕", 
+    "result_kanji": "過熱", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E9%81%8E%E7%86%B1%E3%80%80%E3%81%8B%E3%81%AD%E3%81%A4&enc=UTF-8&stype=1&dtype=0"
+}
