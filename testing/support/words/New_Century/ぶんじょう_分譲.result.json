@@ -1,0 +1,35 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "sale of land in lots.", 
+                    "jap_sentence": "土地の分譲"
+                }, 
+                {
+                    "eng_trans": "(building) lots for sale;a subdivision.", 
+                    "jap_sentence": "分譲地"
+                }, 
+                {
+                    "eng_trans": "a newly built house for sale.", 
+                    "jap_sentence": "分譲住宅"
+                }, 
+                {
+                    "eng_trans": "a condominium /k＜<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11fe.gif\" align=\"absbottom\" border=\"0\">:g11fe＞ndeminiem/; a condo.", 
+                    "jap_sentence": "分譲マンション"
+                }, 
+                {
+                    "eng_trans": "sell the land in lots; subdivide the land and sell it.", 
+                    "jap_sentence": "その土地を分譲する"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ぶんじょう", 
+    "original_kanji": "分譲", 
+    "result_kana": "ぶんじょう", 
+    "result_kanji": "分譲", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E5%88%86%E8%AD%B2%E3%80%80%E3%81%B6%E3%82%93%E3%81%98%E3%82%87%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}
