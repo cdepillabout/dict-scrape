@@ -141,8 +141,8 @@ class ProgressiveDictionary(YahooDictionary):
         # remove 「
         eng_trans = eng_trans.replace(u'「', u'')
 
-        # remove ((口))
-        eng_trans = eng_trans.replace(u'((口))', u'')
+        # remove markings for normal speech and american speech like ((口))
+        eng_trans = re.sub(u'\(\((口|米)\)\)', u'', eng_trans)
 
         # remove (▼...)
         eng_trans = re.sub(u'\(▼.*?\)', u'', eng_trans)
