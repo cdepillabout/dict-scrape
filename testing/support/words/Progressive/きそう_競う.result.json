@@ -1,0 +1,25 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Our country is competing with other countries for the lead in communication technologies.", 
+                    "jap_sentence": "我が国は通信技術で他国と競っている"
+                }, 
+                {
+                    "eng_trans": "His friends vied with one another to be his business partner.", 
+                    "jap_sentence": "友人たちは競って彼と商売で手を組もうとした"
+                }
+            ], 
+            "parts": [
+                "compete [contend]"
+            ]
+        }
+    ], 
+    "original_kana": "きそう", 
+    "original_kanji": "競う", 
+    "result_kana": "きそう", 
+    "result_kanji": "競う", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E7%AB%B6%E3%81%86%E3%80%80%E3%81%8D%E3%81%9D%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

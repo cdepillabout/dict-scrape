@@ -1,0 +1,29 @@
+{
+    "accent": "2", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "技<small>(わざ)</small>を―・う"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "人々は―・ってその本を買った"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―・うて路を遮り候はば思う程太刀打して〔出典： 太平記 17〕 "
+                }
+            ], 
+            "parts": [
+                "<b>(動ワ五［ハ四］)</b>"
+            ]
+        }
+    ], 
+    "original_kana": "きそう", 
+    "original_kanji": "競う", 
+    "result_kana": "きそ・う［きそふ］", 
+    "result_kanji": "競う", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E7%AB%B6%E3%81%86%E3%80%80%E3%81%8D%E3%81%9D%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}
