@@ -97,31 +97,30 @@ class ProgressiveDictionary(YahooDictionary):
 
         return def_parts
 
-    def replace_gaiji(self, string):
-        """
-        Replace the gaiji that occur in the string with actual characters.
-        """
-        # TODO: this is nowhere near complete
-        def helper(string, gaiji_code, real_character):
-            return string.replace(u'<img src="http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/%s.gif" align="absmiddle" border="0">' % gaiji_code, real_character)
+    @property
+    def gaiji_url(self):
+        return u'http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/'
 
-        string = helper(string, u'AE8', u'e')
-        string = helper(string, u'AED', u'i')
-        string = helper(string, u'AEE', u'i')
-        string = helper(string, u'AFA', u'u')
-        string = helper(string, u'AFB', u'u')
-        string = helper(string, u'AFC', u'u')
-        string = helper(string, u'AFD', u'y')
-        string = helper(string, u'AFE', u'p')
+    @property
+    def gaiji(self):
+        return [
+                (u'AE8', u'e'),
+                (u'AE9', u'e'),
+                (u'AED', u'i'),
+                (u'AEE', u'i'),
+                (u'AFA', u'u'),
+                (u'AFB', u'u'),
+                (u'AFC', u'u'),
+                (u'AFD', u'y'),
+                (u'AFE', u'p'),
 
-        string = helper(string, u'D32', u'a')
-        string = helper(string, u'D5D', u'c')
-        string = helper(string, u'D90', u'e')
-        string = helper(string, u'D92', u'e')
+                (u'D32', u'a'),
+                (u'D5D', u'c'),
+                (u'D90', u'e'),
+                (u'D92', u'e'),
 
-        string = helper(string, u'_817C', u':')
-
-        return string
+                (u'_817C', u':'),
+            ]
 
     def clean_eng_example_sent(self, eng_trans):
         """

@@ -69,7 +69,7 @@ class YahooDictionary(Dictionary):
 
         # replace all non-specified characters with something that is
         # easy to see and replace by hand
-        html = re.sub(u'(<img src="%s([0-9a-z]+).gif" align="abs(?:bottom|middle)" border="0">)'
+        html = re.sub(u'(<img src="%s([0-9A-Za-z]+).gif" align="abs(?:bottom|middle)" border="0">)'
                 % re.escape(self.gaiji_url), ur'＜\1:\2＞', html)
 
         return html
