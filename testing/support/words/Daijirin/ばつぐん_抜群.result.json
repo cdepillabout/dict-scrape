@@ -1,0 +1,44 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "数学が―にすぐれている"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―の成績"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―に速い"
+                }
+            ], 
+            "parts": [
+                "多くの中でとびぬけて優れている・こと（さま）"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "忠信一人討たん事も―の逗留にて候ふべし〔出典： 謡曲・吉野静〕 "
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "年ノ程ヨリモ―大人シュウ見ユル〔出典： 日葡〕 "
+                }
+            ], 
+            "parts": [
+                "程度のはなはだしい・こと（さま）"
+            ]
+        }
+    ], 
+    "original_kana": "ばつぐん", 
+    "original_kanji": "抜群", 
+    "result_kana": "ばつぐん", 
+    "result_kanji": "抜群", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E6%8A%9C%E7%BE%A4%E3%80%80%E3%81%B0%E3%81%A4%E3%81%90%E3%82%93&enc=UTF-8&stype=1&dtype=0"
+}

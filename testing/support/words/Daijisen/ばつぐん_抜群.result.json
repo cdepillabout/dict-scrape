@@ -1,0 +1,39 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―な（の）成績をおさめる"
+                }
+            ], 
+            "parts": [
+                "多くの中で、特にすぐれていること", 
+                "ぬきんでていること", 
+                "そのさま"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「先の関をば、はや―に程隔たりて候ふほどに」〈謡・安宅〉"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "「目の数も―違ふ」〈虎明狂・賽の目〉"
+                }
+            ], 
+            "parts": [
+                "程度が大きいこと", 
+                "そのさま"
+            ]
+        }
+    ], 
+    "original_kana": "ばつぐん", 
+    "original_kanji": "抜群", 
+    "result_kana": "ばつ‐ぐん", 
+    "result_kanji": "抜群", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E6%8A%9C%E7%BE%A4%E3%80%80%E3%81%B0%E3%81%A4%E3%81%90%E3%82%93&enc=UTF-8&stype=1&dtype=0"
+}

@@ -1,0 +1,31 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "His school record was outstanding [excellent].", 
+                    "jap_sentence": "彼の成績は抜群だった"
+                }, 
+                {
+                    "eng_trans": "She is unrivaled in sports./She far excels others at [in] sports.", 
+                    "jap_sentence": "彼女はスポーツが抜群だ"
+                }, 
+                {
+                    "eng_trans": "He is by far the best English speaker in his class.", 
+                    "jap_sentence": "彼はクラスの中では抜群に英語がうまい"
+                }
+            ], 
+            "parts": [
+                "outstanding", 
+                "excellent", 
+                "unrivaled"
+            ]
+        }
+    ], 
+    "original_kana": "ばつぐん", 
+    "original_kanji": "抜群", 
+    "result_kana": "ばつぐん", 
+    "result_kanji": "抜群の", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E6%8A%9C%E7%BE%A4%E3%80%80%E3%81%B0%E3%81%A4%E3%81%90%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}
