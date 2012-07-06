@@ -1,0 +1,27 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "filter out impurities", 
+                    "jap_sentence": "不純物をこして取り除く"
+                }, 
+                {
+                    "eng_trans": "strain the stock", 
+                    "jap_sentence": "煮汁をこす"
+                }
+            ], 
+            "parts": [
+                "filter", 
+                "strain", 
+                "pur<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE9.gif\" align=\"absmiddle\" border=\"0\">e [pjuer<img src=\"http://dic.yahoo.co.jp/images/V2/yh_gaiji/l/AE9.gif\" align=\"absmiddle\" border=\"0\">i | pjuerei]"
+            ]
+        }
+    ], 
+    "original_kana": "こす", 
+    "original_kanji": "濾す", 
+    "result_kana": "こす", 
+    "result_kanji": "漉す・濾す", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%BF%BE%E3%81%99%E3%80%80%E3%81%93%E3%81%99&enc=UTF-8&stype=1&dtype=3"
+}
