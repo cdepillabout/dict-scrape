@@ -72,6 +72,10 @@ class DaijirinDictionary(YahooDictionary):
         result = re.sub(u'^\n?<b>\((形動|名)\)</b> <br>', u'', result)
         result = re.sub(u'^\n?<b><small>(\[文\])?(ナリ|スル)</small></b> <br>', u'', result)
 
+        # remove ～に同じ from the beginning
+        result = re.sub(u'^\n?<b>\[(1|2|3|4|5|6|7|8|9|0)+\]</b> に同じ。', u'', result)
+
+
         # remove the 補説 from the beginning
         result = re.sub(u'^\n?<b>〔補説〕</b> .*?<br>', u'', result)
 
@@ -147,19 +151,24 @@ class DaijirinDictionary(YahooDictionary):
         Splits the html for the definitions into different pieces for
         each definition.  Returns a list of strings of html for each definition.
         """
-        definitions = []
-        matches = re.search(u'<table><tr valign="top" align="left" num="3"><td><b>［1］</b>',
-                html)
-        if matches:
+
+        html_definitions = []
+
+        # split the definitions into the big groups
+        big_splits = re.split(u'<table><tr valign="top" align="left" num="3"><td><b>(?:1|2|3|4|5|6|7|8|9|0)+</b></td>', html)
+        if len(big_splits) > 1:
+            big_splits = big_splits[1:]
+
+        for s in big_splits:
             # split the page into pieces for each definition
-            definitions = re.split(u'<table><tr valign="top" align="left" num="3"><td><b>［(?:1|2|3|4|5|6|7|8|9|0)+］</b>', html)
+            small_splits = re.split(u'<b>［?(?:1|2|3|4|5|6|7|8|9|0)+］?</b>', s)
+            # throw away the first split because it's useless information
+            if len(small_splits) > 1:
+                small_splits = small_splits[1:]
 
-            # throw away the first split
-            definitions = definitions[1:]
-        else:
-            definitions = [html]
+            html_definitions += small_splits
 
-        return definitions
+        return html_definitions
 
     def preclean_html(self, html_string):
         """
