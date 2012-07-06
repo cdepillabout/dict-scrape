@@ -71,6 +71,10 @@ class DaijisenDictionary(YahooDictionary):
         ex_sent = ExampleSentence("寄付を―する", "")
         return Definition([part1, part2], [ex_sent])
         """
+
+        # these need to be cleaned here too
+        def_string = re.sub(u'^［(形動|名|動.*?|名・形動|副)］', u'', def_string)
+
         # this is trying to catch things like 彫刻 where there is →彫塑
         # at the end of the definition string.  Move this to before the 「」 parts.
         def_string = re.sub(u'^(.*?。)(「.*?)→(.*?)$', ur'\1\3。\2', def_string)
@@ -129,18 +133,23 @@ class DaijisenDictionary(YahooDictionary):
         Splits the html for the definitions into different pieces for
         each definition.  Returns a list of strings of html for each definition.
         """
-        definitions = []
+        html_definitions = []
 
-        matches = re.search(u'<b>１</b>', html)
-        if matches:
-            splits = re.split(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b>', html)
+        # split the definitions into the big ⓵ groups
+        big_splits = re.split(u'(?:⓵|⓶|⓷|⓸|⓹|⓺)', html)
+        if len(big_splits) > 1:
+            big_splits = big_splits[1:]
+
+        for s in big_splits:
+            # split the page into pieces for each definition
+            small_splits = re.split(u'<b>[１|２|３|４|５|６|７|８|９|０]+</b>', s)
             # throw away the first split because it's useless information
-            splits = splits[1:]
-            definitions = splits
-        else:
-            definitions = [html]
+            if len(small_splits) > 1:
+                small_splits = small_splits[1:]
 
-        return definitions
+            html_definitions += small_splits
+
+        return html_definitions
 
     @property
     def gaiji(self):
@@ -155,16 +164,12 @@ class DaijisenDictionary(YahooDictionary):
                     #(u'', u'⑧'),
                     #(u'', u'⑨'),
                     #(u'', u'⑩'),
-                    #(u'', u'⑪'),
-                    #(u'', u'⑫'),
-                    #(u'', u'⑬'),
-                    #(u'', u'⑭'),
-                    #(u'', u'⑮'),
-                    #(u'', u'⑯'),
-                    #(u'', u'⑰'),
-                    #(u'', u'⑱'),
-                    #(u'', u'⑲'),
-                    #(u'', u'⑳'),
+                    (u'02539', u'⓵'),
+                    (u'02540', u'⓶'),
+                    (u'02541', u'⓷'),
+                    (u'02542', u'⓸'),
+                    (u'02543', u'⓹'),
+                    (u'02544', u'⓺'),
                ]
 
     @property
@@ -180,7 +185,7 @@ class DaijisenDictionary(YahooDictionary):
 
         # remove the verb conjugation markings
         # this removes ［形動］, etc from the beginning of a definition
-        html = re.sub(u'^［(形動|名|動.*?|名・形動)］', u'', html)
+        html = re.sub(u'^［(形動|名|動.*?|名・形動|副)］', u'', html)
         html = re.sub(u'^［文］', u'', html)
         html = re.sub(u'^［ナリ］', u'', html)
         html = re.sub(u'^\(スル\)', u'', html)
