@@ -1,0 +1,25 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "heterogeneous;different.", 
+                    "jap_sentence": "異質の[な]"
+                }, 
+                {
+                    "eng_trans": "experience a different culture.", 
+                    "jap_sentence": "異質な文化に触れる"
+                }
+            ], 
+            "parts": [
+                "heterogeneity"
+            ]
+        }
+    ], 
+    "original_kana": "いしつ", 
+    "original_kanji": "異質", 
+    "result_kana": "いしつ", 
+    "result_kanji": "異質", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E7%95%B0%E8%B3%AA%E3%80%80%E3%81%84%E3%81%97%E3%81%A4&enc=UTF-8&stype=1&dtype=3"
+}
