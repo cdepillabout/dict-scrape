@@ -79,6 +79,9 @@ class DaijisenDictionary(YahooDictionary):
         # at the end of the definition string.  Move this to before the 「」 parts.
         def_string = re.sub(u'^(.*?。)(「.*?)→(.*?)$', ur'\1\3。\2', def_string)
 
+        # this is trying to catch antonyms like ⇔同質 in the definition for 異質
+        def_string = re.sub(u'^(.*?。)(「.*?)⇔(.*?)$', ur'\1⇔\3。\2', def_string)
+
         def_parts = self.split_def_parts(def_string)
         example_sentences = []
 

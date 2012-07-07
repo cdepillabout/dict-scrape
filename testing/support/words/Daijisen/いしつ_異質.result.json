@@ -2,11 +2,20 @@
     "accent": "", 
     "defs": [
         {
-            "example_sentences": [], 
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―な成分"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "社内で―な存在"
+                }
+            ], 
             "parts": [
                 "性質の違うさま", 
                 "その性質", 
-                "「―な成分」「社内で―な存在」⇔同質"
+                "⇔同質"
             ]
         }
     ], 
