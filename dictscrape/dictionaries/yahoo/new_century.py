@@ -289,7 +289,7 @@ class NewCenturyDictionary(YahooDictionary):
                     u'', eng_trans)
 
             # Take out things like 〔法律〕
-            eng_trans = re.sub(u'〔法律〕(\s*)', u' ', eng_trans)
+            eng_trans = re.sub(u'〔(法律|医学)〕(\s*)', u' ', eng_trans)
 
             # There are often hints to japanese users that suggest words not to use
             # This looks like [show, × teach].

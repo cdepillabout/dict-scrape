@@ -1,0 +1,32 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He is sensitive to antibiotics.", 
+                    "jap_sentence": "抗生物質に過敏である"
+                }, 
+                {
+                    "eng_trans": "The noise of the motorcycles was grating on everyone's nerves [was setting everyone's nerves on edge].", 
+                    "jap_sentence": "オートバイの騒音には皆過敏になっていた"
+                }, 
+                {
+                    "eng_trans": "hypersensitivity", 
+                    "jap_sentence": "過敏症"
+                }
+            ], 
+            "parts": [
+                "sensitive", 
+                "jumpy", 
+                "edgy", 
+                "nervy"
+            ]
+        }
+    ], 
+    "original_kana": "かびん", 
+    "original_kanji": "過敏", 
+    "result_kana": "かびん", 
+    "result_kanji": "過敏", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E9%81%8E%E6%95%8F%E3%80%80%E3%81%8B%E3%81%B3%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}

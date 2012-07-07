@@ -1,0 +1,31 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "sensitive 〈to〉; hypersensitive.", 
+                    "jap_sentence": "過敏な"
+                }, 
+                {
+                    "eng_trans": "sensitive skin.", 
+                    "jap_sentence": "過敏な肌"
+                }, 
+                {
+                    "eng_trans": "He is too sensitive [is oversensitive] to cold.", 
+                    "jap_sentence": "彼は寒さに過敏だ"
+                }, 
+                {
+                    "eng_trans": "She is too nervous about it.", 
+                    "jap_sentence": "彼女はそのことで神経過敏になっている"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かびん", 
+    "original_kanji": "過敏", 
+    "result_kana": "かびん", 
+    "result_kanji": "過敏", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E9%81%8E%E6%95%8F%E3%80%80%E3%81%8B%E3%81%B3%E3%82%93&enc=UTF-8&stype=1&dtype=3"
+}
