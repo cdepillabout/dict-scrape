@@ -136,7 +136,7 @@ class DaijisenDictionary(YahooDictionary):
         html_definitions = []
 
         # split the definitions into the big ⓵ groups
-        big_splits = re.split(u'(?:⓵|⓶|⓷|⓸|⓹|⓺)', html)
+        big_splits = re.split(u'<br>(?:⓵|⓶|⓷|⓸|⓹|⓺)', html)
         if len(big_splits) > 1:
             big_splits = big_splits[1:]
 

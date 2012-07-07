@@ -5,11 +5,97 @@
             "example_sentences": [
                 {
                     "eng_trans": "", 
+                    "jap_sentence": "布団を日に―・す"
+                }
+            ], 
+            "parts": [
+                "日光・風に当てて干す"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "風雨に―・された石仏"
+                }
+            ], 
+            "parts": [
+                "風雨や日光の当たるままにしておく"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "布巾を―・す"
+                }
+            ], 
+            "parts": [
+                "布などを水洗いしたり日光に当てたり、または薬品を用いたりして白くする", 
+                "漂白する"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "牛蒡<small>(ごぼう)</small>を―・す"
+                }
+            ], 
+            "parts": [
+                "野菜などのあく・臭みなどを抜くために水に浸す"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "恥を―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "酔態を―・す"
+                }
+            ], 
+            "parts": [
+                "広く人目に触れるようにする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "危険に身を―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "敵の脅威に―・される"
+                }
+            ], 
+            "parts": [
+                "避けることができないむずかしい事態に身を置く"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "新聞に目を―・す"
+                }
+            ], 
+            "parts": [
+                "（「目をさらす」の形で）じっと見る"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
                     "jap_sentence": "首を―・す"
                 }
             ], 
             "parts": [
-                "<b>3</b>」に処する"
+                "「晒し⓵<b>3</b>」に処する"
             ]
         }
     ], 
