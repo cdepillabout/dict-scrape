@@ -119,6 +119,8 @@ class ProgressiveDictionary(YahooDictionary):
                 (u'D90', u'e'),
                 (u'D92', u'e'),
 
+                (u'FC3', u'e'),
+
                 (u'_817C', u':'),
             ]
 
