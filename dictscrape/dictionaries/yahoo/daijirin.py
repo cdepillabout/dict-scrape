@@ -69,7 +69,7 @@ class DaijirinDictionary(YahooDictionary):
 
         # remove the verb conjugation from the beginning
         result = re.sub(u'^\n?<b>\(動..［.+?］\)</b> <br>', u'', result)
-        result = re.sub(u'^\n?<b>\((形動|名)\)</b> <br>', u'', result)
+        result = re.sub(u'^\n?<b>\((形動|名|名・形動)\)</b> <br>', u'', result)
         result = re.sub(u'^\n?<b><small>(\[文\])?(ナリ|スル)</small></b> <br>', u'', result)
 
         # remove ～に同じ from the beginning
@@ -108,6 +108,13 @@ class DaijirinDictionary(YahooDictionary):
 
             # remove verb conjugations
             html_def = re.sub(u'^\n?<b>\(動..［.+?］\)</b> <br>', u'', html_def)
+
+            # remove type of words from beginning
+            html_def = re.sub(u'^\n?<b>\((形動|名|名・形動)\)</b> <br>', u'', html_def)
+
+            # remove type of word from beginning
+            html_def = re.sub(u'^\n?<b><small>(\[文\])?(ナリ|スル)</small></b> <br>', u'',
+                    html_def)
 
             if re.match(u'^<b>〔専門〕</b> (心|物) ', html_def):
                 html_def = re.sub(u'^(<b>〔専門〕</b> )(心|物) ', ur'\1\2。', html_def)
