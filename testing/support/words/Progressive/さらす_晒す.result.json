@@ -1,0 +1,79 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "expose a thing to wind and rain", 
+                    "jap_sentence": "風雨にさらす"
+                }, 
+                {
+                    "eng_trans": "dry a thing in the sun", 
+                    "jap_sentence": "日にさらして乾かす"
+                }, 
+                {
+                    "eng_trans": "a weather-beaten bench", 
+                    "jap_sentence": "風雨にさらされたベンチ"
+                }
+            ], 
+            "parts": [
+                "expose"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "bleach cotton", 
+                    "jap_sentence": "綿布をさらす"
+                }, 
+                {
+                    "eng_trans": "unbleached cotton cloth", 
+                    "jap_sentence": "さらしていない木綿地"
+                }
+            ], 
+            "parts": [
+                "bleach"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "soak chopped cabbage in water to make it crisp [crisp it]", 
+                    "jap_sentence": "刻んだキャベツを水にさらしてぱりっとさせる"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "expose oneself to danger", 
+                    "jap_sentence": "危険に身をさらす"
+                }
+            ], 
+            "parts": [
+                "expose"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "bring disgrace on oneself／disgrace oneself in public", 
+                    "jap_sentence": "恥をさらす"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "さらし</b><b>2"
+            ]
+        }
+    ], 
+    "original_kana": "さらす", 
+    "original_kanji": "晒す", 
+    "result_kana": "さらす", 
+    "result_kanji": "晒す", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E6%99%92%E3%81%99%E3%80%80%E3%81%95%E3%82%89%E3%81%99&enc=UTF-8&stype=1&dtype=3"
+}

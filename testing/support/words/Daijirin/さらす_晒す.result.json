@@ -1,0 +1,115 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "日に―・して肌を焼く"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "かばねを戦場に―・す"
+                }
+            ], 
+            "parts": [
+                "日光や風雨の当たるままにしておく"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "黄ばんだ布を―・して白くする"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "葱<small>(ねぎ)</small>を―・す"
+                }
+            ], 
+            "parts": [
+                "布・紙などを水洗いして日光に当てたり、薬品で処理したりして白くする", 
+                "漂白する", 
+                "染め物・食品などを水で洗い流す", 
+                "《晒》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "日に―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "（麦ヲ）夕さり食に充てんとして庭に―・す〔出典： 今昔 10〕 "
+                }
+            ], 
+            "parts": [
+                "日光にあてる", 
+                "干す"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "人目に―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "恥を―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "醜態を―・す"
+                }
+            ], 
+            "parts": [
+                "広く人々の目に触れるようにする"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "身を危険に―・す"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "戦火に身を―・す"
+                }
+            ], 
+            "parts": [
+                "危険な状態に置く"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "古書に目を―・す"
+                }
+            ], 
+            "parts": [
+                "（「…に目をさらす」の形で）丹念に見る"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "親子諸共獄門に―・さるべし〔出典： 浄瑠璃・反魂香〕 "
+                }
+            ], 
+            "parts": [
+                "さらしの刑に処する"
+            ]
+        }
+    ], 
+    "original_kana": "さらす", 
+    "original_kanji": "晒す", 
+    "result_kana": "さら・す", 
+    "result_kanji": "晒す・曝す", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E6%99%92%E3%81%99%E3%80%80%E3%81%95%E3%82%89%E3%81%99&enc=UTF-8&stype=1&dtype=0"
+}
