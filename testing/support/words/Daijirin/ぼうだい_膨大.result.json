@@ -1,0 +1,32 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "種子は水を含むと―する"
+                }
+            ], 
+            "parts": [
+                "ふくれて大きくなること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―な人員をかかえる"
+                }
+            ], 
+            "parts": [
+                "「ぼうだい（厖大）」に同じ"
+            ]
+        }
+    ], 
+    "original_kana": "ぼうだい", 
+    "original_kanji": "膨大", 
+    "result_kana": "ぼうだい［ばう―］", 
+    "result_kanji": "膨大", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E8%86%A8%E5%A4%A7%E3%80%80%E3%81%BC%E3%81%86%E3%81%A0%E3%81%84&enc=UTF-8&stype=1&dtype=0"
+}

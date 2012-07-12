@@ -1,0 +1,35 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "enormous overproduction", 
+                    "jap_sentence": "膨大な過剰生産"
+                }, 
+                {
+                    "eng_trans": "I have borrowed a huge [vast] sum of money from him.", 
+                    "jap_sentence": "彼から膨大な借金をしている"
+                }, 
+                {
+                    "eng_trans": "This country is blessed with vast natural resources.", 
+                    "jap_sentence": "この国は膨大な天然資源に恵まれている"
+                }, 
+                {
+                    "eng_trans": "a colossal space flight project", 
+                    "jap_sentence": "膨大な宇宙旅行計画"
+                }, 
+                {
+                    "eng_trans": "a budget of staggering proportions", 
+                    "jap_sentence": "膨大な予算"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ぼうだい", 
+    "original_kanji": "膨大", 
+    "result_kana": "ぼうだい", 
+    "result_kanji": "膨大・厖大", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E8%86%A8%E5%A4%A7%E3%80%80%E3%81%BC%E3%81%86%E3%81%A0%E3%81%84&enc=UTF-8&stype=1&dtype=3"
+}
