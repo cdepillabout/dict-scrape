@@ -56,7 +56,10 @@ class ProgressiveDictionary(YahooDictionary):
         def_string = re.sub(u'〔.*?〕', u'', def_string)
 
         # if it is just a redirect, then just take the word being redirected to
-        def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
+        def_string = re.sub(u'^⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
+
+        # remove redirects at other parts of the definition
+        def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', u'', def_string)
 
         # remove italics
         def_string = def_string.replace(u'<i>', u'')
