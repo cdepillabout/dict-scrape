@@ -82,6 +82,9 @@ class DaijirinDictionary(YahooDictionary):
         # remove the〔可能〕at the end of the entry
         result = re.sub(u'<br><b>〔可能〕</b> .*$', u'', result)
 
+        # change "「…（…）」に同じ。" to just the stuff in the quotes
+        result = re.sub(u'「(.*?)」に同じ。', ur'\1。', result)
+
         # remove everything after the first <br>
         result = re.sub(u'<br>.*$', u'', result)
         result = result.strip()
