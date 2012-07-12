@@ -71,9 +71,12 @@ class DaijisenDictionary(YahooDictionary):
         ex_sent = ExampleSentence("寄付を―する", "")
         return Definition([part1, part2], [ex_sent])
         """
-
-        # these need to be cleaned here too
+        # remove the verb conjugation markings
+        # this removes ［形動］, etc from the beginning of a definition
         def_string = re.sub(u'^［(形動|名|動.*?|名・形動|副)］', u'', def_string)
+        def_string = re.sub(u'^［文］', u'', def_string)
+        def_string = re.sub(u'^［ナリ］', u'', def_string)
+        def_string = re.sub(u'^\(スル\)', u'', def_string)
 
         # this is trying to catch things like 彫刻 where there is →彫塑
         # at the end of the definition string.  Move this to before the 「」 parts.
@@ -81,6 +84,9 @@ class DaijisenDictionary(YahooDictionary):
 
         # this is trying to catch antonyms like ⇔同質 in the definition for 異質
         def_string = re.sub(u'^(.*?。)(「.*?)⇔(.*?)$', ur'\1⇔\3。\2', def_string)
+
+        # change "「…（…）」に同じ。" to just the stuff in the quotes
+        def_string = re.sub(u'「(.*?)」に同じ。', ur'\1。', def_string)
 
         def_parts = self.split_def_parts(def_string)
         example_sentences = []
@@ -138,8 +144,11 @@ class DaijisenDictionary(YahooDictionary):
         """
         html_definitions = []
 
-        # split the definitions into the big ⓵ groups
-        big_splits = re.split(u'<br>(?:⓵|⓶|⓷|⓸|⓹|⓺)', html)
+        # split the definitions into the big ⓵ groups.
+        # matching the japanese unicode code points is to take care of
+        # stuff like 「晒し⓵<b>3</b>」に処する。 in the definition of 晒す
+        # where ⓵ is used in the middle of a different definition.
+        big_splits = re.split(u'(?<![\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A])(?:⓵|⓶|⓷|⓸|⓹|⓺)', html)
         if len(big_splits) > 1:
             big_splits = big_splits[1:]
 
@@ -185,13 +194,6 @@ class DaijisenDictionary(YahooDictionary):
         This will take out leading <td>s, verb types, etc.
         """
         html = re.sub(u'^<td>\n?', u'', html)
-
-        # remove the verb conjugation markings
-        # this removes ［形動］, etc from the beginning of a definition
-        html = re.sub(u'^［(形動|名|動.*?|名・形動|副)］', u'', html)
-        html = re.sub(u'^［文］', u'', html)
-        html = re.sub(u'^［ナリ］', u'', html)
-        html = re.sub(u'^\(スル\)', u'', html)
 
         # remove "arrows" groups
         # (this is the character that looks like two greater than signs

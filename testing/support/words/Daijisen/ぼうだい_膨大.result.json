@@ -5,11 +5,22 @@
             "example_sentences": [
                 {
                     "eng_trans": "", 
+                    "jap_sentence": "国家予算が―する"
+                }
+            ], 
+            "parts": [
+                "ふくれて大きくなること"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
                     "jap_sentence": "―な費用"
                 }
             ], 
             "parts": [
-                "［文］［ナリ］「厖大<small>(ぼうだい)</small>」に同じ"
+                "厖大<small>(ぼうだい)</small>"
             ]
         }
     ], 
