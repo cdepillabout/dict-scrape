@@ -86,6 +86,7 @@ class DaijisenDictionary(YahooDictionary):
         def_string = re.sub(u'^(.*?。)(「.*?)⇔(.*?)$', ur'\1⇔\3。\2', def_string)
 
         # change "「…（…）」に同じ。" to just the stuff in the quotes
+        def_string = re.sub(u'「(.*?)」または「(.*?)」に同じ。', ur'\1。\2。', def_string)
         def_string = re.sub(u'「(.*?)」に同じ。', ur'\1。', def_string)
 
         def_parts = self.split_def_parts(def_string)
