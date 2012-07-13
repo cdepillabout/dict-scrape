@@ -1,0 +1,49 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a nerve center", 
+                    "jap_sentence": "神経中枢"
+                }
+            ], 
+            "parts": [
+                "the center", 
+                "the centre"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the mainstay of a society／a mainstay of society", 
+                    "jap_sentence": "社会の中枢"
+                }, 
+                {
+                    "eng_trans": "He works at the hub of the company.", 
+                    "jap_sentence": "彼は会社の中枢で働いている"
+                }, 
+                {
+                    "eng_trans": "Those three people form the nucleus [core] of the movement.", 
+                    "jap_sentence": "その3人は運動の中枢となっている"
+                }, 
+                {
+                    "eng_trans": "the central nerves", 
+                    "jap_sentence": "中枢神経"
+                }, 
+                {
+                    "eng_trans": "the central nervous system", 
+                    "jap_sentence": "中枢神経系統"
+                }
+            ], 
+            "parts": [
+                "the nucleus"
+            ]
+        }
+    ], 
+    "original_kana": "ちゅうすう", 
+    "original_kanji": "中枢", 
+    "result_kana": "ちゅうすう", 
+    "result_kanji": "中枢", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E4%B8%AD%E6%9E%A2%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%99%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

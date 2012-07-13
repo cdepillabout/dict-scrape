@@ -1,0 +1,41 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "経済の―をなす"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―部"
+                }
+            ], 
+            "parts": [
+                "中心となる大切なところ", 
+                "重要な部分"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―に作用する薬"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "感覚―"
+                }
+            ], 
+            "parts": [
+                "中枢神経系」または「神経中枢"
+            ]
+        }
+    ], 
+    "original_kana": "ちゅうすう", 
+    "original_kanji": "中枢", 
+    "result_kana": "ちゅう‐すう", 
+    "result_kanji": "中枢", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E4%B8%AD%E6%9E%A2%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%99%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}
