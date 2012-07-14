@@ -336,7 +336,7 @@ def addword(word_kana, word_kanji):
         __write_word_encoding_result(dic, word_kana, word_kanji)
 
 @no_null_dictionaries
-def reparse(word_kana, word_kanji, dictionaries=get_dics()):
+def reparse_word(word_kana, word_kanji, dictionaries=get_dics()):
     """
     Reparse the html files we already downloaded, and rewrite the
     KANA_KANJI.result.json file.  This could be be used when updating
@@ -362,6 +362,21 @@ def reparse(word_kana, word_kanji, dictionaries=get_dics()):
     for dic in dictionaries:
         __write_word_encoding_result(dic, word_kana, word_kanji)
 
+@no_null_dictionaries
+def reparse_all(dictionaries=get_dics()):
+    """
+    Reparse all html files we already downloaded, and rewrite the
+    KANA_KANJI.result.json file.  This could be be used when updating
+    how parsing takes place and adding corrections for words that
+    are now parsed correctly.
+
+    dictionaries (list of Dictionary objects): dictionaries to reparse
+        in.
+    """
+    words = get_words_from_wordsdb()
+    for kana, kanji in words:
+        reparse_word(kana, kanji, dictionaries=dictionaries)
+
 def main():
     def unicode_type(utf8_string):
         return utf8_string.decode('utf8')
@@ -375,8 +390,11 @@ def main():
             type=unicode_type, help="fetch files for word")
     parser.add_argument('--sanity-check', '-s', action='store_true',
             help="run a sanity check to make sure our words.db and actual files match up")
-    parser.add_argument('--reparse', '-r', action='store', nargs=2, metavar=('KANJI', 'KANA'),
-            type=unicode_type, help="reparse files for word and rewrite KANA_KANJI.result.json")
+    parser.add_argument('--reparse-word', '-r', action='store', nargs=2,
+            metavar=('KANJI', 'KANA'), type=unicode_type,
+            help="reparse files for word and rewrite KANA_KANJI.result.json")
+    parser.add_argument('--reparse-all', action='store_true',
+            help="reparse files for all words and rewrite *.result.json files")
     parser.add_argument('--dictionary', '-d', action='store',
             metavar='DICTIONARY', choices=dic_choices(),
             help="select a specific dictionary to operate on")
@@ -399,9 +417,13 @@ def main():
         sanity_check()
         addword(args.add_word[1], args.add_word[0])
         sys.exit(0)
-    if args.reparse:
+    if args.reparse_word:
         sanity_check()
-        reparse(args.reparse[1], args.reparse[0], dictionaries=dictionary)
+        reparse_word(args.reparse[1], args.reparse[0], dictionaries=dictionary)
+        sys.exit(0)
+    if args.reparse_all:
+        sanity_check()
+        reparse_all(dictionaries=dictionary)
         sys.exit(0)
 
     # specify the words that we will use
