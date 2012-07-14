@@ -139,4 +139,13 @@ class MainFactEditor(QtGui.QMainWindow):
             self.ui.sentence_textEdit.setText(u'')
             self.ui.sentenceenglish_textEdit.setText(u'')
 
+        if not self.other_sents:
+            self.ui.kopipe_sent_notes_textEdit = QtGui.QTextEdit(self.ui.centralwidget)
+            self.ui.kopipe_sent_notes_textEdit.setObjectName(u"kopipe_sent_notes_textEdit")
+            notes_text = u'「%s（%s）〔%s〕」：%s' % \
+                    (self.word_kanji, self.word_kana, self.accent, self.def_string)
+            self.ui.kopipe_sent_notes_textEdit.setText(notes_text)
+            self.ui.formLayout.addRow(u"Copy Paste-able\nSentence Cards Notes:",
+                    self.ui.kopipe_sent_notes_textEdit)
+
         self.ui.notes_textEdit.setText(u'')
