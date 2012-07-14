@@ -5,7 +5,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "The motor is overheated.", 
-                    "jap_sentence": "モーターが過熱している"
+                    "jap_sentence": "モーターが過熱している。"
                 }
             ], 
             "parts": [
@@ -16,11 +16,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "The antigovernment movement got out of hand [went too far].", 
-                    "jap_sentence": "反政府運動は過熱状態に達した"
+                    "jap_sentence": "反政府運動は過熱状態に達した。"
                 }, 
                 {
                     "eng_trans": "Right now they are a bit too worked up over that problem.", 
-                    "jap_sentence": "その問題を巡る彼らの興奮はこのところ過熱ぎみである"
+                    "jap_sentence": "その問題を巡る彼らの興奮はこのところ過熱ぎみである。"
                 }
             ], 
             "parts": []

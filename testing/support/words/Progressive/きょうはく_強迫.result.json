@@ -5,11 +5,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "My donation was more forced than voluntary.", 
-                    "jap_sentence": "半ば強迫されて募金に応じた"
+                    "jap_sentence": "半ば強迫されて募金に応じた。"
                 }, 
                 {
                     "eng_trans": "He was forced [compelled] to submit.", 
-                    "jap_sentence": "彼は強迫されて屈服した"
+                    "jap_sentence": "彼は強迫されて屈服した。"
                 }, 
                 {
                     "eng_trans": "an obsession", 
@@ -17,7 +17,7 @@
                 }, 
                 {
                     "eng_trans": "He is obsessed with the idea that he is being followed.", 
-                    "jap_sentence": "彼は後を付けられているという強迫観念につきまとわれている"
+                    "jap_sentence": "彼は後を付けられているという強迫観念につきまとわれている。"
                 }, 
                 {
                     "eng_trans": "obsessive-compulsive neurosis", 

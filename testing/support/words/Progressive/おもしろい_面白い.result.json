@@ -5,11 +5,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "Recently I've come to enjoy my studies.", 
-                    "jap_sentence": "このごろ勉強が面白い"
+                    "jap_sentence": "このごろ勉強が面白い。"
                 }, 
                 {
                     "eng_trans": "My work at the office isn't interesting [any fun].", 
-                    "jap_sentence": "会社の仕事は面白くない"
+                    "jap_sentence": "会社の仕事は面白くない。"
                 }, 
                 {
                     "eng_trans": "Did you enjoy the meeting?", 
@@ -17,15 +17,15 @@
                 }, 
                 {
                     "eng_trans": "That was fun.", 
-                    "jap_sentence": "ああ面白かった〔何かが終わって〕"
+                    "jap_sentence": "ああ面白かった〔何かが終わって〕。"
                 }, 
                 {
                     "eng_trans": "The fish were biting like crazy.", 
-                    "jap_sentence": "魚が面白いように釣れた"
+                    "jap_sentence": "魚が面白いように釣れた。"
                 }, 
                 {
                     "eng_trans": "He's a very interesting fellow.／He's quite a character.", 
-                    "jap_sentence": "あれはなかなか面白い男だ"
+                    "jap_sentence": "あれはなかなか面白い男だ。"
                 }
             ], 
             "parts": [
@@ -37,11 +37,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "The dialogue of the play is witty.", 
-                    "jap_sentence": "せりふが面白い芝居だ"
+                    "jap_sentence": "せりふが面白い芝居だ。"
                 }, 
                 {
                     "eng_trans": "This cartoon wasn't funny.", 
-                    "jap_sentence": "このまんがは面白くなかった"
+                    "jap_sentence": "このまんがは面白くなかった。"
                 }
             ], 
             "parts": [
@@ -52,7 +52,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "The patient isn't doing very well.", 
-                    "jap_sentence": "どうも病状が面白くない"
+                    "jap_sentence": "どうも病状が面白くない。"
                 }
             ], 
             "parts": []

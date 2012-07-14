@@ -5,7 +5,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "The criminal was tied up [bound] hand and foot.", 
-                    "jap_sentence": "犯人は手足をくくられた"
+                    "jap_sentence": "犯人は手足をくくられた。"
                 }, 
                 {
                     "eng_trans": "tie up old newspapers with string", 
@@ -31,7 +31,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "The parts of the sentence enclosed in parentheses can be omitted.", 
-                    "jap_sentence": "文中のかっこでくくってある部分は省略可能である"
+                    "jap_sentence": "文中のかっこでくくってある部分は省略可能である。"
                 }, 
                 {
                     "eng_trans": "settle an account", 

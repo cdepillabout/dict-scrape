@@ -5,7 +5,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "The gas expanded with heat.", 
-                    "jap_sentence": "ガスが熱で膨張した"
+                    "jap_sentence": "ガスが熱で膨張した。"
                 }, 
                 {
                     "eng_trans": "a distended abdomen", 
@@ -35,11 +35,11 @@
                 }, 
                 {
                     "eng_trans": "Military expenditure has swollen to a vast sum.", 
-                    "jap_sentence": "軍事費が膨張して莫大<small>(ばくだい)</small>な額になった"
+                    "jap_sentence": "軍事費が膨張して莫大<small>(ばくだい)</small>な額になった。"
                 }, 
                 {
                     "eng_trans": "Every year some towns expand [grow] into cities.", 
-                    "jap_sentence": "毎年幾つかの町が市に膨張していく"
+                    "jap_sentence": "毎年幾つかの町が市に膨張していく。"
                 }, 
                 {
                     "eng_trans": "an expansion coefficient; expansion ratio", 

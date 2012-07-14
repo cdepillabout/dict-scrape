@@ -223,6 +223,9 @@ class ProgressiveDictionary(YahooDictionary):
                         jap_sent = m[4]
                         eng_sent = self.clean_eng_example_sent(m[5])
 
+                    if eng_sent and eng_sent[-1] == u'.':
+                        jap_sent += u'。'
+
                     example_sentences.append(ExampleSentence(jap_sent, eng_sent))
 
             def_parts = self.clean_def_string(english_def)

@@ -5,11 +5,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "The state should compensate [make compensation to] the plaintiff for his court costs.", 
-                    "jap_sentence": "国は原告の訴訟費用を補償すべきである"
+                    "jap_sentence": "国は原告の訴訟費用を補償すべきである。"
                 }, 
                 {
                     "eng_trans": "He demanded compensation from the firm for the injury he received at work.", 
-                    "jap_sentence": "作業中のけがに対し，会社に補償を請求した"
+                    "jap_sentence": "作業中のけがに対し，会社に補償を請求した。"
                 }, 
                 {
                     "eng_trans": "compensation", 

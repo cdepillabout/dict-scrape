@@ -5,11 +5,11 @@
             "example_sentences": [
                 {
                     "eng_trans": "Our country is competing with other countries for the lead in communication technologies.", 
-                    "jap_sentence": "我が国は通信技術で他国と競っている"
+                    "jap_sentence": "我が国は通信技術で他国と競っている。"
                 }, 
                 {
                     "eng_trans": "His friends vied with one another to be his business partner.", 
-                    "jap_sentence": "友人たちは競って彼と商売で手を組もうとした"
+                    "jap_sentence": "友人たちは競って彼と商売で手を組もうとした。"
                 }
             ], 
             "parts": [
