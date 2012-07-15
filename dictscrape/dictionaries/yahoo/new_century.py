@@ -99,7 +99,7 @@ class NewCenturyDictionary(YahooDictionary):
         def_string = def_string.strip()
 
         # split up the definition parts, breaking on ';'
-        def_parts = self.split_def_parts(def_string, split_characters=[u';', u','])
+        def_parts = self.split_def_parts(def_string, split_characters=[u';', u',', u'.'])
         return def_parts
 
     @property
@@ -348,39 +348,20 @@ class NewCenturyDictionary(YahooDictionary):
 
         return example_sentences
 
-    def parse_definition(self, tree):
-        def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
-        result = etree.tostring(def_elems, pretty_print=False, method="html",
-                encoding='unicode')
-
-        result = self.replace_gaiji(result)
-
+    def create_definitions_from_html(self, html_definitions):
         definitions = []
 
-        # do we have multiple definitions?
-        matches = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［１］</b>', result)
-        if matches:
-            # split the page into pieces for each definition
-            splits = re.split(u'(<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', result)
-            # make sure we have an odd number of splits
-            assert(len(splits) % 2 == 1)
-            # throw away the first split because it's useless information
-            splits = splits[1:]
-            # combine the following splits
-            # This is stupidly complicated.  Basically we have a list like
-            # ["ab", "cd", "ef", "gh", "hi", "jk"] and we want to combine it
-            # to make a list like ["abcd", "efgh", "hijk"]
-            splits = [u'%s%s' % (splits[i], splits[i+1]) for i in range(0, len(splits), 2)]
-        else:
-            splits = [result]
-
-        for splt in splits:
+        for splt in html_definitions:
             # find english definition
             english_def = u''
+
+            # remove first table stuff
+            splt = re.sub(u'^(<td>\n)?<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>', u'', splt)
+
             # make sure not to match on the initial character telling whether
             # it is a noun,verb, etc
-            match = re.search(u'<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>(?!\[(?:名|副|動|形|助|前|代|接)\])(.*?)</td></tr></table>', splt)
-            if match:
+            match = re.search(u'^(.*?)</td></tr></table>', splt)
+            if match and not splt.startswith('<table'):
                 english_def = match.group(1)
 
             # find example sentences
@@ -406,3 +387,42 @@ class NewCenturyDictionary(YahooDictionary):
             definitions.append(Definition(def_parts, example_sentences))
 
         return definitions
+
+    def split_definitions_html(self, html):
+        # split the definitions into the big I, II, groups
+        html_definitions = []
+
+        big_splits = re.split(u'(?:<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td>\[(?:名|動|形)\](?:</td></tr></table><br>)?)', html)
+        if len(big_splits) > 1:
+            big_splits = big_splits[1:]
+
+        for s in big_splits:
+            # split the page into pieces for each definition
+            small_splits = re.split(u'(?:<table border="0" cellspacing="0" cellpadding="0"><tr valign="top"><td><b>［[１|２|３|４|５|６|７|８|９|０]+］</b>)', s)
+            # throw away the first split because it's useless information
+            if len(small_splits) > 1:
+                small_splits = small_splits[1:]
+
+            html_definitions += small_splits
+
+        return html_definitions
+
+    def preclean_html(self, html_string):
+        """
+        Clean up the big picture HTML. For example, this cleans things out from
+        the beginning that we don't want.
+        """
+        html_string = self.replace_gaiji(html_string)
+        return html_string
+
+    def parse_definition(self, tree):
+        def_elems = tree.xpath("//table[@class='d-detail']/tr/td")[0]
+        html = etree.tostring(def_elems, pretty_print=False, method="html", encoding='unicode')
+
+        html = self.preclean_html(html)
+        html_definitions = self.split_definitions_html(html)
+        definitions = self.create_definitions_from_html(html_definitions)
+
+        return definitions
+
+
