@@ -1,0 +1,29 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―の意向"
+                }
+            ], 
+            "parts": [
+                "相手の人", 
+                "相手方"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "先のほう", 
+                "むこう"
+            ]
+        }
+    ], 
+    "original_kana": "せんぽう", 
+    "original_kanji": "先方", 
+    "result_kana": "せんぽう［―ぱう］", 
+    "result_kanji": "先方", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E5%85%88%E6%96%B9%E3%80%80%E3%81%9B%E3%82%93%E3%81%BD%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}
