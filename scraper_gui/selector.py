@@ -40,11 +40,14 @@ class MainWindowSelector(QtGui.QMainWindow):
         self.fillin(word_kanji, word_kana)
 
     def exit(self):
+        """
         reply = QtGui.QMessageBox.question(self, 'Message',
                 "Are you sure you want to quit?", QtGui.QMessageBox.Yes |
                 QtGui.QMessageBox.No, QtGui.QMessageBox.No)
         if reply == QtGui.QMessageBox.Yes:
             self.close()
+            """
+        self.close()
 
     def reset(self, button):
         """
