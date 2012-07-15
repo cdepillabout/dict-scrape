@@ -204,13 +204,20 @@ class ProgressiveDictionary(YahooDictionary):
             # find example sentences
             example_sentences = []
 
+            # remove 小見出 things, like in the definition of 中央.
+            html_def = re.sub(u'<b>\[小見出\]</b><br>〔.*?〕<br><br>', u'', html_def)
+
+            # fix some bolded words that are formed poorly (like
+            # 中央行政官庁 in the definition of 中央.)
+            html_def = re.sub(u'<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]+)</b>\(<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]+)</b>\)<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]+)</b>｜([ a-zA-Z\]\[\(\)]*?)<br>', ur'<b>\1\2\3</b>｜\4<br>', html_def)
+
             # take out bolded words if they are not part of an example sentence
             # or if they are not followed by a ｜ character
             html_def = re.sub(ur'(?<=<br>)<b>.*?</b>(?!(</font>)|｜)', u'', html_def)
 
             # match either real example sentences or those other bold words
             # like "強迫観念" that come up when looking up "強迫".
-            matches = re.findall(u'(<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|((?:<br>)?<b>(.*?)</b>｜(.*?)<br>)', html_def)
+            matches = re.findall(u'(<td><small><font color="#008800"><b>(.*?)</b></font><br><font color="#666666">(.*?)</font></small></td>)|((?:<br>)?<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A\[\]]+)</b>｜(.*?)<br>)', html_def)
             if matches:
                 for m in matches:
                     assert(len(m) == 6)
