@@ -2,6 +2,13 @@
     "accent": "", 
     "defs": [
         {
+            "example_sentences": [], 
+            "parts": [
+                "an abortion", 
+                "have [get] an abortion"
+            ]
+        }, 
+        {
             "example_sentences": [
                 {
                     "eng_trans": "We haven't heard from him for a long time.", 
@@ -9,8 +16,7 @@
                 }
             ], 
             "parts": [
-                "an abortion", 
-                "have [get] an abortion"
+                "ちゅうだん"
             ]
         }
     ], 

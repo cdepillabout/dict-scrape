@@ -56,7 +56,7 @@ class ProgressiveDictionary(YahooDictionary):
         def_string = re.sub(u'〔.*?〕', u'', def_string)
 
         # if it is just a redirect, then just take the word being redirected to
-        def_string = re.sub(u'^⇒<a href=".*?"><b>(.*?)</b></a>', ur'\1', def_string)
+        def_string = re.sub(u'^⇒<a href=".*?"><b>(.*?)</b></a>(，?<a href=".*?"><b>(.*?)</b></a>)*', ur'\1', def_string)
 
         # remove redirects at other parts of the definition
         def_string = re.sub(u'⇒<a href=".*?"><b>(.*?)</b></a>', u'', def_string)
@@ -255,7 +255,7 @@ class ProgressiveDictionary(YahooDictionary):
 
         for s in big_splits:
             # split the page into pieces for each definition
-            small_splits = re.split(u'(?:<b>[1|2|3|4|5|6|7|8|9|0]+</b> 〔.*?〕)', s)
+            small_splits = re.split(u'(?:<b>[1|2|3|4|5|6|7|8|9|0]+</b> (?:(?:〔.*?〕)|(?=⇒)))', s)
             # throw away the first split because it's useless information
             if len(small_splits) > 1:
                 small_splits = small_splits[1:]
@@ -273,8 +273,6 @@ class ProgressiveDictionary(YahooDictionary):
         # if we have the bolded definitions with child definitions, then clean them up
         # so it doesn't mess up the rest of the results. For example, this occurs in 
         # the definition for 行動 (i.e. 行動半径)
-        #print "HELLO"
-        #print html_string
         search_string = u'<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]+)</b>｜<br><br>(<b>[0-9]+</b>(.*?)<br><br>(<table.*?</table><br>)+)+'
         match = re.search(search_string, html_string)
         while (match):
