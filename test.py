@@ -419,7 +419,7 @@ def main():
         sys.exit(0)
     if args.reparse_word:
         sanity_check()
-        reparse_word(args.reparse[1], args.reparse[0], dictionaries=dictionary)
+        reparse_word(args.reparse_word[1], args.reparse_word[0], dictionaries=dictionary)
         sys.exit(0)
     if args.reparse_all:
         sanity_check()
