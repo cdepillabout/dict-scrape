@@ -405,7 +405,16 @@ class NewCenturyDictionary(YahooDictionary):
 
             html_definitions += small_splits
 
-        return html_definitions
+        real_html_defs = []
+
+        for h in html_definitions:
+            smaller_splits = re.split(u'(?:<td>[0-9]+\u300A.*?\u300B)', h)
+            #if len(smaller_splits) > 1:
+            #    smaller_splits = smaller_splits[1:]
+
+            real_html_defs += smaller_splits
+
+        return real_html_defs
 
     def preclean_html(self, html_string):
         """

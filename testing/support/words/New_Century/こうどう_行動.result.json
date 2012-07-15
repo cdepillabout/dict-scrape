@@ -2,6 +2,16 @@
     "accent": "", 
     "defs": [
         {
+            "example_sentences": [], 
+            "parts": [
+                "(an) action", 
+                "an act", 
+                "behavior", 
+                "conduct", 
+                "activities"
+            ]
+        }, 
+        {
             "example_sentences": [
                 {
                     "eng_trans": "group [individual] action.", 
@@ -10,7 +20,12 @@
                 {
                     "eng_trans": "You may have free activities in the afternoon./You can do whatever you like in the afternoon.", 
                     "jap_sentence": "午後は個人[自由]行動をとってよろしい"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "a man [a woman] of action;an active person;an aggressive person.", 
                     "jap_sentence": "行動力のある[行動的な]人"
@@ -18,11 +33,21 @@
                 {
                     "eng_trans": "He has a wide range [sphere] of action [activities].", 
                     "jap_sentence": "彼は行動半径が広い"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "His act [action, behavior] was brave./He acted [behaved] bravely.", 
                     "jap_sentence": "彼の行動は勇敢だった"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "put one's idea into action.", 
                     "jap_sentence": "考えを行動に移す（＝実行する）"
@@ -48,13 +73,7 @@
                     "jap_sentence": "私たちは一日中ずっと行動をともにした（＝ともに過ごした）"
                 }
             ], 
-            "parts": [
-                "(an) action", 
-                "an act", 
-                "behavior", 
-                "conduct", 
-                "activities"
-            ]
+            "parts": []
         }, 
         {
             "example_sentences": [

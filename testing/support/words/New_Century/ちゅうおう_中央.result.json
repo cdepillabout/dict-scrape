@@ -2,6 +2,14 @@
     "accent": "", 
     "defs": [
         {
+            "example_sentences": [], 
+            "parts": [
+                "the center", 
+                "the middle", 
+                "the heart"
+            ]
+        }, 
+        {
             "example_sentences": [
                 {
                     "eng_trans": "Central Asia.", 
@@ -18,7 +26,19 @@
                 {
                     "eng_trans": "a median (strip); a central reserve [reservation].", 
                     "jap_sentence": "中央分離帯"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "central", 
+                "middle"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "stand in the middle [center] of the room.", 
                     "jap_sentence": "部屋の中央に立つ"
@@ -28,11 +48,7 @@
                     "jap_sentence": "銀行は市の中央にある"
                 }
             ], 
-            "parts": [
-                "the center", 
-                "the middle", 
-                "the heart"
-            ]
+            "parts": []
         }
     ], 
     "original_kana": "ちゅうおう", 
