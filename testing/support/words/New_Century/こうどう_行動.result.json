@@ -46,7 +46,18 @@
                 {
                     "eng_trans": "We spent the whole day together.", 
                     "jap_sentence": "私たちは一日中ずっと行動をともにした（＝ともに過ごした）"
-                }, 
+                }
+            ], 
+            "parts": [
+                "(an) action", 
+                "an act", 
+                "behavior", 
+                "conduct", 
+                "activities"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "act on his order [advice].", 
                     "jap_sentence": "彼の命令[忠告]に従って行動する"
@@ -65,11 +76,8 @@
                 }
             ], 
             "parts": [
-                "(an) action", 
-                "an act", 
-                "behavior", 
-                "conduct", 
-                "activities"
+                "act", 
+                "behave"
             ]
         }
     ], 
