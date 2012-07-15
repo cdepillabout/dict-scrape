@@ -1,0 +1,76 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "There is a fountain in the center of the garden.", 
+                    "jap_sentence": "庭の中央に噴水がある。"
+                }
+            ], 
+            "parts": [
+                "the center", 
+                "the centre", 
+                "central"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "a metropolis", 
+                "the capital", 
+                "the government"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "We ordinary workers don't know what the higher-ups in the company are trying to do.", 
+                    "jap_sentence": "我々会社の末端の人間には中央の意向は分からない。"
+                }, 
+                {
+                    "eng_trans": "central government (administrative) organs [agencies]", 
+                    "jap_sentence": "行政</b>)<b>官庁"
+                }, 
+                {
+                    "eng_trans": "the Central Wholesale Market", 
+                    "jap_sentence": "中央卸売市場"
+                }, 
+                {
+                    "eng_trans": "the Central Meteorological Observatory", 
+                    "jap_sentence": "中央気象台"
+                }, 
+                {
+                    "eng_trans": "the Central Educational Council", 
+                    "jap_sentence": "中央教育審議会"
+                }, 
+                {
+                    "eng_trans": "the Japan Racing Association", 
+                    "jap_sentence": "中央競馬会"
+                }, 
+                {
+                    "eng_trans": "the Central Intelligence Agency ((略CIA))", 
+                    "jap_sentence": "中央情報局"
+                }, 
+                {
+                    "eng_trans": "the Central Election Management Council", 
+                    "jap_sentence": "中央選挙管理会"
+                }, 
+                {
+                    "eng_trans": "the Central Post Office", 
+                    "jap_sentence": "中央郵便局"
+                }, 
+                {
+                    "eng_trans": "the Central Labor Relations Commission", 
+                    "jap_sentence": "中央労働委員会"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ちゅうおう", 
+    "original_kanji": "中央", 
+    "result_kana": "ちゅうおう", 
+    "result_kanji": "中央", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E4%B8%AD%E5%A4%AE%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%8A%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

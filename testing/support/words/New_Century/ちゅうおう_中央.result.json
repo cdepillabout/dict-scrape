@@ -1,0 +1,43 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Central Asia.", 
+                    "jap_sentence": "中央アジア"
+                }, 
+                {
+                    "eng_trans": "centralization of power.", 
+                    "jap_sentence": "中央集権"
+                }, 
+                {
+                    "eng_trans": "the central government.", 
+                    "jap_sentence": "中央政府"
+                }, 
+                {
+                    "eng_trans": "a median (strip); a central reserve [reservation].", 
+                    "jap_sentence": "中央分離帯"
+                }, 
+                {
+                    "eng_trans": "stand in the middle [center] of the room.", 
+                    "jap_sentence": "部屋の中央に立つ"
+                }, 
+                {
+                    "eng_trans": "The bank is in the center [heart] of the city./The bank is in the central part of the city.", 
+                    "jap_sentence": "銀行は市の中央にある"
+                }
+            ], 
+            "parts": [
+                "the center", 
+                "the middle", 
+                "the heart"
+            ]
+        }
+    ], 
+    "original_kana": "ちゅうおう", 
+    "original_kanji": "中央", 
+    "result_kana": "ちゅうおう", 
+    "result_kanji": "中央", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E4%B8%AD%E5%A4%AE%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%8A%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

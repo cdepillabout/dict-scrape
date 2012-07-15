@@ -1,0 +1,50 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "町の―にある公園"
+                }
+            ], 
+            "parts": [
+                "ある物や場所などのまんなかの位置"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―に意見を具申する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "党の―"
+                }
+            ], 
+            "parts": [
+                "ある組織や機関の中で、最も重要な機能をになっているところ", 
+                "中枢"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "行政機関が―に集中する"
+                }
+            ], 
+            "parts": [
+                "中央官庁の置かれている土地", 
+                "首都", 
+                "⇔地方"
+            ]
+        }
+    ], 
+    "original_kana": "ちゅうおう", 
+    "original_kanji": "中央", 
+    "result_kana": "ちゅう‐おう〔‐アウ〕", 
+    "result_kanji": "中央", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E4%B8%AD%E5%A4%AE%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%8A%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}
