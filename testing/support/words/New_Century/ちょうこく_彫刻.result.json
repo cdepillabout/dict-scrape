@@ -22,7 +22,19 @@
                 {
                     "eng_trans": "a chisel.", 
                     "jap_sentence": "彫刻刀"
-                }, 
+                }
+            ], 
+            "parts": [
+                "sculpture", 
+                "carving", 
+                "engraving", 
+                "a sculpture", 
+                "a carving", 
+                "a relief"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "a sculptured [a carved] pillar.", 
                     "jap_sentence": "彫刻してある柱"
@@ -34,11 +46,9 @@
             ], 
             "parts": [
                 "sculpture", 
-                "carving", 
-                "engraving", 
-                "a sculpture", 
-                "a carving", 
-                "a relief"
+                "sculpt", 
+                "carve", 
+                "engrave"
             ]
         }
     ], 

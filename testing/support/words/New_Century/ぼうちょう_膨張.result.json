@@ -10,7 +10,14 @@
                 {
                     "eng_trans": "the rate of expansion; the expansion rate.", 
                     "jap_sentence": "膨張率"
-                }, 
+                }
+            ], 
+            "parts": [
+                "expansion"
+            ]
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "a rapidly expanding [increasing] population.", 
                     "jap_sentence": "急速に膨張する人口"
@@ -25,7 +32,8 @@
                 }
             ], 
             "parts": [
-                "expansion"
+                "expand", 
+                "swell"
             ]
         }
     ], 
