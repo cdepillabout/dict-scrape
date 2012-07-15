@@ -1,0 +1,29 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "on one's [the] way home [back].", 
+                    "jap_sentence": "帰宅の途中で"
+                }, 
+                {
+                    "eng_trans": "come home late; be late (coming) home.", 
+                    "jap_sentence": "帰宅が遅い"
+                }, 
+                {
+                    "eng_trans": "I think my mother will come [be] (back) home soon.", 
+                    "jap_sentence": "母はまもなく帰宅すると思います"
+                }
+            ], 
+            "parts": [
+                "＜<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11f1.gif\" align=\"absbottom\" border=\"0\">:g11f1＞＜<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11f1.gif\" align=\"absbottom\" border=\"0\">:g11f1＞帰宅する"
+            ]
+        }
+    ], 
+    "original_kana": "きたく", 
+    "original_kanji": "帰宅", 
+    "result_kana": "きたく", 
+    "result_kanji": "帰宅", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E5%B8%B0%E5%AE%85%E3%80%80%E3%81%8D%E3%81%9F%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}

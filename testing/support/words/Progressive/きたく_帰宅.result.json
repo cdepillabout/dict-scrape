@@ -1,0 +1,39 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "When did you get [reach] home?", 
+                    "jap_sentence": "何時にご帰宅でしたか"
+                }, 
+                {
+                    "eng_trans": "I was home by 6 o'clock.", 
+                    "jap_sentence": "6時には帰宅していた。"
+                }, 
+                {
+                    "eng_trans": "I met him on my way home.", 
+                    "jap_sentence": "帰宅の途中で彼に会った。"
+                }, 
+                {
+                    "eng_trans": "You may go home after you finish cleaning the classroom.", 
+                    "jap_sentence": "教室の掃除が終わったら帰宅してよろしい。"
+                }, 
+                {
+                    "eng_trans": "a stranded person; a stranded commuter", 
+                    "jap_sentence": "帰宅困難者[難民]"
+                }
+            ], 
+            "parts": [
+                "come home", 
+                "go home", 
+                "get [reach] home"
+            ]
+        }
+    ], 
+    "original_kana": "きたく", 
+    "original_kanji": "帰宅", 
+    "result_kana": "きたく", 
+    "result_kanji": "帰宅", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E5%B8%B0%E5%AE%85%E3%80%80%E3%81%8D%E3%81%9F%E3%81%8F&enc=UTF-8&stype=1&dtype=3"
+}
