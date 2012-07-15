@@ -10,14 +10,21 @@
                 {
                     "eng_trans": "come home late; be late (coming) home.", 
                     "jap_sentence": "帰宅が遅い"
-                }, 
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
                 {
                     "eng_trans": "I think my mother will come [be] (back) home soon.", 
                     "jap_sentence": "母はまもなく帰宅すると思います"
                 }
             ], 
             "parts": [
-                "＜<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11f1.gif\" align=\"absbottom\" border=\"0\">:g11f1＞＜<img src=\"http://i.yimg.jp/images/dic/ss/gnc/g11f1.gif\" align=\"absbottom\" border=\"0\">:g11f1＞帰宅する"
+                "go [come ] home", 
+                "return home", 
+                "get home"
             ]
         }
     ], 
