@@ -1,0 +1,32 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "音信が―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "仕事が―する"
+                }
+            ], 
+            "parts": [
+                "途中で打ち切って、やめること", 
+                "途中で絶えること"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "「人工妊娠中絶」のこと"
+            ]
+        }
+    ], 
+    "original_kana": "ちゅうぜつ", 
+    "original_kanji": "中絶", 
+    "result_kana": "ちゅうぜつ", 
+    "result_kanji": "中絶", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E4%B8%AD%E7%B5%B6%E3%80%80%E3%81%A1%E3%82%85%E3%81%86%E3%81%9C%E3%81%A4&enc=UTF-8&stype=1&dtype=0"
+}
