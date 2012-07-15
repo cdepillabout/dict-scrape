@@ -262,6 +262,20 @@ class ProgressiveDictionary(YahooDictionary):
         Clean up the big picture HTML. For example, this cleans things out from
         the beginning that we don't want.
         """
+
+        # if we have the bolded definitions with child definitions, then clean them up
+        # so it doesn't mess up the rest of the results. For example, this occurs in 
+        # the definition for 行動 (i.e. 行動半径)
+        #print "HELLO"
+        #print html_string
+        search_string = u'<b>([\u3041-\u3096\u30A0-\u30FF\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A]+)</b>｜<br><br>(<b>[0-9]+</b>(.*?)<br><br>(<table.*?</table><br>)+)+'
+        match = re.search(search_string, html_string)
+        while (match):
+            # TODO: Fix the parsing with this.
+            # This would be really annoying to properly fix, so I just take it all out.
+            html_string = re.sub(search_string, u'', html_string)
+            match = re.search(search_string, html_string)
+
         return html_string
 
     def parse_definition(self, tree):

@@ -4,20 +4,64 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "the flying radius of an airplane", 
-                    "jap_sentence": "飛行機の行動半径"
-                }
-            ], 
-            "parts": [
-                "a radius of action", 
-                "a radius of operation"
-            ]
-        }, 
-        {
-            "example_sentences": [
+                    "eng_trans": "separate action", 
+                    "jap_sentence": "単独行動"
+                }, 
                 {
-                    "eng_trans": "He has a wide range of activities.／He is active in many fields.", 
-                    "jap_sentence": "彼は行動半径が広い。"
+                    "eng_trans": "group action／group behavior", 
+                    "jap_sentence": "団体行動"
+                }, 
+                {
+                    "eng_trans": "act separately [as a group]", 
+                    "jap_sentence": "単独［団体］行動をとる"
+                }, 
+                {
+                    "eng_trans": "put a theory into action", 
+                    "jap_sentence": "理論を行動に移す"
+                }, 
+                {
+                    "eng_trans": "Dissenting elements went into action.", 
+                    "jap_sentence": "反対分子が行動を起こした。"
+                }, 
+                {
+                    "eng_trans": "He took quick action.／He acted immediately.", 
+                    "jap_sentence": "機敏な行動を取った。"
+                }, 
+                {
+                    "eng_trans": "act on one's own", 
+                    "jap_sentence": "自由行動を取る"
+                }, 
+                {
+                    "eng_trans": "You may do whatever [go wherever] you like for the next two hours.", 
+                    "jap_sentence": "今から2時間は自由行動の時間です〔遠足などで〕。"
+                }, 
+                {
+                    "eng_trans": "start a protest movement", 
+                    "jap_sentence": "抗議行動を起こす"
+                }, 
+                {
+                    "eng_trans": "Be careful about your behavior in public.", 
+                    "jap_sentence": "人前では行動に気をつけなさい。"
+                }, 
+                {
+                    "eng_trans": "I can't believe he did such a thing.", 
+                    "jap_sentence": "彼がそんな行動をしたとは考えられない。"
+                }, 
+                {
+                    "eng_trans": "He conducted himself splendidly.", 
+                    "jap_sentence": "彼の行動は立派だった。"
+                }, 
+                {
+                    "eng_trans": "behavioral science", 
+                    "jap_sentence": "行動科学"
+                }, 
+                {
+                    "eng_trans": "behaviorism", 
+                    "jap_sentence": "行動主義"
+                }, 
+                {
+                    "eng_trans": "active people", 
+                    "jap_sentence": "行動派"
                 }, 
                 {
                     "eng_trans": "a behavioral pattern", 
@@ -37,7 +81,15 @@
                 }
             ], 
             "parts": [
-                "a range [sphere] of activity"
+                "action", 
+                "behavior", 
+                "behaviour", 
+                "conduct", 
+                "movement", 
+                "act", 
+                "take [go into] action", 
+                "behave", 
+                "conduct oneself"
             ]
         }
     ], 
