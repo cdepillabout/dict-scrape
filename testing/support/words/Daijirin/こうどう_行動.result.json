@@ -1,0 +1,35 @@
+{
+    "accent": "0", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―に移る"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "ただちに―する"
+                }
+            ], 
+            "parts": [
+                "実際に体を動かして、あることを行うこと", 
+                "実行", 
+                "おこない"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "<b>〔専門〕</b> 心", 
+                "<b>〔補説〕</b> behavior", 
+                "外部から客観的に観察できる、人間や動物の行為や反応"
+            ]
+        }
+    ], 
+    "original_kana": "こうどう", 
+    "original_kanji": "行動", 
+    "result_kana": "こうどう［かう―］", 
+    "result_kanji": "行動", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0ss&p=%E8%A1%8C%E5%8B%95%E3%80%80%E3%81%93%E3%81%86%E3%81%A9%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}

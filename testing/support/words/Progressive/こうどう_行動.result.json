@@ -1,0 +1,49 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the flying radius of an airplane", 
+                    "jap_sentence": "飛行機の行動半径"
+                }
+            ], 
+            "parts": [
+                "a radius of action", 
+                "a radius of operation"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He has a wide range of activities.／He is active in many fields.", 
+                    "jap_sentence": "彼は行動半径が広い。"
+                }, 
+                {
+                    "eng_trans": "a behavioral pattern", 
+                    "jap_sentence": "行動様式"
+                }, 
+                {
+                    "eng_trans": "energy; vitality", 
+                    "jap_sentence": "行動力"
+                }, 
+                {
+                    "eng_trans": "be [be not] energetic", 
+                    "jap_sentence": "行動力がある［ない］"
+                }, 
+                {
+                    "eng_trans": "a doer", 
+                    "jap_sentence": "行動力のある人"
+                }
+            ], 
+            "parts": [
+                "a range [sphere] of activity"
+            ]
+        }
+    ], 
+    "original_kana": "こうどう", 
+    "original_kanji": "行動", 
+    "result_kana": "こうどう", 
+    "result_kanji": "行動", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2na&p=%E8%A1%8C%E5%8B%95%E3%80%80%E3%81%93%E3%81%86%E3%81%A9%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

@@ -1,0 +1,81 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "group [individual] action.", 
+                    "jap_sentence": "団体[個人]行動"
+                }, 
+                {
+                    "eng_trans": "You may have free activities in the afternoon./You can do whatever you like in the afternoon.", 
+                    "jap_sentence": "午後は個人[自由]行動をとってよろしい"
+                }, 
+                {
+                    "eng_trans": "a man [a woman] of action;an active person;an aggressive person.", 
+                    "jap_sentence": "行動力のある[行動的な]人"
+                }, 
+                {
+                    "eng_trans": "He has a wide range [sphere] of action [activities].", 
+                    "jap_sentence": "彼は行動半径が広い"
+                }, 
+                {
+                    "eng_trans": "His act [action, behavior] was brave./He acted [behaved] bravely.", 
+                    "jap_sentence": "彼の行動は勇敢だった"
+                }, 
+                {
+                    "eng_trans": "put one's idea into action.", 
+                    "jap_sentence": "考えを行動に移す（＝実行する）"
+                }, 
+                {
+                    "eng_trans": "act [take action] immediately; take immediate action.", 
+                    "jap_sentence": "直ちに行動をとる[起こす]"
+                }, 
+                {
+                    "eng_trans": "watch his movements.", 
+                    "jap_sentence": "彼の行動（＝動静）を見守る"
+                }, 
+                {
+                    "eng_trans": "You should answer for your actions [what you do].", 
+                    "jap_sentence": "自分の行動に責任を持ちなさい"
+                }, 
+                {
+                    "eng_trans": "His response was merely verbal and he took no action.", 
+                    "jap_sentence": "彼の返事は口先だけで行動に移さなかった"
+                }, 
+                {
+                    "eng_trans": "We spent the whole day together.", 
+                    "jap_sentence": "私たちは一日中ずっと行動をともにした（＝ともに過ごした）"
+                }, 
+                {
+                    "eng_trans": "act on his order [advice].", 
+                    "jap_sentence": "彼の命令[忠告]に従って行動する"
+                }, 
+                {
+                    "eng_trans": "go around in groups.", 
+                    "jap_sentence": "集団で行動する（＝動き回る）"
+                }, 
+                {
+                    "eng_trans": "Now is the time for action [to act]./We must act now.", 
+                    "jap_sentence": "今こそ行動すべき時だ"
+                }, 
+                {
+                    "eng_trans": "You're an adult and should act [behave] accordingly.", 
+                    "jap_sentence": "君は大人なんだからそれ相応に行動すべきだ"
+                }
+            ], 
+            "parts": [
+                "(an) action", 
+                "an act", 
+                "behavior", 
+                "conduct", 
+                "activities"
+            ]
+        }
+    ], 
+    "original_kana": "こうどう", 
+    "original_kanji": "行動", 
+    "result_kana": "こうどう", 
+    "result_kanji": "行動", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=2ss&p=%E8%A1%8C%E5%8B%95%E3%80%80%E3%81%93%E3%81%86%E3%81%A9%E3%81%86&enc=UTF-8&stype=1&dtype=3"
+}

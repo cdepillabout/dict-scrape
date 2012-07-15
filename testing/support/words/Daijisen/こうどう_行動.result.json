@@ -1,0 +1,40 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "具体的な―を起こす"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―を共にする"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "自分で考えて―する"
+                }, 
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "―力"
+                }
+            ], 
+            "parts": [
+                "あることを目的として、実際に何かをすること", 
+                "行い"
+            ]
+        }, 
+        {
+            "example_sentences": [], 
+            "parts": [
+                "心理学で、外部から観察可能な人間や動物の反応をいう"
+            ]
+        }
+    ], 
+    "original_kana": "こうどう", 
+    "original_kanji": "行動", 
+    "result_kana": "こう‐どう〔カウ‐〕", 
+    "result_kanji": "行動", 
+    "url": "http://dic.yahoo.co.jp/dsearch?dname=0na&p=%E8%A1%8C%E5%8B%95%E3%80%80%E3%81%93%E3%81%86%E3%81%A9%E3%81%86&enc=UTF-8&stype=1&dtype=0"
+}
