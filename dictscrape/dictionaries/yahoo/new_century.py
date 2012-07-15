@@ -39,6 +39,25 @@ class NewCenturyDictionary(YahooDictionary):
     def __init__(self):
         pass
 
+    def remove_parenthesis(self, string):
+        # Remove parenthesis.  This is a little difficult because
+        # we have to loop through the list multiple times until we
+        # are certain there are no more parenthesis.  Just to be
+        # on the safe side, we will raise an exception if we
+        # loop through too many times.
+        # In order to do this properly, we might need to use a
+        # proper parsing library like pyparsing.
+        count = 0
+        while re.search(u'（.*?）', string):
+            string = re.sub(u'（.[^（]*?）', u'', string)
+            count += 1
+            if count > 100:
+                raise Exception(
+                        "Looped thru string too many times looking for matching ().")
+
+        return string
+
+
     def clean_def_string(self, def_string):
         """
         Cleans up a definition string and splits up the definition parts.
@@ -49,9 +68,10 @@ class NewCenturyDictionary(YahooDictionary):
         Returns list of cleaned definition parts.
         """
         # remove things in brackets and parenthesis
+        def_string = self.remove_parenthesis(def_string)
         def_string = re.sub(u'【.*?】', u'', def_string)
         def_string = re.sub(u'〈.*?〉', u'', def_string)
-        def_string = re.sub(u'（.*?）', u'', def_string)
+
         # remove bold
         def_string = def_string.replace(u'<b>', u'')
         def_string = def_string.replace(u'</b>', u'')
@@ -261,23 +281,7 @@ class NewCenturyDictionary(YahooDictionary):
             eng_trans = re.sub(u'<a.*?>', u'', eng_trans)
             eng_trans = re.sub(u'</a>', u'', eng_trans)
 
-            # replace gaiji characters
-            #eng_trans = self.replace_gaiji(eng_trans)
-
-            # Remove parenthesis.  This is a little difficult because
-            # we have to loop through the list multiple times until we
-            # are certain there are no more parenthesis.  Just to be
-            # on the safe side, we will raise an exception if we
-            # loop through too many times.
-            # In order to do this properly, we might need to use a
-            # proper parsing library like pyparsing.
-            count = 0
-            while re.search(u'（.*?）', eng_trans):
-                eng_trans = re.sub(u'（.[^（]*?）', u'', eng_trans)
-                count += 1
-                if count > 100:
-                    raise Exception(
-                            "Looped thru eng_trans too many times looking for matching ().")
+            eng_trans = self.remove_parenthesis(eng_trans)
 
             # Sometimes there are "（※"  without a matching "）" on the end of the line...
             # Try to remove them.
