@@ -15,12 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-This module deals with getting information from dictionaries.
-A dictionary can get information from any resource, such as
-a website, an epwing dictionary, a database, etc.
+Epwing dictionaries.
 """
 
-from .dictionary import Dictionary
-from .yahoo import YahooDictionary, DaijirinDictionary, DaijisenDictionary, \
-        NewCenturyDictionary, ProgressiveDictionary
-from .epwing import EpwingDictionary, KenkyuushaDictionary
+from .epwing import EpwingDictionary
+from .kenkyuusha import KenkyuushaDictionary

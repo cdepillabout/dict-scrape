@@ -32,7 +32,7 @@ class NewCenturyDictionary(YahooDictionary):
 
     long_dictionary_name = u"Yahoo's New Century Dictionary (ニューセンチュリー和英辞典)"
     short_dictionary_name = "New_Century"
-    dictionary_type = Dictionary.NEW_CENTURY_TYPE
+    dictionary_type = Dictionary.YAHOO_NEW_CENTURY_TYPE
     dtype_search_param = '3'
     dname_search_param = '2ss'
 

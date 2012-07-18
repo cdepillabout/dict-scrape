@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 
 # Copyright (C) 2012  Dennis Gosnell
 #
@@ -14,13 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""
-This module deals with getting information from dictionaries.
-A dictionary can get information from any resource, such as
-a website, an epwing dictionary, a database, etc.
-"""
 
-from .dictionary import Dictionary
-from .yahoo import YahooDictionary, DaijirinDictionary, DaijisenDictionary, \
-        NewCenturyDictionary, ProgressiveDictionary
-from .epwing import EpwingDictionary, KenkyuushaDictionary
+from ..dictionary import Dictionary
+from .epwing import EpwingDictionary
+
+from ...example_sentence import ExampleSentence
+from ...definition import Definition
+
+class KenkyuushaDictionary(EpwingDictionary):
+    """
+    Kenkyuusha Epwing Dictionary.
+    """
+
+    long_dictionary_name = u"研究社 新和英大辞典 第５版"
+    short_dictionary_name = "Kenkyuusha"
+    dictionary_type = Dictionary.EPWING_KENKYUUSHA_TYPE
+

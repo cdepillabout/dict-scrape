@@ -39,17 +39,21 @@ import urllib
 
 
 from dictscrape import DaijisenDictionary, DaijirinDictionary, \
-        NewCenturyDictionary, ProgressiveDictionary
+        NewCenturyDictionary, ProgressiveDictionary, KenkyuushaDictionary
 
 daijirin_dic = DaijirinDictionary()
 daijisen_dic = DaijisenDictionary()
 new_century_dic = NewCenturyDictionary()
 progressive_dic = ProgressiveDictionary()
+kenkyuusha_dic = KenkyuushaDictionary()
 
 def main():
     """
     This shows some uses of the the dictscrape library.
     """
+    kenkyuusha_dic.lookup(u'秀逸', u'しゅういつ')
+    sys.exit(0)
+
 
     words = [
             (u'強迫', u'きょうはく'),

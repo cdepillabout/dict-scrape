@@ -32,7 +32,7 @@ class DaijisenDictionary(YahooDictionary):
 
     long_dictionary_name = u"Yahoo's Daijisen (大辞泉)"
     short_dictionary_name = "Daijisen"
-    dictionary_type = Dictionary.DAIJISEN_TYPE
+    dictionary_type = Dictionary.YAHOO_DAIJISEN_TYPE
     dtype_search_param = '0'
     dname_search_param = '0na'
 

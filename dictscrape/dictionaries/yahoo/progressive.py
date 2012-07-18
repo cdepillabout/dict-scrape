@@ -32,7 +32,7 @@ class ProgressiveDictionary(YahooDictionary):
 
     long_dictionary_name = u"Yahoo's Progressive Dictionary (プログレッシブ和英中辞典)"
     short_dictionary_name = "Progressive"
-    dictionary_type = Dictionary.PROGRESSIVE_TYPE
+    dictionary_type = Dictionary.YAHOO_PROGRESSIVE_TYPE
     dtype_search_param = '3'
     dname_search_param = '2na'
 
