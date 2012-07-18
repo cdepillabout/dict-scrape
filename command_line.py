@@ -51,10 +51,6 @@ def main():
     """
     This shows some uses of the the dictscrape library.
     """
-    kenkyuusha_dic.lookup(u'秀逸', u'しゅういつ')
-    sys.exit(0)
-
-
     words = [
             (u'強迫', u'きょうはく'),
             (u'面白い', u'おもしろい'),
@@ -70,7 +66,18 @@ def main():
             (u'遊ぶ', u'あそぶ'),
             #(u'遊ぶ', u'あすぶ'),        # this fails in the daijirin
             #(u'唸る', u'うなる'),         # this doesn't parse right in the progressive dict
+            (u'隙間産業', u'すきまさんぎょう'),         # this doesn't parse right in the progressive dict
             ]
+
+    for word in words:
+        kanji = word[0]
+        kana = word[1]
+        print ("to lookup: %s (%s)" % (kanji, kana))
+        result = kenkyuusha_dic.lookup(kanji, kana)
+        print result
+        print
+
+    sys.exit(0)
 
     print("\t\t\tLOOK UP ONE WORD IN ONE DICTIONARY:")
     print("\t\t\t-----------------------------------")
