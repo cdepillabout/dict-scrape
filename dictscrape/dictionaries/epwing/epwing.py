@@ -783,12 +783,12 @@ class EpwingDictionary(Dictionary):
 
         return result_kanji, result_kana, result_accent
 
-    def parse_definition(self, tree):
+    def parse_definition(self, text):
         """
         Parses the main definition of the dictionary page and returns a
         a list of Definition objects.
         """
-        raise NotImplementedError, "This needs to be overrode in a child class."
+        return []
 
     def lookup(self, word_kanji, word_kana, html=None):
         """
@@ -815,6 +815,7 @@ class EpwingDictionary(Dictionary):
         result_text = self.replace_gaiji(result_text)
 
         kanji, kana, _ = self.parse_heading(result_text)
+        defs = self.parse_definition(result_text)
         #print hit.text()
         """
             print "-" * 40
@@ -823,4 +824,4 @@ class EpwingDictionary(Dictionary):
             """
         eb_finalize_library()
 
-        return Result(self, word_kanji, word_kana, '', kanji, kana, u'')
+        return Result(self, word_kanji, word_kana, '', kanji, kana, u'', defs)
