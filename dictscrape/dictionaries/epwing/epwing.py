@@ -23,6 +23,9 @@ from eb import *
 from ..dictionary import Dictionary
 from ...result import Result
 
+from ...example_sentence import ExampleSentence
+from ...definition import Definition
+
 class EB_Hit:
     def __init__(self, book, subbook, position):
         self.book = book # EB instance
@@ -753,7 +756,6 @@ class EpwingDictionary(Dictionary):
         return text
 
     def parse_heading(self, text):
-
         result_kana = u''
         result_kanji = u''
         result_accent = u''
@@ -783,12 +785,116 @@ class EpwingDictionary(Dictionary):
 
         return result_kanji, result_kana, result_accent
 
+    def clean_jap_sent(self, jap_sent):
+        return jap_sent
+
+    def clean_eng_sent(self, eng_sent):
+        eng_sent = eng_sent.replace(u'⌐', u'')
+        return eng_sent
+
+    def clean_def(self, def_string):
+        def_string = re.sub(u'^[0-9]+\s*', u'', def_string)
+        def_string = re.sub(u'〔.*?〕', u'', def_string)
+        def_string = re.sub(u'【.*?】', u'', def_string)
+
+        def_string = re.sub(u'\[?⇒(<reference>.*?</reference=[0-9]+:[0-9]+>(, )?)+\]?',
+                u'', def_string)
+
+        return def_string
+
+    def create_def(self, def_string, example_sentences=[]):
+        """
+        Creates a Definition() object.
+        """
+        def_string = self.clean_def(def_string)
+
+        if def_string:
+            def_parts = self.split_def_parts(def_string, split_characters=[u'.', u';'])
+        else:
+            def_parts = []
+
+        example_sent_objects = []
+
+        # append the extra example sentences
+        for e in example_sentences:
+            # split on last full space in the string
+            try:
+                jap_sent, eng_sent = e.rsplit(u'　', 1)
+            except ValueError:
+                # ValueError: need more than 1 value to unpack
+                jap_sent = e
+                eng_sent = u""
+
+            jap_sent = self.clean_jap_sent(jap_sent)
+            eng_sent = self.clean_eng_sent(eng_sent)
+
+            example_sent_objects.append(ExampleSentence(jap_sent, eng_sent))
+
+        return Definition(def_parts, example_sent_objects)
+
     def parse_definition(self, text):
         """
         Parses the main definition of the dictionary page and returns a
         a list of Definition objects.
         """
-        return []
+        print text
+        lines = text.split(u'\n')
+        lines = lines[1:]
+        print len(lines)
+
+        current_definition = ""
+        current_example_sentences = []
+        all_defs = []
+
+        for line in lines:
+
+            # this is starting a new definition
+            if re.match(u"(([1-9]+ )?(〔|【))|[a-zA-Z]", line):
+                if current_definition or current_example_sentences:
+                    all_defs.append([current_definition, current_example_sentences])
+                    current_definition = ""
+                    current_example_sentences = []
+                current_definition += line
+                continue
+
+            # this is a sub definition, for example the second line in the
+            # result for 勉強.
+            if line.startswith(u'〜'):
+                # this should never happen if we don't have example sentences?
+                assert(not current_example_sentences)
+                current_definition += line
+                continue
+
+            # this is a new sub definition that may have it's own example sentences.
+            # for example, 社会[人生]勉強 that appears in the entry for 勉強.
+            if line.startswith(u'◧'):
+                if current_definition or current_example_sentences:
+                    all_defs.append([current_definition, current_example_sentences])
+                    current_definition = ""
+                    current_example_sentences = []
+                current_example_sentences.append(line[1:])
+                continue
+
+            # these are just standard example sentences
+            if line.startswith(u'▲') or line.startswith(u'・'):
+                current_example_sentences.append(line[1:])
+                continue
+
+            # otherwise, we just create a new definition and add this word as
+            # an example sentence
+            if current_definition or current_example_sentences:
+                all_defs.append([current_definition, current_example_sentences])
+                current_definition = ""
+                current_example_sentences = []
+            current_example_sentences.append(line)
+
+        definitions = []
+        for defs, example_sents in all_defs:
+            df = self.create_def(defs, example_sents)
+            definitions.append(df)
+
+        return definitions
+
 
     def lookup(self, word_kanji, word_kana, html=None):
         """
