@@ -54,7 +54,7 @@ class Ui_MainWindowSelector(object):
         # don't return the horizontal layout
         return verticallayout, dictlabel, resultwordlabel, webview
 
-    def createtab(self, tabobjectname, layoutobjectname, webviewobjectname):
+    def create_debug_tab(self, tabobjectname, layoutobjectname, webviewobjectname):
         tab = QtGui.QWidget()
         tab.setObjectName(tabobjectname)
         tabvertlayout = QtGui.QVBoxLayout(tab)
@@ -66,74 +66,11 @@ class Ui_MainWindowSelector(object):
 
         return tab, tabvertlayout, webview
 
-    def setupUi(self, mainwindowselector):
-        self.mainwindowselector = mainwindowselector
-        mainwindowselector.setObjectName("mainwindowselector")
-        mainwindowselector.resize(900, 650)
-        #mainwindowselector.setAcceptDrops(False)
-        #icon = QtGui.QIcon()
-        #pixmap = QtGui.QPixmap("../img/logo32x32.png")
-        #icon.addPixmap(pixmap, QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        #mainwindowselector.setWindowIcon(icon)
-        self.centralwidget = QtGui.QWidget(mainwindowselector)
-        self.centralwidget.setObjectName("centralwidget")
-
-        # main vertical layout that holds the tabwidget
-        self.mainverticallayout = QtGui.QHBoxLayout(self.centralwidget)
-        self.mainverticallayout.setObjectName("mainverticallayout")
-
-        # tab widget
-        self.tabwidget = QtGui.QTabWidget(self.centralwidget)
-        self.tabwidget.setTabShape(QtGui.QTabWidget.Rounded)
-        self.tabwidget.setObjectName("tabwidget")
-        self.mainverticallayout.addWidget(self.tabwidget)
-
-        # tab one.  this is our main definition page
-        self.tabone = QtGui.QWidget()
-        self.tabone.setObjectName("tabone")
-        self.tabwidget.addTab(self.tabone, "Dictionary Results")
-
-        # main vertical layout for tab one
-        self.tabonevertlayout = QtGui.QVBoxLayout(self.tabone)
-        self.tabonevertlayout.setObjectName("tabonevertlayout")
-
-
-        # this is the horizontal layout that holds the two japanese dictionaries
-        self.japdichorizlayout = QtGui.QHBoxLayout()
-        self.japdichorizlayout.setObjectName("japdichorizlayout")
-
-        self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
-                self.daijisendefwebview = self.createlist("daijisenverticallayout",
-                        "daijisenhorizontallayout", "daijisenresultwordlabel",
-                        "daijisenlabel", "daijisentextedit", u'大辞泉')
-        self.japdichorizlayout.addLayout(self.daijisenverticallayout)
-        self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
-                self.daijirindefwebview = self.createlist("daijirinverticallayout",
-                        "daijirinhorizontallayout", "daijirinresultwordlabel",
-                        "daijirinlabel", "daijirintextedit", u'大辞林')
-        self.japdichorizlayout.addLayout(self.daijirinverticallayout)
-        self.tabonevertlayout.addLayout(self.japdichorizlayout, 2)
-
-        # this is the horizontal layout that holds the two english dictionaries
-        self.engdichorizlayout = QtGui.QHBoxLayout()
-        self.engdichorizlayout.setObjectName("engdichorizlayout")
-
-        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
-                self.newcenturydefwebview = self.createlist("newcenturyvertlayout",
-                        "newcenturyhorizontallayout", "newcenturyresultwordlabel",
-                        "newcenturylabel", "newcenturytextedit", "New Century")
-        self.engdichorizlayout.addLayout(self.newcenturyvertlayout)
-        self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
-                self.progressdefwebview = self.createlist("progressvertlayout",
-                        "progresshorizontallayout", "progressresultwordlabel",
-                        "progresslabel", "progresstextedit", "Progressive")
-        self.engdichorizlayout.addLayout(self.progressvertlayout)
-        self.tabonevertlayout.addLayout(self.engdichorizlayout, 3)
-
+    def create_accent_box(self, mainvertlayout):
         # horizontal layout that holds the accent and OKAY/CANCEL buttons
         self.bottomhorizlayout = QtGui.QHBoxLayout()
         self.bottomhorizlayout.setObjectName("bottomhorizlayout")
-        self.tabonevertlayout.addLayout(self.bottomhorizlayout)
+        mainvertlayout.addLayout(self.bottomhorizlayout)
 
         # accent stuff
         self.accentlabel = QtGui.QLabel(self.centralwidget)
@@ -159,6 +96,120 @@ class Ui_MainWindowSelector(object):
         self.bottomhorizlayout.addWidget(self.buttonBox)
 
 
+    def create_yahoo_tab(self, yahoo_dics_tab):
+        # main vertical layout for tab one
+        self.yahoo_dics_tab_vert_layout = QtGui.QVBoxLayout(yahoo_dics_tab)
+        self.yahoo_dics_tab_vert_layout.setObjectName("yahoo_dics_tab_vert_layout")
+
+
+        # this is the horizontal layout that holds the two japanese dictionaries
+        self.yahoo_jap_dic_horiz_layout = QtGui.QHBoxLayout()
+        self.yahoo_jap_dic_horiz_layout.setObjectName("yahoo_jap_dic_horiz_layout")
+
+        self.daijisenverticallayout, self.daijisenlabel, self.daijisenresultwordlabel, \
+                self.daijisendefwebview = self.createlist("daijisenverticallayout",
+                        "daijisenhorizontallayout", "daijisenresultwordlabel",
+                        "daijisenlabel", "daijisentextedit", u'大辞泉')
+        self.yahoo_jap_dic_horiz_layout.addLayout(self.daijisenverticallayout)
+        self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
+                self.daijirindefwebview = self.createlist("daijirinverticallayout",
+                        "daijirinhorizontallayout", "daijirinresultwordlabel",
+                        "daijirinlabel", "daijirintextedit", u'大辞林')
+        self.yahoo_jap_dic_horiz_layout.addLayout(self.daijirinverticallayout)
+        self.yahoo_dics_tab_vert_layout.addLayout(self.yahoo_jap_dic_horiz_layout, 2)
+
+        # this is the horizontal layout that holds the two english dictionaries
+        self.yahoo_eng_dic_horiz_layout = QtGui.QHBoxLayout()
+        self.yahoo_eng_dic_horiz_layout.setObjectName("yahoo_eng_dic_horiz_layout")
+
+        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
+                self.newcenturydefwebview = self.createlist("newcenturyvertlayout",
+                        "newcenturyhorizontallayout", "newcenturyresultwordlabel",
+                        "newcenturylabel", "newcenturytextedit", "New Century")
+        self.yahoo_eng_dic_horiz_layout.addLayout(self.newcenturyvertlayout)
+        self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
+                self.progressdefwebview = self.createlist("progressvertlayout",
+                        "progresshorizontallayout", "progressresultwordlabel",
+                        "progresslabel", "progresstextedit", "Progressive")
+        self.yahoo_eng_dic_horiz_layout.addLayout(self.progressvertlayout)
+        self.yahoo_dics_tab_vert_layout.addLayout(self.yahoo_eng_dic_horiz_layout, 3)
+
+    def create_epwing_tab(self, epwing_dics_tab):
+        # main vertical layout for tab two
+        self.epwing_dics_tab_vert_layout = QtGui.QVBoxLayout(epwing_dics_tab)
+        self.epwing_dics_tab_vert_layout.setObjectName("vertlayout")
+
+        # this is the horizontal layout that holds the upper two dictionaries
+        self.epwing_upper_dic_horiz_layout = QtGui.QHBoxLayout()
+        self.epwing_upper_dic_horiz_layout.setObjectName("epwing_upper_dic_horiz_layout")
+
+        self.kenkyuuverticallayout, self.kenkyuulabel, self.kenkyuuresultwordlabel, \
+                self.kenkyuudefwebview = self.createlist("kenkyuuverticallayout",
+                        "kenkyuuhorizontallayout", "kenkyuuresultwordlabel",
+                        "kenkyuulabel", "kenkyuutextedit", u'研究者')
+        self.epwing_upper_dic_horiz_layout.addLayout(self.kenkyuuverticallayout)
+        #self.daijirinverticallayout, self.daijirinlabel, self.daijirinresultwordlabel, \
+        #        self.daijirindefwebview = self.createlist("daijirinverticallayout",
+        #                "daijirinhorizontallayout", "daijirinresultwordlabel",
+        #                "daijirinlabel", "daijirintextedit", u'大辞林')
+        #self.epwing_upper_dic_horiz_layout.addLayout(self.daijirinverticallayout)
+        self.epwing_dics_tab_vert_layout.addLayout(self.epwing_upper_dic_horiz_layout, 2)
+
+        return
+
+        # this is the horizontal layout that holds the lower two dictionaries
+        self.epwing_lower_dic_horiz_layout = QtGui.QHBoxLayout()
+        self.epwing_lower_dic_horiz_layout.setObjectName("epwing_lower_dic_horiz_layout")
+
+        self.newcenturyvertlayout, self.newcenturylabel, self.newcenturyresultwordlabel, \
+                self.newcenturydefwebview = self.createlist("newcenturyvertlayout",
+                        "newcenturyhorizontallayout", "newcenturyresultwordlabel",
+                        "newcenturylabel", "newcenturytextedit", "New Century")
+        self.epwing_lower_dic_horiz_layout.addLayout(self.newcenturyvertlayout)
+        self.progressvertlayout, self.progresslabel, self.progressresultwordlabel, \
+                self.progressdefwebview = self.createlist("progressvertlayout",
+                        "progresshorizontallayout", "progressresultwordlabel",
+                        "progresslabel", "progresstextedit", "Progressive")
+        self.epwing_lower_dic_horiz_layout.addLayout(self.progressvertlayout)
+        self.epwing_dics_tab_vert_layout.addLayout(self.epwing_lower_dic_horiz_layout, 3)
+
+    def setupUi(self, mainwindowselector):
+        self.mainwindowselector = mainwindowselector
+        mainwindowselector.setObjectName("mainwindowselector")
+        mainwindowselector.resize(900, 650)
+        #mainwindowselector.setAcceptDrops(False)
+        #icon = QtGui.QIcon()
+        #pixmap = QtGui.QPixmap("../img/logo32x32.png")
+        #icon.addPixmap(pixmap, QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        #mainwindowselector.setWindowIcon(icon)
+        self.centralwidget = QtGui.QWidget(mainwindowselector)
+        self.centralwidget.setObjectName("centralwidget")
+
+        # main vertical layout that holds the tabwidget
+        self.mainverticallayout = QtGui.QVBoxLayout(self.centralwidget)
+        self.mainverticallayout.setObjectName("mainverticallayout")
+
+        # tab widget
+        self.tabwidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabwidget.setTabShape(QtGui.QTabWidget.Rounded)
+        self.tabwidget.setObjectName("tabwidget")
+        self.mainverticallayout.addWidget(self.tabwidget)
+
+        # yahoo tab
+        self.yahoo_dics_tab = QtGui.QWidget()
+        self.yahoo_dics_tab.setObjectName("yahoo_dics_tab")
+        self.tabwidget.addTab(self.yahoo_dics_tab, u"Yahoo Dics")
+        self.create_yahoo_tab(self.yahoo_dics_tab)
+
+        # epwing tab
+        self.epwing_dics_tab = QtGui.QWidget()
+        self.epwing_dics_tab.setObjectName("epwing_dics_tab")
+        self.tabwidget.addTab(self.epwing_dics_tab, u"Epwing Dics")
+        self.create_epwing_tab(self.epwing_dics_tab)
+
+        # create the accent box at the bottom of the screen
+        self.create_accent_box(self.mainverticallayout)
+
         # status bar
         self.statusbar = QtGui.QStatusBar(mainwindowselector)
         self.statusbar.setObjectName("statusbar")
@@ -179,22 +230,42 @@ class Ui_MainWindowSelector(object):
         self.menuFile.addAction(self.actionExit)
         self.menuBar.addAction(self.menuFile.menuAction())
 
-        # four additional tabs for additional pages
-        self.daijisentab, self.daijisentabvertlayout, self.daijisenwebview = self.createtab(
-                "daijisentab", "daijisentabvertlayout", "daijisenwebview")
+        # four additional tabs for debugging pages
+        self.daijisentab, self.daijisentabvertlayout, self.daijisenwebview = \
+                self.create_debug_tab("daijisentab", "daijisentabvertlayout", "daijisenwebview")
         self.tabwidget.addTab(self.daijisentab, u'大辞泉')
-        self.daijirintab, self.daijirintabvertlayout, self.daijirinwebview = self.createtab(
-                "daijirintab", "daijirintabvertlayout", "daijirinwebview")
+
+        self.daijirintab, self.daijirintabvertlayout, self.daijirinwebview = \
+                self.create_debug_tab("daijirintab", "daijirintabvertlayout", "daijirinwebview")
         self.tabwidget.addTab(self.daijirintab, u'大辞林')
-        self.newcentytab, self.newcentytabvertlayout, self.newcentywebview = self.createtab(
-                "newcentytab", "newcentytabvertlayout", "newcentywebview")
+
+        self.newcentytab, self.newcentytabvertlayout, self.newcentywebview = \
+                self.create_debug_tab("newcentytab", "newcentytabvertlayout", "newcentywebview")
         self.tabwidget.addTab(self.newcentytab, "New Century")
-        self.progresstab, self.progresstabvertlayout, self.progresswebview = self.createtab(
-                "progresstab", "progresstabvertlayout", "progresswebview")
+
+        self.progresstab, self.progresstabvertlayout, self.progresswebview = \
+                self.create_debug_tab("progresstab", "progresstabvertlayout", "progresswebview")
         self.tabwidget.addTab(self.progresstab, "Progressive")
+
+        self.kenkyuutab, self.kenkyuutabvertlayout, self.kenkyuuwebview = \
+                self.create_debug_tab("kenkyuutab", "kenkyuutabvertlayout", "kenkyuuwebview")
+        self.tabwidget.addTab(self.kenkyuutab, u"研究者")
+
 
         mainwindowselector.setCentralWidget(self.centralwidget)
         mainwindowselector.setWindowTitle("JDicScrape")
+
+        def go_to_tab(t):
+            import sys
+            return lambda: self.tabwidget.setCurrentIndex(t)
+
+        for t in range(self.tabwidget.count()):
+            print t
+            action = QtGui.QAction(QtGui.QIcon(), "Go to tab %d" % (t+1), mainwindowselector)
+            action.setShortcut("Alt+%d" % (t+1))
+            #action.triggered.connect(lambda: self.tabwidget.setCurrentIndex(t))
+            action.triggered.connect(go_to_tab(t))
+            mainwindowselector.addAction(action)
 
         # okay button (new style signals)
         self.buttonBox.accepted.connect(mainwindowselector.okay)

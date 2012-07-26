@@ -22,7 +22,7 @@ from .ui.selectorui import Ui_MainWindowSelector
 from .deforderer import DefOrderer
 
 from dictscrape import DaijirinDictionary, DaijisenDictionary, \
-        ProgressiveDictionary, NewCenturyDictionary
+        ProgressiveDictionary, NewCenturyDictionary, KenkyuushaDictionary
 
 class MainWindowSelector(QtGui.QMainWindow):
 
@@ -59,7 +59,8 @@ class MainWindowSelector(QtGui.QMainWindow):
         webviews = [self.ui.daijisendefwebview,
                 self.ui.daijirindefwebview,
                 self.ui.newcenturydefwebview,
-                self.ui.progressdefwebview]
+                self.ui.progressdefwebview,
+                self.ui.kenkyuudefwebview,]
         for w in webviews:
             mainframe = w.page().mainFrame()
             mainframe.evaluateJavaScript(u"resetAll()")
@@ -89,8 +90,11 @@ class MainWindowSelector(QtGui.QMainWindow):
         # get accent
         accent = unicode(self.ui.accentlineedit.text())
 
-        jap_webviews = [self.ui.daijisendefwebview, self.ui.daijirindefwebview]
-        eng_webviews = [self.ui.newcenturydefwebview, self.ui.progressdefwebview]
+        jap_webviews = [self.ui.daijisendefwebview,
+                self.ui.daijirindefwebview,]
+        eng_webviews = [self.ui.newcenturydefwebview,
+                self.ui.progressdefwebview,
+                self.ui.kenkyuudefwebview,]
 
         jap_defs = []
         eng_defs = []
@@ -130,11 +134,13 @@ class MainWindowSelector(QtGui.QMainWindow):
         daijisen = DaijisenDictionary()
         progressive = ProgressiveDictionary()
         newcentury = NewCenturyDictionary()
+        kenkyuu = KenkyuushaDictionary()
         dicts = [
                 (daijirin, self.ui.daijirindefwebview, self.ui.daijirinwebview, self.ui.daijirinresultwordlabel),
                 (daijisen, self.ui.daijisendefwebview, self.ui.daijisenwebview, self.ui.daijisenresultwordlabel),
                 (progressive, self.ui.progressdefwebview, self.ui.progresswebview, self.ui.progressresultwordlabel),
                 (newcentury, self.ui.newcenturydefwebview, self.ui.newcentywebview, self.ui.newcenturyresultwordlabel),
+                (kenkyuu, self.ui.kenkyuudefwebview, self.ui.kenkyuuwebview, self.ui.kenkyuuresultwordlabel),
                 ]
 
         #self.ui.statusbar.showMessage('Adding defs for %s (%s)...' % (word_kanji, word_kana))
