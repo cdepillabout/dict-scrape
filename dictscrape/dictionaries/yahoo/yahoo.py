@@ -26,21 +26,21 @@ from ...result import Result
 
 class YahooDictionary(Dictionary):
 
-    def lookup(self, word_kanji, word_kana, html=None):
+    def lookup(self, word_kanji, word_kana, raw=None):
         """
         Lookup a word in a dictionary.
 
         word_kanji (unicode): the kanji you want to lookup
         word_kana (unicode): the kanji for the word you want to lookup
-        html (unicode): the source of the page we will parse to lookup the defintion.
-        If html is None, then we will fetch the page from the internet.
+        raw (unicode): the source of the page we will parse to lookup the defintion.
+        If raw is None, then we will fetch the page from the internet.
 
         Returns a Result object.  If no result could be found, then it returns
         a Result object with everything blank ("").
         """
-        # possibly download the html and create a tree for the page for the
+        # possibly download the raw and create a tree for the page for the
         # word we are looking up.
-        tree = self.__create_page_tree(word_kanji, word_kana, html)
+        tree = self.__create_page_tree(word_kanji, word_kana, raw)
 
         # make sure there is an entry
         result = etree.tostring(tree, pretty_print=False, method="html", encoding='unicode')

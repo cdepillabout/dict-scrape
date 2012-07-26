@@ -38,14 +38,14 @@ class Dictionary(object):
     def __init__(self):
         pass
 
-    def lookup(self, word_kanji, word_kana, html=None):
+    def lookup(self, word_kanji, word_kana, raw=None):
         """
         Lookup a word in a dictionary.
 
         word_kanji (unicode): the kanji you want to lookup
         word_kana (unicode): the kanji for the word you want to lookup
-        html (unicode): the source of the page we will parse to lookup the defintion.
-        If html is None, then we will fetch the page from the dictionary (possible the
+        raw (unicode): the source of the page we will parse to lookup the defintion.
+        If raw is None, then we will fetch the page from the dictionary (possible the
         internet).
 
         Returns a Result object.  If no result could be found, then it returns
