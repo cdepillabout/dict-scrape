@@ -81,6 +81,13 @@ class Dictionary(object):
                 parts.append(DefinitionPart(s))
         return parts
 
+    def get_raw(self, word_kanji, word_kana):
+        """
+        Return the raw text from the dictionary.  This may be html for a web
+        dictionary or just unprocessed text from an epwing dictionary.
+        """
+        raise NotImplementedError, "This needs to be overrode in a child class."
+
     @property
     def long_dic_name(self):
         """Return the dictionary name."""

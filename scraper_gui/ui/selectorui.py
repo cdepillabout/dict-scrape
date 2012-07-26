@@ -260,7 +260,6 @@ class Ui_MainWindowSelector(object):
             return lambda: self.tabwidget.setCurrentIndex(t)
 
         for t in range(self.tabwidget.count()):
-            print t
             action = QtGui.QAction(QtGui.QIcon(), "Go to tab %d" % (t+1), mainwindowselector)
             action.setShortcut("Alt+%d" % (t+1))
             #action.triggered.connect(lambda: self.tabwidget.setCurrentIndex(t))

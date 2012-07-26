@@ -137,6 +137,9 @@ class YahooDictionary(Dictionary):
         page_string = page.read()
         return page_string
 
+    def get_raw(self, word_kanji, word_kana):
+        return _fetch_page(word_kanji, word_kana)
+
     def __create_page_tree(self, word_kanji, word_kana, html=None):
         """
         Fetches a parses the page for the word we are looking up with

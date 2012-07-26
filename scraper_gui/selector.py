@@ -158,7 +158,20 @@ class MainWindowSelector(QtGui.QMainWindow):
                     self.ui.useaccentcheckbox.setEnabled(False)
 
             # add webview
-            webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
+            if d == kenkyuu:
+                raw = d.get_raw(word_kanji, word_kana)
+                html = ''
+                import cgi
+                for l in raw.split('\n'):
+                    html += '<p style="margin: 1px; padding:1px;">%s</p>' % \
+                            (cgi.escape(l, quote=True))
+                html = '<html>' + \
+                        '<body style="font-family: arial, sans-serif; font-size: 120%%;">' + \
+                        html
+                html += '</body></html>'
+                webviewwidget.setHtml(html)
+            else:
+                webviewwidget.setUrl(QtCore.QUrl.fromEncoded(result.url))
 
             # add the resulting word
             resultwordlabeltext = u""
