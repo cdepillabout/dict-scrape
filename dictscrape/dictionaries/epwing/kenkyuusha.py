@@ -92,13 +92,15 @@ class KenkyuushaDictionary(EpwingDictionary):
         first_line = re.sub("<sup>.*?</sup>", "", first_line)
 
         # Case 1: "うつくしい【美しい】 ﾛｰﾏ(utsukushii)"
-        m = re.match(u"^(?P<reading>.*?)【(?P<expression>.*?)】 ﾛｰﾏ\(.*?\)$", first_line)
+        # The と is to match words like うっとり that have an optional と
+        m = re.match(u"^(?P<reading>.*?)(\(と\))?【(?P<expression>.*?)】 ﾛｰﾏ\(.*?\)$", first_line)
         if (m):
             result_kana = m.group("reading")
             result_kanji = m.group("expression")
         else:
             # Case 2: "スキーマ ﾛｰﾏ(sukīma)"
-            m = re.match(u"^(?P<expression>.*?) ﾛｰﾏ\(.*?\)$", first_line)
+            # The と is to match words like うっとり that have an optional と
+            m = re.match(u"^(?P<expression>.*?)(\(と\))? ﾛｰﾏ\(.*?\)$", first_line)
             if (m):
                 result_kana = m.group("expression")
                 result_kanji = result_kana
