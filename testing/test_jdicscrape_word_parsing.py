@@ -158,15 +158,15 @@ def checkword(dictionary, kanji, kana):
     kanji (unicode): the kanji we want to check
     kana (unicode): the kana we want to check
     """
-    html = manage_words.get_html_for_word(dictionary, kana, kanji)
+    raw = manage_words.get_raw_for_word(dictionary, kana, kanji)
     json_object = manage_words.get_json_for_word(dictionary, kana, kanji)
 
-    html_parse_result = dictionary.lookup(kanji, kana, html)
+    raw_parse_result = dictionary.lookup(kanji, kana, raw)
     json_result = Result.from_jsonable(dictionary, json_object)
 
-    if (json_result != html_parse_result):
-        print_differences_result(json_result, html_parse_result, "JSON result", "HTML result")
-        assert(json_result == html_parse_result)
+    if (json_result != raw_parse_result):
+        print_differences_result(json_result, raw_parse_result, "JSON result", "raw result")
+        assert(json_result == raw_parse_result)
 
 @manage_words.no_null_dictionaries
 def test_words(kanji=None, kana=None, dictionaries=manage_words.get_dics()):

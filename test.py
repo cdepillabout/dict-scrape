@@ -41,8 +41,8 @@ PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.append(os.path.join(PROJECT_ROOT, "testing"))
 
 from dictscrape import DaijirinDictionary, DaijisenDictionary, \
-        ProgressiveDictionary, NewCenturyDictionary, ExampleSentence, \
-        DefinitionPart, Definition, Result
+        ProgressiveDictionary, NewCenturyDictionary, KenkyuushaDictionary, \
+        ExampleSentence, DefinitionPart, Definition, Result
 
 import test_jdicscrape_word_parsing
 
@@ -53,7 +53,8 @@ WORDS_DIR_ABS_PATH = os.path.abspath(
 dics = [DaijirinDictionary(),
         DaijisenDictionary(),
         ProgressiveDictionary(),
-        NewCenturyDictionary()]
+        NewCenturyDictionary(),
+        KenkyuushaDictionary(),]
 
 def die(string):
     error_string = u'ERROR! %s' % string
@@ -105,37 +106,37 @@ def get_words_from_wordsdb():
 
 def get_paths_for_word(dic, kana, kanji):
     """
-    Returns the paths for the html and json result files for the
+    Returns the paths for the raw and json result files for the
     word.
 
     dic (Dictionary object): Dictionary to look in.
     kana/kanji (unicode): Word to look up.
 
-    Returns a 6tuple of the html filename, the json result file name,
-    the absolute path to the html file, the absolute path to the json
-    result file, the relative path to the html file, and the relative
+    Returns a 6tuple of the raw filename, the json result file name,
+    the absolute path to the raw file, the absolute path to the json
+    result file, the relative path to the raw file, and the relative
     path to the json result file.
     """
     dirname, rel_path, abs_path = get_paths_for_dic(dic)
 
-    html_filename = u'%s_%s.html' % (kana, kanji)
+    raw_filename = u'%s_%s.raw' % (kana, kanji)
     json_filename = u'%s_%s.result.json' % (kana, kanji)
 
     # absolute paths to the two files we will use
-    html_file_abs_path = os.path.join(abs_path, html_filename)
+    raw_file_abs_path = os.path.join(abs_path, raw_filename)
     json_file_abs_path = os.path.join(abs_path, json_filename)
 
     # relative paths to the two files we will use to print out
-    html_file_rel_path = os.path.join(rel_path, html_filename)
+    raw_file_rel_path = os.path.join(rel_path, raw_filename)
     json_file_rel_path = os.path.join(rel_path, json_filename)
 
-    return html_filename, json_filename, html_file_abs_path, \
-            json_file_abs_path, html_file_rel_path, json_file_rel_path
+    return raw_filename, json_filename, raw_file_abs_path, \
+            json_file_abs_path, raw_file_rel_path, json_file_rel_path
 
 def get_paths_for_dic(dic):
     """
     Returns the relative and absolute paths for the folder for the
-    html files and result files for this dictionary.
+    raw files and result files for this dictionary.
 
     dic (Dictionary object): Dictionary to use
 
@@ -163,16 +164,16 @@ def sanity_check():
         dirname, rel_path, abs_path = get_paths_for_dic(dic)
         for kana, kanji in words:
             tup = get_paths_for_word(dic, kana, kanji)
-            html_filename = tup[0]
+            raw_filename = tup[0]
             json_filename = tup[1]
-            html_file_abs_path = tup[2]
+            raw_file_abs_path = tup[2]
             json_file_abs_path = tup[3]
-            html_file_rel_path = tup[4]
+            raw_file_rel_path = tup[4]
             json_file_rel_path = tup[5]
 
-            if not os.path.exists(html_file_abs_path):
+            if not os.path.exists(raw_file_abs_path):
                 die(u'%s (%s) is in words.db, but "%s" does not exist.' %
-                        (kanji, kana, html_file_rel_path))
+                        (kanji, kana, raw_file_rel_path))
 
             if not os.path.exists(json_file_abs_path):
                 die(u'%s (%s) is in words.db, but "%s" does not exist.' %
@@ -217,15 +218,15 @@ def add_word_to_wordsdb(word_kana, word_kanji):
         for word in words:
             f.write(u'%s %s\n' % (word[0], word[1]))
 
-def get_html_for_word(dic, word_kana, word_kanji):
-    """Return the html file for the word."""
-    _, _, html_abs_path, _, html_rel_path, _ = get_paths_for_word(dic, word_kana, word_kanji)
+def get_raw_for_word(dic, word_kana, word_kanji):
+    """Return the raw file for the word."""
+    _, _, raw_abs_path, _, raw_rel_path, _ = get_paths_for_word(dic, word_kana, word_kanji)
 
-    # make sure html file exists
-    if not os.path.exists(html_abs_path):
-        die(u'HTML file "%s" does not exist.' % html_rel_path)
+    # make sure raw file exists
+    if not os.path.exists(raw_abs_path):
+        die(u'raw file "%s" does not exist.' % raw_rel_path)
 
-    with codecs.open(html_abs_path, 'r', 'utf8') as f:
+    with codecs.open(raw_abs_path, 'r', 'utf8') as f:
         return f.read()
 
 def get_json_for_word(dic, word_kana, word_kanji):
@@ -251,14 +252,14 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
 
     Writes DictionaryName/WORDKANA_WORDKANJI.result.json file.
     """
-    _, _, html_abs_path, json_abs_path, html_rel_path, json_rel_path = get_paths_for_word(
+    _, _, raw_abs_path, json_abs_path, raw_rel_path, json_rel_path = get_paths_for_word(
             dic, word_kana, word_kanji)
 
-    html = get_html_for_word(dic, word_kana, word_kanji)
+    raw = get_raw_for_word(dic, word_kana, word_kanji)
 
     with codecs.open(json_abs_path, 'w', 'utf8') as f:
         try:
-            result = dic.lookup(word_kanji, word_kana, html)
+            result = dic.lookup(word_kanji, word_kana, raw)
             jsonable = result.to_jsonable()
             json.dump(jsonable, f, encoding='utf8', sort_keys=True,
                     indent=4, ensure_ascii=False)
@@ -282,28 +283,47 @@ def __write_word_encoding_result(dic, word_kana, word_kanji):
             json.dump(jsonable, f, encoding='utf8', sort_keys=True,
                     indent=4, ensure_ascii=False)
 
-def __write_word_html_file(dic, word_kana, word_kanji):
+@no_null_dictionaries
+def fetch_raw_word(word_kana, word_kanji, dictionaries=get_dics(), assert_word_in_db=False):
     """
-    Fetch the page html file from dictoinary and save it to disk.
+    Fetch the raw file from dictionary and save it to disk.
 
     dic (Dictionary object): dictionary to use to get the page.
     word_kana/kanji (unicode): words in kana and kanji to download.
 
-    Writes DictionaryName/WORDKANA_WORDKANJI.html file.
+    Writes DictionaryName/WORDKANA_WORDKANJI.raw file.
     """
-    _, _, html_file_abs_path, _, html_file_rel_path, _ = get_paths_for_word(
-            dic, word_kana, word_kanji)
+    if assert_word_in_db:
+        # make sure word is in words.db
+        words = get_words_from_wordsdb()
+        if (word_kana, word_kanji) not in words:
+            die("%s (%s) does not exist in words.db" % (kanji, kana))
 
-    page_string = dic._fetch_page(word_kanji, word_kana)
-    page_string = page_string.decode('utf8')
+    for dic in dictionaries:
+        _, _, raw_file_abs_path, _, raw_file_rel_path, _ = get_paths_for_word(
+                dic, word_kana, word_kanji)
 
-    with open(html_file_abs_path, 'w') as f:
-        f.write(page_string.encode('utf8'))
-        print(u'Wrote html file: %s' % html_file_rel_path)
+        page_string = dic.get_raw(word_kanji, word_kana)
+
+        with open(raw_file_abs_path, 'w') as f:
+            f.write(page_string.encode('utf8'))
+            print(u'Wrote raw file: %s' % raw_file_rel_path)
+
+@no_null_dictionaries
+def fetch_raw_all(dictionaries=get_dics()):
+    """
+    Fetch all raw files for all words from dictionary and save them to disk.
+
+    dictionaries (list of Dictionary objects): dictionaries to reparse
+        in.
+    """
+    words = get_words_from_wordsdb()
+    for kana, kanji in words:
+        fetch_raw_word(kana, kanji, dictionaries=dictionaries)
 
 def addword(word_kana, word_kanji):
     """
-    Add words to be tested.  Download the html files for a word and
+    Add words to be tested.  Download the raw files for a word and
     parse those files. Write the parsed json result files.  Add words
     to words.db
 
@@ -321,24 +341,24 @@ def addword(word_kana, word_kanji):
             die(u'Directory "%s" does not exist.' % abs_path)
 
         tup = get_paths_for_word(dic, word_kana, word_kanji)
-        html_file_abs_path = tup[2]
+        raw_file_abs_path = tup[2]
         json_file_abs_path = tup[3]
-        html_file_rel_path = tup[4]
+        raw_file_rel_path = tup[4]
         json_file_rel_path = tup[5]
 
-        if os.path.exists(html_file_abs_path):
-            die(u'File "%s" already exists.' % html_file_rel_path)
+        if os.path.exists(raw_file_abs_path):
+            die(u'File "%s" already exists.' % raw_file_rel_path)
 
         if os.path.exists(json_file_abs_path):
             die(u'File "%s" already exists.' % json_file_rel_path)
 
-        __write_word_html_file(dic, word_kana, word_kanji)
+        fetch_raw_word(word_kana, word_kanji, dic)
         __write_word_encoding_result(dic, word_kana, word_kanji)
 
 @no_null_dictionaries
 def reparse_word(word_kana, word_kanji, dictionaries=get_dics()):
     """
-    Reparse the html files we already downloaded, and rewrite the
+    Reparse the raw files we already downloaded, and rewrite the
     KANA_KANJI.result.json file.  This could be be used when updating
     how parsing takes place and adding corrections for words that
     are now parsed correctly.
@@ -354,10 +374,8 @@ def reparse_word(word_kana, word_kanji, dictionaries=get_dics()):
 
     # make sure word is in words.db
     words = get_words_from_wordsdb()
-    for kana, kanji in words:
-        existing_words = [True for kn,kj in words if kn == kana and kj == kanji]
-        if len(existing_words) != 1:
-            die("%s (%s) does not exist in words.db" % (kanji, kana))
+    if (word_kana, word_kanji) not in words:
+        die("%s (%s) does not exist in words.db" % (word_kanji, word_kana))
 
     for dic in dictionaries:
         __write_word_encoding_result(dic, word_kana, word_kanji)
@@ -365,7 +383,7 @@ def reparse_word(word_kana, word_kanji, dictionaries=get_dics()):
 @no_null_dictionaries
 def reparse_all(dictionaries=get_dics()):
     """
-    Reparse all html files we already downloaded, and rewrite the
+    Reparse all raw files we already downloaded, and rewrite the
     KANA_KANJI.result.json file.  This could be be used when updating
     how parsing takes place and adding corrections for words that
     are now parsed correctly.
@@ -386,45 +404,104 @@ def main():
 
     description="Manage words that will be tested. Run all tests if no flags are provided."
     parser = argparse.ArgumentParser(description=description)
+
+    # add a specific word
     parser.add_argument('--add-word', '-a', action='store', nargs=2, metavar=('KANJI', 'KANA'),
             type=unicode_type, help="fetch files for word")
+
+    # sanity checks
     parser.add_argument('--sanity-check', '-s', action='store_true',
             help="run a sanity check to make sure our words.db and actual files match up")
+    parser.add_argument('--no-sanity-check', '-S', action='store_true',
+            help="never run a sanity check.  WARNING: you should probably not use this")
+
+    # reparse the raw files and rewrite the result files
     parser.add_argument('--reparse-word', '-r', action='store', nargs=2,
             metavar=('KANJI', 'KANA'), type=unicode_type,
             help="reparse files for word and rewrite KANA_KANJI.result.json")
     parser.add_argument('--reparse-all', action='store_true',
             help="reparse files for all words and rewrite *.result.json files")
+
+    # refetch the raw files and optionally reparse
+    parser.add_argument('--refetch-raw', '-f', action='store', nargs=2,
+            metavar=('KANJI', 'KANA'), type=unicode_type,
+            help="get raw files for word and rewrite KANA_KANJI.raw")
+    parser.add_argument('--refetch-raw-all', action='store_true',
+            help="refetch the raw files for all words and rewrite *.raw files")
+    parser.add_argument('--refetch-raw-reparse', '-F', action='store', nargs=2,
+            metavar=('KANJI', 'KANA'), type=unicode_type,
+            help="get raw files for word, parse word, and write KANA_KANJI.{raw,result.json}")
+    parser.add_argument('--refetch-raw-reparse-all', action='store_true',
+            help="refetch raw files for all words, parse, and write *.{raw,result.json} files")
+
+    # test only a specific word
+    parser.add_argument('--test-word', '-t', action='store', nargs=2, metavar=('KANJI', 'KANA'),
+            type=unicode_type, help="run tests for just KANJI KANA")
+
+    # specify a dictionary to use
     parser.add_argument('--dictionary', '-d', action='store',
             metavar='DICTIONARY', choices=dic_choices(),
             help="select a specific dictionary to operate on")
-    parser.add_argument('--test-word', '-t', action='store', nargs=2, metavar=('KANJI', 'KANA'),
-            type=unicode_type, help="run tests for just KANJI KANA")
 
     args = parser.parse_args()
 
     # set the dictionary we will be using
-    dictionary = None
+    dictionaries = None
     if args.dictionary:
         for dic in dics:
             if dic.short_name == args.dictionary:
-                dictionary = dic
+                dictionaries = dic
 
+    # handle not doing sanity check
+    if args.no_sanity_check:
+        sanity_check = (lambda: 1)
+
+    # do a sanity check
     if args.sanity_check:
         sanity_check()
         sys.exit(0)
+
+    # add a new word
     if args.add_word:
         sanity_check()
         addword(args.add_word[1], args.add_word[0])
         sys.exit(0)
+
+    # reparse a raw file and create a result.json file for a word
     if args.reparse_word:
         sanity_check()
-        reparse_word(args.reparse_word[1], args.reparse_word[0], dictionaries=dictionary)
+        reparse_word(args.reparse_word[1], args.reparse_word[0], dictionaries=dictionaries)
         sys.exit(0)
+    # reparse raw files for all words and create result.json files for all words
     if args.reparse_all:
         sanity_check()
-        reparse_all(dictionaries=dictionary)
+        reparse_all(dictionaries=dictionaries)
         sys.exit(0)
+
+    # refetch raw files for word
+    if args.refetch_raw:
+        sanity_check()
+        fetch_raw_word(args.refetch_raw[1], args.refetch_raw[0], dictionaries=dictionaries,
+                assert_word_in_db=True)
+        sys.exit(0)
+    if args.refetch_raw_all:
+        sanity_check()
+        fetch_raw_all(dictionaries=dictionaries)
+        sys.exit(0)
+    # refecth raw files for word and then reparse
+    if args.refetch_raw_reparse:
+        sanity_check()
+        fetch_raw_word(args.refetch_raw_reparse[1], args.refetch_raw_reparse[0],
+                dictionaries=dictionaries, assert_word_in_db=True)
+        reparse_word(args.refetch_raw_reparse[1], args.refetch_raw_reparse[0],
+                dictionaries=dictionaries)
+        sys.exit(0)
+    if args.refetch_raw_reparse_all:
+        sanity_check()
+        fetch_raw_all(dictionaries=dictionaries)
+        reparse_all(dictionaries=dictionaries)
+        sys.exit(0)
+
 
     # specify the words that we will use
     kanji = None
@@ -435,7 +512,7 @@ def main():
 
     # if no options are specified, then just run all tests
     sanity_check()
-    test_jdicscrape_word_parsing.test_words(kanji=kanji, kana=kana, dictionaries=dictionary)
+    test_jdicscrape_word_parsing.test_words(kanji=kanji, kana=kana, dictionaries=dictionaries)
     sys.exit(0)
 
 if __name__ == '__main__':
