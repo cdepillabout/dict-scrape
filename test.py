@@ -396,6 +396,8 @@ def reparse_all(dictionaries=get_dics()):
         reparse_word(kana, kanji, dictionaries=dictionaries)
 
 def main():
+    global sanity_check
+
     def unicode_type(utf8_string):
         return utf8_string.decode('utf8')
 
