@@ -55,7 +55,7 @@ def main():
             (u'強迫', u'きょうはく'),
             (u'面白い', u'おもしろい'),
             (u'赤し', u'あかし'),
-            (u'うっとり', u''),
+            (u'うっとり', u'うっとり'),
             (u'バリカン', u''),
             (u'コンピエーニュ', u''),
             (u'蜥蜴', u'とかげ'),
@@ -69,16 +69,6 @@ def main():
             (u'隙間産業', u'すきまさんぎょう'),         # this doesn't parse right in the progressive dict
             ]
 
-    for word in words:
-        kanji = word[0]
-        kana = word[1]
-        print ("to lookup: %s (%s)" % (kanji, kana))
-        result = kenkyuusha_dic.lookup(kanji, kana)
-        print result
-        print
-
-    sys.exit(0)
-
     print("\t\t\tLOOK UP ONE WORD IN ONE DICTIONARY:")
     print("\t\t\t-----------------------------------")
     kanji = words[0][0]
@@ -90,7 +80,7 @@ def main():
     print("\t\t\t-------------------------------------")
     kanji = words[3][0]
     kana = words[3][1]
-    for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
+    for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic, kenkyuusha_dic]:
         print(d.lookup(kanji, kana))
         print
 
@@ -99,7 +89,7 @@ def main():
     for kanji, kana in words:
         result = daijirin_dic.lookup(kanji, kana)
         accent = "NO ACCENT AVAILABLE"
-        if len(result.accent):
+        if result.accent and len(result.accent):
             accent = result.accent
         print("%s (%s): %s" % (kanji, kana, accent))
 
@@ -110,7 +100,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 3:
         kanji = sys.argv[1].decode("utf8")
         kana = sys.argv[2].decode("utf8")
-        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic]:
+        for d in [daijirin_dic, daijisen_dic, new_century_dic, progressive_dic, kenkyuusha_dic]:
             if d:
                 print("\t\t\t\t%s\n%s\n\n" % (d.short_name, d.lookup(kanji, kana)))
         sys.exit(1)
