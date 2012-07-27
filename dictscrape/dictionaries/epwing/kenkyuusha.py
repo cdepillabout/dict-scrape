@@ -33,19 +33,52 @@ class KenkyuushaDictionary(EpwingDictionary):
     dictionary_type = Dictionary.EPWING_KENKYUUSHA_TYPE
 
     def clean_jap_sent(self, jap_sent):
+        # change english periods to japanese periods
+        jap_sent = jap_sent.replace(u'.', u'。')
+
         return jap_sent
 
     def clean_eng_sent(self, eng_sent):
+        # remove uneeded character
         eng_sent = eng_sent.replace(u'⌐', u'')
+
+        # remove japanese stuff
+        eng_sent = re.sub(u'〔.*?〕', u'', eng_sent)
+
+        # (this is the character that looks like two greater than signs
+        # really close together)
+        eng_sent = re.sub(u'\u300A(口)\u300B', u'', eng_sent)
+
+        # change all the other two greater than sign things with english words
+        # in them to something else that doesn't use the two greater than signs
+        eng_sent = re.sub(u'\u300A([A-Za-z ]+)\u300B', ur'〈\1〉', eng_sent)
+
+        # take out double spaces that may have appeared while
+        # taking out something above
+        eng_sent = re.sub(u'\s+', u' ', eng_sent)
+
+        eng_sent = eng_sent.strip()
+
         return eng_sent
 
     def clean_def(self, def_string):
+        # remove leading number
         def_string = re.sub(u'^[0-9]+\s*', u'', def_string)
+
+        # remove japanese words
         def_string = re.sub(u'〔.*?〕', u'', def_string)
         def_string = re.sub(u'【.*?】', u'', def_string)
 
+        # remove references
         def_string = re.sub(u'\[?⇒(<reference>.*?</reference=[0-9]+:[0-9]+>(, )?)+\]?',
                 u'', def_string)
+
+        # remove uneeded character
+        def_string = def_string.replace(u'⌐', u'')
+
+        # take out double spaces that may have appeared while
+        # taking out something above
+        def_string = re.sub(u'\s+', u' ', def_string)
 
         return def_string
 

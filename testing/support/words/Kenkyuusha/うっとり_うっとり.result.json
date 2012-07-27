@@ -4,15 +4,15 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔放心する〕 be absentminded; 《口》 be miles away; be in a world of one's own; 〔恍惚となる〕 be entranced; be enraptured; be transported; fall into a trance; be fascinated", 
+                    "eng_trans": "be absentminded; be miles away; be in a world of one's own; be entranced; be enraptured; be transported; fall into a trance; be fascinated", 
                     "jap_sentence": "うっとり(と)する"
                 }, 
                 {
-                    "eng_trans": "〔放心した〕 vacant; blank; 〔恍惚とした〕 rapt; enraptured", 
+                    "eng_trans": "vacant; blank; rapt; enraptured", 
                     "jap_sentence": "うっとり(と)した"
                 }, 
                 {
-                    "eng_trans": "《with》 a faraway [rapt, dreamy] look (in one's eyes)", 
+                    "eng_trans": "〈with〉 a faraway [rapt, dreamy] look (in one's eyes)", 
                     "jap_sentence": "うっとり(と)したまなざし"
                 }, 
                 {
@@ -21,15 +21,15 @@
                 }, 
                 {
                     "eng_trans": "He gazed at his bride with a dreamy look in his eyes.", 
-                    "jap_sentence": "彼は自分の花嫁をうっとり(と)眺めた."
+                    "jap_sentence": "彼は自分の花嫁をうっとり(と)眺めた。"
                 }, 
                 {
                     "eng_trans": "She had a faraway, dreamy look in her eyes.", 
-                    "jap_sentence": "彼女はうっとり(と)夢見るような目をしていた."
+                    "jap_sentence": "彼女はうっとり(と)夢見るような目をしていた。"
                 }, 
                 {
                     "eng_trans": "I was completely entranced [enchanted] by the exquisite music.", 
-                    "jap_sentence": "その絶妙な調べにうっとり(と)聞きほれた."
+                    "jap_sentence": "その絶妙な調べにうっとり(と)聞きほれた。"
                 }
             ], 
             "parts": [
@@ -37,7 +37,7 @@
                 "absentmindedly", 
                 "vacantly", 
                 "in a trance", 
-                "in (a state of) ⌐ecstasy [rapture]", 
+                "in (a state of) ecstasy [rapture]", 
                 "with rapt attention", 
                 "spellbound"
             ]
