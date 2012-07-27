@@ -59,7 +59,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【解】 a nerve center.", 
+                    "eng_trans": "a nerve center.", 
                     "jap_sentence": "神経中枢"
                 }
             ], 
@@ -68,7 +68,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【医】 a heat-promoting center.", 
+                    "eng_trans": "a heat-promoting center.", 
                     "jap_sentence": "熱産生中枢"
                 }
             ], 
@@ -77,7 +77,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【医】 a heat-losing center.", 
+                    "eng_trans": "a heat-losing center.", 
                     "jap_sentence": "熱放散[寒冷]中枢"
                 }
             ], 
@@ -113,7 +113,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【数学】 a pivotal element.", 
+                    "eng_trans": "a pivotal element.", 
                     "jap_sentence": "中枢要素"
                 }
             ], 

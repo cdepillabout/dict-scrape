@@ -38,7 +38,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【統計】 a heterogeneity test.", 
+                    "eng_trans": "a heterogeneity test.", 
                     "jap_sentence": "異質性の検定"
                 }
             ], 
@@ -47,7 +47,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【生物】 a heterozygote.", 
+                    "eng_trans": "a heterozygote.", 
                     "jap_sentence": "異質接合子"
                 }
             ], 
@@ -56,7 +56,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【鉱】 allomerism; isodimorphism.", 
+                    "eng_trans": "allomerism; isodimorphism.", 
                     "jap_sentence": "異質同像[同形]"
                 }
             ], 
@@ -65,7 +65,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【遺伝】 allopolyploidy.", 
+                    "eng_trans": "allopolyploidy.", 
                     "jap_sentence": "異質倍数性"
                 }
             ], 
@@ -74,7 +74,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【遺伝】 an allopolyploid.", 
+                    "eng_trans": "an allopolyploid.", 
                     "jap_sentence": "異質倍数体"
                 }
             ], 
@@ -92,7 +92,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【生化】 heterolysis.", 
+                    "eng_trans": "heterolysis.", 
                     "jap_sentence": "異質溶解"
                 }
             ], 
