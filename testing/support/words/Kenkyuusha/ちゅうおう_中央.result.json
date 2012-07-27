@@ -57,7 +57,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【電算】 a central processing unit (略: CPU).", 
+                    "eng_trans": "a central processing unit (CPU).", 
                     "jap_sentence": "中央演算処理装置"
                 }
             ], 
@@ -66,7 +66,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【地質】 a mid-ocean ridge; a mid-oceanic ridge.", 
+                    "eng_trans": "a mid-ocean ridge; a mid-oceanic ridge.", 
                     "jap_sentence": "中央海嶺"
                 }
             ], 
@@ -75,7 +75,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【地質】 a central cone.", 
+                    "eng_trans": "a central cone.", 
                     "jap_sentence": "中央火口丘"
                 }
             ], 
@@ -111,7 +111,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【物】 ＝<reference>中心極限定理 (⇒ちゅうしん<sup>１</sup>)</reference=221cb:69a>.", 
+                    "eng_trans": "中心極限定理.", 
                     "jap_sentence": "中央極限定理"
                 }
             ], 
@@ -183,7 +183,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【電算】 ＝<reference>中央演算処理装置</reference=22181:130>.", 
+                    "eng_trans": "中央演算処理装置.", 
                     "jap_sentence": "中央処理装置"
                 }
             ], 
@@ -201,7 +201,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【数】 the median.", 
+                    "eng_trans": "the median.", 
                     "jap_sentence": "中央値"
                 }
             ], 
@@ -241,7 +241,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "【人類】 the mid-sagittal plane.", 
+                    "eng_trans": "the mid-sagittal plane.", 
                     "jap_sentence": "中央矢状面"
                 }
             ], 

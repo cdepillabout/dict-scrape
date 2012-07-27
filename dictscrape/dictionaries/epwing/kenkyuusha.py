@@ -44,6 +44,7 @@ class KenkyuushaDictionary(EpwingDictionary):
 
         # remove japanese stuff
         eng_sent = re.sub(u'〔.*?〕', u'', eng_sent)
+        eng_sent = re.sub(u'【.*?】', u'', eng_sent)
 
         # (this is the character that looks like two greater than signs
         # really close together)
@@ -52,6 +53,12 @@ class KenkyuushaDictionary(EpwingDictionary):
         # change all the other two greater than sign things with english words
         # in them to something else that doesn't use the two greater than signs
         eng_sent = re.sub(u'\u300A([A-Za-z \']+)\u300B', ur'〈\1〉', eng_sent)
+
+        # take out 略 sections
+        eng_sent = re.sub(u'\(略: (.*?)\)', ur'(\1)', eng_sent)
+
+        # remove references
+        eng_sent = re.sub(u'＝<reference>(.*?)( \(⇒.*?\))?</reference=[0-9a-z]+:[0-9a-z]+>', ur'\1', eng_sent)
 
         # take out double spaces that may have appeared while
         # taking out something above

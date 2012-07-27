@@ -110,7 +110,7 @@ class DefWebView(QtWebKit.QWebView):
         self.defs = defs
 
     def setDefs(self, defs):
-        first = u'➀'
+        first = u'①'
         ordinal = ord(first)
 
         html = DEF_LIST_HTML_BEGINNING
