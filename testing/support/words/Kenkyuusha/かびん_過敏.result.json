@@ -12,12 +12,12 @@
                     "jap_sentence": "過敏な反応"
                 }, 
                 {
-                    "eng_trans": "He's highly strung [very sensitive, oversensitive, hypersensitive]. ｜ 《口》 He's all nerves.", 
-                    "jap_sentence": "彼は神経が過敏だ."
+                    "eng_trans": "He's highly strung [very sensitive, oversensitive, hypersensitive]. ｜ He's all nerves.", 
+                    "jap_sentence": "彼は神経が過敏だ。"
                 }, 
                 {
                     "eng_trans": "He's too sensitive [neurotic] on that topic. ｜ He overreacts when that comes up.", 
-                    "jap_sentence": "彼はその話題に過敏すぎる."
+                    "jap_sentence": "彼はその話題に過敏すぎる。"
                 }
             ], 
             "parts": [
@@ -47,7 +47,7 @@
                 }, 
                 {
                     "eng_trans": "He overreacted to that (word). ｜ He reacted too strongly to that comment.", 
-                    "jap_sentence": "その言葉に彼は過敏に反応した."
+                    "jap_sentence": "その言葉に彼は過敏に反応した。"
                 }
             ], 
             "parts": []
@@ -60,7 +60,7 @@
                 }, 
                 {
                     "eng_trans": "The residents have become (extremely) nervous [neurotic] about earthquakes.", 
-                    "jap_sentence": "住民は地震に対して過敏になっている."
+                    "jap_sentence": "住民は地震に対して過敏になっている。"
                 }
             ], 
             "parts": []

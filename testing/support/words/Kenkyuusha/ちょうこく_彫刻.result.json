@@ -21,7 +21,7 @@
                 }, 
                 {
                     "eng_trans": "She has a face like a Greek sculpture.", 
-                    "jap_sentence": "彼女はギリシャ彫刻のような顔をしている."
+                    "jap_sentence": "彼女はギリシャ彫刻のような顔をしている。"
                 }, 
                 {
                     "eng_trans": "Rodin's sculpture.", 
@@ -29,7 +29,7 @@
                 }, 
                 {
                     "eng_trans": "On the wall is carved a sculpture representing the life of the Buddha.", 
-                    "jap_sentence": "壁には仏陀の一生を表す彫刻が刻まれていた."
+                    "jap_sentence": "壁には仏陀の一生を表す彫刻が刻まれていた。"
                 }, 
                 {
                     "eng_trans": "carve 《a design [figure]》 onto a marble pillar.", 
@@ -41,7 +41,7 @@
                 "carving", 
                 "engraving", 
                 "engraving", 
-                "〜する  carve", 
+                "〜する carve", 
                 "sculpture", 
                 "《俗》 sculpt", 
                 "carve", 
@@ -62,7 +62,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "a chisel; 〔銅板の〕 a graver; a burin.", 
+                    "eng_trans": "a chisel; a graver; a burin.", 
                     "jap_sentence": "彫刻刀"
                 }
             ], 

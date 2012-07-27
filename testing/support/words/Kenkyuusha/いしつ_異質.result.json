@@ -9,15 +9,15 @@
                 }, 
                 {
                     "eng_trans": "These two things are of a completely different nature.", 
-                    "jap_sentence": "この二つはまったく異質なものだ."
+                    "jap_sentence": "この二つはまったく異質なものだ。"
                 }, 
                 {
                     "eng_trans": "His suggestion and yours are completely different (in nature).", 
-                    "jap_sentence": "彼の提案と君のとはまったく異質だ."
+                    "jap_sentence": "彼の提案と君のとはまったく異質だ。"
                 }, 
                 {
                     "eng_trans": "The playing styles of each of those two players are completely dissimilar.", 
-                    "jap_sentence": "あの二人のプレースタイルはまったく異質だ."
+                    "jap_sentence": "あの二人のプレースタイルはまったく異質だ。"
                 }
             ], 
             "parts": [
@@ -83,7 +83,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔社会の〕 heterogeneous elements.", 
+                    "eng_trans": "heterogeneous elements.", 
                     "jap_sentence": "異質分子"
                 }
             ], 

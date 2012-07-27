@@ -9,7 +9,7 @@
                 }, 
                 {
                     "eng_trans": "She will be home shortly. ｜ I expect her back soon.", 
-                    "jap_sentence": "彼女は程なく帰宅するでしょう."
+                    "jap_sentence": "彼女は程なく帰宅するでしょう。"
                 }, 
                 {
                     "eng_trans": "after sb's return home.", 
@@ -17,7 +17,7 @@
                 }, 
                 {
                     "eng_trans": "Recently my husband has been late getting home.", 
-                    "jap_sentence": "夫は近頃帰宅が遅い."
+                    "jap_sentence": "夫は近頃帰宅が遅い。"
                 }, 
                 {
                     "eng_trans": "on one's way home", 
@@ -31,7 +31,7 @@
             "parts": [
                 "return(ing) home", 
                 "homecoming", 
-                "〜する  come home", 
+                "〜する come home", 
                 "return home", 
                 "go home", 
                 "get home", 
@@ -41,7 +41,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔災害時の〕 a temporary return home 《after being evacuated from a disaster area》.", 
+                    "eng_trans": "a temporary return home 〈after being evacuated from a disaster area〉.", 
                     "jap_sentence": "◨一時(的)帰宅"
                 }
             ], 
@@ -59,7 +59,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔地震による〕 a person stranded 《due to failure of the transport system in an earthquake》.", 
+                    "eng_trans": "a person stranded 〈due to failure of the transport system in an earthquake〉.", 
                     "jap_sentence": "帰宅困難者"
                 }
             ], 
@@ -68,7 +68,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "the time when sb returns home 《from work》.", 
+                    "eng_trans": "the time when sb returns home 〈from work〉.", 
                     "jap_sentence": "帰宅時間"
                 }
             ], 

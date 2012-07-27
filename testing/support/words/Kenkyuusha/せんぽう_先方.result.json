@@ -9,7 +9,7 @@
                 }, 
                 {
                     "eng_trans": "We haven't heard anything (from them [the other side]). ｜ There has been no responses from the other side.", 
-                    "jap_sentence": "先方から何の連絡もない."
+                    "jap_sentence": "先方から何の連絡もない。"
                 }, 
                 {
                     "eng_trans": "what the other side [party] has to say", 
@@ -17,15 +17,15 @@
                 }, 
                 {
                     "eng_trans": "Everything depends on their [his, her] move. ｜ It all depends what the other side [person] does.", 
-                    "jap_sentence": "先方の出方一つだ."
+                    "jap_sentence": "先方の出方一つだ。"
                 }, 
                 {
                     "eng_trans": "We'll have to hear what they [the other people] have to say.", 
-                    "jap_sentence": "先方の都合も聞かなくては."
+                    "jap_sentence": "先方の都合も聞かなくては。"
                 }
             ], 
             "parts": [
-                "the other ⌐party [side]", 
+                "the other party [side]", 
                 "he [she]", 
                 "they"
             ]

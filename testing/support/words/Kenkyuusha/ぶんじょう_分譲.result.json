@@ -4,10 +4,10 @@
         {
             "example_sentences": [], 
             "parts": [
-                "sale 《of land》 in ⌐lots [parcels]", 
+                "sale 《of land》 in lots [parcels]", 
                 "lotting-[parceling-]out", 
-                "〜する sell 《land》 in ⌐lots [parcels]", 
-                "divide 《one's estate》 into ⌐lots [parcels] and sell", 
+                "〜する sell 《land》 in lots [parcels]", 
+                "divide 《one's estate》 into lots [parcels] and sell", 
                 "lot [parcel] out"
             ]
         }, 
@@ -23,7 +23,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔建物〕 a condominium (building); 〔一世帯分〕 a condo; a condominium.", 
+                    "eng_trans": "a condominium (building); a condo; a condominium.", 
                     "jap_sentence": "分譲マンション"
                 }
             ], 

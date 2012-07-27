@@ -4,12 +4,12 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "in [under] the (dis)guise of 《a general》", 
+                    "eng_trans": "in [under] the (dis)guise of 〈a general〉", 
                     "jap_sentence": "…になりすまして"
                 }, 
                 {
                     "eng_trans": "I pretended to be a customer and checked out the competition.", 
-                    "jap_sentence": "私は客になりすましてライバル店のようすを探った."
+                    "jap_sentence": "私は客になりすましてライバル店のようすを探った。"
                 }
             ], 
             "parts": [
@@ -23,7 +23,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "He convinced himself that he was already a full-fledged doctor.", 
-                    "jap_sentence": "彼はもう一人前の医師になりすましたような気でいた."
+                    "jap_sentence": "彼はもう一人前の医師になりすましたような気でいた。"
                 }
             ], 
             "parts": [

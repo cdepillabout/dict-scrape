@@ -9,7 +9,7 @@
                 }, 
                 {
                     "eng_trans": "He went to take charge of the London branch.", 
-                    "jap_sentence": "彼はロンドン支店長として赴任した."
+                    "jap_sentence": "彼はロンドン支店長として赴任した。"
                 }, 
                 {
                     "eng_trans": "leave to take up a new position.", 
@@ -18,7 +18,7 @@
             ], 
             "parts": [
                 "〜する go to start a new job", 
-                "start [leave] for one's new ⌐post [position]"
+                "start [leave] for one's new post [position]"
             ]
         }, 
         {

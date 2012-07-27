@@ -8,7 +8,7 @@
                     "jap_sentence": "麻の"
                 }, 
                 {
-                    "eng_trans": "〔小鳥の餌〕 hempseed. [＝<reference>おのみ</reference=1c4e8:53e>]", 
+                    "eng_trans": "hempseed. [＝<reference>おのみ</reference=1c4e8:53e>]", 
                     "jap_sentence": "麻の実"
                 }
             ], 
@@ -26,7 +26,7 @@
                 }, 
                 {
                     "eng_trans": "This jacket is made of material with linen in it [a linen mixture], so it is very cool. ｜ This jacket has linen in it [contains linen] so it's very cool.", 
-                    "jap_sentence": "この上着は麻が混じっているからとても涼しい."
+                    "jap_sentence": "この上着は麻が混じっているからとても涼しい。"
                 }, 
                 {
                     "eng_trans": "a summer suit made of linen", 
@@ -34,11 +34,11 @@
                 }, 
                 {
                     "eng_trans": "Anarchy reigned throughout the country. ｜ The entire country was in a state of anarchy.", 
-                    "jap_sentence": "天下は麻のごとく乱れた."
+                    "jap_sentence": "天下は麻のごとく乱れた。"
                 }, 
                 {
                     "eng_trans": "Linen is cool but it creases [wrinkles] (easily).", 
-                    "jap_sentence": "麻は涼しいが, しわになりやすい."
+                    "jap_sentence": "麻は涼しいが, しわになりやすい。"
                 }
             ], 
             "parts": [
@@ -69,7 +69,7 @@
         {
             "example_sentences": [
                 {
-                    "eng_trans": "〔ジュートで作られた〕 a jute bag.", 
+                    "eng_trans": "a jute bag.", 
                     "jap_sentence": "麻袋"
                 }
             ], 
