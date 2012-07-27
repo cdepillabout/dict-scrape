@@ -343,6 +343,10 @@ class EpwingDictionary(Dictionary):
 
         return text
 
+    def _create_url(self, word_kanji, word_kana):
+        """Returns a URL for the word/page we are trying to lookup."""
+        return u'search for %s (%s) in %s' % (word_kanji, word_kana, self.short_dictionary_name)
+
     def parse_heading(self, text):
         raise NotImplementedError, "This needs to be overrode in a child class."
 
@@ -360,20 +364,28 @@ class EpwingDictionary(Dictionary):
         eb.set_subbook(0)
         hits = eb.search(u"%s" % word_kanji)
         if not hits:
-            return Result(self, word_kanji, word_kana, '')
+            return ''
 
-        hit = hits[0]
+        # if we have multiple hits, then we need to parse all of them
+        # and see which one is the one we want
+        raw = ''
+        for hit in hits:
+            result_heading = hit.heading()
+            result_heading = self.replace_gaiji(result_heading)
+            result_text = hit.text()
+            result_text = self.replace_gaiji(result_text)
 
-        result_heading = hit.heading()
-        result_heading = self.replace_gaiji(result_heading)
+            raw = result_heading + "\n" + result_text
+            kanji, kana, _ = self.parse_heading(raw)
 
-        result_text = hit.text()
-        result_text = self.replace_gaiji(result_text)
+            if kanji == word_kanji and (kana == word_kana or kana == u'?????????'):
+                # we've found our match
+                eb_finalize_library()
+                return raw
 
+        # we didn't find our match
         eb_finalize_library()
-
-        return result_heading + "\n" + result_text
-
+        return ''
 
     def lookup(self, word_kanji, word_kana, raw=None):
         """
@@ -389,8 +401,11 @@ class EpwingDictionary(Dictionary):
         a Result object with everything blank ("").
         """
 
-        if not raw:
+        if raw is None:
             raw = self.get_raw(word_kanji, word_kana)
+
+        if not raw:
+            return Result(self, word_kanji, word_kana, '')
 
         kanji, kana, _ = self.parse_heading(raw)
         defs = self.parse_definition(raw)

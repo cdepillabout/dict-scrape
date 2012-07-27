@@ -125,9 +125,10 @@ class KenkyuushaDictionary(EpwingDictionary):
         all_defs = []
 
         for line in lines:
+            line = line.strip()
 
             # this is starting a new definition
-            if re.match(u"(([1-9]+ )?(〔|【))|[a-zA-Z]", line):
+            if re.match(u"(([1-9]+ )?(〔|【))|[a-zA-Z()]", line):
                 if current_definition or current_example_sentences:
                     all_defs.append([current_definition, current_example_sentences])
                     current_definition = ""
