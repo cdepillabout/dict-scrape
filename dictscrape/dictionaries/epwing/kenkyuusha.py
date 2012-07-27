@@ -51,7 +51,7 @@ class KenkyuushaDictionary(EpwingDictionary):
 
         # change all the other two greater than sign things with english words
         # in them to something else that doesn't use the two greater than signs
-        eng_sent = re.sub(u'\u300A([A-Za-z ]+)\u300B', ur'〈\1〉', eng_sent)
+        eng_sent = re.sub(u'\u300A([A-Za-z \']+)\u300B', ur'〈\1〉', eng_sent)
 
         # take out double spaces that may have appeared while
         # taking out something above
