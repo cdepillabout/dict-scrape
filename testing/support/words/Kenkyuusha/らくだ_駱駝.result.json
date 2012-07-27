@@ -1,0 +1,56 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "ride a camel; get on a camel.", 
+                    "jap_sentence": "らくだに乗る"
+                }, 
+                {
+                    "eng_trans": "a camel's hump", 
+                    "jap_sentence": "らくだのこぶ"
+                }, 
+                {
+                    "eng_trans": "camel's hair; camel hair", 
+                    "jap_sentence": "らくだの毛"
+                }, 
+                {
+                    "eng_trans": "camel('s)-hair underwear", 
+                    "jap_sentence": "らくだの(毛の)シャツ"
+                }, 
+                {
+                    "eng_trans": "a camel caravan; a caravan of camels.", 
+                    "jap_sentence": "らくだの隊商"
+                }
+            ], 
+            "parts": [
+                "a camel", 
+                "<reference>ふたこぶらくだ</reference=24d3e:536>]"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a cameleer; a camel driver.", 
+                    "jap_sentence": "らくだ追い"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "camel('s)-hair cloth; camel('s) hair.", 
+                    "jap_sentence": "らくだ織"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "らくだ", 
+    "original_kanji": "駱駝", 
+    "result_kana": "らくだ", 
+    "result_kanji": "駱駝", 
+    "url": ""
+}

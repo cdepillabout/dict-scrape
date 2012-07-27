@@ -1,0 +1,435 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "act independently [separately, on one's own initiative]; behave independently; go one's own way", 
+                    "jap_sentence": "単独で行動する"
+                }, 
+                {
+                    "eng_trans": "take action (by) oneself; take the initiative; go one's own way; 〔他者に頼らない〕 do not depend on other people", 
+                    "jap_sentence": "自主的に行動する"
+                }, 
+                {
+                    "eng_trans": "act cautiously [with caution, with circumspection]; move carefully; be careful [cautious, circumspect]", 
+                    "jap_sentence": "慎重に行動する"
+                }, 
+                {
+                    "eng_trans": "act on one's own initiative [without reference to other people]; take action by oneself [″《口》 off one's own bat]; make one's own moves; go ahead on one's own", 
+                    "jap_sentence": "勝手に行動する"
+                }, 
+                {
+                    "eng_trans": "Think carefully before you do anything [act, take action]. ｜ Look before you leap.", 
+                    "jap_sentence": "よく考えて行動しなさい."
+                }, 
+                {
+                    "eng_trans": "be bold in action; act boldly", 
+                    "jap_sentence": "行動が大胆である"
+                }, 
+                {
+                    "eng_trans": "be prompt in action; act promptly [with promptitude]", 
+                    "jap_sentence": "行動が機敏である"
+                }, 
+                {
+                    "eng_trans": "He doesn't think before he leaps. ｜ He doesn't plan [think] before he acts.", 
+                    "jap_sentence": "あいつは考えるより行動が先だ."
+                }, 
+                {
+                    "eng_trans": "His actions don't match up to his words. ｜ What he says and what he does are quite different [aren't the same thing].", 
+                    "jap_sentence": "彼は言葉に行動が伴わない."
+                }, 
+                {
+                    "eng_trans": "express [show] 《what one thinks》 by one's behavior [one's actions, what one does, the way one behaves]", 
+                    "jap_sentence": "(考えを)行動で示す"
+                }, 
+                {
+                    "eng_trans": "Don't just say it. Do it [Put it into action] (and show me that you mean it).", 
+                    "jap_sentence": "口で言うだけでなく行動で示してくれ."
+                }, 
+                {
+                    "eng_trans": "show by one's actions [behavior, manner] that one is sorry", 
+                    "jap_sentence": "謝罪の気持ちを行動に表す"
+                }, 
+                {
+                    "eng_trans": "translate 《one's idea》 into action; put 《an idea》 into action; carry out [execute] 《a resolution》; act out 《a fantasy》", 
+                    "jap_sentence": "(考えを)行動に移す"
+                }, 
+                {
+                    "eng_trans": "This is an emergency, and demands immediate action. ｜ In view of the emergency [critical situation] we must hurry up and do something.", 
+                    "jap_sentence": "緊急事態だから速やかに行動に移らなくてはならない."
+                }, 
+                {
+                    "eng_trans": "I watched him [his behavior] carefully all the time. ｜ I kept an eye on him [his movements, his behavior, what he was doing].", 
+                    "jap_sentence": "絶えず彼の行動に注意していた."
+                }, 
+                {
+                    "eng_trans": "do [undertake] something dangerous; make a dangerous move", 
+                    "jap_sentence": "危険な行動に出る"
+                }, 
+                {
+                    "eng_trans": "He did something unexpected. ｜ He acted [behaved] unexpectedly. ｜ He made an unexpected move [a move I hadn't anticipated].", 
+                    "jap_sentence": "彼は思いがけない行動に出た."
+                }, 
+                {
+                    "eng_trans": "limit [restrain, restrict] sb's freedom of action; tie sb's hands", 
+                    "jap_sentence": "行動の自由を束縛する"
+                }, 
+                {
+                    "eng_trans": "Group tours restrict your freedom of action. ｜ Going on a group tour means you can't do what you want.", 
+                    "jap_sentence": "団体旅行だと行動の自由が制限される."
+                }, 
+                {
+                    "eng_trans": "be allowed freedom of action [movement]; be allowed to do what one wants", 
+                    "jap_sentence": "行動の自由が与えられる"
+                }, 
+                {
+                    "eng_trans": "【心理・社会】 a behavior pattern.", 
+                    "jap_sentence": "行動の型"
+                }, 
+                {
+                    "eng_trans": "act [behave] carefully [cautiously, with circumspection]; make a cautious move; take cautious steps", 
+                    "jap_sentence": "慎重な行動を取る"
+                }, 
+                {
+                    "eng_trans": "act [behave] carelessly [rashly, without circumspection]; make a rash move", 
+                    "jap_sentence": "軽率な行動を取る"
+                }, 
+                {
+                    "eng_trans": "act on one's own [independently]; make an independent move; take independent steps; 《口》 go it alone", 
+                    "jap_sentence": "独自の行動を取る"
+                }, 
+                {
+                    "eng_trans": "act with…; act together with…; cooperate with…; cast in one's lot with…; act in concert with…", 
+                    "jap_sentence": "…と行動を共にする"
+                }, 
+                {
+                    "eng_trans": "They are [work] together night and day. ｜ They spend twenty-four hours a day in each other's company.", 
+                    "jap_sentence": "彼らは四六時中行動を共にしている."
+                }, 
+                {
+                    "eng_trans": "start action; set to work; make a move; 《口》 get down to work [it]", 
+                    "jap_sentence": "行動を起こす"
+                }, 
+                {
+                    "eng_trans": "You'll have to be a bit more careful [behave yourself rather better] in future.", 
+                    "jap_sentence": "今後はもう少し行動を慎まなければいけないぞ."
+                }, 
+                {
+                    "eng_trans": "watch [keep an eye on] sb's movements; keep an eye on sb [sb's behavior, actions, what sb does]", 
+                    "jap_sentence": "行動を監視する"
+                }, 
+                {
+                    "eng_trans": "restrict [limit] sb's freedom (of action); tie sb down.", 
+                    "jap_sentence": "行動を束縛する"
+                }, 
+                {
+                    "eng_trans": "He behaved [acted] like a gentleman.", 
+                    "jap_sentence": "彼の行動は紳士的であった."
+                }, 
+                {
+                    "eng_trans": "You never know [can't predict] what she's going to do next. ｜ She's unpredictable.", 
+                    "jap_sentence": "彼女の行動は先が読めない."
+                }
+            ], 
+            "parts": [
+                "behavior", 
+                "(an) action", 
+                "activities", 
+                "(a) procedure", 
+                "proceedings", 
+                "《文》 conduct", 
+                "doings", 
+                "action", 
+                "performance", 
+                "execution", 
+                "steps", 
+                "a move", 
+                "measures", 
+                "operations", 
+                "behavior", 
+                "〜する act", 
+                "behave", 
+                "take action", 
+                "move", 
+                "make a move", 
+                "《文》 conduct oneself"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "covert action.", 
+                    "jap_sentence": "◨隠密行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "《take》 military action; a (military) campaign; 《carry out》 an operation; 《conduct》 (military) operations.", 
+                    "jap_sentence": "軍事行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "social behavior.", 
+                    "jap_sentence": "社会的(な)行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒じゆうこうどう.", 
+                    "jap_sentence": "<reference>自由行動</reference=20158:68c>"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒<reference>だんたい<sup>１</sup></reference=21f86:5b2>, <reference>たんどく<sup>２</sup></reference=21fad:41e>.", 
+                    "jap_sentence": "団体[単独]行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "direct action.", 
+                    "jap_sentence": "直接行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "antagonistic [hostile] behavior; aggression; hostility; 《go on》 the offensive; 【軍】 hostile operations.", 
+                    "jap_sentence": "敵対行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "joint [united] action.", 
+                    "jap_sentence": "統一行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "problem behavior.", 
+                    "jap_sentence": "問題行動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【心理】 the acting out 《of an impulse》.", 
+                    "jap_sentence": "行動化"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a doer; a person who gets things done; a leader type; a man [woman] of action.", 
+                    "jap_sentence": "行動家[派]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "behavioral counseling.", 
+                    "jap_sentence": "行動カウンセリング"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "behavioral science(s). ➪behavioral scientist n.", 
+                    "jap_sentence": "行動科学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a program (for action); an action plan; a plan of action.", 
+                    "jap_sentence": "行動計画"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【生態】 〔定住性動物の〕 a home range.", 
+                    "jap_sentence": "行動圏"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【空】 an equitime point.", 
+                    "jap_sentence": "行動限界点"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒こうどうしゅぎ.", 
+                    "jap_sentence": "<reference>行動主義</reference=1eb68:65c>"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 a behavior disorder.", 
+                    "jap_sentence": "行動障害"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔人の〕 activity; activeness; 〔戦闘機・潜水艦などの〕 mobility.", 
+                    "jap_sentence": "行動性"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "behavioral ecology.", 
+                    "jap_sentence": "行動生態学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "ethology. ➪ethological adj.; ethologist n.", 
+                    "jap_sentence": "行動生物学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "active; full of energy; bouncy; aggressive.", 
+                    "jap_sentence": "行動的な"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a behavioral trait [characteristic].", 
+                    "jap_sentence": "行動特性"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒こうどうはんい.", 
+                    "jap_sentence": "<reference>行動範囲</reference=1eb6a:6fc>"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒こうどうはんけい.", 
+                    "jap_sentence": "<reference>行動半径</reference=1eb6b:604>"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "behavioral pathology.", 
+                    "jap_sentence": "行動病理学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a course [line] of action.", 
+                    "jap_sentence": "行動方向"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【社会】 a behavior [behavioral] pattern; a pattern of behavior.", 
+                    "jap_sentence": "行動様式[パターン]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【精神医】 behavior therapy.", 
+                    "jap_sentence": "行動療法"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "energy; power of action.", 
+                    "jap_sentence": "行動力"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "こうどう", 
+    "original_kanji": "行動", 
+    "result_kana": "こうどう", 
+    "result_kanji": "行動", 
+    "url": ""
+}

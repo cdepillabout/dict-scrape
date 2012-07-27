@@ -1,0 +1,38 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "sale 《of land》 in ⌐lots [parcels]", 
+                "lotting-[parceling-]out", 
+                "〜する sell 《land》 in ⌐lots [parcels]", 
+                "divide 《one's estate》 into ⌐lots [parcels] and sell", 
+                "lot [parcel] out"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a house and lot, subdivided from a larger lot, and offered for sale (by a real estate corporation).", 
+                    "jap_sentence": "分譲住宅"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔建物〕 a condominium (building); 〔一世帯分〕 a condo; a condominium.", 
+                    "jap_sentence": "分譲マンション"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ぶんじょう", 
+    "original_kanji": "分譲", 
+    "result_kana": "ぶんじょう", 
+    "result_kanji": "分譲", 
+    "url": ""
+}

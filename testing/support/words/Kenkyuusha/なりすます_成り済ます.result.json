@@ -1,0 +1,39 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "in [under] the (dis)guise of 《a general》", 
+                    "jap_sentence": "…になりすまして"
+                }, 
+                {
+                    "eng_trans": "I pretended to be a customer and checked out the competition.", 
+                    "jap_sentence": "私は客になりすましてライバル店のようすを探った."
+                }
+            ], 
+            "parts": [
+                "successfully impersonate 《a painter》", 
+                "pose as 《a millionaire》", 
+                "set up for 《a professor》", 
+                "assume the air of 《a priest》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "He convinced himself that he was already a full-fledged doctor.", 
+                    "jap_sentence": "彼はもう一人前の医師になりすましたような気でいた."
+                }
+            ], 
+            "parts": [
+                "(completely) become"
+            ]
+        }
+    ], 
+    "original_kana": "なりすます", 
+    "original_kanji": "成り済ます", 
+    "result_kana": "なりすます", 
+    "result_kanji": "成り済ます", 
+    "url": ""
+}

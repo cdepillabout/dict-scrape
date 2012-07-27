@@ -1,0 +1,199 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "indemnify losses [damages]; make good a loss; make compensation [reparation] for a loss; pay damages.", 
+                    "jap_sentence": "損害を補償する"
+                }, 
+                {
+                    "eng_trans": "give compensation 《for…》", 
+                    "jap_sentence": "補償を与える"
+                }, 
+                {
+                    "eng_trans": "demand [claim] compensation 《for》. ➡claim だと契約上の請求手続きをするという感じ.", 
+                    "jap_sentence": "補償を要求する"
+                }
+            ], 
+            "parts": [
+                "(a) compensation", 
+                "(an) indemnity", 
+                "indemnification", 
+                "reparation", 
+                "a credit 《for returned goods》", 
+                "〜する indemnify", 
+                "make reparation 《for…》", 
+                "compensate 《for…》", 
+                "make up 《for…》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【精神分析】 overcompensation.", 
+                    "jap_sentence": "◨過剰補償"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "compensation for pollution.", 
+                    "jap_sentence": "公害補償"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "postwar reparations.", 
+                    "jap_sentence": "戦後補償"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "double indemnity.", 
+                    "jap_sentence": "倍額補償"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a compensation bill.", 
+                    "jap_sentence": "補償案"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the amount of compensation.", 
+                    "jap_sentence": "補償額"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a compensator.", 
+                    "jap_sentence": "補償器"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒ほしょうきん<sup>２</sup>.", 
+                    "jap_sentence": "<reference>補償金</reference=25610:780>"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a bond of indemnity; an indemnity bond.", 
+                    "jap_sentence": "補償契約書"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【電】 a compensating coil.", 
+                    "jap_sentence": "補償コイル"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【化】 compensation effect.", 
+                    "jap_sentence": "補償効果"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【光】 adaptive optics.", 
+                    "jap_sentence": "補償光学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔事業のための土地取得などに関連する〕 a compensation consultant.", 
+                    "jap_sentence": "補償コンサルタント"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【電子】 a compensating capacitor.", 
+                    "jap_sentence": "補償コンデンサー"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【精神分析】 compensation.", 
+                    "jap_sentence": "補償作用"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【植】 〔光合成の〕 a compensation point.", 
+                    "jap_sentence": "補償点"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【光】 a compensator.", 
+                    "jap_sentence": "補償板"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【電子】 a compensated semiconductor.", 
+                    "jap_sentence": "補償半導体"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ほしょう", 
+    "original_kanji": "補償", 
+    "result_kana": "ほしょう", 
+    "result_kanji": "補償", 
+    "url": ""
+}

@@ -1,0 +1,69 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the pleasures of life.", 
+                    "jap_sentence": "人生の快楽"
+                }, 
+                {
+                    "eng_trans": "be given [give oneself up] to pleasure; wallow [revel] in pleasure.", 
+                    "jap_sentence": "快楽にふける"
+                }, 
+                {
+                    "eng_trans": "seek [pursue, be intent on] pleasure; gather (life's) roses", 
+                    "jap_sentence": "快楽を追う"
+                }, 
+                {
+                    "eng_trans": "enjoy [taste, relish] pleasure", 
+                    "jap_sentence": "快楽を味わう"
+                }, 
+                {
+                    "eng_trans": "abandon all the pleasures of life; withdraw from all of life's comforts.", 
+                    "jap_sentence": "いっさいの人生の快楽を捨てる"
+                }
+            ], 
+            "parts": [
+                "pleasure", 
+                "enjoyment"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【精神分析】 the pleasure principle.", 
+                    "jap_sentence": "快楽原則"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【精神医】 lust murder; murder for pleasure.", 
+                    "jap_sentence": "快楽殺人"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔快楽・幸福を最高善とする〕 hedonism; 〔エピクロス的快楽主義〕 Epicureanism.", 
+                    "jap_sentence": "快楽主義"
+                }, 
+                {
+                    "eng_trans": "a hedonist; an epicurean.", 
+                    "jap_sentence": "快楽主義者"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かいらく", 
+    "original_kanji": "快楽", 
+    "result_kana": "かいらく", 
+    "result_kanji": "快楽", 
+    "url": ""
+}

@@ -1,0 +1,53 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "be airy [well-ventilated]", 
+                    "jap_sentence": "風通しがよい"
+                }, 
+                {
+                    "eng_trans": "be airless [ill-ventilated, poorly ventilated, close, stuffy].", 
+                    "jap_sentence": "風通しが悪い"
+                }, 
+                {
+                    "eng_trans": "airless; ill-ventilated; poorly ventilated; close; stuffy", 
+                    "jap_sentence": "風通しの悪い"
+                }, 
+                {
+                    "eng_trans": "For summer clothes, choose a fabric that lets in the cool air [breathes well].", 
+                    "jap_sentence": "夏服には風通しのよい素材を選びましょう."
+                }, 
+                {
+                    "eng_trans": "I pruned the trees to let more air into the garden.", 
+                    "jap_sentence": "少し植木を切って庭の風通しをよくした."
+                }
+            ], 
+            "parts": [
+                "ventilation"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "With a new, younger leadership, the party took on a fresher, more open feel.", 
+                    "jap_sentence": "執行部が若返って党内の風通しがよくなった."
+                }, 
+                {
+                    "eng_trans": "I would like to create a more open atmosphere in the company by giving employees a greater chance to have their say.", 
+                    "jap_sentence": "従業員の発言の機会をふやして社内の風通しをよくしたい."
+                }
+            ], 
+            "parts": [
+                "openness", 
+                "an open atmosphere"
+            ]
+        }
+    ], 
+    "original_kana": "かぜとおし", 
+    "original_kanji": "風通し", 
+    "result_kana": "かぜとおし", 
+    "result_kanji": "風通し", 
+    "url": ""
+}

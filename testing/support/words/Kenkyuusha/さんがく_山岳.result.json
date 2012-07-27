@@ -1,0 +1,165 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【生物】 montane 《flora》; mountain 《sheep》.", 
+                    "jap_sentence": "山岳の, 山岳に生育[生息]する"
+                }
+            ], 
+            "parts": [
+                "mountains"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "orography; orology.", 
+                    "jap_sentence": "山岳学"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an orometer.", 
+                    "jap_sentence": "山岳気圧計"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountain climate.", 
+                    "jap_sentence": "山岳気候"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountain religion.", 
+                    "jap_sentence": "山岳信仰"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a railway line through mountains; a mountain railway (line).", 
+                    "jap_sentence": "山岳線"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountainous region.", 
+                    "jap_sentence": "山岳地帯"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "mountain country; a mountainous district [country].", 
+                    "jap_sentence": "山岳地方"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "mountain soil.", 
+                    "jap_sentence": "山岳土壌"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountain tunnel; a tunnel through a mountain [mountains].", 
+                    "jap_sentence": "山岳トンネル"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【気象・空】 a mountain wave.", 
+                    "jap_sentence": "山岳波"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountain patrol.", 
+                    "jap_sentence": "山岳パトロール"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "mountain sickness.", 
+                    "jap_sentence": "山岳病"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【地質】 a mountain glacier.", 
+                    "jap_sentence": "山岳氷河"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountaineering [an alpine] club.", 
+                    "jap_sentence": "山岳部[会]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a mountainscape.", 
+                    "jap_sentence": "山岳風景画"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "mountain literature; literature dealing with mountains.", 
+                    "jap_sentence": "山岳文学"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "さんがく", 
+    "original_kanji": "山岳", 
+    "result_kana": "さんがく", 
+    "result_kanji": "山岳", 
+    "url": ""
+}

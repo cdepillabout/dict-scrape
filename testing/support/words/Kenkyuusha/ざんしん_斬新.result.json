@@ -1,0 +1,58 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a novel design", 
+                    "jap_sentence": "斬新な意匠[デザイン]"
+                }, 
+                {
+                    "eng_trans": "an original [innovative] style", 
+                    "jap_sentence": "斬新なスタイル"
+                }, 
+                {
+                    "eng_trans": "an innovative method of teaching", 
+                    "jap_sentence": "斬新な教授法"
+                }, 
+                {
+                    "eng_trans": "〔評論や小説などで〕 an original [innovative] critical approach.", 
+                    "jap_sentence": "斬新な切り口"
+                }, 
+                {
+                    "eng_trans": "This book's cover design evokes a feeling of novelty.", 
+                    "jap_sentence": "この本の表紙のデザインは斬新な感じがする."
+                }, 
+                {
+                    "eng_trans": "To older people the fashions of the sixties are nostalgic, while to young people they seem novel.", 
+                    "jap_sentence": "60 年代のファッションが, 年輩者にはなつかしく, 若い人には斬新に見える."
+                }
+            ], 
+            "parts": [
+                "〜な novel", 
+                "original", 
+                "innovative", 
+                "unconventional", 
+                "daring"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "novelty; originality.", 
+                    "jap_sentence": "斬新さ"
+                }, 
+                {
+                    "eng_trans": "That work won top prize [honors] because of the novelty of its conception.", 
+                    "jap_sentence": "その作品は発想の斬新さが買われて一席になった."
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ざんしん", 
+    "original_kanji": "斬新", 
+    "result_kana": "ざんしん", 
+    "result_kanji": "斬新", 
+    "url": ""
+}

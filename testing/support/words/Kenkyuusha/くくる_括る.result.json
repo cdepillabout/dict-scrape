@@ -1,0 +1,81 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "tie (up) a box with string", 
+                    "jap_sentence": "箱をひもでくくる"
+                }, 
+                {
+                    "eng_trans": "hang [strangle] oneself; 《口》 string oneself up", 
+                    "jap_sentence": "首をくくる"
+                }, 
+                {
+                    "eng_trans": "be bound hand and foot", 
+                    "jap_sentence": "手足をくくられている"
+                }, 
+                {
+                    "eng_trans": "tie sth up in a bundle; bundle up", 
+                    "jap_sentence": "くくって包みにする"
+                }, 
+                {
+                    "eng_trans": "tie some old magazines up with string", 
+                    "jap_sentence": "古雑誌をひもでくくる"
+                }, 
+                {
+                    "eng_trans": "gather (up) [tie back] the end of a sleeve.", 
+                    "jap_sentence": "そで口をくくる"
+                }
+            ], 
+            "parts": [
+                "bind (up)", 
+                "bundle", 
+                "tie (up)", 
+                "do up", 
+                "(細引きで) tie sth (up) with a cord", 
+                "(鎖で) chain", 
+                "(皮ひもで) strap", 
+                "tie (up) (in a bundle)", 
+                "lash (up)", 
+                "ligate"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "\"Western music\" covers all kinds, so you cannot summarize them all in one breath.", 
+                    "jap_sentence": "「西洋音楽」と言ってもいろいろあるから一言ではくくれない."
+                }
+            ], 
+            "parts": [
+                "summarize", 
+                "outline", 
+                "put sth in a nutshell"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒<reference>たか<sup>１</sup></reference=21a61:78>.", 
+                    "jap_sentence": "高をくくる"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒<reference>はら<sup>２</sup></reference=241f1:38a>.", 
+                    "jap_sentence": "腹をくくる"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "くくる", 
+    "original_kanji": "括る", 
+    "result_kana": "くくる", 
+    "result_kanji": "括る", 
+    "url": ""
+}

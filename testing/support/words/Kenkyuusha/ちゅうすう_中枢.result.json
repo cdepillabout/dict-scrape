@@ -1,0 +1,128 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the mainstay of society", 
+                    "jap_sentence": "社会の中枢"
+                }, 
+                {
+                    "eng_trans": "a political (nerve) center.", 
+                    "jap_sentence": "政治の中枢"
+                }, 
+                {
+                    "eng_trans": "central; pivotal.", 
+                    "jap_sentence": "中枢(性)の"
+                }, 
+                {
+                    "eng_trans": "marginalize employees who refuse to toe the line.", 
+                    "jap_sentence": "意向に従わない社員を中枢から外す"
+                }, 
+                {
+                    "eng_trans": "take over the key state positions; form the nucleus [mainstay] of the state.", 
+                    "jap_sentence": "国家の中枢を占める"
+                }
+            ], 
+            "parts": [
+                "the center", 
+                "the pivot", 
+                "the nucleus 《pl", 
+                "-clei, 〜es》", 
+                "the hub", 
+                "the backbone", 
+                "the central [a leading] figure", 
+                "the nucleus", 
+                "a mainstay", 
+                "a pillar", 
+                "a key ⌐person [figure]"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the motor [speech] center (of the brain).", 
+                    "jap_sentence": "◨運動[言語]中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the respiratory [visual] center (of the brain).", 
+                    "jap_sentence": "呼吸[視覚]中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【解】 a nerve center.", 
+                    "jap_sentence": "神経中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 a heat-promoting center.", 
+                    "jap_sentence": "熱産生中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 a heat-losing center.", 
+                    "jap_sentence": "熱放散[寒冷]中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a [the] satiety [hunger] center (of the brain).", 
+                    "jap_sentence": "満腹[空腹]中枢"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the central organization; the nerve center (of an organization).", 
+                    "jap_sentence": "中枢機関"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a key industry [figure].", 
+                    "jap_sentence": "中枢産業[人物]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【数学】 a pivotal element.", 
+                    "jap_sentence": "中枢要素"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ちゅうすう", 
+    "original_kanji": "中枢", 
+    "result_kana": "ちゅうすう", 
+    "result_kanji": "中枢", 
+    "url": ""
+}

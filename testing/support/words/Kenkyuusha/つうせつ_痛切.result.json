@@ -1,0 +1,45 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "poignancy; (an) ardent passion.", 
+                    "jap_sentence": "痛切な思い"
+                }
+            ], 
+            "parts": [
+                "〜な keen", 
+                "poignant", 
+                "acute", 
+                "heartfelt"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "keenly; poignantly; severely; acutely.", 
+                    "jap_sentence": "痛切に"
+                }, 
+                {
+                    "eng_trans": "keenly [deeply] feel 《sth, that…》", 
+                    "jap_sentence": "痛切に感じる"
+                }, 
+                {
+                    "eng_trans": "That has been brought home to me.", 
+                    "jap_sentence": "そのことは痛切に感じています."
+                }, 
+                {
+                    "eng_trans": "The necessity was keenly felt.", 
+                    "jap_sentence": "その必要が痛切に感じられた."
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "つうせつ", 
+    "original_kanji": "痛切", 
+    "result_kana": "つうせつ", 
+    "result_kanji": "痛切", 
+    "url": ""
+}

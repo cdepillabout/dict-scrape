@@ -1,0 +1,74 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "highly sensitive [hypersensitive, oversensitive] nerves", 
+                    "jap_sentence": "過敏な神経"
+                }, 
+                {
+                    "eng_trans": "(an) overreaction; overreacting; reacting too strongly.", 
+                    "jap_sentence": "過敏な反応"
+                }, 
+                {
+                    "eng_trans": "He's highly strung [very sensitive, oversensitive, hypersensitive]. ｜ 《口》 He's all nerves.", 
+                    "jap_sentence": "彼は神経が過敏だ."
+                }, 
+                {
+                    "eng_trans": "He's too sensitive [neurotic] on that topic. ｜ He overreacts when that comes up.", 
+                    "jap_sentence": "彼はその話題に過敏すぎる."
+                }
+            ], 
+            "parts": [
+                "〜な (over)sensitive", 
+                "thin-skinned", 
+                "hyperacute", 
+                "hypersensitive", 
+                "neurotic", 
+                "too [overly, exaggeratedly, morbidly] sensitive", 
+                "nervous"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(over)sensitivity; hypersensitivity; (a) neurosis; exaggerated [morbid] sensitivity.", 
+                    "jap_sentence": "過敏さ"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(over)sensitively; neurotically; nervously.", 
+                    "jap_sentence": "過敏に"
+                }, 
+                {
+                    "eng_trans": "He overreacted to that (word). ｜ He reacted too strongly to that comment.", 
+                    "jap_sentence": "その言葉に彼は過敏に反応した."
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "get [grow, become] (over)sensitive; get neurotic; become too [overly] sensitive.", 
+                    "jap_sentence": "過敏になる"
+                }, 
+                {
+                    "eng_trans": "The residents have become (extremely) nervous [neurotic] about earthquakes.", 
+                    "jap_sentence": "住民は地震に対して過敏になっている."
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かびん", 
+    "original_kanji": "過敏", 
+    "result_kana": "かびん", 
+    "result_kanji": "過敏", 
+    "url": ""
+}

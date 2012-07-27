@@ -1,0 +1,124 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "serve the local community", 
+                    "jap_sentence": "地域社会に奉仕する"
+                }, 
+                {
+                    "eng_trans": "serve God.", 
+                    "jap_sentence": "神に奉仕する"
+                }, 
+                {
+                    "eng_trans": "a spirit of service.", 
+                    "jap_sentence": "奉仕の精神"
+                }
+            ], 
+            "parts": [
+                "service", 
+                "〜する serve", 
+                "render service(s) 《to…》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "All the goods here are being given away at half price!", 
+                    "jap_sentence": "ここにある商品はすべて半額にてご奉仕いたしております."
+                }
+            ], 
+            "parts": [
+                "offer goods at a reduced price", 
+                "〜する offer at a (greatly) reduced price", 
+                "give one's services free"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "labor service.", 
+                    "jap_sentence": "◨勤労奉仕"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "community [voluntary social] service.", 
+                    "jap_sentence": "社会奉仕"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "奉仕価格"
+                }, 
+                {
+                    "eng_trans": "《sell》 at a sacrifice; 《offer》 at a reduced [bargain] price", 
+                    "jap_sentence": "奉仕価格で"
+                }, 
+                {
+                    "eng_trans": "a specially reduced price; a special-sacrifice price.", 
+                    "jap_sentence": "特別奉仕価格"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "volunteer work.", 
+                    "jap_sentence": "奉仕活動"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "volunteer work.", 
+                    "jap_sentence": "奉仕事業"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "one who serves [offers his services to] 《the community》; a volunteer.", 
+                    "jap_sentence": "奉仕者"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a volunteer group.", 
+                    "jap_sentence": "奉仕団"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a bargain.", 
+                    "jap_sentence": "奉仕品"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ほうし", 
+    "original_kanji": "奉仕", 
+    "result_kana": "ほうし", 
+    "result_kanji": "奉仕", 
+    "url": ""
+}

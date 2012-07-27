@@ -1,0 +1,265 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "in the center [heart] of the city", 
+                    "jap_sentence": "市の中央に"
+                }, 
+                {
+                    "eng_trans": "a midtown hospital", 
+                    "jap_sentence": "町の中央にある病院"
+                }, 
+                {
+                    "eng_trans": "centralize; concentrate", 
+                    "jap_sentence": "中央に集める[集まる]"
+                }, 
+                {
+                    "eng_trans": "Please move towards the center.", 
+                    "jap_sentence": "もっと中央に寄ってください."
+                }, 
+                {
+                    "eng_trans": "A monument was erected in the center of the square.", 
+                    "jap_sentence": "広場の中央に記念碑が建てられた."
+                }, 
+                {
+                    "eng_trans": "central; middle", 
+                    "jap_sentence": "中央の"
+                }, 
+                {
+                    "eng_trans": "literary circles in the central metropolis.", 
+                    "jap_sentence": "中央の文壇"
+                }
+            ], 
+            "parts": [
+                "the center", 
+                "the middle", 
+                "the heart", 
+                "the central government", 
+                "the capital city", 
+                "the metropolis"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the central market.", 
+                    "jap_sentence": "中央市場"
+                }, 
+                {
+                    "eng_trans": "a central wholesale market.", 
+                    "jap_sentence": "中央卸売市場"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【電算】 a central processing unit (略: CPU).", 
+                    "jap_sentence": "中央演算処理装置"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【地質】 a mid-ocean ridge; a mid-oceanic ridge.", 
+                    "jap_sentence": "中央海嶺"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【地質】 a central cone.", 
+                    "jap_sentence": "中央火口丘"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a central organization.", 
+                    "jap_sentence": "中央機関"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "state administration.", 
+                    "jap_sentence": "中央行政"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "central government agencies.", 
+                    "jap_sentence": "中央(行政)官庁"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【物】 ＝<reference>中心極限定理 (⇒ちゅうしん<sup>１</sup>)</reference=221cb:69a>.", 
+                    "jap_sentence": "中央極限定理"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a central bank.", 
+                    "jap_sentence": "中央銀行"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(horse) racing operated by the Japan Racing Association.", 
+                    "jap_sentence": "中央競馬"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a metropolitan newspaper.", 
+                    "jap_sentence": "中央紙"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a member of the central executive committee.", 
+                    "jap_sentence": "中央執行委員"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the central executive committee.", 
+                    "jap_sentence": "中央執行委員会"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "central (government) ministries (and agencies).", 
+                    "jap_sentence": "中央省庁"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "reorganizing central government ministries and agencies.", 
+                    "jap_sentence": "中央省庁再編"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【電算】 ＝<reference>中央演算処理装置</reference=22181:130>.", 
+                    "jap_sentence": "中央処理装置"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a central heating system.", 
+                    "jap_sentence": "中央暖房方式"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【数】 the median.", 
+                    "jap_sentence": "中央値"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a frontal breakthrough.", 
+                    "jap_sentence": "中央突破"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the central part.", 
+                    "jap_sentence": "中央部"
+                }, 
+                {
+                    "eng_trans": "midship.", 
+                    "jap_sentence": "船の中央部(の)"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a central [key] television [radio] station.", 
+                    "jap_sentence": "中央放送局"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【人類】 the mid-sagittal plane.", 
+                    "jap_sentence": "中央矢状面"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the Central Post Office.", 
+                    "jap_sentence": "中央郵便局"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ちゅうおう", 
+    "original_kanji": "中央", 
+    "result_kana": "ちゅうおう", 
+    "result_kanji": "中央", 
+    "url": ""
+}

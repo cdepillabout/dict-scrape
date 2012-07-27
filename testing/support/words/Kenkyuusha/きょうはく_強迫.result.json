@@ -1,0 +1,85 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [], 
+            "parts": [
+                "coercion", 
+                "compulsion", 
+                "duress", 
+                "obsession", 
+                "⇒<reference>きょうはく<sup>１</sup></reference=1dd00:780>", 
+                "〜する coerce", 
+                "compel", 
+                "force 《sb to do》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an obsession; a compulsion; 【医】 an obsessional idea; anancastia.", 
+                    "jap_sentence": "強迫観念"
+                }, 
+                {
+                    "eng_trans": "suffer from an obsession", 
+                    "jap_sentence": "強迫観念に悩む"
+                }, 
+                {
+                    "eng_trans": "be obsessed by [with] the idea that… ｜ be under an obsession that….", 
+                    "jap_sentence": "…という強迫観念にとりつかれている[とらわれている, つきまとわれている]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 a compulsive act.", 
+                    "jap_sentence": "強迫行為"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 compulsive [obsessive] thinking.", 
+                    "jap_sentence": "強迫思考"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 obsessional [obsessive-compulsive] neurosis.", 
+                    "jap_sentence": "強迫神経症"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 a compulsive [an obsessional] personality; an obsessive character.", 
+                    "jap_sentence": "強迫性格"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【医】 anancastic [obsessive-compulsive] personality.", 
+                    "jap_sentence": "強迫性人格異常"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "きょうはく", 
+    "original_kanji": "強迫", 
+    "result_kana": "きょうはく", 
+    "result_kanji": "強迫", 
+    "url": ""
+}

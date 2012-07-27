@@ -1,0 +1,77 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "negotiations with the other party [person, side].", 
+                    "jap_sentence": "先方との話し合い"
+                }, 
+                {
+                    "eng_trans": "We haven't heard anything (from them [the other side]). ｜ There has been no responses from the other side.", 
+                    "jap_sentence": "先方から何の連絡もない."
+                }, 
+                {
+                    "eng_trans": "what the other side [party] has to say", 
+                    "jap_sentence": "先方の言い分"
+                }, 
+                {
+                    "eng_trans": "Everything depends on their [his, her] move. ｜ It all depends what the other side [person] does.", 
+                    "jap_sentence": "先方の出方一つだ."
+                }, 
+                {
+                    "eng_trans": "We'll have to hear what they [the other people] have to say.", 
+                    "jap_sentence": "先方の都合も聞かなくては."
+                }
+            ], 
+            "parts": [
+                "the other ⌐party [side]", 
+                "he [she]", 
+                "they"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "ahead; in front", 
+                    "jap_sentence": "先方に"
+                }, 
+                {
+                    "eng_trans": "a building visible ahead.", 
+                    "jap_sentence": "先方に見えるビル"
+                }, 
+                {
+                    "eng_trans": "a mountain ahead (of one).", 
+                    "jap_sentence": "先方の山"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "get there; arrive at one's destination.", 
+                    "jap_sentence": "先方に着く"
+                }
+            ], 
+            "parts": [
+                "one's destination", 
+                "one's journey's end"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "charges payable by recipient; carriage forward; *freight to collect.", 
+                    "jap_sentence": "送料先方持ち"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "せんぽう", 
+    "original_kanji": "先方", 
+    "result_kana": "せんぽう", 
+    "result_kanji": "先方", 
+    "url": ""
+}

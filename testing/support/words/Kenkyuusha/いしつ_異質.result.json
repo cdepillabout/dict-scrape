@@ -1,0 +1,107 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a country where heterogeneous cultures live together; a multicultural country", 
+                    "jap_sentence": "異質な文化が同居する国"
+                }, 
+                {
+                    "eng_trans": "These two things are of a completely different nature.", 
+                    "jap_sentence": "この二つはまったく異質なものだ."
+                }, 
+                {
+                    "eng_trans": "His suggestion and yours are completely different (in nature).", 
+                    "jap_sentence": "彼の提案と君のとはまったく異質だ."
+                }, 
+                {
+                    "eng_trans": "The playing styles of each of those two players are completely dissimilar.", 
+                    "jap_sentence": "あの二人のプレースタイルはまったく異質だ."
+                }
+            ], 
+            "parts": [
+                "〜な[の] of a different nature", 
+                "heterogeneous", 
+                "dissimilar"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "heterogeneity.", 
+                    "jap_sentence": "異質さ"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【統計】 a heterogeneity test.", 
+                    "jap_sentence": "異質性の検定"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【生物】 a heterozygote.", 
+                    "jap_sentence": "異質接合子"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【鉱】 allomerism; isodimorphism.", 
+                    "jap_sentence": "異質同像[同形]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【遺伝】 allopolyploidy.", 
+                    "jap_sentence": "異質倍数性"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【遺伝】 an allopolyploid.", 
+                    "jap_sentence": "異質倍数体"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔社会の〕 heterogeneous elements.", 
+                    "jap_sentence": "異質分子"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【生化】 heterolysis.", 
+                    "jap_sentence": "異質溶解"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "いしつ", 
+    "original_kanji": "異質", 
+    "result_kana": "いしつ", 
+    "result_kanji": "異質", 
+    "url": ""
+}

@@ -1,0 +1,735 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "go to and fro; walk back and forth", 
+                    "jap_sentence": "行きつ戻りつする"
+                }, 
+                {
+                    "eng_trans": "He walked back and forth in front of the house, racking his brains to find some suitable words of apology.", 
+                    "jap_sentence": "謝罪の言葉を考えあぐねて彼はその家の前を行きつ戻りつした."
+                }, 
+                {
+                    "eng_trans": "All evening her emotions swung to and fro between regret and resignation.", 
+                    "jap_sentence": "彼女の心は未練とあきらめの間を一晩中行きつ戻りつした."
+                }, 
+                {
+                    "eng_trans": "however far one goes [walks, travels, etc.]", 
+                    "jap_sentence": "行けども行けども"
+                }, 
+                {
+                    "eng_trans": "However far we walked there was nothing but mountains and yet more mountains, until finally we were completely lost.", 
+                    "jap_sentence": "行けども行けども山また山で, 私たちはすっかり道に迷ってしまった."
+                }, 
+                {
+                    "eng_trans": "I thought I knew the way, but walked on and on without being able to [however far I walked I couldn't] find the house.", 
+                    "jap_sentence": "道は知っているつもりだったが, 行けども行けどもその家が見つからなかった."
+                }, 
+                {
+                    "eng_trans": "Let's leave the car and go on foot [walk] for once.", 
+                    "jap_sentence": "たまには車に乗らずに歩いて行こう."
+                }, 
+                {
+                    "eng_trans": "go by 《plane》; take 《a train, a bus, a plane, a steamer》 to…", 
+                    "jap_sentence": "(乗り物)で行く"
+                }, 
+                {
+                    "eng_trans": "fly 《to New York》", 
+                    "jap_sentence": "飛行機で行く"
+                }, 
+                {
+                    "eng_trans": "I'm going by train, how are you going to go [what are you going by]?", 
+                    "jap_sentence": "私は電車で行くけど, 君はなんで行く?"
+                }, 
+                {
+                    "eng_trans": "Until his daughter got home, her father was in a state of real agitation, continually pacing up and down the room [back and forth across the room].", 
+                    "jap_sentence": "父親は娘が戻るまで部屋の中を行ったり来たり全然落ち着かなかった."
+                }, 
+                {
+                    "eng_trans": "He spent the six months after his operation traveling back and forth between the hospital and his home.", 
+                    "jap_sentence": "手術後の半年間は病院と自宅を行ったり来たりの生活だった."
+                }, 
+                {
+                    "eng_trans": "She finally went off [disappeared, took her leave].", 
+                    "jap_sentence": "彼女はとうとう行ってしまった."
+                }, 
+                {
+                    "eng_trans": "It works out cheaper if you go [travel] economy class.", 
+                    "jap_sentence": "エコノミークラスで行けば安上がりだ."
+                }, 
+                {
+                    "eng_trans": "Get out! ｜ Go away! ｜ Be off (with you)! ｜ Get out of my sight [here]! ｜ 《口》 Clear off! ｜ 《口》 Beat it! ｜ 《口》 Scram!", 
+                    "jap_sentence": "あっちへ行け."
+                }, 
+                {
+                    "eng_trans": "I've been told to get out. ｜ I've been sent packing. ｜ I've been thrown [《口》 slung] out.", 
+                    "jap_sentence": "あっちへ行けと言われた."
+                }, 
+                {
+                    "eng_trans": "The dog made for [ran toward] the gate, barking as it went.", 
+                    "jap_sentence": "犬がほえながら門のほうへ行った."
+                }, 
+                {
+                    "eng_trans": "If you turn right at the next crossroads and go straight on you'll come to the station.", 
+                    "jap_sentence": "次の交差点を右へ行って, そのまままっすぐ行くと駅です."
+                }, 
+                {
+                    "eng_trans": "The shop is just a little way down this street.", 
+                    "jap_sentence": "その店はこの道をもうちょっと行ったところにある."
+                }, 
+                {
+                    "eng_trans": "I'd traveled [gone] about 5 kilometers when my bicycle got a puncture.", 
+                    "jap_sentence": "5 キロほど行ったところで自転車がパンクしてしまった."
+                }, 
+                {
+                    "eng_trans": "This street leads [goes] to Ueno.", 
+                    "jap_sentence": "この通りを行くと上野へ出ます."
+                }, 
+                {
+                    "eng_trans": "Which way should I go to get to Hongō? ｜ Could you show me the way [direct me] to Hongō, please?", 
+                    "jap_sentence": "本郷へはどの道を行ったらよいでしょうか."
+                }, 
+                {
+                    "eng_trans": "I don't know how to go (there) [get there].", 
+                    "jap_sentence": "行く道がわからないのです."
+                }, 
+                {
+                    "eng_trans": "Life is like making a long journey [traveling a long road] bearing a heavy burden.", 
+                    "jap_sentence": "人の一生は重荷を負うて遠き道を行くが如し."
+                }, 
+                {
+                    "eng_trans": "〔学校へ行く途中〕 On my way to school I met Ms Tanaka. ｜ 〔学校に通じる道で〕 I met Ms Tanaka on the road (that leads) to school.", 
+                    "jap_sentence": "学校へ行く道で田中さんに会った."
+                }, 
+                {
+                    "eng_trans": "Here goes!", 
+                    "jap_sentence": "さあ, 行くぞ."
+                }, 
+                {
+                    "eng_trans": "It's just about time, so we ought to move [start moving] toward the meeting hall.", 
+                    "jap_sentence": "そろそろ時間だから会場の方に行ったほうがいい."
+                }, 
+                {
+                    "eng_trans": "I'm afraid I've got to be going now. Good-bye.", 
+                    "jap_sentence": "わたし, そろそろ行かなくちゃ, ごめんね, さようなら."
+                }, 
+                {
+                    "eng_trans": "Please don't go! ｜ Don't go, I beg [《文》 beseech] you!", 
+                    "jap_sentence": "お願い, 行かないで."
+                }, 
+                {
+                    "eng_trans": "Where can my book have gone? ｜ Where is my book, I wonder?", 
+                    "jap_sentence": "私の本はどこへ行ったろう."
+                }, 
+                {
+                    "eng_trans": "All the trains (bound) for Tokyo are terribly overcrowded.", 
+                    "jap_sentence": "東京へ行く列車はどれもひどい混みようです."
+                }, 
+                {
+                    "eng_trans": "That ship is going from Yokohama to Kōbe.", 
+                    "jap_sentence": "あれは横浜から神戸に行く船です."
+                }, 
+                {
+                    "eng_trans": "We drew up a plan whereby we would cover [do] thirty kilometers a day.", 
+                    "jap_sentence": "私たちは 1 日 30 キロの道を行く計画を立てた."
+                }, 
+                {
+                    "eng_trans": "This train covers [travels] the distance in five hours.", 
+                    "jap_sentence": "この電車はその距離を 5 時間で行く."
+                }, 
+                {
+                    "eng_trans": "It will take us three hours to get there and back, so we're going to have only two hours to spend there.", 
+                    "jap_sentence": "そこまで行って帰ってくるだけで 3 時間かかるから, 向こうで使える時間は 2 時間しかないね."
+                }
+            ], 
+            "parts": [
+                "go", 
+                "《文》 proceed", 
+                "《文》 repair", 
+                "leave 《for Kyoto》", 
+                "depart 《for England》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Have you received the information about the class reunion? ｜ Has the information about the class reunion reached you?", 
+                    "jap_sentence": "君のところに同窓会の連絡行ってますか?"
+                }, 
+                {
+                    "eng_trans": "Haven't you had a call from Mr. Tanaka? ｜ Hasn't Mr. Tanaka got through to you on the phone?", 
+                    "jap_sentence": "田中さんからそちらに電話行ってませんか?"
+                }, 
+                {
+                    "eng_trans": "I adjusted the fan so that the wind would reach everybody [everyone would get some of the breeze].", 
+                    "jap_sentence": "私はみんなに風が行くように扇風機の向きを変えた."
+                }, 
+                {
+                    "eng_trans": "The mike won't go that far; the cord isn't long enough.", 
+                    "jap_sentence": "そこまでマイクが行かない. コードの長さが足りないんだ."
+                }, 
+                {
+                    "eng_trans": "You wait there until Mummy gets there.", 
+                    "jap_sentence": "ママが行くまでそこで待ってるのよ."
+                }, 
+                {
+                    "eng_trans": "Move further back. It's dangerous where you're standing, because the ball will fly [carry] that far.", 
+                    "jap_sentence": "そのへんはボールが行くから危ないよ. もっとバックして."
+                }, 
+                {
+                    "eng_trans": "I'll call you again when I get there. Bye!", 
+                    "jap_sentence": "向こうへ行ったらまた電話するから. じゃ."
+                }, 
+                {
+                    "eng_trans": "When it gets round to his turn to bat, that's when we'll put in a pinch hitter.", 
+                    "jap_sentence": "彼のところまで打順が行ったら, そこで代打を出そう."
+                }
+            ], 
+            "parts": [
+                "reach 《sb》", 
+                "arrive 《at…》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "have gone 《to the US, on a business trip》; be 《in the US》; be away 《at a conference》", 
+                    "jap_sentence": "(…に)行っている"
+                }, 
+                {
+                    "eng_trans": "My father has gone to [is away in] Osaka on business.", 
+                    "jap_sentence": "父は用事で大阪へ行っています."
+                }, 
+                {
+                    "eng_trans": "Uncle was out; he'd gone to the barber's.", 
+                    "jap_sentence": "おじさんは床屋へ行っていて留守だった."
+                }, 
+                {
+                    "eng_trans": "Mr. Tanaka phoned while you were at work, dear.", 
+                    "jap_sentence": "あなたが会社に行っている間に, 田中さんからお電話がありましたよ."
+                }, 
+                {
+                    "eng_trans": "The sixth graders are away on their school trip at the moment.", 
+                    "jap_sentence": "6 年生は今修学旅行に行っている."
+                }, 
+                {
+                    "eng_trans": "Where have you been at this time of [hour of the] night?", 
+                    "jap_sentence": "こんなに夜遅くまでどこへ行っていたの."
+                }, 
+                {
+                    "eng_trans": "I promised to go to a movie [the movies] with her. ｜ I made a date with her to go and see a movie.", 
+                    "jap_sentence": "私は彼女と映画を見に行く約束をした."
+                }, 
+                {
+                    "eng_trans": "Let's go out for lunch.", 
+                    "jap_sentence": "昼食は外へ食べに行こう."
+                }, 
+                {
+                    "eng_trans": "〔遊ぶために出かける〕 go (out, off) to play; 〔訪問する〕 (go to) visit 《a friend, sb's house》; go and see 《sb》; pay sb a visit", 
+                    "jap_sentence": "遊びに行く"
+                }, 
+                {
+                    "eng_trans": "As soon as she'd had her lunch she went out [off] somewhere to play.", 
+                    "jap_sentence": "あの子はお昼を食べるとすぐどこかへ遊びに行ってしまった."
+                }, 
+                {
+                    "eng_trans": "Can I come and see you [and visit you, to your house] next Sunday?", 
+                    "jap_sentence": "次の日曜日にお宅に遊びに行ってもいいですか."
+                }, 
+                {
+                    "eng_trans": "go drinking; go (out) for a drink", 
+                    "jap_sentence": "飲みに行く"
+                }, 
+                {
+                    "eng_trans": "go fishing [hunting, swimming, skiing, shopping].", 
+                    "jap_sentence": "釣り[狩り, 泳ぎ, スキー, 買い物]に行く"
+                }, 
+                {
+                    "eng_trans": "〔外出するときの挨拶〕 Good-bye! ｜ I'm off now. ｜ I'll be off [on my way], then. ｜ See you later.", 
+                    "jap_sentence": "行ってきます."
+                }, 
+                {
+                    "eng_trans": "I'll be off, then. See you in a while.", 
+                    "jap_sentence": "じゃ, ちょっと行ってくるよ."
+                }, 
+                {
+                    "eng_trans": "Mummy's [I'm] just popping out, so be a good boy [girl] while I'm out.", 
+                    "jap_sentence": "じゃ, ちょっと行ってくるから, いい子にしていてね."
+                }, 
+                {
+                    "eng_trans": "\"Where did you go for your school trip?\"―\"(We went to) Nikkō.\"", 
+                    "jap_sentence": "「遠足はどこへ行ってきたの」「日光へ行ってきました」"
+                }, 
+                {
+                    "eng_trans": "I have been to see the parade.", 
+                    "jap_sentence": "パレードを見に行ってきた."
+                }, 
+                {
+                    "eng_trans": "I've just been to the post office to mail a letter.", 
+                    "jap_sentence": "今郵便局に手紙を出しに行ってきたばかりだ."
+                }, 
+                {
+                    "eng_trans": "Have you ever been to Kyūshū?", 
+                    "jap_sentence": "九州へ行ったことがありますか."
+                }, 
+                {
+                    "eng_trans": "How often have you been to Kyoto?", 
+                    "jap_sentence": "京都へ何度くらい行ったことがありますか."
+                }, 
+                {
+                    "eng_trans": "I've been there once on a recreational trip provided by the company.", 
+                    "jap_sentence": "そこへは会社の慰安旅行で行ったことがある."
+                }, 
+                {
+                    "eng_trans": "I've reached this age without ever having traveled abroad.", 
+                    "jap_sentence": "僕はこの歳まで外国に行ったことがないんだ."
+                }, 
+                {
+                    "eng_trans": "He just went off and has never come back.", 
+                    "jap_sentence": "彼は行ったきりで帰ってこない."
+                }, 
+                {
+                    "eng_trans": "Where are you going?", 
+                    "jap_sentence": "どこへ行くのですか."
+                }, 
+                {
+                    "eng_trans": "Where can I go to get some money changed?", 
+                    "jap_sentence": "どこへ行ったら両替してもらえますか."
+                }, 
+                {
+                    "eng_trans": "〔相手のほうへ〕 I'm (just) coming. ｜ I'll come at once. ｜ I'll be there right away. ｜ 〔他の場所へ〕 I'll go at once. ｜ I'm just going. ｜ I'm on my way.", 
+                    "jap_sentence": "すぐ行くよ."
+                }, 
+                {
+                    "eng_trans": "If you've got a high fever you ought to see a doctor.", 
+                    "jap_sentence": "熱が高いなら医者に行ったほうがいいよ."
+                }, 
+                {
+                    "eng_trans": "〔出かける前〕 I'm on the point of leaving for the hospital. ｜ I'm just off [going] to the hospital; 〔行く途中〕 I'm on my way to the hospital now.", 
+                    "jap_sentence": "今病院へ行くところです."
+                }, 
+                {
+                    "eng_trans": "I shall never go to see [visit] him again.", 
+                    "jap_sentence": "二度とあいつの家へは行かない."
+                }, 
+                {
+                    "eng_trans": "I'll come and see you tomorrow. ｜ I'll come over to your house tomorrow.", 
+                    "jap_sentence": "あした君んちへ行くよ."
+                }, 
+                {
+                    "eng_trans": "You'll have to go all the way to Kanda to get the books you want.", 
+                    "jap_sentence": "神田まで行かないと欲しい本が手に入らない."
+                }, 
+                {
+                    "eng_trans": "It's time (for me) to go to school.", 
+                    "jap_sentence": "もう学校へ行く時間だ."
+                }, 
+                {
+                    "eng_trans": "I took [carried] my foul mood [temper] with me into the classroom.", 
+                    "jap_sentence": "僕はむしゃくしゃした気分のままで教室へ行った."
+                }, 
+                {
+                    "eng_trans": "All the tourist spots tend to be crowded, so if I can I'm going to go somewhere where other people don't go [《文》 that other people do not frequent].", 
+                    "jap_sentence": "観光地はどこも混むから, なるべく人の行かない所に行こうと思う."
+                }, 
+                {
+                    "eng_trans": "Our baggage has gone on ahead, so we shall be going empty-handed.", 
+                    "jap_sentence": "〔あらかじめ荷物を送ってある場合〕 先に荷物が行ってるから, 私たちは手ぶらで行きます."
+                }, 
+                {
+                    "eng_trans": "Before you set out you ought to just let them know you're coming.", 
+                    "jap_sentence": "行く前に一言先方に連絡しておきなさい."
+                }, 
+                {
+                    "eng_trans": "If you don't eat a proper breakfast before you set off, you'll be hungry before lunchtime!", 
+                    "jap_sentence": "朝ご飯をちゃんと食べて行かないと昼までもたないわよ."
+                }, 
+                {
+                    "eng_trans": "It's no exaggeration to say that you'll find Japanese in whatever part of the world you travel to [even the remotest corners of the world].", 
+                    "jap_sentence": "世界中どこへ行っても日本人がいると言っても過言ではない."
+                }, 
+                {
+                    "eng_trans": "Wherever he goes there's always trouble.", 
+                    "jap_sentence": "彼の行く所つねにトラブルありだ."
+                }, 
+                {
+                    "eng_trans": "Everywhere they went they received a resounding welcome [the warmest of welcomes].", 
+                    "jap_sentence": "彼らは行く先々で大変な歓迎を受けた."
+                }, 
+                {
+                    "eng_trans": "If you've forgotten a tie you can buy one at your destination.", 
+                    "jap_sentence": "ネクタイを忘れたなら行った先で買えばいい."
+                }, 
+                {
+                    "eng_trans": "I have to go to the bathroom at night more frequently nowadays.", 
+                    "jap_sentence": "夜トイレに行く回数が増えた."
+                }, 
+                {
+                    "eng_trans": "I'm a regular customer there [at that shop].", 
+                    "jap_sentence": "私はあの店よく行くよ."
+                }, 
+                {
+                    "eng_trans": "It's a very pleasant shop [bar]; you should drop in yourself sometime.", 
+                    "jap_sentence": "一度あなたも行ってみてごらん, とてもいい店[バー]だから."
+                }
+            ], 
+            "parts": [
+                "go", 
+                "attend", 
+                "visit", 
+                "(相手のいるところへ) come"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "She isn't old enough for [to go to, to attend] school yet. ｜ This child has not yet reached school age.", 
+                    "jap_sentence": "この子はまだ学校に行く年齢ではありません."
+                }, 
+                {
+                    "eng_trans": "You ought to attend at least high school.", 
+                    "jap_sentence": "高校くらいは行っておいたほうがいい."
+                }, 
+                {
+                    "eng_trans": "He passed the bar examination while he was still at university.", 
+                    "jap_sentence": "彼は大学に行っている間に司法試験に合格した."
+                }, 
+                {
+                    "eng_trans": "I've got a big sister who's at [who goes to] junior college.", 
+                    "jap_sentence": "私には短大に行っている大きなお姉さんがいます."
+                }, 
+                {
+                    "eng_trans": "She has a part-time job for three days a week.", 
+                    "jap_sentence": "彼女は週 3 回パートに行っています."
+                }
+            ], 
+            "parts": [
+                "go to 《school》", 
+                "attend 《college》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "My sister got married when she was 19.", 
+                    "jap_sentence": "姉は 19 歳で嫁に行った."
+                }, 
+                {
+                    "eng_trans": "It's been decided that my brother will be adopted by an uncle and aunt who don't have any children of their own.", 
+                    "jap_sentence": "弟は子供のいない叔父の家に養子に行くことになった."
+                }
+            ], 
+            "parts": [
+                "get married", 
+                "become a bride", 
+                "be adopted"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "⇒<reference>ゆくとし</reference=2666c:54>.", 
+                    "jap_sentence": "行く年くる年"
+                }, 
+                {
+                    "eng_trans": "⇒<reference>ゆく<sup>１</sup></reference=26663:258>.", 
+                    "jap_sentence": "行く春を惜しむ"
+                }, 
+                {
+                    "eng_trans": "I had to finish this painting while spring was still here [before spring passed into summer].", 
+                    "jap_sentence": "春が行ってしまわないうちに私はこの絵を完成させなければならなかった."
+                }
+            ], 
+            "parts": [
+                "《the years》 pass", 
+                "go by"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "It isn't right to give a young child [《文》 a child of such tender years] such heavy work to do.", 
+                    "jap_sentence": "年端も行かない子供にそんな重労働をさせるのはよくない."
+                }, 
+                {
+                    "eng_trans": "Surely she's reached 50. ｜ She must be all of 50.", 
+                    "jap_sentence": "彼女はもう 50 歳は行ってるでしょう."
+                }, 
+                {
+                    "eng_trans": "I've decided to go on a short diet if my weight reaches 50 kilograms.", 
+                    "jap_sentence": "私は体重が 50 キロまで行ったら少しダイエットしようと決めている."
+                }, 
+                {
+                    "eng_trans": "He's a real glutton; he'll easily manage 5 helpings in a rice bowl of this size.", 
+                    "jap_sentence": "彼は大食いだから, 茶碗がこの大きさなら軽く 5 杯は行くね."
+                }
+            ], 
+            "parts": [
+                "reach 《100》", 
+                "come to 《a total of 60》"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "go well [all right]; work well; be success; come off well; get along fine; 〈人が主語〉 be a successful", 
+                    "jap_sentence": "うまく行く"
+                }, 
+                {
+                    "eng_trans": "The exam went well. ｜ I did well in the examination.", 
+                    "jap_sentence": "試験はうまく行った."
+                }, 
+                {
+                    "eng_trans": "go badly [wrong, 《文》 amiss]; 〈人が主語〉 do badly; be unsuccessful; 《口》 make a mess 《of the job》", 
+                    "jap_sentence": "うまく行かない"
+                }, 
+                {
+                    "eng_trans": "I am not so sure that things will go so well [smoothly] this time.", 
+                    "jap_sentence": "今度はそううまくは行かないだろう."
+                }, 
+                {
+                    "eng_trans": "go [do not go] as well as one had hoped; come up to [fall short of] one's expectations", 
+                    "jap_sentence": "思いどおりに行く[行かない]"
+                }, 
+                {
+                    "eng_trans": "Things don't always go as well as you expect them to. ｜ Things don't always work out as one hopes [had hoped].", 
+                    "jap_sentence": "何事も思いどおりには行かないものだ."
+                }, 
+                {
+                    "eng_trans": "go well [smoothly]; ″go with a swing", 
+                    "jap_sentence": "(仕事などが)はかが行く"
+                }, 
+                {
+                    "eng_trans": "We'll make much better progress if we all cooperate [pull together].", 
+                    "jap_sentence": "みんなで協力したらもっとはかが行くでしょう."
+                }, 
+                {
+                    "eng_trans": "but then…; however…; on the other hand…", 
+                    "jap_sentence": "そこへ行くと"
+                }, 
+                {
+                    "eng_trans": "They say that the manufacturing industry is having problems because of a labor shortage. But then, on the other hand, the distribution industry is flourishing [having a field day].", 
+                    "jap_sentence": "製造業は人手不足で不振だそうだ. そこへ行くと流通産業は花盛りだね."
+                }, 
+                {
+                    "eng_trans": "go all the way; go to the limit; go as far as one can go", 
+                    "jap_sentence": "行くところまで行く"
+                }, 
+                {
+                    "eng_trans": "Once he loses his temper there's no saying how far he'll go.", 
+                    "jap_sentence": "彼はいったん怒りだすと, 行くところまで行かないとおさまらない."
+                }, 
+                {
+                    "eng_trans": "One gets the feeling that political corruption has now gone about as far as it can go [《文》 has plumbed the very depths].", 
+                    "jap_sentence": "最近の政治腐敗は行くところまで行った感がある."
+                }, 
+                {
+                    "eng_trans": "Did you go all the way (with her)?", 
+                    "jap_sentence": "〔男女関係で〕 あの子とは行くところまで行ったのか."
+                }, 
+                {
+                    "eng_trans": "⇒<reference>-わけに(は)いかない</reference=2700a:612>.", 
+                    "jap_sentence": "…するわけには行かない"
+                }, 
+                {
+                    "eng_trans": "⇒<reference>ひとすじなわ</reference=24716:12a>.", 
+                    "jap_sentence": "一筋縄では行かない"
+                }, 
+                {
+                    "eng_trans": "\"I've won [《口》 got you beat].\"―\"Oh no, you haven't! I've still got a trick up my sleeve.\"", 
+                    "jap_sentence": "「俺の勝ちだ」「そうは行かない. こっちには奥の手がある」"
+                }, 
+                {
+                    "eng_trans": "His power fell short of enabling him to achieve mastery of the world.", 
+                    "jap_sentence": "彼の力では世界制覇とまでは行かなかった."
+                }, 
+                {
+                    "eng_trans": "Even if I can't win, I'd like to finish in third place at least.", 
+                    "jap_sentence": "1 等賞とまでは行かないまでもせめて 3 位ぐらいにはなりたいね."
+                }, 
+                {
+                    "eng_trans": "Thrift, when carried to such an extent, is harmful [no longer a virtue].", 
+                    "jap_sentence": "倹約もそこまで行けば弊害がある."
+                }, 
+                {
+                    "eng_trans": "Where did we get to in last week's class?", 
+                    "jap_sentence": "先週の授業はどこまで行きましたっけ."
+                }, 
+                {
+                    "eng_trans": "The game had just got to the fifth inning when the rain became so heavy that it had to be called off.", 
+                    "jap_sentence": "〔野球で〕 5 回まで行ったところで雨がひどくなり, 試合は中止になった."
+                }, 
+                {
+                    "eng_trans": "When you get to the end, you do a short length of backstitch, and then cut the thread.", 
+                    "jap_sentence": "〔ミシンで〕 最後まで行ったら返し縫いをして糸を切ります."
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〈人が主語〉 be convinced 《by an argument》; be satisfied 《with the explanation》; 〈説明などが主語〉 be convincing [satisfactory]; hold up; hold water", 
+                    "jap_sentence": "合点[納得]が行く"
+                }, 
+                {
+                    "eng_trans": "I still don't understand why I should have been nominated.", 
+                    "jap_sentence": "なんで私が指名されたのか合点が行かない."
+                }, 
+                {
+                    "eng_trans": "They were finally satisfied [convinced] after they had heard the teacher's explanation.", 
+                    "jap_sentence": "先生の説明を聞いてやっと納得が行った."
+                }, 
+                {
+                    "eng_trans": "be satisfied", 
+                    "jap_sentence": "満足が行く"
+                }, 
+                {
+                    "eng_trans": "I practiced until I was completely satisfied with my results.", 
+                    "jap_sentence": "私は自分で満足が行くまで練習した."
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "", 
+                    "jap_sentence": "10 〔物事をする〕"
+                }, 
+                {
+                    "eng_trans": "⇒<reference>じ<sup>１</sup></reference=1f805:15c> 3.", 
+                    "jap_sentence": "地で行く"
+                }, 
+                {
+                    "eng_trans": "I think we should go with this (move) the next time, too.", 
+                    "jap_sentence": "次もこの手で行くとしよう."
+                }, 
+                {
+                    "eng_trans": "It's been quite a while since we've been for a drink together, so let's go out tonight.", 
+                    "jap_sentence": "今日は久しぶりに一杯行こうじゃないか."
+                }, 
+                {
+                    "eng_trans": "Right, this time it's a take.", 
+                    "jap_sentence": "〔映画・テレビなどの撮影で〕 さあ, 本番行ってみよう."
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "make a woman [man] come.", 
+                    "jap_sentence": "女[男]を行かせる"
+                }, 
+                {
+                    "eng_trans": "〔達しそう〕 I'm coming!", 
+                    "jap_sentence": "行く!"
+                }
+            ], 
+            "parts": [
+                "come"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a novel that is completely beyond the pale.", 
+                    "jap_sentence": "完全に行っちゃってる小説"
+                }, 
+                {
+                    "eng_trans": "There's no point in talking to him now. You can see in his eyes that he's somewhere else.", 
+                    "jap_sentence": "奴に今話しかけても無駄だよ. ありゃあどっか行っちゃってる目だ."
+                }
+            ], 
+            "parts": [
+                "be somewhere else"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "Lots of people are running over there. What do you think is happening?", 
+                    "jap_sentence": "大勢の人が向こうへ走っていくよ, なんだろう."
+                }, 
+                {
+                    "eng_trans": "Oh! My ticket's blown away.", 
+                    "jap_sentence": "きゃあ, 切符が飛んでいってしまった."
+                }, 
+                {
+                    "eng_trans": "The present trend is for people to have fewer and fewer children. ｜ At present the trend is for the number of children to decrease.", 
+                    "jap_sentence": "現在子供の数が減っていく傾向にある."
+                }, 
+                {
+                    "eng_trans": "I was looking on vacantly as the autumn evening gradually drew in.", 
+                    "jap_sentence": "私は暮れていく秋の日をぼんやり見つめていた."
+                }, 
+                {
+                    "eng_trans": "The pain gradually grew worse [more severe].", 
+                    "jap_sentence": "痛みがだんだんひどくなっていった."
+                }, 
+                {
+                    "eng_trans": "As time passes, hatred gradually fades away [loses its virulence].", 
+                    "jap_sentence": "時間がたつにつれ, 憎しみは薄らいでいく."
+                }, 
+                {
+                    "eng_trans": "Thanks to him I gradually gained the courage to go on living.", 
+                    "jap_sentence": "彼のおかげで生きていく勇気がわいてきた."
+                }, 
+                {
+                    "eng_trans": "In the future you are going to have to battle through the stormy seas of life.", 
+                    "jap_sentence": "君たちはこれから人生の荒波を越えていかなければならない."
+                }, 
+                {
+                    "eng_trans": "I have no confidence that I can get along with her.", 
+                    "jap_sentence": "彼女とうまくやっていく自信がない."
+                }, 
+                {
+                    "eng_trans": "Time passes, without any progress being made.", 
+                    "jap_sentence": "何も進まないまま, 時間だけが過ぎていく."
+                }, 
+                {
+                    "eng_trans": "The night wore on without any conclusion being reached.", 
+                    "jap_sentence": "結論が出ないまま夜が更けていきました."
+                }, 
+                {
+                    "eng_trans": "Oh, how painful it is to die, leaving a small child behind in the world.", 
+                    "jap_sentence": "幼子を残して死んでいく身のつらさよ."
+                }, 
+                {
+                    "eng_trans": "Take me with you too!", 
+                    "jap_sentence": "私も連れていって."
+                }, 
+                {
+                    "eng_trans": "Take an umbrella (with you).", 
+                    "jap_sentence": "傘を持っていきなさい."
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "try [settle] for a tie without trying [aiming, 《口》 shooting] for a victory", 
+                    "jap_sentence": "勝ちにいかず引き分けをねらう"
+                }, 
+                {
+                    "eng_trans": "try hard to score.", 
+                    "jap_sentence": "〔球技などで〕 積極的に点を取りにいく"
+                }, 
+                {
+                    "eng_trans": "He struck out swinging hard [with determination] at a difficult pitch.", 
+                    "jap_sentence": "難しい球をむりに打ちにいって三振をくらった."
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "いく", 
+    "original_kanji": "行く", 
+    "result_kana": "いく", 
+    "result_kanji": "行く", 
+    "url": ""
+}

@@ -1,0 +1,26 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "electric (hair) clippers; an electric (hair) clipper.", 
+                    "jap_sentence": "電気バリカン"
+                }, 
+                {
+                    "eng_trans": "trim [clip] 《sb's hair》 with barber's clippers.", 
+                    "jap_sentence": "バリカンで刈る"
+                }
+            ], 
+            "parts": [
+                "hair [barber's] clippers", 
+                "a ⌐hair [barber's] clipper"
+            ]
+        }
+    ], 
+    "original_kana": "バリカン", 
+    "original_kanji": "バリカン", 
+    "result_kana": "バリカン", 
+    "result_kanji": "バリカン", 
+    "url": ""
+}

@@ -1,0 +1,117 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "If the heater overheats [gets too hot] turn it off immediately.", 
+                    "jap_sentence": "ヒーターが過熱したらすぐ切ってください."
+                }
+            ], 
+            "parts": [
+                "overheating", 
+                "getting [growing] too hot", 
+                "superheating", 
+                "〜する superheat", 
+                "overheat"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an overheated economy; 《口》 an economy in overdrive", 
+                    "jap_sentence": "過熱した経済"
+                }, 
+                {
+                    "eng_trans": "The economy has overheated [《口》 is in overdrive].", 
+                    "jap_sentence": "経済が過熱している."
+                }, 
+                {
+                    "eng_trans": "When summer arrives competition for beer sales heats up [《口》 goes into overdrive].", 
+                    "jap_sentence": "夏になるとビール商戦が過熱する."
+                }, 
+                {
+                    "eng_trans": "overheating of the Japanese economy.", 
+                    "jap_sentence": "日本経済の過熱"
+                }, 
+                {
+                    "eng_trans": "With a general election approaching the media were somewhat frantic [rather over the top].", 
+                    "jap_sentence": "総選挙を前にマスコミは過熱気味だった."
+                }
+            ], 
+            "parts": [
+                "overheating", 
+                "getting too active", 
+                "〜する overheat"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a superheater.", 
+                    "jap_sentence": "過熱器"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a temperature alarm.", 
+                    "jap_sentence": "過熱警報"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "superheated steam [vapor].", 
+                    "jap_sentence": "過熱蒸気"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a superheated (steam) locomotive.", 
+                    "jap_sentence": "過熱(蒸気)機関車"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "superheated steam cylinder oil.", 
+                    "jap_sentence": "過熱シリンダー油"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a [the] degree of superheat.", 
+                    "jap_sentence": "過熱度"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【機・船舶】 a desuperheater.", 
+                    "jap_sentence": "過熱防止器"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かねつ", 
+    "original_kanji": "過熱", 
+    "result_kana": "かねつ", 
+    "result_kanji": "過熱", 
+    "url": ""
+}

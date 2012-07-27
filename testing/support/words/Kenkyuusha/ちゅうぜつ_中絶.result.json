@@ -1,0 +1,83 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "be suspended; be (held, kept, left) in abeyance; be held up", 
+                    "jap_sentence": "中絶している"
+                }, 
+                {
+                    "eng_trans": "suspend [discontinue] research", 
+                    "jap_sentence": "研究を中絶する"
+                }, 
+                {
+                    "eng_trans": "stop [suspend] work 《on sth》.", 
+                    "jap_sentence": "作業を中絶する"
+                }
+            ], 
+            "parts": [
+                "interruption", 
+                "discontinuance", 
+                "intermission", 
+                "stoppage", 
+                "suspension", 
+                "abeyance", 
+                "〜する be ⌐interrupted [suspended, discontinued]", 
+                "fall into abeyance", 
+                "be stopped", 
+                "be dropped"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a fetus aborted in the twelfth week of pregnancy.", 
+                    "jap_sentence": "妊娠 12 週で中絶された胎児"
+                }, 
+                {
+                    "eng_trans": "a stage when it is possible [no longer possible] to terminate a pregnancy.", 
+                    "jap_sentence": "中絶可能[不可能]な時期"
+                }
+            ], 
+            "parts": [
+                "(an) abortion", 
+                "a termination", 
+                "〜する abort 《a fetus》", 
+                "have [undergo] an abortion"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an experience of abortion.", 
+                    "jap_sentence": "中絶経験"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "(an) intermission.", 
+                    "jap_sentence": "中絶時間"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an abortion (operation).", 
+                    "jap_sentence": "中絶手術"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ちゅうぜつ", 
+    "original_kanji": "中絶", 
+    "result_kana": "ちゅうぜつ", 
+    "result_kanji": "中絶", 
+    "url": ""
+}

@@ -1,0 +1,68 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a neck; a strait", 
+                    "jap_sentence": "小海峡"
+                }, 
+                {
+                    "eng_trans": "the Tsushima Strait", 
+                    "jap_sentence": "対馬海峡"
+                }, 
+                {
+                    "eng_trans": "the (English) Channel", 
+                    "jap_sentence": "イギリス海峡"
+                }, 
+                {
+                    "eng_trans": "the Strait of Gibraltar.", 
+                    "jap_sentence": "ジブラルタル海峡"
+                }, 
+                {
+                    "eng_trans": "cross a strait [channel].", 
+                    "jap_sentence": "海峡を渡る"
+                }
+            ], 
+            "parts": [
+                "a strait", 
+                "a channel", 
+                "narrows", 
+                "a sound", 
+                "a gullet"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a cross-channel flight.", 
+                    "jap_sentence": "海峡横断飛行"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔マレー半島の〕 the Straits Settlements.", 
+                    "jap_sentence": "海峡植民地"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a cross-channel vessel; a channel boat [steamer].", 
+                    "jap_sentence": "海峡連絡船"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "かいきょう", 
+    "original_kanji": "海峡", 
+    "result_kana": "かいきょう", 
+    "result_kanji": "海峡", 
+    "url": ""
+}

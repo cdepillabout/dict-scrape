@@ -1,0 +1,92 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "be (at) home", 
+                    "jap_sentence": "帰宅している"
+                }, 
+                {
+                    "eng_trans": "She will be home shortly. ｜ I expect her back soon.", 
+                    "jap_sentence": "彼女は程なく帰宅するでしょう."
+                }, 
+                {
+                    "eng_trans": "after sb's return home.", 
+                    "jap_sentence": "帰宅後"
+                }, 
+                {
+                    "eng_trans": "Recently my husband has been late getting home.", 
+                    "jap_sentence": "夫は近頃帰宅が遅い."
+                }, 
+                {
+                    "eng_trans": "on one's way home", 
+                    "jap_sentence": "帰宅の途中で"
+                }, 
+                {
+                    "eng_trans": "start on one's way home; leave for home.", 
+                    "jap_sentence": "帰宅の途につく"
+                }
+            ], 
+            "parts": [
+                "return(ing) home", 
+                "homecoming", 
+                "〜する  come home", 
+                "return home", 
+                "go home", 
+                "get home", 
+                "be home"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔災害時の〕 a temporary return home 《after being evacuated from a disaster area》.", 
+                    "jap_sentence": "◨一時(的)帰宅"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a neurotic fear of returning home after work.", 
+                    "jap_sentence": "帰宅拒否症"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "〔地震による〕 a person stranded 《due to failure of the transport system in an earthquake》.", 
+                    "jap_sentence": "帰宅困難者"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "the time when sb returns home 《from work》.", 
+                    "jap_sentence": "帰宅時間"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "＝<reference>帰宅困難者</reference=1d94a:352>.", 
+                    "jap_sentence": "帰宅難民"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "きたく", 
+    "original_kanji": "帰宅", 
+    "result_kana": "きたく", 
+    "result_kanji": "帰宅", 
+    "url": ""
+}

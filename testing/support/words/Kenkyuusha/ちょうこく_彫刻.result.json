@@ -1,0 +1,86 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an image carved in wood [engraved on wood]", 
+                    "jap_sentence": "木に彫刻した像"
+                }, 
+                {
+                    "eng_trans": "chisel a statue out of marble; carve marble into a statue", 
+                    "jap_sentence": "大理石で像を彫刻する"
+                }, 
+                {
+                    "eng_trans": "chase a metal plate with designs.", 
+                    "jap_sentence": "金属板に模様を彫刻する"
+                }, 
+                {
+                    "eng_trans": "kinetic sculpture", 
+                    "jap_sentence": "動く彫刻"
+                }, 
+                {
+                    "eng_trans": "She has a face like a Greek sculpture.", 
+                    "jap_sentence": "彼女はギリシャ彫刻のような顔をしている."
+                }, 
+                {
+                    "eng_trans": "Rodin's sculpture.", 
+                    "jap_sentence": "ロダンの彫刻"
+                }, 
+                {
+                    "eng_trans": "On the wall is carved a sculpture representing the life of the Buddha.", 
+                    "jap_sentence": "壁には仏陀の一生を表す彫刻が刻まれていた."
+                }, 
+                {
+                    "eng_trans": "carve 《a design [figure]》 onto a marble pillar.", 
+                    "jap_sentence": "大理石の柱に彫刻を施す"
+                }
+            ], 
+            "parts": [
+                "sculpture", 
+                "carving", 
+                "engraving", 
+                "engraving", 
+                "〜する  carve", 
+                "sculpture", 
+                "《俗》 sculpt", 
+                "carve", 
+                "engrave", 
+                "chase", 
+                "chisel"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "copperplate engraving.", 
+                    "jap_sentence": "彫刻凹版"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a chisel; 〔銅板の〕 a graver; a burin.", 
+                    "jap_sentence": "彫刻刀"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "engravings.", 
+                    "jap_sentence": "彫刻版"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ちょうこく", 
+    "original_kanji": "彫刻", 
+    "result_kana": "ちょうこく", 
+    "result_kanji": "彫刻", 
+    "url": ""
+}

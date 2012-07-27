@@ -1,0 +1,91 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "swelling medical treatment costs", 
+                    "jap_sentence": "膨大する医療費"
+                }, 
+                {
+                    "eng_trans": "The belly swells.", 
+                    "jap_sentence": "腹部が膨大する."
+                }
+            ], 
+            "parts": [
+                "swelling", 
+                "expansion", 
+                "distension", 
+                "tumefaction", 
+                "tumentia", 
+                "tumescence", 
+                "intumescence", 
+                "intumescentia", 
+                "oncoides", 
+                "〜する swell", 
+                "expand", 
+                "distend"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a massive [a vast, an enormous] amount of data", 
+                    "jap_sentence": "膨大な量のデータ"
+                }, 
+                {
+                    "eng_trans": "a massive tome; an enormous book", 
+                    "jap_sentence": "膨大な本"
+                }, 
+                {
+                    "eng_trans": "massive material", 
+                    "jap_sentence": "膨大な資料"
+                }, 
+                {
+                    "eng_trans": "an extensive [a gigantic, a mammoth] collection", 
+                    "jap_sentence": "膨大なコレクション"
+                }, 
+                {
+                    "eng_trans": "a colossal [mammoth] program", 
+                    "jap_sentence": "膨大な計画"
+                }, 
+                {
+                    "eng_trans": "a massive [a vast, an enormous] budget.", 
+                    "jap_sentence": "膨大な予算"
+                }
+            ], 
+            "parts": [
+                "〜な massive", 
+                "vast", 
+                "extensive", 
+                "enormous", 
+                "gigantic", 
+                "colossal", 
+                "mammoth"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "massiveness; vastness; extensiveness; enormousness; immensity.", 
+                    "jap_sentence": "膨大さ"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "【解】 the ampulla 《pl. -lae》.", 
+                    "jap_sentence": "膨大部"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ぼうだい", 
+    "original_kanji": "膨大", 
+    "result_kana": "ぼうだい", 
+    "result_kanji": "膨大", 
+    "url": ""
+}

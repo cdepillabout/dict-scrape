@@ -1,0 +1,48 @@
+{
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "a new [newly arrived] teacher", 
+                    "jap_sentence": "新しく赴任してきた先生"
+                }, 
+                {
+                    "eng_trans": "He went to take charge of the London branch.", 
+                    "jap_sentence": "彼はロンドン支店長として赴任した."
+                }, 
+                {
+                    "eng_trans": "leave to take up a new position.", 
+                    "jap_sentence": "赴任の途に上る"
+                }
+            ], 
+            "parts": [
+                "〜する go to start a new job", 
+                "start [leave] for one's new ⌐post [position]"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "one's new place of appointment; one's new post.", 
+                    "jap_sentence": "赴任先[地]"
+                }
+            ], 
+            "parts": []
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an allowance for taking up a new position.", 
+                    "jap_sentence": "赴任旅費"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
+    "original_kana": "ふにん", 
+    "original_kanji": "赴任", 
+    "result_kana": "ふにん", 
+    "result_kanji": "赴任", 
+    "url": ""
+}
