@@ -148,8 +148,8 @@
                 "go", 
                 "《文》 proceed", 
                 "《文》 repair", 
-                "leave 《for Kyoto》", 
-                "depart 《for England》"
+                "leave 〈for Kyoto〉", 
+                "depart 〈for England〉"
             ]
         }, 
         {
@@ -188,7 +188,7 @@
                 }
             ], 
             "parts": [
-                "reach 《sb》", 
+                "reach 〈sb〉", 
                 "arrive 《at…》"
             ]
         }, 
@@ -406,8 +406,8 @@
                 }
             ], 
             "parts": [
-                "go to 《school》", 
-                "attend 《college》"
+                "go to 〈school〉", 
+                "attend 〈college〉"
             ]
         }, 
         {
@@ -443,7 +443,7 @@
                 }
             ], 
             "parts": [
-                "《the years》 pass", 
+                "〈the years〉 pass", 
                 "go by"
             ]
         }, 
