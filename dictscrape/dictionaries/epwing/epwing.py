@@ -348,6 +348,10 @@ class EpwingDictionary(Dictionary):
         return u'search for %s (%s) in %s' % (word_kanji, word_kana, self.short_dictionary_name)
 
     def parse_heading(self, text):
+        """
+        This needs to return kanji as a list because one heading may have
+        multiple kanji.
+        """
         raise NotImplementedError, "This needs to be overrode in a child class."
 
     def parse_definition(self, text):
@@ -378,7 +382,7 @@ class EpwingDictionary(Dictionary):
             raw = result_heading + "\n" + result_text
             kanji, kana, _ = self.parse_heading(raw)
 
-            if kanji == word_kanji and (kana == word_kana or kana == u'?????????'):
+            if word_kanji == kanji and (kana == word_kana or kana == u'?????????'):
                 # we've found our match
                 eb_finalize_library()
                 return raw

@@ -1,9 +1,34 @@
 {
-    "accent": null, 
-    "defs": [], 
+    "accent": "", 
+    "defs": [
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "at the instance of…; at sb's instance; at [on] the suggestion of….", 
+                    "jap_sentence": "…の主唱で"
+                }
+            ], 
+            "parts": [
+                "advocacy", 
+                "promotion", 
+                "advocate", 
+                "promote", 
+                "suggest"
+            ]
+        }, 
+        {
+            "example_sentences": [
+                {
+                    "eng_trans": "an advocate; a promoter; a moving spirit.", 
+                    "jap_sentence": "主唱者"
+                }
+            ], 
+            "parts": []
+        }
+    ], 
     "original_kana": "しゅしょう", 
     "original_kanji": "首唱", 
-    "result_kana": null, 
-    "result_kanji": null, 
+    "result_kana": "しゅしょう", 
+    "result_kanji": "首唱", 
     "url": ""
 }

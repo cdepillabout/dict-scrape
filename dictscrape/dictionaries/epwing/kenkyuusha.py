@@ -128,6 +128,10 @@ class KenkyuushaDictionary(EpwingDictionary):
 
 
     def parse_heading(self, text):
+        """
+        This returns a list of kanji that are possibly in the heading.
+        """
+
         result_kana = u''
         result_kanji = u''
         result_accent = u''
@@ -157,6 +161,13 @@ class KenkyuushaDictionary(EpwingDictionary):
                 if (m):
                     result_kanji = m.group("expression")
                     result_kana = u'?????????'
+
+        if u'・' in result_kanji:
+            # there are multiple result kanji, so we need to pick out the one we
+            # are actually looking for
+            old_result_kanji = result_kanji
+            result_kanji = text.split('\n')[0].strip()
+            assert result_kanji in old_result_kanji.split(u'・')
 
         return result_kanji, result_kana, result_accent
 
