@@ -135,10 +135,10 @@ class YahooDictionary(Dictionary):
         url = self._create_url(word_kanji, word_kana)
         page = urllib.urlopen(url)
         page_string = page.read()
-        return page_string
+        return page_string.decode('utf8')
 
     def get_raw(self, word_kanji, word_kana):
-        return _fetch_page(word_kanji, word_kana)
+        return self._fetch_page(word_kanji, word_kana)
 
     def __create_page_tree(self, word_kanji, word_kana, html=None):
         """
