@@ -83,6 +83,10 @@ class KenkyuushaDictionary(EpwingDictionary):
         def_string = re.sub(u'\[?⇒(<reference>.*?</reference=[0-9]+:[0-9]+>(, )?)+\]?',
                 u'', def_string)
 
+        # change all the other two greater than sign things with english words
+        # in them to something else that doesn't use the two greater than signs
+        def_string = re.sub(u'\u300A([A-Za-z \']+)\u300B', ur'〈\1〉', def_string)
+
         # remove uneeded character
         def_string = def_string.replace(u'⌐', u'')
 
@@ -186,6 +190,9 @@ class KenkyuushaDictionary(EpwingDictionary):
             if line.startswith(u'〜'):
                 # this should never happen if we don't have example sentences?
                 assert(not current_example_sentences)
+                # only add the part of the current line after the first
+                # space (that way we don't add the japanese word)
+                line = re.sub(u'^〜.*? ', u'', line)
                 current_definition += line
                 continue
 
