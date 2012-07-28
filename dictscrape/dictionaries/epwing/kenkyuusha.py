@@ -76,6 +76,9 @@ class KenkyuushaDictionary(EpwingDictionary):
         def_string = re.sub(u'〔.*?〕', u'', def_string)
         def_string = re.sub(u'【.*?】', u'', def_string)
 
+        # get rid of plural markings
+        def_string = re.sub(u'\u300Apl\. .*?\u300B', u'', def_string)
+
         # remove references
         def_string = re.sub(u'\[?⇒(<reference>.*?</reference=[0-9]+:[0-9]+>(, )?)+\]?',
                 u'', def_string)
@@ -188,7 +191,7 @@ class KenkyuushaDictionary(EpwingDictionary):
 
             # this is a new sub definition that may have it's own example sentences.
             # for example, 社会[人生]勉強 that appears in the entry for 勉強.
-            if line.startswith(u'◧'):
+            if line.startswith(u'◧') or line.startswith(u'◨'):
                 if current_definition or current_example_sentences:
                     all_defs.append([current_definition, current_example_sentences])
                     current_definition = ""

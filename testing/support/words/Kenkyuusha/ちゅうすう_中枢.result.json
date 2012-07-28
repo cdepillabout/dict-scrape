@@ -27,8 +27,7 @@
             "parts": [
                 "the center", 
                 "the pivot", 
-                "the nucleus 《pl", 
-                "-clei, 〜es》", 
+                "the nucleus", 
                 "the hub", 
                 "the backbone", 
                 "the central [a leading] figure", 
@@ -42,7 +41,7 @@
             "example_sentences": [
                 {
                     "eng_trans": "the motor [speech] center (of the brain).", 
-                    "jap_sentence": "◨運動[言語]中枢"
+                    "jap_sentence": "運動[言語]中枢"
                 }
             ], 
             "parts": []
